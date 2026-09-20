@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-porcelain-50 text-porcelain-900 antialiased font-sans selection:bg-sage-500/25 selection:text-forest-900;
+  }
+}
+
+/* Architectural Tick-Mark Ruler Pattern from Reference Image */
+.tick-ruler {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(25, 35, 29, 0.25) 0,
+    rgba(25, 35, 29, 0.25) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+  height: 14px;
+}
+
+.tick-ruler-dark {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 0,
+    rgba(255, 255, 255, 0.2) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  width: 12px;
+}
+
+/* Floating Translucent Frosted Pill Tags on Product Images */
+.img-pill-tag {
+  background: rgba(14, 33, 23, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Organic Notched Card Cutouts */
+.notched-hero {
+  border-radius: 40px;
+  position: relative;
+}
+
+/* Minimal Scandinavian Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #dedad0;
+  border-radius: 9999px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -6px;
+  height: 17px;
+  width: 17px;
+  background: #0e2117;
+  border-radius: 50%;
+  border: 2px solid #8cb85c;
+  box-shadow: 0 2px 8px rgba(14, 33, 23, 0.25);
+  transition: all 0.15s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #163324;
+}
+
+/* Refined Minimalist Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f4ef;
+}
+::-webkit-scrollbar-thumb {
+  background: #dedad0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c3beb3;
+}
