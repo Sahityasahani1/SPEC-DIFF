@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import Header from './components/Header';
 import HeroBanner from './components/HeroBanner';
 import RecommendationForm from './components/RecommendationForm';
@@ -8,11 +9,19 @@ import DiagnosticBanner from './components/DiagnosticBanner';
 import CatalogBrowser from './components/CatalogBrowser';
 import AdminDashboard from './components/AdminDashboard';
 import FeedbackModal from './components/FeedbackModal';
+import AICopilotDrawer from './components/AICopilotDrawer';
+import CommandPalette from './components/CommandPalette';
+import DecisionDossierModal from './components/DecisionDossierModal';
+import CompareDock from './components/CompareDock';
+import ToastNotification from './components/ToastNotification';
+import CartDrawer from './components/CartDrawer';
+import SearchEngineModal from './components/SearchEngineModal';
 
 import { getRecommendations, getComparison, checkHealth } from './services/api';
-import { Layers, ArrowRight, X, AlertCircle, ArrowLeft, ChevronDown, Award } from 'lucide-react';
+import { Layers, ArrowRight, X, AlertCircle, ArrowLeft, ChevronDown, Award, ShoppingBag } from 'lucide-react';
 
 export default function App() {
+  const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState('recommend'); // 'recommend' | 'catalog' | 'admin'
   const [healthData, setHealthData] = useState(null);
 
@@ -24,20 +33,147 @@ export default function App() {
   const [currentPriority, setCurrentPriority] = useState('value');
   const [formInitialValues, setFormInitialValues] = useState(null);
 
-  // Compare State
-  const [selectedCompareIds, setSelectedCompareIds] = useState([]);
+  // Compare State & Toast System
+  const [selectedCompareItems, setSelectedCompareItems] = useState([]);
   const [comparisonModalData, setComparisonModalData] = useState(null);
   const [comparingLoading, setComparingLoading] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  const showToast = useCallback((message, type = 'info') => {
+    setToast({ message, type });
+  }, []);
+
+  const selectedCompareIds = selectedCompareItems.map(item => item.id);
+
+  // Shopping Cart & Instant Search Modal State
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem('specdiff_cart_v2');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('specdiff_cart_v2', JSON.stringify(cartItems));
+    } catch (e) {
+      console.error('Failed to persist cart items:', e);
+    }
+  }, [cartItems]);
+
+  const handleAddToCart = (product) => {
+    if (!product) return;
+    const productId = product.product_id || product.id;
+    const productName = product.name || 'Product';
+
+    setCartItems(prev => {
+      const index = prev.findIndex(item => (item.product?.product_id || item.product?.id) === productId);
+      if (index > -1) {
+        const next = [...prev];
+        next[index] = { ...next[index], quantity: next[index].quantity + 1 };
+        return next;
+      } else {
+        return [...prev, { product, quantity: 1 }];
+      }
+    });
+
+    showToast(`Added "${productName}" to shopping cart.`, 'success');
+  };
+
+  const handleUpdateCartQty = (productId, newQty) => {
+    if (newQty <= 0) {
+      handleRemoveFromCart(productId);
+      return;
+    }
+    setCartItems(prev =>
+      prev.map(item => {
+        const id = item.product?.product_id || item.product?.id;
+        return id === productId ? { ...item, quantity: newQty } : item;
+      })
+    );
+  };
+
+  const handleRemoveFromCart = (productId) => {
+    setCartItems(prev => {
+      const item = prev.find(i => (i.product?.product_id || i.product?.id) === productId);
+      const filtered = prev.filter(i => (i.product?.product_id || i.product?.id) !== productId);
+      if (item) {
+        showToast(`Removed "${item.product?.name || 'Item'}" from cart.`, 'info');
+      }
+      return filtered;
+    });
+  };
+
+  const handleClearCart = () => {
+    setCartItems([]);
+    showToast('Shopping cart cleared.', 'info');
+  };
+
+  const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   // Feedback State
   const [feedbackProduct, setFeedbackProduct] = useState(null);
 
+  // Command Palette, Copilot, and Dossier State
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  const [isCopilotOpen, setIsCopilotOpen] = useState(false);
+  const [dossierData, setDossierData] = useState(null);
+
   const configSectionRef = useRef(null);
+
+  // Parse URL search parameters for deep linking
+  const parseUrlParams = () => {
+    if (typeof window === 'undefined') return null;
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('budget') && !params.has('priority') && !params.has('category') && !params.has('q')) {
+      return null;
+    }
+    return {
+      category: params.get('category') || 'laptop',
+      max_budget: params.get('budget') ? Number(params.get('budget')) : 84999,
+      min_ram_gb: params.get('ram') !== null ? Number(params.get('ram')) : 16,
+      min_storage_gb: params.get('storage') !== null ? Number(params.get('storage')) : 512,
+      use_case: params.get('q') || params.get('use_case') || 'B.Tech CS student coding in Python, running Docker containers, and casual gaming with good battery life.',
+      brand: params.get('brand') && params.get('brand') !== 'Any' ? params.get('brand') : null,
+      priority: params.get('priority') || 'value',
+    };
+  };
+
+  // Sync active parameters to URL
+  const syncToUrl = (formData) => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams();
+    if (formData.category) params.set('category', formData.category);
+    if (formData.max_budget) params.set('budget', formData.max_budget);
+    if (formData.min_ram_gb !== undefined) params.set('ram', formData.min_ram_gb);
+    if (formData.min_storage_gb !== undefined) params.set('storage', formData.min_storage_gb);
+    if (formData.priority) params.set('priority', formData.priority);
+    if (formData.brand && formData.brand !== 'Any') params.set('brand', formData.brand);
+    if (formData.use_case) params.set('q', formData.use_case);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState(null, '', newUrl);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     fetchHealth();
-    // Run initial demo recommendation on startup
-    handleGetRecommendations({
+    // Hydrate form from URL deep link or fall back to default
+    const urlValues = parseUrlParams();
+    const initial = urlValues || {
       category: 'laptop',
       max_budget: 84999,
       min_ram_gb: 16,
@@ -45,7 +181,9 @@ export default function App() {
       use_case: 'B.Tech CS student coding in Python, running Docker containers, and casual gaming with good battery life.',
       brand: null,
       priority: 'value'
-    });
+    };
+    setFormInitialValues(initial);
+    handleGetRecommendations(initial);
   }, []);
 
   const fetchHealth = async () => {
@@ -60,8 +198,17 @@ export default function App() {
     setNoMatchData(null);
     setCurrentPriority(formData.priority);
 
+    // Deep link sync
+    syncToUrl(formData);
+
     try {
-      const res = await getRecommendations(formData);
+      // Execute via TanStack Query for automatic retries, backoff, and SWR caching
+      const res = await queryClient.fetchQuery({
+        queryKey: ['recommendations', formData],
+        queryFn: () => getRecommendations(formData),
+        staleTime: 1000 * 60 * 5, // 5 min cache
+      });
+
       if (res.status === 'no_match') {
         setNoMatchData(res);
       } else {
@@ -93,21 +240,51 @@ export default function App() {
     }
   };
 
-  const toggleCompare = (productId) => {
-    if (selectedCompareIds.includes(productId)) {
-      setSelectedCompareIds(selectedCompareIds.filter(id => id !== productId));
+  const toggleCompare = (productOrId) => {
+    const id = typeof productOrId === 'string' ? productOrId : (productOrId.product_id || productOrId.id);
+    const exists = selectedCompareItems.some(item => item.id === id);
+
+    if (exists) {
+      const removed = selectedCompareItems.find(item => item.id === id);
+      setSelectedCompareItems(prev => prev.filter(item => item.id !== id));
+      showToast(`Removed "${removed?.name || id}" from comparison tray.`, 'info');
     } else {
-      if (selectedCompareIds.length >= 3) {
-        alert('You can compare a maximum of 3 items simultaneously.');
+      if (selectedCompareItems.length >= 3) {
+        showToast('You can compare a maximum of 3 items simultaneously. Remove one to add another.', 'warning');
         return;
       }
-      setSelectedCompareIds([...selectedCompareIds, productId]);
+
+      let itemObj = typeof productOrId === 'object' && productOrId !== null ? {
+        id,
+        name: productOrId.name,
+        brand: productOrId.brand,
+        formatted_price: productOrId.formatted_price || (productOrId.price ? `₹${Number(productOrId.price).toLocaleString()}` : ''),
+        category: productOrId.category
+      } : null;
+
+      if (!itemObj) {
+        const found = results?.recommendations?.find(r => r.product_id === id);
+        if (found) {
+          itemObj = {
+            id,
+            name: found.name,
+            brand: found.brand,
+            formatted_price: found.formatted_price,
+            category: found.category
+          };
+        } else {
+          itemObj = { id, name: id, formatted_price: '', category: 'laptop' };
+        }
+      }
+
+      setSelectedCompareItems(prev => [...prev, itemObj]);
+      showToast(`Added "${itemObj.name}" to comparison tray (${selectedCompareItems.length + 1} of 3).`, 'success');
     }
   };
 
   const handleOpenComparison = async () => {
-    if (selectedCompareIds.length < 2) {
-      alert('Please select at least 2 items to compare.');
+    if (selectedCompareItems.length < 2) {
+      showToast('Please select at least 2 items to run a side-by-side comparison.', 'warning');
       return;
     }
 
@@ -116,7 +293,7 @@ export default function App() {
       const data = await getComparison(selectedCompareIds, currentPriority);
       setComparisonModalData(data);
     } catch (err) {
-      alert('Failed to load comparison: ' + err.message);
+      showToast('Failed to load comparison: ' + err.message, 'error');
     } finally {
       setComparingLoading(false);
     }
@@ -132,10 +309,15 @@ export default function App() {
         healthData={healthData}
         selectedCompareCount={selectedCompareIds.length}
         onOpenCompare={handleOpenComparison}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+        onToggleCopilot={() => setIsCopilotOpen(prev => !prev)}
+        onOpenSearch={() => setIsSearchOpen(true)}
+        cartCount={totalCartCount}
+        onOpenCart={() => setIsCartOpen(true)}
       />
 
-      {/* Main Viewport Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1">
+      {/* Main Viewport Container with safe bottom dock clearance */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-36 sm:pb-44 w-full flex-1">
         
         {/* TAB 1: RECOMMENDATIONS */}
         {activeTab === 'recommend' && (
@@ -297,6 +479,7 @@ export default function App() {
                             isSelectedForCompare={selectedCompareIds.includes(product.product_id)}
                             onToggleCompare={toggleCompare}
                             onOpenFeedback={(p) => setFeedbackProduct(p)}
+                            onAddToCart={handleAddToCart}
                           />
                         ))}
                       </div>
@@ -374,10 +557,19 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="md:col-span-4 flex justify-end">
+                    <div className="md:col-span-4 flex items-center justify-end gap-2.5 flex-wrap">
                       <button
-                        onClick={() => toggleCompare(results.recommendations[0]?.product_id)}
-                        className="px-6 py-3 rounded-full bg-sage-500 hover:bg-sage-400 text-forest-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+                        onClick={() => handleAddToCart(results.recommendations[0])}
+                        className="px-5 py-3 rounded-full bg-white hover:bg-porcelain-100 text-forest-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
+                        title="Add to Shopping Cart"
+                      >
+                        <ShoppingBag className="w-3.5 h-3.5 text-sage-600" />
+                        <span>Add to Cart</span>
+                      </button>
+
+                      <button
+                        onClick={() => toggleCompare(results.recommendations[0])}
+                        className="px-5 py-3 rounded-full bg-sage-500 hover:bg-sage-400 text-forest-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
                       >
                         {selectedCompareIds.includes(results.recommendations[0]?.product_id) ? 'Selected for Diff' : 'Add to Compare'}
                       </button>
@@ -396,6 +588,7 @@ export default function App() {
           <CatalogBrowser
             selectedCompareIds={selectedCompareIds}
             onSelectForCompare={toggleCompare}
+            onAddToCart={handleAddToCart}
           />
         )}
 
@@ -406,42 +599,59 @@ export default function App() {
 
       </main>
 
-      {/* Floating Comparison Drawer Bar styled in deep forest green */}
-      {selectedCompareIds.length > 0 && (
-        <div className="fixed bottom-6 right-6 z-40 animate-slideUp">
-          <div className="bg-forest-900 text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-4 border border-forest-700">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-sage-300">
-              <Layers className="w-4 h-4 text-sage-400" />
-              <span>{selectedCompareIds.length} OF 3 LAPTOPS SELECTED</span>
-            </div>
+      {/* Interactive Floating Comparison Dock */}
+      <CompareDock
+        selectedItems={selectedCompareItems}
+        onRemoveItem={(id) => {
+          const removed = selectedCompareItems.find(item => item.id === id);
+          setSelectedCompareItems(prev => prev.filter(item => item.id !== id));
+          showToast(`Removed "${removed?.name || id}" from compare tray.`, 'info');
+        }}
+        onClearAll={() => {
+          setSelectedCompareItems([]);
+          showToast('Cleared comparison selection.', 'info');
+        }}
+        onCompare={handleOpenComparison}
+        loading={comparingLoading}
+      />
 
-            <button
-              type="button"
-              onClick={handleOpenComparison}
-              disabled={selectedCompareIds.length < 2 || comparingLoading}
-              className="px-4 py-2 bg-sage-500 hover:bg-sage-400 disabled:opacity-50 text-forest-950 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-sm cursor-pointer"
-            >
-              <span>{comparingLoading ? 'Crunching...' : 'Compare Side-by-Side'}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setSelectedCompareIds([])}
-              className="p-1 text-white/50 hover:text-white rounded-full transition-colors cursor-pointer"
-              title="Clear comparison selection"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Non-blocking Global Toast System */}
+      <ToastNotification toast={toast} onClose={() => setToast(null)} />
 
       {/* Comparison Modal Dialog */}
       {comparisonModalData && (
         <ComparisonModal
           comparisonData={comparisonModalData}
           onClose={() => setComparisonModalData(null)}
+          onExportDossier={() => setDossierData(comparisonModalData)}
+          onAddToCart={handleAddToCart}
+        />
+      )}
+
+      {/* Persistent Shopping Cart Drawer */}
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cartItems={cartItems}
+        onUpdateQuantity={handleUpdateCartQty}
+        onRemoveFromCart={handleRemoveFromCart}
+        onClearCart={handleClearCart}
+      />
+
+      {/* Instant Multi-Category Electronic Search Engine Modal */}
+      <SearchEngineModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onAddToCart={handleAddToCart}
+        onToggleCompare={toggleCompare}
+        selectedCompareIds={selectedCompareIds}
+      />
+
+      {/* Decision Dossier Print/Export Modal */}
+      {dossierData && (
+        <DecisionDossierModal
+          comparisonData={dossierData}
+          onClose={() => setDossierData(null)}
         />
       )}
 
@@ -453,6 +663,21 @@ export default function App() {
           onClose={() => setFeedbackProduct(null)}
         />
       )}
+
+      {/* Global Command Palette (Ctrl+K) */}
+      <CommandPalette
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+      />
+
+      {/* Persistent SpecPlug AI Floating Drawer */}
+      <AICopilotDrawer
+        activeProductIds={results?.recommendations?.map(r => r.product_id) || []}
+        isOpen={isCopilotOpen}
+        onToggle={(val) => setIsCopilotOpen(typeof val === 'boolean' ? val : !isCopilotOpen)}
+        onAddToCart={handleAddToCart}
+        hasBottomDock={selectedCompareItems.length > 0}
+      />
 
       {/* Footer styled in Scandinavian Editorial Tone */}
       <footer className="bg-forest-950 text-white/60 border-t border-forest-900 mt-16 py-8 text-center text-xs">

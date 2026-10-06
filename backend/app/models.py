@@ -1,7 +1,19 @@
-"""SQLAlchemy Database Models."""
+"""SQLAlchemy Database Models with pgvector HNSW Indexing."""
 import datetime
-from sqlalchemy import Column, String, Float, Integer, Boolean, DateTime, Text, ForeignKey
+from datetime import timezone
+from sqlalchemy import Column, String, Float, Integer, Boolean, DateTime, Text, ForeignKey, Index
+from sqlalchemy.ext.compiler import compiles
+from pgvector.sqlalchemy import Vector
 from app.database import Base
+
+def utc_now():
+    """Return current timezone-aware UTC datetime."""
+    return datetime.datetime.now(timezone.utc)
+
+# Compile rule allowing Vector column to degrade cleanly to TEXT in SQLite test environments
+@compiles(Vector, "sqlite")
+def compile_vector_sqlite(type_, compiler, **kw):
+    return "TEXT"
 
 class Product(Base):
     __tablename__ = "products"
@@ -29,8 +41,12 @@ class Product(Base):
     in_stock = Column(Boolean, nullable=False, default=True, index=True)
     source = Column(String(100), nullable=False, default="laptops_india_catalog.csv")
     catalog_updated_at = Column(String(50), nullable=False, default="2026-09-13")
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    
+    # 384-dimensional pgvector dense representation for semantic hardware matching
+    embedding = Column(Vector(384), nullable=True)
+
+    created_at = Column(DateTime, default=utc_now)
+    updated_at = Column(DateTime, default=utc_now, onupdate=utc_now)
 
     def to_dict(self):
         return {
@@ -60,6 +76,15 @@ class Product(Base):
             "catalog_updated_at": self.catalog_updated_at
         }
 
+# HNSW Cosine Similarity Index on product vector embeddings
+Index(
+    "product_embedding_hnsw_idx",
+    Product.embedding,
+    postgresql_using="hnsw",
+    postgresql_with={"m": 16, "ef_construction": 64},
+    postgresql_ops={"embedding": "vector_cosine_ops"}
+)
+
 class RecommendationLog(Base):
     __tablename__ = "recommendations"
 
@@ -68,7 +93,7 @@ class RecommendationLog(Base):
     request_json = Column(Text, nullable=False)
     result_json = Column(Text, nullable=False)
     latency_ms = Column(Float, nullable=False)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now)
 
 class Feedback(Base):
     __tablename__ = "feedback"
@@ -78,4 +103,15 @@ class Feedback(Base):
     user_id = Column(String(100), nullable=True)
     rating = Column(Integer, nullable=False)  # 1 for helpful, -1 for not helpful
     comment = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now)
+
+class ClickLog(Base):
+    __tablename__ = "click_logs"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    product_id = Column(String(100), index=True, nullable=False)
+    retail_source = Column(String(100), nullable=False)
+    target_url = Column(String(2000), nullable=False)
+    client_ip = Column(String(50), nullable=True)
+    user_agent = Column(String(500), nullable=True)
+    created_at = Column(DateTime, default=utc_now)

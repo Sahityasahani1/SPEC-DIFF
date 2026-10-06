@@ -13,15 +13,20 @@ if sys.platform == "win32":
 
 from app.database import init_db, SessionLocal
 from app.models import Product
-from app.config import PROJECT_NAME, DEFAULT_CSV_PATH
+from app.config import PROJECT_NAME, DEFAULT_CSV_PATH, ALLOWED_ORIGINS
 from app.services.catalog_service import import_csv_catalog
 from app.services.vector_service import semantic_engine
+from app.limiter import limiter
+from slowapi.errors import RateLimitExceeded
+from slowapi import _rate_limit_exceeded_handler
 
 from app.routers.recommend import router as recommend_router
 from app.routers.compare import router as compare_router
 from app.routers.products import router as products_router
 from app.routers.admin import router as admin_router
 from app.routers.feedback import router as feedback_router
+from app.routers.copilot import router as copilot_router
+from app.routers.track import router as track_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -47,16 +52,20 @@ async def lifespan(app: FastAPI):
     print("[INFO] Shutting down SmartPick Backend.")
 
 app = FastAPI(
-    title="SmartPick - Indian Laptop Recommendation Engine",
+    title="SpecDiff - AI Hardware Intelligence Platform",
     description="Hybrid RAG Recommendation System with Deterministic Filtering, Multi-Factor Scoring, and Anti-Hallucination Explanations.",
-    version="1.0.0",
+    version="2.0.0",
     lifespan=lifespan
 )
 
-# Enable CORS for React frontend
+# Rate Limiter integration
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# Enable CORS with explicit allowed origins for production defense
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -68,6 +77,8 @@ app.include_router(compare_router)
 app.include_router(products_router)
 app.include_router(admin_router)
 app.include_router(feedback_router)
+app.include_router(copilot_router)
+app.include_router(track_router)
 
 @app.get("/")
 def root():

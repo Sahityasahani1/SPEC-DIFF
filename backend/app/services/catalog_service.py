@@ -6,7 +6,7 @@ from typing import List, Tuple, Dict, Any, Optional
 from sqlalchemy.orm import Session
 from app.models import Product
 from app.schemas import CSVRowError, CSVUploadResponse
-from app.services.vector_service import semantic_engine
+from app.services.vector_service import semantic_engine, generate_text_embedding, create_product_document
 
 REQUIRED_HEADERS = {
     "id", "name", "category", "brand", "price", "ram_gb", "storage_gb",
@@ -35,8 +35,8 @@ def validate_row(row: Dict[str, str], line_num: int) -> Tuple[Optional[Dict[str,
     # RAM validation (0 allowed for audio, smartwatches, monitors, etc.)
     try:
         ram_gb = int(row.get("ram_gb", "0").strip())
-        if ram_gb not in [0, 1, 2, 3, 4, 6, 8, 12, 16, 18, 24, 32, 48, 64, 128]:
-            return None, CSVRowError(row_number=line_num, sku=sku, error=f"Invalid RAM '{ram_gb}'GB: Must be standard capacity (0, 4, 6, 8, 12, 16, 24, 32, etc.).")
+        if ram_gb not in [0, 1, 2, 3, 4, 6, 8, 12, 16, 18, 24, 32, 36, 48, 64, 96, 128]:
+            return None, CSVRowError(row_number=line_num, sku=sku, error=f"Invalid RAM '{ram_gb}'GB: Must be standard capacity (0, 4, 6, 8, 12, 16, 18, 24, 32, 36, 48, 64, 96, 128).")
     except ValueError:
         return None, CSVRowError(row_number=line_num, sku=sku, error=f"Non-numeric RAM value '{row.get('ram_gb')}'.")
 
@@ -143,8 +143,10 @@ def import_csv_catalog(db: Session, csv_content: str) -> CSVUploadResponse:
         if existing:
             for k, v in data.items():
                 setattr(existing, k, v)
+            existing.embedding = generate_text_embedding(create_product_document(existing))
         else:
             product = Product(**data)
+            product.embedding = generate_text_embedding(create_product_document(product))
             db.add(product)
 
     db.commit()

@@ -99,3 +99,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #c3beb3;
 }
+
+/* Print optimizations for Decision Dossier */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, footer, nav, .fixed:not(#dossier-modal-container), button:not(.print-include) {
+    display: none !important;
+  }
+  #dossier-content {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  @page {
+    margin: 1.5cm;
+  }
+}

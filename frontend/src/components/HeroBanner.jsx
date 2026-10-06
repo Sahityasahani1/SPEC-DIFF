@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, Laptop, Cpu, ShieldCheck } from 'lucide-react';
+import Laptop3DCanvas from './Laptop3DCanvas';
+import ParticleConstellation3D from './ParticleConstellation3D';
 
 export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
   const PROMPTS = [
@@ -83,6 +85,9 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
       
       {/* Massive Forest Green Hero Container matching Reference Image 2 */}
       <div className="bg-forest-900 text-white rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 md:p-16 relative overflow-hidden shadow-2xl border border-forest-800">
+        
+        {/* 3D Ambient WebGL Particle Constellation */}
+        <ParticleConstellation3D />
         
         {/* Architectural Dot Matrix Motif from Reference Image */}
         <div className="absolute top-12 left-12 sm:left-16 grid grid-cols-6 gap-2 opacity-30 pointer-events-none">
@@ -167,10 +172,9 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
                   <span>RTX 4060 / OLED</span>
                 </div>
 
-                <div className="py-8 flex justify-center items-center">
-                  <div className="w-36 h-36 rounded-full bg-gradient-to-tr from-sage-500/20 via-forest-700/40 to-transparent flex items-center justify-center border border-white/10">
-                    <Laptop className="w-16 h-16 text-sage-300 stroke-[1.2]" />
-                  </div>
+                {/* Interactive 3D WebGL Laptop Canvas */}
+                <div className="py-2 flex justify-center items-center">
+                  <Laptop3DCanvas />
                 </div>
 
                 {/* Floating translucent pills overlaid directly */}

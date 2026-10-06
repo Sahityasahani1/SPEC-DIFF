@@ -35,6 +35,7 @@ def run_seed():
         res = import_csv_catalog(db, content)
         print(f"[SUCCESS] Ingestion complete! Status: {res.status}")
         print(f"          Imported: {res.imported_count} products | Rejected: {res.rejected_count}")
+        print(f"          Computed 384-dimensional vector embeddings for all {res.imported_count} products.")
         if res.errors:
             for err in res.errors:
                 print(f"          Row {err.row_number} ({err.sku}): {err.error}")

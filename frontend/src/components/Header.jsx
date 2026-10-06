@@ -1,7 +1,18 @@
 import React from 'react';
-import { Laptop, Layers } from 'lucide-react';
+import { Laptop, Layers, Search, Sparkles, ShoppingBag } from 'lucide-react';
 
-export default function Header({ activeTab, setActiveTab, healthData, selectedCompareCount = 0, onOpenCompare }) {
+export default function Header({ 
+  activeTab, 
+  setActiveTab, 
+  healthData, 
+  selectedCompareCount = 0, 
+  onOpenCompare, 
+  onOpenCommandPalette, 
+  onToggleCopilot,
+  onOpenSearch,
+  cartCount = 0,
+  onOpenCart
+}) {
   return (
     <header className="sticky top-0 z-50 bg-forest-900/90 backdrop-blur-md border-b border-white/10 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,21 +77,53 @@ export default function Header({ activeTab, setActiveTab, healthData, selectedCo
             </button>
           </nav>
 
-          {/* Right: Country Tag & Compare Pill Button */}
-          <div className="flex items-center space-x-4">
-            <div className="hidden lg:flex items-center space-x-2 text-[11px] font-mono uppercase text-white/60 tracking-wider">
+          {/* Right: Country Tag, Search, Copilot, Cart & Compare Pill Buttons */}
+          <div className="flex items-center space-x-2.5 sm:space-x-3">
+            <div className="hidden xl:flex items-center space-x-2 text-[11px] font-mono uppercase text-white/60 tracking-wider">
               <span>🇮🇳 INDIA</span>
               <span>•</span>
               <span>VERIFIED STREET PRICES</span>
             </div>
 
-            {/* Compare Pill Button from Reference ("CART" style) */}
+            {/* Instant Search Engine Button */}
+            <button
+              onClick={onOpenSearch}
+              className="flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-white/10 text-white/90 hover:bg-white/20 hover:text-white text-xs tracking-wider uppercase transition-all cursor-pointer"
+              title="Instant Search Engine (1,000+ Products)"
+            >
+              <Search className="w-3.5 h-3.5 text-sage-400" />
+              <span className="font-semibold text-xs hidden sm:inline">Search</span>
+            </button>
+
+            {/* SpecPlug AI Button */}
+            <button
+              onClick={onToggleCopilot}
+              className="flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-sage-500/20 text-sage-300 hover:bg-sage-500/30 hover:text-sage-200 text-xs tracking-wider uppercase transition-all cursor-pointer"
+              title="Open SpecPlug AI Hardware Plug"
+            >
+              <span className="text-xs">🔌</span>
+              <span className="hidden sm:inline font-mono text-[10px] font-bold">SpecPlug</span>
+            </button>
+
+            {/* Shopping Cart Pill Button matching LOFY Style */}
+            <button
+              onClick={onOpenCart}
+              className="flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-sage-500 hover:bg-sage-400 text-forest-950 font-bold text-xs tracking-wider uppercase transition-all shadow-sm cursor-pointer"
+              title="Open Shopping Cart Drawer"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              <span>CART{cartCount > 0 ? ` (${cartCount})` : ''}</span>
+            </button>
+
+            {/* Compare Pill Button from Reference */}
             <button
               onClick={onOpenCompare}
-              className="flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white text-forest-900 hover:bg-sage-400 hover:text-forest-950 font-bold text-xs tracking-wider uppercase transition-all shadow-sm"
+              className="flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white text-forest-900 hover:bg-sage-400 hover:text-forest-950 font-bold text-xs tracking-wider uppercase transition-all shadow-sm cursor-pointer"
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>COMPARE {selectedCompareCount > 0 ? `(${selectedCompareCount})` : ''}</span>
+              <span className="hidden sm:inline">COMPARE</span>
+              <span className="sm:hidden">DIFF</span>
+              {selectedCompareCount > 0 ? ` (${selectedCompareCount})` : ''}
             </button>
           </div>
 

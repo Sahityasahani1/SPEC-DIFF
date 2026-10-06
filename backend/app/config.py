@@ -33,3 +33,30 @@ VALID_PRIORITIES = ["value", "performance", "battery", "portability", "price"]
 # Optional LLM configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+
+# Security & Auth
+ADMIN_API_KEY = os.getenv("ADMIN_API_KEY", "specdiff_admin_secret_key_2026")
+
+# CORS Allowed Origins
+raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000")
+ALLOWED_ORIGINS = [o.strip() for o in raw_origins.split(",") if o.strip()]
+
+# Redis Cache Config
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+CACHE_TTL_SECONDS = int(os.getenv("CACHE_TTL_SECONDS", "3600"))
+
+# Rate Limiting
+RATE_LIMIT_RECOMMEND = os.getenv("RATE_LIMIT_RECOMMEND", "15/minute")
+
+def get_async_database_url(url: str) -> str:
+    """Converts standard DB URL into async dialect URL."""
+    if url.startswith("postgresql://"):
+        return url.replace("postgresql://", "postgresql+asyncpg://", 1)
+    elif url.startswith("postgres://"):
+        return url.replace("postgres://", "postgresql+asyncpg://", 1)
+    elif url.startswith("sqlite:///"):
+        return url.replace("sqlite:///", "sqlite+aiosqlite:///", 1)
+    return url
+
+ASYNC_DATABASE_URL = get_async_database_url(DATABASE_URL)
+

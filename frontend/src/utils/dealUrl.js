@@ -1,8 +1,10 @@
 /**
- * Outbound Retailer Deal Link Resolver
+ * Outbound Retailer Deal Link Resolver with Affiliate Telemetry Tracking.
  * Ensures deal links always resolve to a working retailer landing page
- * instead of broken/dummy placeholder URLs.
+ * while logging click analytics through /api/track/click.
  */
+import { trackOutboundClick } from '../services/api';
+
 export function getOutboundDealUrl(product) {
   if (!product) return 'https://www.amazon.in';
 
@@ -41,5 +43,14 @@ export function openDealUrl(product, event) {
     event.stopPropagation();
   }
   const url = getOutboundDealUrl(product);
+
+  // Non-blocking telemetry tracking
+  trackOutboundClick({
+    product_id: product.id || product.product_id || 'unknown',
+    retail_source: product.retail_source || 'Amazon India',
+    target_url: url,
+    user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : ''
+  });
+
   window.open(url, '_blank', 'noopener,noreferrer');
 }

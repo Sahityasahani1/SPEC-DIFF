@@ -49,10 +49,20 @@ def compare_products(db: Session, product_ids: List[str], priority: str = "value
         winner_id = winner.id
         winner_reason = f"{winner.name} offers the highest specification-to-price value in the Indian market."
 
+    from app.services.benchmark_service import get_benchmarks
+    from app.services.price_tracker_service import get_price_signal
+    from app.services.store_deals_service import get_store_deals
+    from app.schemas import BenchmarkData, PriceSignal, DealComparison
+
     comp_products = []
     for p in ordered_products:
         pros_list = [pr.strip() for pr in p.pros.split(";") if pr.strip()]
         cons_list = [c.strip() for c in p.cons.split(";") if c.strip()]
+        
+        b_data = get_benchmarks(p)
+        ps_data = get_price_signal(p)
+        deal_data = get_store_deals(p)
+        
         comp_products.append(
             ComparisonProduct(
                 id=p.id,
@@ -74,7 +84,10 @@ def compare_products(db: Session, product_ids: List[str], priority: str = "value
                 product_url=p.product_url,
                 pros=pros_list,
                 cons=cons_list,
-                is_winner=(p.id == winner_id)
+                is_winner=(p.id == winner_id),
+                benchmarks=BenchmarkData(**b_data) if b_data.get('geekbench_single') else None,
+                price_signal=PriceSignal(**ps_data),
+                deal_comparison=DealComparison(**deal_data)
             )
         )
 

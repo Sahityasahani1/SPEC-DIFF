@@ -47,11 +47,15 @@ export async function updateProductStock(productId, inStock) {
   return res.json();
 }
 
-export async function uploadCatalogCSV(file) {
+export async function uploadCatalogCSV(file, adminKey = 'specdiff_admin_secret_key_2026') {
   const formData = new FormData();
   formData.append('file', file);
+  const headers = {};
+  if (adminKey) headers['X-Admin-Key'] = adminKey;
+
   const res = await fetch(`${API_BASE}/admin/catalog/upload`, {
     method: 'POST',
+    headers,
     body: formData
   });
   if (!res.ok) {
@@ -61,9 +65,20 @@ export async function uploadCatalogCSV(file) {
   return res.json();
 }
 
-export async function reindexCatalog() {
+export async function getUploadJobStatus(jobId, adminKey = 'specdiff_admin_secret_key_2026') {
+  const headers = {};
+  if (adminKey) headers['X-Admin-Key'] = adminKey;
+  const res = await fetch(`${API_BASE}/admin/catalog/upload/${jobId}`, { headers });
+  if (!res.ok) throw new Error('Failed to fetch upload job status');
+  return res.json();
+}
+
+export async function reindexCatalog(adminKey = 'specdiff_admin_secret_key_2026') {
+  const headers = {};
+  if (adminKey) headers['X-Admin-Key'] = adminKey;
   const res = await fetch(`${API_BASE}/admin/catalog/reindex`, {
-    method: 'POST'
+    method: 'POST',
+    headers
   });
   if (!res.ok) throw new Error('Failed to reindex catalog');
   return res.json();
@@ -87,3 +102,31 @@ export async function checkHealth() {
     return null;
   }
 }
+
+export async function sendCopilotMessage(payload) {
+  const res = await fetch(`${API_BASE}/copilot`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Copilot error' }));
+    throw new Error(err.detail || 'Failed to get copilot response');
+  }
+  return res.json();
+}
+
+export async function trackOutboundClick(payload) {
+  try {
+    const res = await fetch(`${API_BASE}/track/click`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    return res.ok ? await res.json() : null;
+  } catch (err) {
+    console.debug('[AFFILIATE_TRACK] Non-blocking tracking err:', err);
+    return null;
+  }
+}
+

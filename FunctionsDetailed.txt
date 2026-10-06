@@ -1,0 +1,428 @@
+Listed directory RAG%20Project
+Listed directory backend
+Listed directory frontend
+Listed directory app
+Listed directory routers
+Listed directory services
+Listed directory src
+Listed directory components
+Listed directory services
+Listed directory utils
+Listed directory data
+Listed directory tests
+Viewed requirements.txt:1-18
+Viewed package.json:1-28
+Ran command: `python --version`
+Viewed README.md:1-150
+Created analyze_functions.py
+Ran command: `python "C:\Users\Sahitya\.gemini\antigravity-ide\brain\6e5ec264-624e-4be4-b301-84ce90ea2c3f\scratch\analyze_functions.py"`
+Created analyze_functions.py
+Ran command: `python "C:\Users\Sahitya\.gemini\antigravity-ide\brain\6e5ec264-624e-4be4-b301-84ce90ea2c3f\scratch\analyze_functions.py"`
+Created summarize.py
+Ran command: `python "C:\Users\Sahitya\.gemini\antigravity-ide\brain\6e5ec264-624e-4be4-b301-84ce90ea2c3f\scratch\summarize.py"`
+Created print_py.py
+Ran command: `python "C:\Users\Sahitya\.gemini\antigravity-ide\brain\6e5ec264-624e-4be4-b301-84ce90ea2c3f\scratch\print_py.py"`
+Viewed models.py:1-118
+Viewed admin.py:1-111
+Viewed recommend.py:1-161
+Created counts.py
+Ran command: `python "C:\Users\Sahitya\.gemini\antigravity-ide\brain\6e5ec264-624e-4be4-b301-84ce90ea2c3f\scratch\counts.py"`
+Ran command: `python -c "import json; data=json.load(open(r'C:\Users\Sahitya\.gemini\antigravity-ide\brain\6e5ec264-624e-4be4-b301-84ce90ea2c3f\scratch\analysis.json')); print(set(f['relpath'] for f in data['backend_funcs'] if 'alembic' in f['relpath']))"`
+
+### 📊 Executive Summary: Function Count
+
+Across the entire **SpecDiff** codebase, there are **187 total functions**:
+
+| Layer / Subsystem | Scope | Function Count |
+| :--- | :--- | :---: |
+| **Backend Core** | FastAPI Routers, Domain Services, Auth, Database, Schemas, Models | **58** |
+| **Backend Migrations & Ingestion** | Database Seeding Scripts & Alembic Migrations | **7** |
+| **Backend Test Suite** | Pytest unit, integration, and golden scenario tests | **27** |
+| **Frontend Application Core** | Root State Manager ([App.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx)), API Client & Utilities | **29** |
+| **Frontend UI Components & WebGL** | React 18 Components, 3D Canvas Renders, Drawer & Modal Controllers | **66** |
+| **Total** | **Entire SpecDiff Platform** | **187** |
+
+---
+
+### 🛠️ Technology Stack Used
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  FRONTEND: React 18 • Vite 5 • Three.js (WebGL) • TailwindCSS • Framer Motion    │
+│  BACKEND:  Python 3.13 • FastAPI • Pydantic v2 • SQLAlchemy 2.0 • SlowAPI        │
+│  DATABASE: SQLite (WAL mode) / PostgreSQL + pgvector (HNSW 384-dim Indexing)     │
+│  CACHING:  Redis 7 with SHA-256 Keys & In-Memory TTL Fallback                    │
+│  AI / RAG: Google Gemini API (1.5 Flash) • Scikit-learn TF-IDF • Cosine Dist     │
+│  DEVOPS:   Docker Compose • Nginx Alpine • Pytest (41/41 passing tests)          │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+1. **Backend Framework & Core:**
+   - **[Python 3.13+](https://www.python.org/)**: Core backend runtime.
+   - **[FastAPI](file:///c:/sahityaa/RAG%20Project/backend/app/main.py)**: Async web framework with OpenAPI / Swagger documentation generation.
+   - **[Pydantic v2](file:///c:/sahityaa/RAG%20Project/backend/app/schemas.py)**: Request/response validation, type coercion, and input sanitization (XSS defense).
+   - **[SQLAlchemy 2.0](file:///c:/sahityaa/RAG%20Project/backend/app/database.py)**: ORM for database mapping and transactional query execution.
+   - **[Alembic](file:///c:/sahityaa/RAG%20Project/backend/alembic/env.py)**: Schema migration management.
+   - **[SlowAPI](file:///c:/sahityaa/RAG%20Project/backend/app/limiter.py)**: IP-keyed rate limiting (15 requests/min on heavy compute routes).
+2. **Data & Storage:**
+   - **[SQLite](file:///c:/sahityaa/RAG%20Project/backend/smartpick.db)** (in WAL mode) for lightweight local development and testing.
+   - **[PostgreSQL + pgvector](file:///c:/sahityaa/RAG%20Project/backend/app/models.py#L6-L16)**: Production-ready 384-dimensional vector database using HNSW cosine distance indexing (`vector_cosine_ops`).
+   - **[Redis 7](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py)**: Query response caching with deterministic SHA-256 hashing and automatic in-memory LRU/TTL fallback.
+3. **Information Retrieval & Machine Learning (RAG):**
+   - **[Scikit-learn](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py)**: Sublinear TF-IDF vectorization with (1, 2) n-grams and cosine similarity for dense semantic hardware matching.
+   - **[Google Gemini API (`gemini-1.5-flash` / `gemini-pro`)](file:///c:/sahityaa/RAG%20Project/backend/app/routers/copilot.py)**: Generative copilot and explanation synthesis with automated deterministic fallback.
+4. **Frontend Architecture & Visualization:**
+   - **[React 18.3](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx)**: Component tree with declarative state.
+   - **[Vite 5.4](file:///c:/sahityaa/RAG%20Project/frontend/vite.config.js)**: Modern ES module development server and build bundler.
+   - **[Three.js](file:///c:/sahityaa/RAG%20Project/frontend/src/components/Laptop3DCanvas.jsx)**: WebGL 3D hardware visualizers (procedural metallic laptop chassis, silicon microchip die hologram, ambient particle constellation).
+   - **[Framer Motion](file:///c:/sahityaa/RAG%20Project/frontend/src/components/ProductCard.jsx)**: Spring-damped 3D card tilt physics, modal animations, and slide-in drawers.
+   - **[TailwindCSS 3.4](file:///c:/sahityaa/RAG%20Project/frontend/tailwind.config.js)**: Scandinavian luxury dark/light palette design tokens.
+   - **[Recharts](file:///c:/sahityaa/RAG%20Project/frontend/src/components/PriceHistoryChart.jsx)**: Responsive 30-day price trend graphs and benchmark comparisons.
+   - **[Lucide React](file:///c:/sahityaa/RAG%20Project/frontend/src/components/Header.jsx)**: Vector hardware and navigation icons.
+
+---
+
+### 📋 Detailed Inventory of Functions & What They Do
+
+#### 1. Backend Application Core & Routers (58 Functions)
+
+##### [backend/app/main.py](file:///c:/sahityaa/RAG%20Project/backend/app/main.py)
+- [`lifespan(app)`](file:///c:/sahityaa/RAG%20Project/backend/app/main.py#L38-L59): Async context manager that runs on startup and shutdown; initializes database tables and pre-warms the semantic vector search engine.
+- [`health_check()`](file:///c:/sahityaa/RAG%20Project/backend/app/main.py#L61-L75): Returns server health, active catalog database item counts, and system status.
+- [`root()`](file:///c:/sahityaa/RAG%20Project/backend/app/main.py#L77-L81): Serves root endpoint metadata.
+- [`rate_limit_exceeded_handler(request, exc)`](file:///c:/sahityaa/RAG%20Project/backend/app/main.py#L83-L89): Intercepts 429 Rate Limit errors and returns structured JSON responses.
+
+##### [backend/app/auth.py](file:///c:/sahityaa/RAG%20Project/backend/app/auth.py)
+- [`verify_admin_key(x_admin_key, authorization)`](file:///c:/sahityaa/RAG%20Project/backend/app/auth.py#L14-L35): RBAC security dependency; validates `X-Admin-Key` or Bearer tokens before granting access to catalog upload and re-index endpoints.
+
+##### [backend/app/database.py](file:///c:/sahityaa/RAG%20Project/backend/app/database.py)
+- [`get_db()`](file:///c:/sahityaa/RAG%20Project/backend/app/database.py#L44-L56): FastAPI dependency that generates scoped SQLAlchemy sessions and guarantees clean disposal.
+- [`init_db()`](file:///c:/sahityaa/RAG%20Project/backend/app/database.py#L58-L86): Creates database tables and builds SQLite vector indices.
+
+##### [backend/app/models.py](file:///c:/sahityaa/RAG%20Project/backend/app/models.py)
+- [`utc_now()`](file:///c:/sahityaa/RAG%20Project/backend/app/models.py#L9-L11): Generates timezone-aware UTC timestamps.
+- [`compile_vector_sqlite(type_, compiler, **kw)`](file:///c:/sahityaa/RAG%20Project/backend/app/models.py#L14-L16): SQLAlchemy compilation hook allowing `Vector(384)` pgvector columns to degrade into `TEXT` in SQLite test environments.
+- [`Product.to_dict()`](file:///c:/sahityaa/RAG%20Project/backend/app/models.py#L51-L77): Serializes a product ORM instance into clean JSON.
+
+##### [backend/app/schemas.py](file:///c:/sahityaa/RAG%20Project/backend/app/schemas.py)
+- [`RecommendationRequest.sanitize_use_case(cls, v)`](file:///c:/sahityaa/RAG%20Project/backend/app/schemas.py#L17-L25): Strips HTML/script tags from user-entered query strings to prevent cross-site scripting (XSS).
+
+##### [backend/app/routers/recommend.py](file:///c:/sahityaa/RAG%20Project/backend/app/routers/recommend.py)
+- [`get_recommendations(request, rec_request, response, db)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/recommend.py#L34-L161): **The primary RAG recommendation orchestrator**. Checks the cache, applies deterministic SQL hard filtering, handles zero-match diagnostics, computes semantic similarity, evaluates 5-factor ranking, attaches hardware telemetry, logs the audit trail, and caches the result.
+
+##### [backend/app/routers/products.py](file:///c:/sahityaa/RAG%20Project/backend/app/routers/products.py)
+- [`list_products(...)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/products.py#L18-L92): Handles faceted catalog browsing, full-text multi-field search (`q`), price range filtering, category/brand facets, and pagination.
+- [`get_product(product_id, db)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/products.py#L94-L105): Fetches a single electronic product by SKU ID.
+- [`update_product_stock(product_id, payload, db)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/products.py#L107-L121): Admin toggle for stock availability (`in_stock: true/false`) and invalidates cached recommendations.
+
+##### [backend/app/routers/compare.py](file:///c:/sahityaa/RAG%20Project/backend/app/routers/compare.py)
+- [`get_comparison(request, payload, db)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/compare.py#L13-L24): Compares 2 or 3 products side-by-side, generating spec differentials and declaring a priority winner.
+
+##### [backend/app/routers/copilot.py](file:///c:/sahityaa/RAG%20Project/backend/app/routers/copilot.py)
+- [`_build_product_context(products)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/copilot.py#L22-L35): Formats active hardware specs into a prompt context window for the LLM.
+- [`copilot_chat(request, db)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/copilot.py#L37-L120): Answers user hardware questions using Google Gemini with an automatic deterministic fallback if an API key is absent.
+
+##### [backend/app/routers/feedback.py](file:///c:/sahityaa/RAG%20Project/backend/app/routers/feedback.py)
+- [`submit_feedback(payload, db)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/feedback.py#L12-L31): Stores user ratings (+1/-1) and comments linked to recommendation query IDs.
+
+##### [backend/app/routers/track.py](file:///c:/sahityaa/RAG%20Project/backend/app/routers/track.py)
+- [`track_outbound_click(payload, request)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/track.py#L12-L30): Records affiliate click telemetry (retailer, IP, user-agent, target URL) when users click store deal links.
+
+##### [backend/app/routers/admin.py](file:///c:/sahityaa/RAG%20Project/backend/app/routers/admin.py)
+- [`process_catalog_upload_task(job_id, content_str)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/admin.py#L25-L52): Background worker that validates CSV rows, inserts valid SKUs into the DB, isolates corrupted rows, and flushes Redis caches.
+- [`upload_catalog_csv(background_tasks, file)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/admin.py#L55-L91): Asynchronously accepts CSV file uploads and returns an immediate tracking `job_id`.
+- [`get_upload_job_status(job_id)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/admin.py#L93-L99): Returns the status, imported count, and quarantined errors of an upload job.
+- [`reindex_catalog(db)`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/admin.py#L101-L110): Forces a full re-computation of semantic embeddings and clears stale cache.
+
+##### [backend/app/services/filter_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/filter_service.py)
+- [`apply_hard_filters(...)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/filter_service.py#L9-L51): Evaluates strict in-memory hard constraints (budget, RAM floor, SSD floor, brand, category, stock).
+- [`filter_products(db, request)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/filter_service.py#L54-L85): Pushes deterministic constraints directly down to SQL queries for zero-budget-overshoot enforcement.
+
+##### [backend/app/services/vector_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py)
+- [`create_product_document(product)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L10-L25): Creates a rich text representation of hardware specs for semantic retrieval.
+- [`generate_text_embedding(text, dim=384)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L27-L53): Generates a normalized 384-dimensional dense semantic embedding vector.
+- [`search_pgvector_products(...)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L56-L94): Performs native vector similarity queries inside PostgreSQL using pgvector `<=>` cosine distance.
+- [`SemanticSearchEngine.__init__()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L97-L107): Configures the TF-IDF vectorizer model with sublinear term-frequency and English stop words.
+- [`SemanticSearchEngine.index_products(products)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L109-L118): Fits the vector space over current catalog items.
+- [`SemanticSearchEngine.compute_similarity(query, candidates)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L120-L136): Calculates cosine similarity between user query and candidate hardware specs, scaled [0.0, 100.0].
+
+##### [backend/app/services/ranking_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/ranking_service.py)
+- [`get_cpu_score(processor)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/ranking_service.py#L9-L23): Parses CPU tier (Apple M-series, Intel Core Ultra/i9/i7, AMD Ryzen 9/7) and assigns a capability score [0-100].
+- [`get_gpu_score(gpu)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/ranking_service.py#L25-L39): Parses GPU tier (RTX 4090 down to integrated Iris Xe) and assigns graphics scores.
+- [`compute_priority_score(product, priority, max_budget)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/ranking_service.py#L41-L81): Calculates priority alignment based on user focus (performance, budget, battery, portability, display, value).
+- [`rank_candidates(candidates, semantic_scores, request, limit=5)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/ranking_service.py#L84-L160): Executes the 5-factor composite ranking formula:
+  $$S_{\text{final}} = 0.35 \cdot S_{\text{req}} + 0.25 \cdot S_{\text{sem}} + 0.20 \cdot S_{\text{prio}} + 0.10 \cdot S_{\text{rat}} + 0.10 \cdot S_{\text{val}}$$
+
+##### [backend/app/services/explanation_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/explanation_service.py)
+- [`synthesize_deterministic_explanation(product, request, match_score)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/explanation_service.py#L9-L89): Formulates factual, grounded bullet points (`reasons`, `limitations`, `evidence`) strictly from verified hardware specs with zero hallucination.
+- [`generate_explanation(product, request, match_score)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/explanation_service.py#L91-L149): Dual-mode generator that leverages Gemini if available, or falls back to deterministic synthesis.
+
+##### [backend/app/services/relaxation_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/relaxation_service.py)
+- [`diagnose_no_match(db, request)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/relaxation_service.py#L7-L88): Boundary recovery engine; when 0 products match, it isolates constraint bottlenecks (budget cap, RAM floor, brand) and computes the exact INR budget increase needed to unlock matches.
+
+##### [backend/app/services/benchmark_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/benchmark_service.py)
+- [`_match_processor(processor_str)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/benchmark_service.py#L40-L47): Normalizes CPU strings to benchmark database keys.
+- [`_match_gpu(gpu_str)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/benchmark_service.py#L49-L56): Normalizes GPU strings to benchmark database keys.
+- [`get_benchmarks(product)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/benchmark_service.py#L58-L105): Retrieves Geekbench 6 Single/Multi scores, Cinebench R23, and gaming FPS telemetry for laptops and handhelds.
+
+##### [backend/app/services/price_tracker_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/price_tracker_service.py)
+- [`get_price_signal(product)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/price_tracker_service.py#L14-L87): Generates 30-day historical price points and classifies deal signals (`STRONG_BUY`, `FAIR_VALUE`, `WAIT_FOR_SALE`).
+
+##### [backend/app/services/store_deals_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/store_deals_service.py)
+- [`make_retailer_url(store_id, product_name, brand)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/store_deals_service.py#L62-L90): Generates direct search affiliate links for Amazon India, Flipkart, Croma, and Reliance Digital.
+- [`get_store_deals(product)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/store_deals_service.py#L92-L167): Generates multi-store street price comparison telemetry with delivery timelines and store deal tags.
+
+##### [backend/app/services/cache_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py)
+- [`RecommendationCacheService.__init__()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L14-L19): Sets up cache state and in-memory TTL dictionary.
+- [`RecommendationCacheService.get_client()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L21-L37): Connects to Redis 7 or falls back gracefully to local memory.
+- [`RecommendationCacheService.generate_key(request)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L39-L51): Generates a deterministic SHA-256 hash of normalized user query parameters.
+- [`RecommendationCacheService.get(key)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L53-L72): Retrieves cached JSON response payloads.
+- [`RecommendationCacheService.set(key, data, ttl=1800)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L74-L90): Saves response payload with a 30-minute expiration.
+- [`RecommendationCacheService.invalidate_catalog_cache()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L92-L106): Invalidates all recommendation cache entries when catalog stock or pricing updates.
+
+##### [backend/app/services/comparison_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/comparison_service.py)
+- [`compare_products(db, product_ids, priority)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/comparison_service.py#L8-L100): Assembles side-by-side spec comparison matrices, identifies differing specs, calculates best-in-class badges, and designates the winner.
+- [`compare_products.perf_score(p)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/comparison_service.py#L39-L43): Nested helper computing hardware performance index.
+- [`compare_products.val_score(p)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/comparison_service.py#L45-L50): Nested helper computing value-for-money index.
+
+##### [backend/app/services/catalog_service.py](file:///c:/sahityaa/RAG%20Project/backend/app/services/catalog_service.py)
+- [`validate_row(row, line_num)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/catalog_service.py#L17-L98): Strict CSV row validator; checks types, price bounds, required fields, and generates structured quarantine error records.
+- [`import_csv_catalog(db, csv_content)`](file:///c:/sahityaa/RAG%20Project/backend/app/services/catalog_service.py#L100-L165): Ingests valid CSV rows, performs upserts, and triggers vector embedding updates.
+
+---
+
+#### 2. Backend Migrations, Ingestion, & Tests (34 Functions)
+
+##### [backend/data/](file:///c:/sahityaa/RAG%20Project/backend/data/) & Alembic
+- [`run_seed()`](file:///c:/sahityaa/RAG%20Project/backend/data/seed_db.py#L21-L45): Seeds SQLite database from `laptops_india_catalog.csv`.
+- [`populate_electronics.py -> make_search_url()`](file:///c:/sahityaa/RAG%20Project/backend/data/populate_electronics.py#L24-L35): Builds verified Indian e-commerce search URLs for electronics.
+- [`seed_expanded_catalog.py -> make_search_url()`](file:///c:/sahityaa/RAG%20Project/backend/data/seed_expanded_catalog.py#L26-L37): Builds retailer URLs for expanded catalog items.
+- Alembic Migration Functions: [`run_migrations_offline()`](file:///c:/sahityaa/RAG%20Project/backend/alembic/env.py), [`run_migrations_online()`](file:///c:/sahityaa/RAG%20Project/backend/alembic/env.py), [`upgrade()`](file:///c:/sahityaa/RAG%20Project/backend/alembic/versions/0001_initial_pgvector.py), [`downgrade()`](file:///c:/sahityaa/RAG%20Project/backend/alembic/versions/0001_initial_pgvector.py).
+
+##### [backend/tests/](file:///c:/sahityaa/RAG%20Project/backend/tests/) (27 Functions)
+- **Filters & Constraints**: [`test_tc001_budget_cap`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_filters.py#L15), [`test_tc002_ram_floor`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_filters.py#L23), [`test_tc003_storage_floor`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_filters.py#L30), [`test_tc004_out_of_stock_exclusion`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_filters.py#L38), [`test_brand_filter`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_filters.py#L45), [`test_multi_category_filtering`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_filters.py#L52).
+- **Ranking Tests**: [`test_battery_priority_boosts_endurance`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_ranking.py#L31), [`test_performance_priority_boosts_rtx_gpu`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_ranking.py#L44), [`test_portability_priority_boosts_lightweight`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_ranking.py#L57).
+- **Production Modules & Auth**: [`test_admin_auth_unauthorized`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_production_modules.py#L14), [`test_admin_auth_success`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_production_modules.py#L35), [`test_input_validation_and_sanitization`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_production_modules.py#L52), [`test_click_tracking`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_production_modules.py#L99), [`test_cache_service_deterministic_key`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_production_modules.py#L116), [`test_embedding_generator_384_dimensions`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_production_modules.py#L140), [`test_async_catalog_upload_ack_and_status`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_production_modules.py#L149).
+- **CSV Quarantine**: [`test_tc005_csv_validation_quarantine`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_csv_upload.py#L18).
+- **Benchmarks & Fallbacks**: [`test_benchmark_service_laptops`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_platform_upgrade.py#L12), [`test_benchmark_service_wearables_return_none`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_platform_upgrade.py#L30), [`test_price_tracker_service`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_platform_upgrade.py#L41), [`test_copilot_endpoint_deterministic_fallback`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_platform_upgrade.py#L57).
+- **RAG Golden Scenarios**: [`test_golden_scenarios`](file:///c:/sahityaa/RAG%20Project/backend/tests/test_rag_benchmark.py#L55).
+
+---
+
+#### 3. Frontend Application Core, Services & Utilities (29 Functions)
+
+##### [frontend/src/App.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx) (13 Functions)
+- [`App()`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L22): Main application orchestrator managing view states, comparisons, shopping cart, and toasts.
+- [`handleAddToCart(product)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L67): Appends items to persistent shopping cart state or increments quantity.
+- [`handleUpdateCartQty(productId, newQty)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L86): Increments or decrements cart quantities.
+- [`handleRemoveFromCart(productId)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L99): Removes a specific product from cart state.
+- [`handleClearCart()`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L110): Empties all items from the shopping cart.
+- [`parseUrlParams()`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L129): Deserializes URL query parameters to hydrate form states for deep-linking.
+- [`syncToUrl(formData)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L147): Serializes active form criteria into browser URL query parameters.
+- [`handleKeyDown(e)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L162): Global hotkey listener (`Ctrl+K`/`Cmd+K` for Instant Search, `Ctrl+B`/`Cmd+B` for Copilot, `Esc` to close modals).
+- [`fetchHealth()`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L188): Verifies backend connectivity and displays diagnostic alerts if offline.
+- [`handleGetRecommendations(formData)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L193): Dispatches recommendation requests to the backend API and handles recommendations or zero-match states.
+- [`handleSelectQuickPrompt(promptData)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L223): Fills form with trending hardware discovery presets.
+- [`toggleCompare(productOrId)`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L242): Manages up to 3 selected products inside the sticky bottom compare tray.
+- [`handleOpenComparison()`](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L284): Launches the modal for deep comparison.
+
+##### [frontend/src/services/api.js](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js) (11 Functions)
+- [`getRecommendations(payload)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L6-L17): Calls `POST /api/recommend`.
+- [`getComparison(productIds, priority)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L19-L30): Calls `POST /api/compare`.
+- [`getProducts(params)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L32-L37): Calls `GET /api/products` with query params.
+- [`updateProductStock(productId, inStock)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L39-L47): Calls `PATCH /api/products/{id}/stock`.
+- [`uploadCatalogCSV(file, adminKey)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L49-L65): Dispatches `POST /api/admin/catalog/upload` as multipart form data.
+- [`getUploadJobStatus(jobId, adminKey)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L67-L73): Polls `GET /api/admin/catalog/upload/{job_id}`.
+- [`reindexCatalog(adminKey)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L75-L84): Calls `POST /api/admin/catalog/reindex`.
+- [`submitFeedback(payload)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L86-L94): Calls `POST /api/feedback`.
+- [`checkHealth()`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L96-L103): Calls `GET /api/health`.
+- [`sendCopilotMessage(payload)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L105-L116): Calls `POST /api/copilot/chat`.
+- [`trackOutboundClick(payload)`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L118-L128): Calls `POST /api/track/click` via `navigator.sendBeacon` or async fetch.
+
+##### [frontend/src/utils/](file:///c:/sahityaa/RAG%20Project/frontend/src/utils/) (5 Functions)
+- [`getOutboundDealUrl(product)`](file:///c:/sahityaa/RAG%20Project/frontend/src/utils/dealUrl.js#L7-L38): Generates verified retailer URLs with affiliate tracking parameters.
+- [`openDealUrl(product, event)`](file:///c:/sahityaa/RAG%20Project/frontend/src/utils/dealUrl.js#L40-L61): Dispatches click tracking beacon before opening retail pages in new tabs.
+- [`formatINR(val)`](file:///c:/sahityaa/RAG%20Project/frontend/src/utils/formatters.js#L4-L8): Formats numerical values into Indian Rupee (`₹1,25,000`).
+- [`formatRAM(gb)`](file:///c:/sahityaa/RAG%20Project/frontend/src/utils/formatters.js#L10-L12): Formats RAM figures (`16 GB`).
+- [`formatStorage(gb)`](file:///c:/sahityaa/RAG%20Project/frontend/src/utils/formatters.js#L14-L17): Formats storage figures (`512 GB` or `1 TB`).
+
+---
+
+#### 4. Frontend UI Components & WebGL Graphics (66 Functions)
+
+- **[Laptop3DCanvas.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/Laptop3DCanvas.jsx)**: Procedural 3D laptop with unibody aluminum geometry, illuminated keyboard, dynamic 2D canvas screen telemetry, mouse orbit drag controls, and WebGL animation loop (`Laptop3DCanvas`, `drawScreenContent`, `onPointerDown`, `onPointerMove`, `onPointerUp`, `animate`, `handleResize`).
+- **[Benchmark3DVisualizer.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/Benchmark3DVisualizer.jsx)**: Procedural 3D silicon microchip die hologram with pulsating neon compute cores and golden wire interconnects (`Benchmark3DVisualizer`, `drawDieSurface`, `onPointerDown`, `onPointerMove`, `onPointerUp`, `animate`, `handleResize`).
+- **[ParticleConstellation3D.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/ParticleConstellation3D.jsx)**: Ambient 3D floating particle constellation with mouse parallax depth in the hero banner (`ParticleConstellation3D`, `handlePointerMove`, `animate`, `handleResize`).
+- **[ProductCard.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/ProductCard.jsx)**: 3D perspective card with mouse-tracked physics tilt (`rotateX`/`rotateY`), dynamic specular sheen, match score radial badge, quick `+ Cart`, and spec pill tags (`ProductCard`, `handleMouseMove`, `handleMouseLeave`, `renderPillTags`).
+- **[SearchEngineModal.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/SearchEngineModal.jsx)**: Instant search modal with dynamic category pill facets, debounced full-text search, keyboard navigation, and budget chips (`SearchEngineModal`, `handleKeyDown`, `getEmoji`, `handleClear`).
+- **[CartDrawer.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/CartDrawer.jsx)**: Slide-out persistent shopping cart with quantity buttons, coupon engine (`SPECDIFF5`, `DIWALI10`), MRP savings calculation, and checkout summary (`CartDrawer`, `handleApplyPromo`, `getEmoji`).
+- **[ComparisonModal.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/ComparisonModal.jsx)** & **[CompareDock.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/CompareDock.jsx)**: Floating 3-item dock and side-by-side comparison modal with "Highlight Differences Only" toggle and Best-in-Class badges (`ComparisonModal`, `handleKeyDown`, `getEmoji`, `CompareDock`).
+- **[AICopilotDrawer.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/AICopilotDrawer.jsx)**: Hardware copilot chat drawer with auto-scroll and quick action chips (`AICopilotDrawer`, `setIsOpen`, `scrollToBottom`, `handleKeyDown`, `handleSend`).
+- **[AdminDashboard.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/AdminDashboard.jsx)**: RBAC-authenticated dashboard for CSV upload, real-time job polling, vector re-indexing, and stock toggling (`AdminDashboard`, `loadAllProducts`, `handleFileChange`, `handleUpload`, `handleReindex`, `handleToggleStock`).
+- **[PriceHistoryChart.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/PriceHistoryChart.jsx)**: 30-day interactive price curve with custom tooltips and deal signal tags (`PriceHistoryChart`, `CustomTooltip`, `formatYAxis`, `getSignalConfig`).
+- **[RecommendationForm.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/RecommendationForm.jsx)**: Multi-category configuration form with sliders, priority selector, and quick filter chips (`RecommendationForm`, `handleSubmit`, `applyChip`).
+- **Supporting Components**: [DecisionDossierModal.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/DecisionDossierModal.jsx) (printable report with `handlePrint`), [DiagnosticBanner.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/DiagnosticBanner.jsx) (recovery advice), [FeedbackModal.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/FeedbackModal.jsx) (rating submission with `handleSubmit`), [BenchmarkVisualizer.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/BenchmarkVisualizer.jsx), [Header.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/Header.jsx), [HeroBanner.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/HeroBanner.jsx), [CommandPalette.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/CommandPalette.jsx), [ToastNotification.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/ToastNotification.jsx).
+
+---
+
+### 🔄 The Whole Process Explained (Step-by-Step)
+
+Here is how a user request traverses the entire platform from initial click to 3D visualization and checkout:
+
+```
+[1. User Entry & Intent]
+    │ (RecommendationForm / SearchEngineModal / Quick Prompts)
+    ▼
+[2. Frontend Validation & URL Sync]
+    │ (App.jsx -> syncToUrl -> api.js: getRecommendations)
+    ▼
+[3. API Gateway & Security Layer]
+    │ (FastAPI Router -> Limiter: 15 req/min -> Pydantic: HTML Sanitization)
+    ▼
+[4. Query Caching Check]
+    │ (RecommendationCacheService: SHA-256 key check against Redis / Memory)
+   ├─── [Cache HIT] ───────────────► Return cached JSON immediately (X-Cache: HIT)
+   └─── [Cache MISS]
+          ▼
+[5. Deterministic Hard Constraint Filtering]
+    │ (filter_service: SQL WHERE price <= budget AND ram >= req_ram AND in_stock = 1)
+   ├─── [Zero Matches Found]
+   │      │ (relaxation_service.py: diagnose_no_match)
+   │      ▼
+   │     Returns unmet constraint diagnostic & minimum INR budget adjustment
+   └─── [Eligible Hardware Candidates Found]
+          ▼
+[6. Dense Semantic Vector Retrieval (RAG)]
+    │ (vector_service: TF-IDF & Cosine Similarity against 384-dim documents)
+          ▼
+[7. Multi-Criteria 5-Factor Ranking]
+    │ (ranking_service: Combines spec fit, semantic match, priority, rating, value)
+          ▼
+[8. Grounded Anti-Hallucination Explanation Synthesis]
+    │ (explanation_service: Generates reasons, limitations, and catalog evidence)
+          ▼
+[9. Telemetry Enrichment]
+    │ (benchmark_service: Geekbench/FPS + price_tracker: 30-day signal + store_deals)
+          ▼
+[10. Caching & Audit Logging]
+    │ (cache_service.set in Redis + SQLAlchemy RecommendationLog insertion)
+          ▼
+[11. Frontend Presentation & Dynamic UI]
+    │ (ProductCard 3D tilt + Laptop3DCanvas WebGL + CompareDock + CartDrawer)
+```
+
+1. **User Query Input:** The user fills out the [RecommendationForm.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/RecommendationForm.jsx) (e.g. Budget: ₹90,000, 16GB RAM, Use case: "4K video editing and rendering in Premiere Pro", Priority: "Performance").
+2. **Frontend Dispatch & URL Serialization:** [App.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/App.jsx#L147-L160) serializes the state to URL query parameters for shareability, and calls [`getRecommendations()`](file:///c:/sahityaa/RAG%20Project/frontend/src/services/api.js#L6-L17).
+3. **Gateway Protection:** FastAPI receives the request at [`/api/recommend`](file:///c:/sahityaa/RAG%20Project/backend/app/routers/recommend.py#L32-L39). The [SlowAPI limiter](file:///c:/sahityaa/RAG%20Project/backend/app/limiter.py) inspects the client IP, and [Pydantic](file:///c:/sahityaa/RAG%20Project/backend/app/schemas.py#L17-L25) strips any malicious scripts or HTML tags.
+4. **Cache Lookup:** [`cache_service.generate_key()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L39-L51) creates a SHA-256 hash. If found in Redis or in-memory LRU, it returns instantly with header `X-Cache: HIT`.
+5. **Deterministic Constraint Invariants:** [`filter_products()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/filter_service.py#L54-L85) queries the database with hard SQL bounds. Under no circumstance can a machine exceeding ₹90,000 or with less than 16GB RAM be returned.
+   - *If 0 products match*, [`diagnose_no_match()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/relaxation_service.py#L7-L88) determines the bottleneck and suggests an actionable fix (e.g., *"Increase budget by ₹4,990 to unlock Lenovo LOQ"*).
+6. **Semantic Vector Similarity (RAG):** Candidate products are converted to rich documents via [`create_product_document()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L10-L25). [`SemanticSearchEngine.compute_similarity()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/vector_service.py#L120-L136) measures cosine proximity between the user query and hardware text representations.
+7. **5-Factor Hybrid Ranking:** [`rank_candidates()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/ranking_service.py#L84-L160) scores CPU capability, GPU tier, and computes:
+   $$S_{\text{final}} = 0.35 \cdot S_{\text{req}} + 0.25 \cdot S_{\text{sem}} + 0.20 \cdot S_{\text{prio}} + 0.10 \cdot S_{\text{rat}} + 0.10 \cdot S_{\text{val}}$$
+8. **Explanation Generation:** [`generate_explanation()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/explanation_service.py#L91-L149) creates verified reasons, limitations, and citations grounded directly in catalog specs.
+9. **Hardware Telemetry Enrichment:**
+   - [`get_benchmarks()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/benchmark_service.py#L58-L105) attaches Geekbench 6 single/multi scores and estimated gaming FPS.
+   - [`get_price_signal()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/price_tracker_service.py#L14-L87) adds 30-day price trend curves and deal status badges (`STRONG_BUY`, `FAIR_VALUE`, etc.).
+   - [`get_store_deals()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/store_deals_service.py#L92-L167) compiles Amazon, Flipkart, Croma, and Reliance Digital street prices.
+10. **Storage & Delivery:** An audit record is logged into `RecommendationLog`, the response is cached in Redis via [`cache_service.set()`](file:///c:/sahityaa/RAG%20Project/backend/app/services/cache_service.py#L74-L90), and sent back to the browser.
+11. **Frontend Rendering:**
+    - [ProductCard.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/ProductCard.jsx) renders items with physics-based 3D tilt.
+    - [Laptop3DCanvas.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/Laptop3DCanvas.jsx) renders the WebGL laptop with live spec telemetry on screen.
+    - Users can add items to [CartDrawer.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/CartDrawer.jsx) with coupons or add them to [CompareDock.jsx](file:///c:/sahityaa/RAG%20Project/frontend/src/components/CompareDock.jsx) for 3-way specification diffing.
+
+---
+
+### 🔗 How the Functions Connect to Each Other
+
+The diagram below maps the direct call hierarchy and data connectivity between frontend components and backend services:
+
+```mermaid
+graph TD
+    subgraph Frontend_UI ["Frontend UI & Interaction Tier"]
+        REC_FORM["RecommendationForm.jsx<br/>handleSubmit()"]
+        PROD_CARD["ProductCard.jsx<br/>handleMouseMove(), renderPillTags()"]
+        SEARCH_MODAL["SearchEngineModal.jsx<br/>handleKeyDown(), handleClear()"]
+        COMP_DOCK["CompareDock.jsx<br/>toggleCompare()"]
+        CART_DRAWER["CartDrawer.jsx<br/>handleApplyPromo()"]
+        THREE_LAPTOP["Laptop3DCanvas.jsx<br/>animate(), drawScreenContent()"]
+    end
+
+    subgraph Frontend_State ["Frontend Orchestration & API Client"]
+        APP["App.jsx<br/>handleGetRecommendations()<br/>handleAddToCart(), toggleCompare()"]
+        API_JS["api.js<br/>getRecommendations()<br/>getComparison()<br/>getProducts()<br/>sendCopilotMessage()"]
+        DEAL_URL["dealUrl.js<br/>openDealUrl()"]
+    end
+
+    subgraph Backend_Gateway ["API Gateway & Security Tier"]
+        FASTAPI["FastAPI (main.py)<br/>lifespan(), rate_limit_exceeded_handler()"]
+        ROUTER_REC["recommend.py<br/>get_recommendations()"]
+        ROUTER_COMP["compare.py<br/>get_comparison()"]
+        ROUTER_PROD["products.py<br/>list_products()"]
+        ROUTER_COPILOT["copilot.py<br/>copilot_chat()"]
+        ROUTER_ADMIN["admin.py<br/>upload_catalog_csv(), reindex_catalog()"]
+        AUTH["auth.py<br/>verify_admin_key()"]
+        LIMITER["limiter.py (SlowAPI)"]
+    end
+
+    subgraph Backend_Services ["Core Intelligence & Domain Services Tier"]
+        CACHE["cache_service.py<br/>generate_key(), get(), set()"]
+        FILTER["filter_service.py<br/>filter_products(), apply_hard_filters()"]
+        RELAX["relaxation_service.py<br/>diagnose_no_match()"]
+        VECTOR["vector_service.py<br/>compute_similarity(), create_product_document()"]
+        RANK["ranking_service.py<br/>rank_candidates(), compute_priority_score()"]
+        EXPLAIN["explanation_service.py<br/>generate_explanation(), synthesize_deterministic_explanation()"]
+        BENCH["benchmark_service.py<br/>get_benchmarks()"]
+        PRICE["price_tracker_service.py<br/>get_price_signal()"]
+        STORE["store_deals_service.py<br/>get_store_deals(), make_retailer_url()"]
+        CATALOG["catalog_service.py<br/>import_csv_catalog(), validate_row()"]
+    end
+
+    subgraph Data_Storage ["Database & Persistence Tier"]
+        DB[(SQLite / PostgreSQL + pgvector)]
+        REDIS[(Redis 7 / Memory Cache)]
+    end
+
+    %% Frontend wiring
+    REC_FORM -->|Submits Form Data| APP
+    SEARCH_MODAL -->|Search Query| API_JS
+    PROD_CARD -->|Adds to Compare Dock| APP
+    PROD_CARD -->|Adds to Cart| APP
+    PROD_CARD -->|Clicks Deal Link| DEAL_URL
+    DEAL_URL -->|Beacons Click Telemetry| API_JS
+    APP -->|Dispatches Requests| API_JS
+    COMP_DOCK -->|Triggers Matrix Diff| API_JS
+    APP --> PROD_CARD
+    APP --> THREE_LAPTOP
+    APP --> CART_DRAWER
+
+    %% API to Gateway wiring
+    API_JS -->|HTTP POST /api/recommend| ROUTER_REC
+    API_JS -->|HTTP POST /api/compare| ROUTER_COMP
+    API_JS -->|HTTP GET /api/products| ROUTER_PROD
+    API_JS -->|HTTP POST /api/copilot/chat| ROUTER_COPILOT
+    API_JS -->|HTTP POST /api/admin/*| ROUTER_ADMIN
+    ROUTER_ADMIN -.->|Protected By| AUTH
+    ROUTER_REC -.->|Guarded By| LIMITER
+
+    %% Recommendation Pipeline Call Flow
+    ROUTER_REC -->|1. Generate Cache Key & Lookup| CACHE
+    CACHE <-->|Read / Write Cached Response| REDIS
+    ROUTER_REC -->|2. Apply Deterministic Hard Filters| FILTER
+    FILTER <-->|SQL WHERE Clauses| DB
+    ROUTER_REC -.->|If 0 Matches: Diagnostic Recovery| RELAX
+    RELAX <-->|Analyze Bottlenecks| DB
+    ROUTER_REC -->|3. Compute Semantic Similarity| VECTOR
+    ROUTER_REC -->|4. Compute 5-Factor Ranking| RANK
+    ROUTER_REC -->|5. Generate Grounded Explanations| EXPLAIN
+    ROUTER_REC -->|6. Fetch Hardware Benchmarks| BENCH
+    ROUTER_REC -->|7. Fetch 30-Day Price Trend| PRICE
+    ROUTER_REC -->|8. Fetch Multi-Store Deals| STORE
+    ROUTER_REC -->|9. Log Audit Trail| DB
+
+    %% Other Router Connections
+    ROUTER_COMP -->|Compare Specs & Pick Winner| DB
+    ROUTER_ADMIN -->|Background CSV Processing| CATALOG
+    CATALOG -->|Insert Valid Rows & Quarantine| DB
+    CATALOG -->|Reindex Embeddings| VECTOR
+```
