@@ -8,7 +8,7 @@
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL%203D-black.svg?logo=three.js&logoColor=white)](https://threejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF.svg?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Tests](https://img.shields.io/badge/pytest-41%2F41%20Passed%20(0%20warnings)-brightgreen.svg?logo=pytest&logoColor=white)](backend/tests/)
+[![Tests](https://img.shields.io/badge/pytest-51%2F51%20Passed%20(0%20warnings)-brightgreen.svg?logo=pytest&logoColor=white)](backend/tests/)
 [![Market](https://img.shields.io/badge/Market-India%20%F0%9F%87%AE%F0%9F%87%B3%20(INR%20%E2%82%B9)-orange.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
@@ -302,15 +302,21 @@ npm run dev
 
 ## ⚙️ Configuration & Environment Variables
 
-Configure environment variables in a `.env` file in the `backend/` directory:
+Configure environment variables in a `.env` file in the `backend/` directory (see [`.env.example`](.env.example)):
 
 | Variable | Default Value | Description |
 | :--- | :--- | :--- |
-| `ADMIN_API_KEY` | `specdiff_admin_secret_key_2026` | Secret key securing all `/api/admin/*` endpoints |
-| `GEMINI_API_KEY` | `""` *(Optional)* | Google Gemini API key for dynamic LLM explanations |
-| `REDIS_URL` | `redis://localhost:6379/0` | Redis instance URL (falls back to memory if unreachable) |
-| `RATE_LIMIT_PER_MINUTE`| `15/minute` | Client IP rate limit window |
+| `ENVIRONMENT` | `development` | Deployment mode (`development`, `staging`, `production`, `test`) |
+| `ADMIN_API_KEY` | *(Set in .env)* | High-entropy secret key securing `/api/admin/*` and mutation APIs |
 | `DATABASE_URL` | `sqlite:///./smartpick.db` | Database connection string (SQLite or PostgreSQL) |
+| `ALLOWED_ORIGINS` | `http://localhost:5173,...` | Comma-delimited list of trusted client origins for CORS |
+| `REDIS_URL` | `redis://localhost:6379/0` | Redis instance URL (falls back to bounded memory LRU if unreachable) |
+| `RATE_LIMIT_RECOMMEND`| `15/minute` | Rate limit window for recommendation scoring queries |
+| `RATE_LIMIT_COPILOT`  | `20/minute` | Rate limit window for AI copilot queries |
+| `GEMINI_API_KEY` | `""` *(Optional)* | Google Gemini API key for dynamic LLM explanations |
+
+> [!IMPORTANT]
+> When `ENVIRONMENT=production`, the application validates that `ADMIN_API_KEY` is not empty, does not match development defaults, and has at least 16 characters. For full hardening and rotation details, see [`SECURITY.md`](SECURITY.md).
 
 ---
 
@@ -328,30 +334,17 @@ cd backend
 ```
 ============================= test session starts =============================
 platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0
-collected 41 items
+collected 51 items
 
-tests/test_csv_upload.py::test_tc005_csv_validation_quarantine PASSED    [  2%]
-tests/test_filters.py::test_tc001_budget_cap PASSED                      [  4%]
-tests/test_filters.py::test_tc002_ram_floor PASSED                       [  7%]
-tests/test_filters.py::test_tc003_storage_floor PASSED                   [  9%]
-tests/test_filters.py::test_tc004_out_of_stock_exclusion PASSED          [ 12%]
-tests/test_filters.py::test_brand_filter PASSED                          [ 14%]
-tests/test_filters.py::test_multi_category_filtering PASSED              [ 17%]
-tests/test_platform_upgrade.py::test_benchmark_service_laptops PASSED    [ 19%]
-tests/test_platform_upgrade.py::test_benchmark_service_wearables_return_none PASSED [ 21%]
-tests/test_platform_upgrade.py::test_price_tracker_service PASSED        [ 24%]
-tests/test_platform_upgrade.py::test_copilot_endpoint_deterministic_fallback PASSED [ 26%]
-tests/test_production_modules.py::test_admin_auth_unauthorized PASSED    [ 29%]
-tests/test_production_modules.py::test_admin_auth_success PASSED         [ 31%]
-tests/test_production_modules.py::test_input_validation_and_sanitization PASSED [ 34%]
-tests/test_production_modules.py::test_click_tracking PASSED             [ 36%]
-tests/test_production_modules.py::test_cache_service_deterministic_key PASSED [ 39%]
-tests/test_production_modules.py::test_embedding_generator_384_dimensions PASSED [ 41%]
-tests/test_production_modules.py::test_async_catalog_upload_ack_and_status PASSED [ 43%]
-tests/test_rag_benchmark.py (20 Golden Indian Market Scenarios) PASSED   [ 92%]
-tests/test_ranking.py (3 Priority Monotonicity Tests) PASSED             [100%]
+tests/test_csv_upload.py::test_tc005_csv_validation_quarantine PASSED    [  1%]
+tests/test_filters.py (6 Filter & Stock Invariant Tests) PASSED           [ 13%]
+tests/test_platform_upgrade.py (4 Benchmark, Price & Copilot Tests) PASSED[ 21%]
+tests/test_production_modules.py (7 RBAC, Limiter & Ingestion Tests) PASSED [ 35%]
+tests/test_rag_benchmark.py (20 Golden Indian Market Scenarios) PASSED   [ 74%]
+tests/test_ranking.py (3 Priority Monotonicity Tests) PASSED             [ 80%]
+tests/test_security_audit.py (10 Security Headers, Auth, Injection Tests) PASSED [100%]
 
-============================= 41 passed in 13.04s (0 warnings) ================
+============================= 51 passed in 14.13s (0 warnings) ================
 ```
 
 ---

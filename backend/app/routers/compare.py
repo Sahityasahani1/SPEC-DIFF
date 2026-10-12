@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 from app.database import get_db
@@ -5,6 +6,8 @@ from app.schemas import ComparisonRequest, ComparisonResponse
 from app.services.comparison_service import compare_products
 from app.limiter import limiter
 from app.config import RATE_LIMIT_RECOMMEND
+
+logger = logging.getLogger("specdiff.compare")
 
 router = APIRouter(prefix="/api", tags=["Comparison"])
 
@@ -20,4 +23,5 @@ def get_comparison(
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Comparison failed: {str(e)}")
+        logger.error(f"[COMPARE_ERROR] Internal error computing comparison: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Comparison failed due to an internal error.")

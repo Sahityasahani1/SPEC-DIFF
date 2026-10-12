@@ -6,6 +6,7 @@ import {
   Sparkles, Layers, ShieldCheck, ShoppingBag
 } from 'lucide-react';
 import { getOutboundDealUrl, openDealUrl } from '../utils/dealUrl';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 import BenchmarkVisualizer from './BenchmarkVisualizer';
 import PriceHistoryChart from './PriceHistoryChart';
 import StoreDealsComparison from './StoreDealsComparison';
@@ -424,6 +425,17 @@ export default function ComparisonModal({ comparisonData, onClose, onExportDossi
                                 </span>
                               )}
 
+                              {/* Authentic Product Photo */}
+                              <div className="h-32 w-full rounded-2xl bg-white border border-[#eae7df] flex items-center justify-center p-2 overflow-hidden shadow-2xs">
+                                <img
+                                  src={getProductImage(p)}
+                                  alt={p.name}
+                                  loading="lazy"
+                                  onError={(e) => handleProductImageError(e, p.category)}
+                                  className="max-h-28 max-w-full object-contain filter drop-shadow-sm select-none"
+                                />
+                              </div>
+
                               <div className="flex items-center gap-2">
                                 <span className="text-xl select-none">{getEmoji(p.category)}</span>
                                 <span className="text-xs font-mono uppercase tracking-wider text-forest-900/60 font-semibold">
@@ -505,17 +517,26 @@ export default function ComparisonModal({ comparisonData, onClose, onExportDossi
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {products.map((p) => (
                     <div key={p.id} className="bg-[#f7f5ef] rounded-2xl p-5 border border-[#eae7de] flex flex-col justify-between">
-                      <div className="mb-3">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-mono uppercase text-forest-900/60 font-bold">{p.brand}</span>
-                          {p.is_winner && (
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-forest-900 text-sage-300 font-bold">
-                              WINNER
-                            </span>
-                          )}
+                      <div className="mb-3 flex items-center gap-3">
+                        <img
+                          src={getProductImage(p)}
+                          alt={p.name}
+                          loading="lazy"
+                          onError={(e) => handleProductImageError(e, p.category)}
+                          className="w-14 h-14 object-contain rounded-xl bg-white p-1 border border-[#eae7de] shrink-0 filter drop-shadow-2xs"
+                        />
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between mb-0.5">
+                            <span className="text-xs font-mono uppercase text-forest-900/60 font-bold">{p.brand}</span>
+                            {p.is_winner && (
+                              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-forest-900 text-sage-300 font-bold">
+                                WINNER
+                              </span>
+                            )}
+                          </div>
+                          <h4 className="font-bold text-forest-950 font-jakarta text-sm leading-snug truncate">{p.name}</h4>
+                          <p className="text-xs font-mono text-forest-900/80 font-bold mt-0.5">{p.formatted_price}</p>
                         </div>
-                        <h4 className="font-bold text-forest-950 font-jakarta text-sm leading-snug">{p.name}</h4>
-                        <p className="text-xs font-mono text-forest-900/80 font-bold mt-1">{p.formatted_price}</p>
                       </div>
 
                       <BenchmarkVisualizer benchmarks={p.benchmarks} />

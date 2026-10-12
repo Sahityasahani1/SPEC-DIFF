@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Upload, RefreshCw, AlertTriangle, Database, Power } from 'lucide-react';
-import { uploadCatalogCSV, reindexCatalog, getProducts, updateProductStock } from '../services/api';
+import { Upload, RefreshCw, AlertTriangle, Database, Power, KeyRound, ShieldCheck, Lock } from 'lucide-react';
+import { 
+  uploadCatalogCSV, 
+  reindexCatalog, 
+  getProducts, 
+  updateProductStock, 
+  getAdminKey, 
+  setAdminKey 
+} from '../services/api';
 
 export default function AdminDashboard() {
   const [file, setFile] = useState(null);
@@ -10,6 +17,11 @@ export default function AdminDashboard() {
   const [reindexMessage, setReindexMessage] = useState('');
   const [products, setProducts] = useState([]);
   const [loadingProds, setLoadingProds] = useState(true);
+
+  // Admin Key Session Management
+  const [adminKey, setAdminKeyState] = useState(() => getAdminKey());
+  const [keyInput, setKeyInput] = useState('');
+  const [keySuccess, setKeySuccess] = useState(false);
 
   useEffect(() => {
     loadAllProducts();
@@ -72,9 +84,86 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleSaveKey = (e) => {
+    e.preventDefault();
+    if (!keyInput.trim()) return;
+    setAdminKey(keyInput.trim());
+    setAdminKeyState(keyInput.trim());
+    setKeyInput('');
+    setKeySuccess(true);
+    setTimeout(() => setKeySuccess(false), 3000);
+  };
+
+  const handleClearKey = () => {
+    setAdminKey('');
+    setAdminKeyState('');
+  };
+
   return (
     <div className="space-y-8 max-w-5xl mx-auto animate-fadeIn">
       
+      {/* 0. Admin Authentication & Session Security */}
+      <div className="bg-white p-6 sm:p-7 rounded-3xl border border-[#e8e5dc] shadow-sm font-jakarta">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${adminKey ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
+              {adminKey ? <ShieldCheck className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-forest-950 flex items-center gap-2">
+                <span>Admin Session Access</span>
+                {adminKey ? (
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold uppercase">
+                    Authenticated
+                  </span>
+                ) : (
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold uppercase">
+                    Key Required
+                  </span>
+                )}
+              </h3>
+              <p className="text-xs text-forest-900/60 mt-0.5">
+                {adminKey 
+                  ? 'Active session token loaded from browser session storage. Administrative actions are authorized.'
+                  : 'Administrative endpoints require a valid ADMIN_API_KEY. Provide your key below to perform catalog actions.'}
+              </p>
+            </div>
+          </div>
+
+          {adminKey ? (
+            <button
+              type="button"
+              onClick={handleClearKey}
+              className="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition-colors cursor-pointer"
+            >
+              Clear Session Key
+            </button>
+          ) : (
+            <form onSubmit={handleSaveKey} className="flex items-center gap-2 w-full sm:w-auto">
+              <input
+                type="password"
+                placeholder="Enter ADMIN_API_KEY..."
+                value={keyInput}
+                onChange={(e) => setKeyInput(e.target.value)}
+                className="px-3.5 py-2 rounded-xl text-xs font-mono border border-[#e2dfd5] bg-[#fbfbf9] text-forest-950 placeholder:text-forest-900/40 focus:outline-none focus:border-sage-500 w-full sm:w-64"
+              />
+              <button
+                type="submit"
+                disabled={!keyInput.trim()}
+                className="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-forest-900 hover:bg-forest-800 disabled:opacity-40 text-white transition-all cursor-pointer whitespace-nowrap shadow-xs"
+              >
+                Save Key
+              </button>
+            </form>
+          )}
+        </div>
+        {keySuccess && (
+          <div className="mt-3 text-xs font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 p-2 rounded-xl">
+            ✓ Admin API key saved to session storage.
+          </div>
+        )}
+      </div>
+
       {/* 1. CSV Bulk Catalog Ingestion */}
       <div className="glass-panel p-6 sm:p-7 rounded-3xl border border-white/10 shadow-xl bg-dark-900/80">
         <h3 className="text-lg font-black text-white flex items-center gap-2 mb-2 tracking-tight">

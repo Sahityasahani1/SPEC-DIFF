@@ -24,11 +24,18 @@ def create_product_document(product: Product) -> str:
     )
     return doc
 
+import hashlib
+
+def _stable_hash(token: str) -> int:
+    """Deterministic token hash independent of Python process hash seed."""
+    return int(hashlib.md5(token.encode("utf-8")).hexdigest()[:8], 16)
+
 def generate_text_embedding(text: str, dim: int = 384) -> List[float]:
     """
     Generates a normalized 384-dimensional dense semantic embedding vector.
     Uses sublinear term frequency hashing across character and word n-grams
     with L2-normalization for consistent cosine distance computation in pgvector.
+    Deterministic across all Python runtimes and process restarts.
     """
     words = text.lower().strip().split()
     vector = np.zeros(dim, dtype=np.float32)
@@ -38,14 +45,14 @@ def generate_text_embedding(text: str, dim: int = 384) -> List[float]:
 
     for idx, word in enumerate(words):
         # Base word hash
-        h = abs(hash(word)) % dim
+        h = _stable_hash(word) % dim
         vector[h] += 1.0 / (1.0 + 0.05 * idx)
 
         # Trigram hashes for morphological & typo resilience
         if len(word) >= 3:
             for i in range(len(word) - 2):
                 tri = word[i:i + 3]
-                h_tri = abs(hash(tri)) % dim
+                h_tri = _stable_hash(tri) % dim
                 vector[h_tri] += 0.4
 
     norm = float(np.linalg.norm(vector))

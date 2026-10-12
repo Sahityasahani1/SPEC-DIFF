@@ -6,6 +6,7 @@ import {
   Layers, Star, Award, Check, Smartphone, Headphones, Watch, Monitor, Laptop, ShoppingBag
 } from 'lucide-react';
 import { getOutboundDealUrl, openDealUrl } from '../utils/dealUrl';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 import BenchmarkVisualizer from './BenchmarkVisualizer';
 import PriceHistoryChart from './PriceHistoryChart';
 import StoreDealsComparison from './StoreDealsComparison';
@@ -70,6 +71,7 @@ export default function ProductCard({
   else if (category === 'monitor') categoryEmoji = '🖥️';
 
   const dealUrl = getOutboundDealUrl(product);
+  const productImage = getProductImage(product);
 
   const renderPillTags = () => {
     if (category === 'audio' || category === 'headphones') {
@@ -175,14 +177,18 @@ export default function ProductCard({
               </div>
             </div>
 
-            {/* Center Product Illustration / Visual */}
+            {/* Center Authentic Product Photography Visual */}
             <div 
               style={{ transform: 'translateZ(45px)' }}
-              className="my-6 flex justify-center items-center"
+              className="my-3 flex justify-center items-center h-48 w-full overflow-hidden relative group/img"
             >
-              <div className="w-28 h-28 rounded-full bg-white/60 flex items-center justify-center border border-forest-900/5 group-hover:scale-105 transition-transform duration-300">
-                <span className="text-4xl">{categoryEmoji}</span>
-              </div>
+              <img
+                src={productImage}
+                alt={product.name}
+                loading="lazy"
+                onError={(e) => handleProductImageError(e, product.category)}
+                className="max-h-44 max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-all duration-300 select-none rounded-xl"
+              />
             </div>
 
             {/* Floating Translucent Frosted Tags pinned over image from Reference */}

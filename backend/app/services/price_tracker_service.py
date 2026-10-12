@@ -34,8 +34,26 @@ def get_price_signal(product):
     today = datetime.date(2026, 9, 20)
     price_history = []
     
-    for i in range(29, -1, -1):
-        d = today - datetime.timedelta(days=i)
+    # Check if real recorded price history exists in database
+    try:
+        from app.database import SessionLocal
+        from app.models import PriceHistory
+        db = SessionLocal()
+        records = db.query(PriceHistory).filter(
+            PriceHistory.product_id == getattr(product, "id", "")
+        ).order_by(PriceHistory.recorded_at.asc()).all()
+        if records and len(records) >= 3:
+            price_history = [
+                {"date": r.recorded_at.strftime("%Y-%m-%d"), "price": round(r.price)}
+                for r in records[-30:]
+            ]
+        db.close()
+    except Exception:
+        pass
+
+    if not price_history:
+        for i in range(29, -1, -1):
+            d = today - datetime.timedelta(days=i)
         
         base = current_price * random.uniform(0.97, 1.03)
         

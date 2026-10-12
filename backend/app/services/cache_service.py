@@ -17,24 +17,35 @@ class RecommendationCacheService:
         self._redis_client: Optional[aioredis.Redis] = None
         self._in_memory_cache: Dict[str, Dict[str, Any]] = {}
         self._connected = False
+        self._last_redis_attempt = 0.0
+        self._redis_retry_interval = 60.0  # Throttle connection attempts to 60s
 
     async def get_client(self) -> Optional[aioredis.Redis]:
-        if self._redis_client is None:
-            try:
-                self._redis_client = aioredis.from_url(
-                    self.redis_url,
-                    encoding="utf-8",
-                    decode_responses=True,
-                    socket_connect_timeout=1.5
-                )
-                await self._redis_client.ping()
-                self._connected = True
-                logger.info(f"[CACHE] Connected to Redis at {self.redis_url}")
-            except Exception as e:
-                logger.warning(f"[CACHE] Redis connection unavailable ({e}). Using in-memory cache fallback.")
-                self._connected = False
-                self._redis_client = None
-        return self._redis_client
+        if self._redis_client is not None:
+            return self._redis_client
+
+        now = time.time()
+        if now - self._last_redis_attempt < self._redis_retry_interval:
+            return None
+
+        self._last_redis_attempt = now
+        try:
+            client = aioredis.from_url(
+                self.redis_url,
+                encoding="utf-8",
+                decode_responses=True,
+                socket_connect_timeout=0.5
+            )
+            await client.ping()
+            self._redis_client = client
+            self._connected = True
+            logger.info(f"[CACHE] Connected to Redis at {self.redis_url}")
+            return self._redis_client
+        except Exception as e:
+            logger.debug(f"[CACHE] Redis connection unavailable ({e}). Using in-memory cache fallback.")
+            self._connected = False
+            self._redis_client = None
+            return None
 
     def generate_key(self, request: RecommendationRequest) -> str:
         """
@@ -71,8 +82,8 @@ class RecommendationCacheService:
 
         return None
 
-    async def set(self, key: str, data: Dict[str, Any], ttl: Optional[int] = None) -> None:
-        effective_ttl = ttl or self.ttl
+    async def set(self, key: str, data: Dict[str, Any], ttl: Optional[int] = None, ttl_seconds: Optional[int] = None) -> None:
+        effective_ttl = ttl or ttl_seconds or self.ttl
         serialized = json.dumps(data)
 
         # 1. Try Redis
@@ -83,7 +94,17 @@ class RecommendationCacheService:
         except Exception as e:
             logger.debug(f"[CACHE] Redis SET error for {key}: {e}")
 
-        # 2. Update in-memory fallback
+        # 2. Update in-memory fallback with bounded capacity
+        max_items = 1000
+        if len(self._in_memory_cache) >= max_items:
+            now = time.time()
+            expired = [k for k, v in self._in_memory_cache.items() if now >= v.get("expires_at", 0)]
+            for k in expired:
+                self._in_memory_cache.pop(k, None)
+            if len(self._in_memory_cache) >= max_items:
+                for k in list(self._in_memory_cache.keys())[:100]:
+                    self._in_memory_cache.pop(k, None)
+
         self._in_memory_cache[key] = {
             "data": data,
             "expires_at": time.time() + effective_ttl
@@ -115,5 +136,9 @@ class RecommendationCacheService:
 
         logger.info(f"[CACHE] Invalidated {count} recommendation cache entries.")
         return count
+
+    def clear(self):
+        """Synchronously clears local in-memory cache."""
+        self._in_memory_cache.clear()
 
 cache_service = RecommendationCacheService()

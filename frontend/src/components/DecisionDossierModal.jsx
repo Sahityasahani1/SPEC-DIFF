@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Printer, CheckCircle, AlertTriangle } from 'lucide-react';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 
 export default function DecisionDossierModal({ comparisonData, onClose }) {
   if (!comparisonData || !comparisonData.products) return null;
@@ -96,8 +97,18 @@ export default function DecisionDossierModal({ comparisonData, onClose }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print:grid-cols-2 mb-8">
             {products.map(p => (
               <div key={p.id} className="border border-gray-300 p-4 rounded-lg print:rounded-none">
-                <h4 className="font-black text-lg mb-1">{p.name} {p.is_winner && '(WINNER)'}</h4>
-                <p className="font-mono text-xs text-gray-600 mb-4">{p.brand} • {p.formatted_price}</p>
+                <div className="flex gap-4 items-start mb-3">
+                  <img
+                    src={getProductImage(p)}
+                    alt={p.name}
+                    onError={(e) => handleProductImageError(e, p.category)}
+                    className="w-16 h-16 object-contain p-1 border border-gray-200 rounded-md shrink-0 bg-white"
+                  />
+                  <div>
+                    <h4 className="font-black text-lg leading-snug">{p.name} {p.is_winner && '(WINNER)'}</h4>
+                    <p className="font-mono text-xs text-gray-600">{p.brand} • {p.formatted_price}</p>
+                  </div>
+                </div>
                 
                 {/* Pros/Cons */}
                 <div className="grid grid-cols-2 gap-4 mb-4 text-sm">

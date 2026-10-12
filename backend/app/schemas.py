@@ -113,6 +113,7 @@ class ProductRecommendation(BaseModel):
     evidence: List[GroundedEvidence]
     retail_source: str
     product_url: str
+    image_url: Optional[str] = None
     benchmarks: Optional[BenchmarkData] = None
     price_signal: Optional[PriceSignal] = None
     deal_comparison: Optional[DealComparison] = None
@@ -155,6 +156,7 @@ class ComparisonProduct(BaseModel):
     display_tech: str
     retail_source: str
     product_url: str
+    image_url: Optional[str] = None
     pros: List[str]
     cons: List[str]
     is_winner: bool = False

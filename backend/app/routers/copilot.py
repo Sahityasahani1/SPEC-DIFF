@@ -5,7 +5,7 @@ Persona: SpecPlug 🔌 ("Skill issue? Nah, spec diff. No cap, only specs.")
 import os
 import re
 from typing import List, Dict, Any, Optional
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import Product
@@ -14,6 +14,8 @@ from app.services.benchmark_service import get_benchmarks
 from app.services.price_tracker_service import get_price_signal
 from app.services.store_deals_service import get_store_deals
 from app.services.vector_service import semantic_engine
+from app.limiter import limiter
+from app.config import RATE_LIMIT_COPILOT
 
 try:
     import google.generativeai as genai
@@ -366,17 +368,18 @@ def _generate_specplug_standalone_advice(query: str, products: List[Product], in
     return reply, prompts
 
 @router.post("/copilot", response_model=CopilotResponse)
-def copilot_chat(request: CopilotRequest, db: Session = Depends(get_db)):
+@limiter.limit(RATE_LIMIT_COPILOT)
+def copilot_chat(request: Request, payload: CopilotRequest, db: Session = Depends(get_db)):
     """Handles conversational hardware queries with grounded telemetry and Gen-Z expertise."""
     all_prods = db.query(Product).all()
     if not semantic_engine.is_fitted and all_prods:
         semantic_engine.index_products(all_prods)
 
-    intent = _parse_query_intent(request.query)
+    intent = _parse_query_intent(payload.query)
     top_products = _select_relevant_products(
-        query=request.query,
+        query=payload.query,
         all_prods=all_prods,
-        active_ids=request.active_product_ids or [],
+        active_ids=payload.active_product_ids or [],
         intent=intent
     )
 
@@ -396,6 +399,7 @@ def copilot_chat(request: CopilotRequest, db: Session = Depends(get_db)):
             "storage_gb": p.storage_gb,
             "rating": p.rating,
             "product_url": p.product_url or f"https://www.amazon.in/s?k={p.name.replace(' ', '+')}",
+            "image_url": p.image_url or "",
             "retail_source": p.retail_source or "Amazon India",
             "best_deal_store": deal.get("best_deal_store", "Amazon India"),
             "best_price": deal.get("best_price", p.price),
@@ -437,12 +441,12 @@ def copilot_chat(request: CopilotRequest, db: Session = Depends(get_db)):
             )
 
             history_msgs = []
-            for msg in request.history:
+            for msg in payload.history:
                 role = "user" if msg.role == "user" else "model"
                 history_msgs.append({"role": role, "parts": [msg.content]})
 
             chat = model.start_chat(history=history_msgs)
-            response = chat.send_message(system_prompt + "\n\nUser Question: " + request.query)
+            response = chat.send_message(system_prompt + "\n\nUser Question: " + payload.query)
             
             if response and response.text:
                 suggested_prompts = [
@@ -477,7 +481,7 @@ def copilot_chat(request: CopilotRequest, db: Session = Depends(get_db)):
                         )
                     context_str = "\n".join(context_blocks)
 
-                local_reply = generate_specplug_reply(request.query, context_str)
+                local_reply = generate_specplug_reply(payload.query, context_str)
                 if local_reply:
                     suggested_prompts = [
                         f"What are the trade-offs of {top_products[0].name}?",
@@ -494,7 +498,7 @@ def copilot_chat(request: CopilotRequest, db: Session = Depends(get_db)):
 
     # Standalone High-Intelligence Advisor Engine (Zero External API requirement)
     reply, suggested_prompts = _generate_specplug_standalone_advice(
-        query=request.query,
+        query=payload.query,
         products=top_products,
         intent=intent
     )

@@ -1189,6 +1189,7 @@ print(f"[INFO] Merged {added_count} new products. Total catalog size: {len(exist
 fieldnames = [
     "id", "name", "category", "brand", "price", "ram_gb", "storage_gb",
     "processor", "gpu", "battery_hours", "weight_kg", "rating",
+    "image_url",
     "ram_expandability", "bundled_software", "display_tech", "retail_source",
     "product_url", "description", "pros", "cons", "in_stock", "source", "catalog_updated_at"
 ]

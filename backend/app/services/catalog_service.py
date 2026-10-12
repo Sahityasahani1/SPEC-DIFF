@@ -14,6 +14,17 @@ REQUIRED_HEADERS = {
     "description", "pros", "cons", "in_stock"
 }
 
+def sanitize_cell(value: Any) -> Any:
+    """Neutralize spreadsheet formula injection characters (=, +, -, @, \\t, \\r)."""
+    if not isinstance(value, str):
+        return value
+    if value and value[0] in ("\t", "\r"):
+        return "'" + value.lstrip("\t\r ")
+    s = value.strip()
+    if s and s[0] in ("=", "+", "-", "@"):
+        return "'" + s
+    return s
+
 def validate_row(row: Dict[str, str], line_num: int) -> Tuple[Optional[Dict[str, Any]], Optional[CSVRowError]]:
     sku = row.get("id", f"row_{line_num}").strip()
     if not sku:
@@ -72,25 +83,26 @@ def validate_row(row: Dict[str, str], line_num: int) -> Tuple[Optional[Dict[str,
 
     clean_data = {
         "id": sku,
-        "name": name,
-        "category": row.get("category", "laptop").strip().lower() or "laptop",
-        "brand": row.get("brand", "Unknown").strip(),
+        "name": sanitize_cell(name),
+        "category": sanitize_cell(row.get("category", "laptop").strip().lower() or "laptop"),
+        "brand": sanitize_cell(row.get("brand", "Unknown")),
         "price": price,
         "ram_gb": ram_gb,
         "storage_gb": storage_gb,
-        "processor": row.get("processor", "Intel Core").strip(),
-        "gpu": row.get("gpu", "Integrated Graphics").strip(),
+        "processor": sanitize_cell(row.get("processor", "Intel Core")),
+        "gpu": sanitize_cell(row.get("gpu", "Integrated Graphics")),
         "battery_hours": battery_hours,
         "weight_kg": weight_kg,
         "rating": rating,
-        "ram_expandability": row.get("ram_expandability", "Soldered").strip() or "Soldered",
-        "bundled_software": row.get("bundled_software", "None").strip() or "None",
-        "display_tech": row.get("display_tech", "FHD IPS Anti-Glare").strip() or "FHD IPS Anti-Glare",
-        "retail_source": row.get("retail_source", "Amazon India").strip() or "Amazon India",
+        "ram_expandability": sanitize_cell(row.get("ram_expandability", "Soldered").strip() or "Soldered"),
+        "bundled_software": sanitize_cell(row.get("bundled_software", "None").strip() or "None"),
+        "display_tech": sanitize_cell(row.get("display_tech", "FHD IPS Anti-Glare").strip() or "FHD IPS Anti-Glare"),
+        "retail_source": sanitize_cell(row.get("retail_source", "Amazon India").strip() or "Amazon India"),
         "product_url": row.get("product_url", "").strip(),
-        "description": row.get("description", f"{name} laptop").strip(),
-        "pros": row.get("pros", "Good value;Reliable").strip(),
-        "cons": row.get("cons", "Check specifications").strip(),
+        "image_url": row.get("image_url", "").strip(),
+        "description": sanitize_cell(row.get("description", f"{name} laptop")),
+        "pros": sanitize_cell(row.get("pros", "Good value;Reliable")),
+        "cons": sanitize_cell(row.get("cons", "Check specifications")),
         "in_stock": in_stock,
         "source": "uploaded_catalog.csv",
         "catalog_updated_at": datetime.date.today().isoformat()

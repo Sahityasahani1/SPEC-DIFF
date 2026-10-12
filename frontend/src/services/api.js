@@ -37,21 +37,41 @@ export async function getProducts(params = {}) {
   return res.json();
 }
 
-export async function updateProductStock(productId, inStock) {
+export function getAdminKey() {
+  return sessionStorage.getItem('specdiff_admin_key') || '';
+}
+
+export function setAdminKey(key) {
+  if (key) {
+    sessionStorage.setItem('specdiff_admin_key', key.trim());
+  } else {
+    sessionStorage.removeItem('specdiff_admin_key');
+  }
+}
+
+export async function updateProductStock(productId, inStock, adminKey = null) {
+  const key = adminKey || getAdminKey();
+  const headers = { 'Content-Type': 'application/json' };
+  if (key) headers['X-Admin-Key'] = key;
+
   const res = await fetch(`${API_BASE}/products/${productId}/stock`, {
     method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     body: JSON.stringify({ in_stock: inStock })
   });
-  if (!res.ok) throw new Error('Failed to update stock status');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed to update stock status' }));
+    throw new Error(err.detail || 'Failed to update stock status');
+  }
   return res.json();
 }
 
-export async function uploadCatalogCSV(file, adminKey = 'specdiff_admin_secret_key_2026') {
+export async function uploadCatalogCSV(file, adminKey = null) {
+  const key = adminKey || getAdminKey();
   const formData = new FormData();
   formData.append('file', file);
   const headers = {};
-  if (adminKey) headers['X-Admin-Key'] = adminKey;
+  if (key) headers['X-Admin-Key'] = key;
 
   const res = await fetch(`${API_BASE}/admin/catalog/upload`, {
     method: 'POST',
@@ -65,22 +85,27 @@ export async function uploadCatalogCSV(file, adminKey = 'specdiff_admin_secret_k
   return res.json();
 }
 
-export async function getUploadJobStatus(jobId, adminKey = 'specdiff_admin_secret_key_2026') {
+export async function getUploadJobStatus(jobId, adminKey = null) {
+  const key = adminKey || getAdminKey();
   const headers = {};
-  if (adminKey) headers['X-Admin-Key'] = adminKey;
+  if (key) headers['X-Admin-Key'] = key;
   const res = await fetch(`${API_BASE}/admin/catalog/upload/${jobId}`, { headers });
   if (!res.ok) throw new Error('Failed to fetch upload job status');
   return res.json();
 }
 
-export async function reindexCatalog(adminKey = 'specdiff_admin_secret_key_2026') {
+export async function reindexCatalog(adminKey = null) {
+  const key = adminKey || getAdminKey();
   const headers = {};
-  if (adminKey) headers['X-Admin-Key'] = adminKey;
+  if (key) headers['X-Admin-Key'] = key;
   const res = await fetch(`${API_BASE}/admin/catalog/reindex`, {
     method: 'POST',
     headers
   });
-  if (!res.ok) throw new Error('Failed to reindex catalog');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed to reindex catalog' }));
+    throw new Error(err.detail || 'Failed to reindex catalog');
+  }
   return res.json();
 }
 

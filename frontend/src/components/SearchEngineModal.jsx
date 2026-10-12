@@ -8,6 +8,7 @@ import {
 import { getProducts } from '../services/api';
 import { getOutboundDealUrl, openDealUrl } from '../utils/dealUrl';
 import { formatINR } from '../utils/formatters';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 
 const POPULAR_SEARCHES = [
   'MacBook Air M3',
@@ -374,6 +375,17 @@ export default function SearchEngineModal({
                             ★ {p.rating}
                           </span>
                         )}
+                      </div>
+
+                      {/* Real Product Photo */}
+                      <div className="my-2 h-28 w-full rounded-xl bg-[#f8f7f3] border border-[#eeebe3] flex items-center justify-center p-2 overflow-hidden group-hover:bg-[#f3f1ea] transition-colors relative">
+                        <img
+                          src={getProductImage(p)}
+                          alt={p.name}
+                          loading="lazy"
+                          onError={(e) => handleProductImageError(e, p.category)}
+                          className="max-h-24 max-w-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-300 select-none"
+                        />
                       </div>
 
                       {/* Product Name */}

@@ -11,6 +11,7 @@ from app.services.cache_service import cache_service
 from app.services.benchmark_service import get_benchmarks
 from app.services.price_tracker_service import get_price_signal
 from app.services.store_deals_service import get_store_deals
+from app.auth import verify_admin_key
 
 router = APIRouter(prefix="/api/products", tags=["Products"])
 
@@ -107,7 +108,8 @@ def get_product(product_id: str, db: Session = Depends(get_db)):
 async def update_product_stock(
     product_id: str,
     payload: ProductStockUpdate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    admin_token: str = Depends(verify_admin_key)
 ):
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:

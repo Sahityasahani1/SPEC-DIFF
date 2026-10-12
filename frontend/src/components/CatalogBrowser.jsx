@@ -7,6 +7,7 @@ import {
 import { getProducts } from '../services/api';
 import { formatINR } from '../utils/formatters';
 import { getOutboundDealUrl, openDealUrl } from '../utils/dealUrl';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Items ⚡' },
@@ -344,6 +345,17 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
                     )}
                   </div>
 
+                  {/* Real Product Photography Showcase */}
+                  <div className="my-2.5 h-36 w-full rounded-2xl bg-[#f8f7f3] border border-[#eeebe3] flex items-center justify-center p-3 overflow-hidden group-hover:bg-[#f3f1ea] transition-colors relative">
+                    <img
+                      src={getProductImage(p)}
+                      alt={p.name}
+                      loading="lazy"
+                      onError={(e) => handleProductImageError(e, p.category)}
+                      className="max-h-32 max-w-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-300 select-none"
+                    />
+                  </div>
+
                   {/* Product Title */}
                   <h4 
                     className="font-bold text-forest-950 text-sm leading-snug line-clamp-2 min-h-[2.5rem] group-hover:text-forest-700 transition-colors mb-1.5"
@@ -497,9 +509,15 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
 
                   return (
                     <tr key={p.id} className="hover:bg-[#fbfbf9] transition-colors">
-                      <td className="py-3.5 px-4 max-w-[260px]">
-                        <div className="flex items-start gap-2">
-                          <span className="text-base select-none mt-0.5">{categoryEmoji}</span>
+                      <td className="py-3.5 px-4 max-w-[280px]">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={getProductImage(p)}
+                            alt={p.name}
+                            loading="lazy"
+                            onError={(e) => handleProductImageError(e, p.category)}
+                            className="w-12 h-12 object-contain rounded-xl bg-[#f8f7f3] p-1 border border-[#eeebe3] shrink-0 filter drop-shadow-2xs select-none"
+                          />
                           <div className="overflow-hidden">
                             <div className="font-bold text-forest-950 leading-snug truncate" title={p.name}>
                               {p.name}

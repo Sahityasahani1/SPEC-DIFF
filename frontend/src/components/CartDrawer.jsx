@@ -5,6 +5,7 @@ import {
   ArrowRight, ShieldCheck, Tag, Check, Truck
 } from 'lucide-react';
 import { getOutboundDealUrl, openDealUrl } from '../utils/dealUrl';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 
 export default function CartDrawer({
   isOpen,
@@ -138,8 +139,13 @@ export default function CartDrawer({
                     className="bg-white rounded-2xl p-4 border border-[#e8e5dc] shadow-xs flex gap-3.5 items-start justify-between"
                   >
                     <div className="flex gap-3 items-start flex-1 min-w-0">
-                      <div className="w-12 h-12 rounded-xl bg-[#f4f2ec] border border-[#eae7df] flex items-center justify-center text-2xl shrink-0">
-                        {getEmoji(product.category)}
+                      <div className="w-14 h-14 rounded-xl bg-[#f4f2ec] border border-[#eae7df] flex items-center justify-center p-1 shrink-0 overflow-hidden">
+                        <img
+                          src={getProductImage(product)}
+                          alt={product.name}
+                          onError={(e) => handleProductImageError(e, product.category)}
+                          className="w-full h-full object-contain filter drop-shadow-2xs select-none"
+                        />
                       </div>
 
                       <div className="flex-1 min-w-0">

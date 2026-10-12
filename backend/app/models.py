@@ -35,6 +35,7 @@ class Product(Base):
     display_tech = Column(String(150), nullable=False, default="FHD IPS Anti-Glare")
     retail_source = Column(String(100), nullable=False, default="Amazon India")
     product_url = Column(String(500), nullable=False, default="")
+    image_url = Column(String(500), nullable=True, default="")
     description = Column(Text, nullable=False)
     pros = Column(Text, nullable=False)  # Semicolon-delimited or JSON string
     cons = Column(Text, nullable=False)  # Semicolon-delimited or JSON string
@@ -68,6 +69,7 @@ class Product(Base):
             "display_tech": self.display_tech,
             "retail_source": self.retail_source,
             "product_url": self.product_url,
+            "image_url": self.image_url or "",
             "description": self.description,
             "pros": [p.strip() for p in self.pros.split(";") if p.strip()],
             "cons": [c.strip() for c in self.cons.split(";") if c.strip()],
@@ -115,3 +117,23 @@ class ClickLog(Base):
     client_ip = Column(String(50), nullable=True)
     user_agent = Column(String(500), nullable=True)
     created_at = Column(DateTime, default=utc_now)
+
+class PriceHistory(Base):
+    __tablename__ = "price_history"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    product_id = Column(String(100), ForeignKey("products.id"), index=True, nullable=False)
+    price = Column(Float, nullable=False)
+    recorded_at = Column(DateTime, default=utc_now, index=True)
+    source = Column(String(100), default="market_sync")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "product_id": self.product_id,
+            "price": self.price,
+            "date": self.recorded_at.strftime("%Y-%m-%d") if self.recorded_at else "",
+            "recorded_at": self.recorded_at.isoformat() if self.recorded_at else "",
+            "source": self.source
+        }
+

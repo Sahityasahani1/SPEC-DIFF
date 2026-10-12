@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, ArrowRight, X, Plus } from 'lucide-react';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 
 export default function CompareDock({
   selectedItems = [],
@@ -58,7 +59,12 @@ export default function CompareDock({
                 key={item.id}
                 className="flex items-center gap-1.5 sm:gap-2 pl-2 sm:pl-2.5 pr-1 sm:pr-1.5 py-1 rounded-full bg-forest-900/90 border border-white/10 text-xs shadow-xs"
               >
-                <span className="text-sm select-none shrink-0">{getEmoji(item.category)}</span>
+                <img
+                  src={getProductImage(item)}
+                  alt={item.name}
+                  onError={(e) => handleProductImageError(e, item.category)}
+                  className="w-5 h-5 object-contain rounded-full bg-white/20 p-0.5 shrink-0 select-none"
+                />
                 <span className="font-bold text-white max-w-[100px] sm:max-w-[140px] truncate" title={item.name}>
                   {item.name}
                 </span>

@@ -82,6 +82,7 @@ def compare_products(db: Session, product_ids: List[str], priority: str = "value
                 display_tech=p.display_tech,
                 retail_source=p.retail_source,
                 product_url=p.product_url,
+                image_url=p.image_url or "",
                 pros=pros_list,
                 cons=cons_list,
                 is_winner=(p.id == winner_id),

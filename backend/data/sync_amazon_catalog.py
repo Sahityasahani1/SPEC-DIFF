@@ -100,6 +100,12 @@ def sync_catalog():
     new_db_products = []
     csv_rows = []
 
+    exact_images_file = backend_path / "data" / "amazon_exact_images.json"
+    exact_images = {}
+    if exact_images_file.exists():
+        with open(exact_images_file, "r", encoding="utf-8") as f_img:
+            exact_images = json.load(f_img)
+
     for idx, item in enumerate(amazon_items):
         title = item.get("title", "").strip()
         brand = item.get("brand", "Generic").strip() or "Generic"
@@ -131,6 +137,9 @@ def sync_catalog():
 
         product_url = f"https://www.amazon.in/dp/{asin}" if len(asin) == 10 else f"https://www.amazon.in/s?k={quote_plus(title[:50])}"
 
+        img_entry = exact_images.get(asin.upper()) or exact_images.get(asin.lower()) or {}
+        img_url = img_entry.get("image_url", "")
+
         p = Product(
             id=prod_id,
             name=title[:180],
@@ -144,6 +153,7 @@ def sync_catalog():
             battery_hours=battery_hours,
             weight_kg=weight_kg,
             rating=rating,
+            image_url=img_url,
             ram_expandability="Dual-Slot" if cat == "laptop" else "None",
             bundled_software="None",
             display_tech="FHD IPS" if cat in ("laptop", "monitor") else "AMOLED/Retina",

@@ -128,6 +128,7 @@ async def get_recommendations(
             evidence=evidence,
             retail_source=product.retail_source,
             product_url=product.product_url or f"https://www.amazon.in/s?k={product.name.replace(' ', '+')}",
+            image_url=product.image_url or "",
             benchmarks=BenchmarkData(**benchmarks_data) if benchmarks_data.get('geekbench_single') else None,
             price_signal=PriceSignal(**price_data),
             deal_comparison=DealComparison(**deal_data)

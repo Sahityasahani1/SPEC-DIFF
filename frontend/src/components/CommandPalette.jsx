@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Monitor, Smartphone, Watch, Headphones, Laptop } from 'lucide-react';
 import { getProducts } from '../services/api';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 
 export default function CommandPalette({ isOpen, onClose }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -119,9 +120,12 @@ export default function CommandPalette({ isOpen, onClose }) {
                         onMouseEnter={() => setSelectedIndex(idx)}
                       >
                         <div className="flex items-center gap-3 overflow-hidden">
-                          <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-[#e8e5dc] text-forest-900">
-                            {getCategoryIcon(product.category)}
-                          </div>
+                          <img
+                            src={getProductImage(product)}
+                            alt={product.name}
+                            onError={(e) => handleProductImageError(e, product.category)}
+                            className="w-9 h-9 rounded-lg bg-white object-contain p-1 border border-[#e8e5dc] shrink-0 filter drop-shadow-2xs"
+                          />
                           <div className="flex flex-col truncate">
                             <span className="font-bold text-sm text-forest-950 truncate">{product.name}</span>
                             <span className="text-xs text-forest-900/60 font-mono">{product.brand}</span>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowUp, Zap, Sparkles, Trash2, ShoppingBag, ExternalLink, Tag, ShieldCheck } from 'lucide-react';
 import { sendCopilotMessage } from '../services/api';
+import { getProductImage, handleProductImageError } from '../utils/productImages';
 
 // Helper to format markdown text into JSX
 function FormattedMessage({ text }) {
@@ -346,7 +347,13 @@ export default function AICopilotDrawer({
                                   key={pIdx} 
                                   className="bg-white rounded-xl p-3 border border-[#dfdbcf] shadow-2xs hover:border-sage-400 transition-all flex flex-col gap-2"
                                 >
-                                  <div className="flex justify-between items-start gap-2">
+                                  <div className="flex justify-between items-start gap-2.5">
+                                    <img
+                                      src={getProductImage(prod)}
+                                      alt={prod.name}
+                                      onError={(e) => handleProductImageError(e, prod.category)}
+                                      className="w-11 h-11 object-contain rounded-lg bg-[#f8f7f3] p-1 border border-[#eeebe3] shrink-0 filter drop-shadow-2xs"
+                                    />
                                     <div className="flex-1 min-w-0">
                                       <h5 className="font-bold text-xs text-forest-950 truncate" title={prod.name}>
                                         {prod.name}
