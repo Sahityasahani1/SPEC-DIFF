@@ -15,7 +15,7 @@ from typing import Dict, Any, List, Optional
 import requests
 from sqlalchemy.orm import Session
 
-from app.models import Product, PriceHistory, utc_now
+from app.models import Product, PriceHistory, PriceAlert, utc_now
 from app.services.cache_service import cache_service
 
 logger = logging.getLogger("smartpick.market_price")
@@ -228,6 +228,25 @@ def sync_catalog_market_prices(
     if new_history_records:
         db.bulk_save_objects(new_history_records)
 
+    # Check and trigger any matching price drop alerts
+    triggered_alerts_count = 0
+    try:
+        active_alerts = db.query(PriceAlert).filter(PriceAlert.is_triggered == False).all()
+        if active_alerts:
+            now_dt = utc_now()
+            price_map = {p.id: p.price for p in products}
+            for alert in active_alerts:
+                if alert.product_id in price_map:
+                    curr_p = price_map[alert.product_id]
+                    if curr_p <= alert.target_price:
+                        alert.is_triggered = True
+                        alert.triggered_at = now_dt
+                        alert.triggered_price = curr_p
+                        triggered_alerts_count += 1
+                        logger.info(f"[PRICE_ALERT] Target reached for alert {alert.id} ({alert.product_id}): now ₹{curr_p} <= target ₹{alert.target_price}")
+    except Exception as e:
+        logger.warning(f"Error checking price alerts: {e}")
+
     db.commit()
 
     # Clear recommendation and product caches
@@ -240,6 +259,7 @@ def sync_catalog_market_prices(
         "synced_at": today_str,
         "total_products": len(products),
         "updated_count": updated_count,
+        "triggered_alerts": triggered_alerts_count,
         "avg_price_change_pct": round(avg_change, 2),
         "price_increases": increases,
         "price_drops": drops,

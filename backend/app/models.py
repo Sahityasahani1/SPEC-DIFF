@@ -2,6 +2,7 @@
 import datetime
 from datetime import timezone
 from sqlalchemy import Column, String, Float, Integer, Boolean, DateTime, Text, ForeignKey, Index
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.compiler import compiles
 from pgvector.sqlalchemy import Vector
 from app.database import Base
@@ -136,4 +137,62 @@ class PriceHistory(Base):
             "recorded_at": self.recorded_at.isoformat() if self.recorded_at else "",
             "source": self.source
         }
+
+class PriceAlert(Base):
+    __tablename__ = "price_alerts"
+
+    id = Column(String(100), primary_key=True, index=True)
+    product_id = Column(String(100), ForeignKey("products.id"), index=True, nullable=False)
+    user_email = Column(String(255), nullable=False, index=True)
+    target_price = Column(Float, nullable=False)
+    initial_price = Column(Float, nullable=False)
+    is_triggered = Column(Boolean, default=False, index=True)
+    triggered_at = Column(DateTime, nullable=True)
+    triggered_price = Column(Float, nullable=True)
+    created_at = Column(DateTime, default=utc_now)
+
+    product = relationship("Product", backref="alerts")
+
+    def to_dict(self):
+        curr_price = self.product.price if self.product else self.initial_price
+        savings = max(0, curr_price - self.target_price) if not self.is_triggered else (self.initial_price - (self.triggered_price or self.target_price))
+        return {
+            "id": self.id,
+            "product_id": self.product_id,
+            "product_name": self.product.name if self.product else "Unknown Product",
+            "product_brand": self.product.brand if self.product else "",
+            "product_category": self.product.category if self.product else "",
+            "product_image": self.product.image_url if self.product else "",
+            "current_price": curr_price,
+            "user_email": self.user_email,
+            "target_price": self.target_price,
+            "initial_price": self.initial_price,
+            "is_triggered": self.is_triggered,
+            "triggered_at": self.triggered_at.isoformat() if self.triggered_at else None,
+            "triggered_price": self.triggered_price,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+            "potential_savings": round(savings, 2)
+        }
+
+class WatchlistItem(Base):
+    __tablename__ = "watchlist_items"
+
+    id = Column(String(100), primary_key=True, index=True)
+    user_identifier = Column(String(255), nullable=False, index=True)
+    product_id = Column(String(100), ForeignKey("products.id"), index=True, nullable=False)
+    notes = Column(String(500), nullable=True)
+    created_at = Column(DateTime, default=utc_now)
+
+    product = relationship("Product", backref="watchlist_entries")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_identifier": self.user_identifier,
+            "product_id": self.product_id,
+            "product": self.product.to_dict() if self.product else None,
+            "notes": self.notes,
+            "created_at": self.created_at.isoformat() if self.created_at else None
+        }
+
 

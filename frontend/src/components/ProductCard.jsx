@@ -3,7 +3,8 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { 
   CheckCircle2, AlertTriangle, Cpu, HardDrive, Battery, 
   ExternalLink, ShieldCheck, ChevronDown, ChevronUp,
-  Layers, Star, Award, Check, Smartphone, Headphones, Watch, Monitor, Laptop, ShoppingBag
+  Layers, Star, Award, Check, Smartphone, Headphones, Watch, Monitor, Laptop, ShoppingBag,
+  Bell, Bookmark
 } from 'lucide-react';
 import { getOutboundDealUrl, openDealUrl } from '../utils/dealUrl';
 import { getProductImage, handleProductImageError } from '../utils/productImages';
@@ -17,7 +18,10 @@ export default function ProductCard({
   onToggleCompare, 
   rankIndex,
   onOpenFeedback,
-  onAddToCart
+  onAddToCart,
+  onOpenPriceAlert,
+  onToggleWatchlist,
+  isBookmarked
 }) {
   const [showEvidence, setShowEvidence] = useState(false);
   const [showSubScores, setShowSubScores] = useState(false);
@@ -355,6 +359,34 @@ export default function ProductCard({
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>+ Cart</span>
+            </button>
+          )}
+
+          {/* Alert Bell Button */}
+          {onOpenPriceAlert && (
+            <button
+              type="button"
+              onClick={() => onOpenPriceAlert(product)}
+              className="p-2 sm:p-2.5 rounded-full bg-porcelain-100 hover:bg-emerald-50 text-forest-900 hover:text-emerald-700 transition-all border border-[#e0ddd4] shadow-xs cursor-pointer"
+              title="Set Price Drop Alert"
+            >
+              <Bell className="w-3.5 h-3.5" />
+            </button>
+          )}
+
+          {/* Stash / Wishlist Button */}
+          {onToggleWatchlist && (
+            <button
+              type="button"
+              onClick={() => onToggleWatchlist(product)}
+              className={`p-2 sm:p-2.5 rounded-full transition-all border shadow-xs cursor-pointer ${
+                isBookmarked
+                  ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                  : 'bg-porcelain-100 hover:bg-stone-200 text-forest-900 border-[#e0ddd4]'
+              }`}
+              title={isBookmarked ? 'In Hardware Stash' : 'Add to Stash'}
+            >
+              <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current' : ''}`} />
             </button>
           )}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Laptop, Layers, Search, Sparkles, ShoppingBag } from 'lucide-react';
+import { Laptop, Layers, Search, Sparkles, ShoppingBag, Bookmark, Bell } from 'lucide-react';
 
 export default function Header({ 
   activeTab, 
@@ -11,7 +11,10 @@ export default function Header({
   onToggleCopilot,
   onOpenSearch,
   cartCount = 0,
-  onOpenCart
+  onOpenCart,
+  watchlistCount = 0,
+  alertCount = 0,
+  onOpenWatchlist
 }) {
   return (
     <header className="sticky top-0 z-50 bg-forest-900/90 backdrop-blur-md border-b border-white/10 text-white">
@@ -103,6 +106,24 @@ export default function Header({
             >
               <span className="text-xs">🔌</span>
               <span className="hidden sm:inline font-mono text-[10px] font-bold">SpecPlug</span>
+            </button>
+
+            {/* Hardware Stash & Alerts Pill */}
+            <button
+              onClick={onOpenWatchlist}
+              className="flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs tracking-wider uppercase transition-all cursor-pointer relative"
+              title="Hardware Stash & Price Drop Alerts"
+            >
+              <Bookmark className="w-3.5 h-3.5 text-sage-400" />
+              <span className="hidden md:inline font-semibold text-xs">STASH</span>
+              {watchlistCount > 0 && (
+                <span className="font-mono text-[10px] font-bold bg-emerald-400 text-forest-950 px-1.5 py-0.2 rounded-full">
+                  {watchlistCount}
+                </span>
+              )}
+              {alertCount > 0 && (
+                <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
+              )}
             </button>
 
             {/* Shopping Cart Pill Button matching LOFY Style */}

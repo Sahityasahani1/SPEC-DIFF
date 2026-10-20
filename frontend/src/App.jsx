@@ -16,8 +16,20 @@ import CompareDock from './components/CompareDock';
 import ToastNotification from './components/ToastNotification';
 import CartDrawer from './components/CartDrawer';
 import SearchEngineModal from './components/SearchEngineModal';
+import PriceAlertModal from './components/PriceAlertModal';
+import WatchlistDrawer from './components/WatchlistDrawer';
 
-import { getRecommendations, getComparison, checkHealth } from './services/api';
+import { 
+  getRecommendations, 
+  getComparison, 
+  checkHealth,
+  getPriceAlerts,
+  deletePriceAlert,
+  simulateAlertTrigger,
+  addToWatchlist,
+  getWatchlist,
+  removeFromWatchlist
+} from './services/api';
 import { Layers, ArrowRight, X, AlertCircle, ArrowLeft, ChevronDown, Award, ShoppingBag } from 'lucide-react';
 
 export default function App() {
@@ -114,6 +126,88 @@ export default function App() {
   };
 
   const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  // Hardware Stash & Price Alerts State
+  const [watchlistItems, setWatchlistItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem('specdiff_watchlist_v2');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [alerts, setAlerts] = useState([]);
+  const [isWatchlistOpen, setIsWatchlistOpen] = useState(false);
+  const [alertModalProduct, setAlertModalProduct] = useState(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('specdiff_watchlist_v2', JSON.stringify(watchlistItems));
+    } catch (e) {
+      console.error('Failed to persist watchlist:', e);
+    }
+  }, [watchlistItems]);
+
+  useEffect(() => {
+    getPriceAlerts()
+      .then(data => Array.isArray(data) && setAlerts(data))
+      .catch(err => console.debug('Non-critical alerts fetch:', err));
+  }, []);
+
+  const handleToggleWatchlist = (product) => {
+    if (!product) return;
+    const prodId = product.product_id || product.id;
+    const exists = watchlistItems.some(item => (item.product?.id || item.product?.product_id || item.id || item.product_id) === prodId);
+
+    if (exists) {
+      setWatchlistItems(prev => prev.filter(item => (item.product?.id || item.product?.product_id || item.id || item.product_id) !== prodId));
+      showToast(`Removed "${product.name}" from hardware stash.`, 'info');
+      removeFromWatchlist(prodId).catch(() => {});
+    } else {
+      const newItem = {
+        id: `wl_${Date.now()}`,
+        product_id: prodId,
+        product: product,
+        created_at: new Date().toISOString()
+      };
+      setWatchlistItems(prev => [newItem, ...prev]);
+      showToast(`Added "${product.name}" to hardware stash.`, 'success');
+      addToWatchlist({ product_id: prodId }).catch(() => {});
+    }
+  };
+
+  const handleRemoveWatchlistItem = (prodId) => {
+    setWatchlistItems(prev => prev.filter(item => (item.product?.id || item.product?.product_id || item.id || item.product_id) !== prodId));
+    removeFromWatchlist(prodId).catch(() => {});
+    showToast('Removed from hardware stash.', 'info');
+  };
+
+  const handleAlertCreated = (newAlert) => {
+    setAlerts(prev => [newAlert, ...prev.filter(a => a.id !== newAlert.id)]);
+    showToast(`Price drop alert activated for ${newAlert.product_name || 'item'}.`, 'success');
+  };
+
+  const handleDeleteAlert = async (alertId) => {
+    try {
+      await deletePriceAlert(alertId);
+      setAlerts(prev => prev.filter(a => a.id !== alertId));
+      showToast('Price alert removed.', 'info');
+    } catch (e) {
+      showToast('Failed to delete alert', 'error');
+    }
+  };
+
+  const handleSimulateAlert = async (alertId) => {
+    try {
+      const res = await simulateAlertTrigger(alertId);
+      if (res.alert) {
+        setAlerts(prev => prev.map(a => a.id === alertId ? res.alert : a));
+        showToast(`Simulated price drop for ${res.alert.product_name}!`, 'success');
+      }
+    } catch (e) {
+      showToast('Failed to simulate drop', 'error');
+    }
+  };
 
   // Feedback State
   const [feedbackProduct, setFeedbackProduct] = useState(null);
@@ -314,6 +408,9 @@ export default function App() {
         onOpenSearch={() => setIsSearchOpen(true)}
         cartCount={totalCartCount}
         onOpenCart={() => setIsCartOpen(true)}
+        watchlistCount={watchlistItems.length}
+        alertCount={alerts.filter(a => a.is_triggered).length}
+        onOpenWatchlist={() => setIsWatchlistOpen(true)}
       />
 
       {/* Main Viewport Container with safe bottom dock clearance */}
@@ -480,6 +577,9 @@ export default function App() {
                             onToggleCompare={toggleCompare}
                             onOpenFeedback={(p) => setFeedbackProduct(p)}
                             onAddToCart={handleAddToCart}
+                            onOpenPriceAlert={(p) => setAlertModalProduct(p)}
+                            onToggleWatchlist={handleToggleWatchlist}
+                            isBookmarked={watchlistItems.some(i => (i.product?.id || i.product?.product_id || i.id || i.product_id) === product.product_id)}
                           />
                         ))}
                       </div>
@@ -627,6 +727,30 @@ export default function App() {
           onAddToCart={handleAddToCart}
         />
       )}
+
+      {/* Price Alert Configuration Modal */}
+      <PriceAlertModal
+        product={alertModalProduct}
+        isOpen={Boolean(alertModalProduct)}
+        onClose={() => setAlertModalProduct(null)}
+        onAlertCreated={handleAlertCreated}
+      />
+
+      {/* Hardware Stash & Price Alerts Drawer */}
+      <WatchlistDrawer
+        isOpen={isWatchlistOpen}
+        onClose={() => setIsWatchlistOpen(false)}
+        watchlistItems={watchlistItems}
+        onRemoveWatchlistItem={handleRemoveWatchlistItem}
+        onAddToCart={handleAddToCart}
+        onCompareItem={(p) => {
+          toggleCompare(p);
+          setIsWatchlistOpen(false);
+        }}
+        alerts={alerts}
+        onDeleteAlert={handleDeleteAlert}
+        onSimulateAlert={handleSimulateAlert}
+      />
 
       {/* Persistent Shopping Cart Drawer */}
       <CartDrawer

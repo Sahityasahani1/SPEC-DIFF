@@ -1,0 +1,610 @@
+{
+  "sync_timestamp": "2026-10-18T19:11:31.379738",
+  "verification_status": {
+    "total_products": 1176,
+    "expected_products": 1176,
+    "catalog_updated_at_distribution": {
+      "2026-10-18": 1176
+    },
+    "all_catalog_updated_to_today": true,
+    "total_price_history_records": 68208,
+    "today_history_records": 2352,
+    "today_distinct_products_with_history": 1176,
+    "all_products_have_today_history": true,
+    "products_missing_today_history": 0,
+    "history_records_added_in_this_run": 1176
+  },
+  "this_run_metrics": {
+    "avg_pct_change": -12.23,
+    "category_summary": {
+      "laptop": {
+        "count": 569,
+        "increases": 0,
+        "drops": 569,
+        "unchanged": 0,
+        "avg_pct": -12.22,
+        "avg_diff": -1974.73
+      },
+      "smartphone": {
+        "count": 126,
+        "increases": 0,
+        "drops": 126,
+        "unchanged": 0,
+        "avg_pct": -12.25,
+        "avg_diff": -1824.56
+      },
+      "tablet": {
+        "count": 101,
+        "increases": 0,
+        "drops": 101,
+        "unchanged": 0,
+        "avg_pct": -12.11,
+        "avg_diff": -1201.5
+      },
+      "audio": {
+        "count": 260,
+        "increases": 0,
+        "drops": 260,
+        "unchanged": 0,
+        "avg_pct": -12.25,
+        "avg_diff": -568.32
+      },
+      "smartwatch": {
+        "count": 51,
+        "increases": 0,
+        "drops": 51,
+        "unchanged": 0,
+        "avg_pct": -12.48,
+        "avg_diff": -1449.24
+      },
+      "monitor": {
+        "count": 22,
+        "increases": 0,
+        "drops": 22,
+        "unchanged": 0,
+        "avg_pct": -12.63,
+        "avg_diff": -3309.14
+      },
+      "gaming": {
+        "count": 11,
+        "increases": 0,
+        "drops": 11,
+        "unchanged": 0,
+        "avg_pct": -11.98,
+        "avg_diff": -5443.82
+      },
+      "accessory": {
+        "count": 36,
+        "increases": 0,
+        "drops": 36,
+        "unchanged": 0,
+        "avg_pct": -11.97,
+        "avg_diff": -622.22
+      }
+    },
+    "top_drops": [
+      {
+        "id": "laptop_apple_macbook_pro_16_m3_max",
+        "name": "Apple MacBook Pro 16 (M3 Max, 36GB/1TB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 244790.0,
+        "new_price": 210190.0,
+        "diff": -34600.0,
+        "pct": -14.13
+      },
+      {
+        "id": "amz_lap_b09nn6sgv5",
+        "name": "Dell 2022 Vostro 14 5000 5410 Business Laptop 11th Gen Intel Core i7-11390H 4-Core, 32G RAM 1TG SSD 14 FHD Screen, Intel Iris Xe Graphics, Backlit KB, FP Reader, Win10 PRO",
+        "brand": "Dell",
+        "category": "laptop",
+        "old_price": 175190.0,
+        "new_price": 149890.0,
+        "diff": -25300.0,
+        "pct": -14.44
+      },
+      {
+        "id": "laptop_asus_rog_zephyrus_g16_2024",
+        "name": "ASUS ROG Zephyrus G16 (2024) OLED",
+        "brand": "ASUS",
+        "category": "laptop",
+        "old_price": 149190.0,
+        "new_price": 125790.0,
+        "diff": -23400.0,
+        "pct": -15.68
+      },
+      {
+        "id": "amz_lap_b09h5z36s1",
+        "name": "Microsoft Surface Laptop Studio - 14.4\" Touchscreen - Intel\u00ae Core\u2122 i7 - 32GB Memory - 2TB SSD - Platinum",
+        "brand": "Microsoft",
+        "category": "laptop",
+        "old_price": 152690.0,
+        "new_price": 130490.0,
+        "diff": -22200.0,
+        "pct": -14.54
+      },
+      {
+        "id": "laptop_dell_xps_14_9440",
+        "name": "Dell XPS 14 (9440) Intel Ultra 7",
+        "brand": "Dell",
+        "category": "laptop",
+        "old_price": 138090.0,
+        "new_price": 116690.0,
+        "diff": -21400.0,
+        "pct": -15.5
+      },
+      {
+        "id": "lap_apple_macbook_pro_14_m3pro",
+        "name": "Apple MacBook Pro 14 M3 Pro",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 138390.0,
+        "new_price": 120790.0,
+        "diff": -17600.0,
+        "pct": -12.72
+      },
+      {
+        "id": "laptop_apple_macbook_air_15_m3",
+        "name": "Apple MacBook Air 15 (M3, 16GB/512GB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 113590.0,
+        "new_price": 96790.0,
+        "diff": -16800.0,
+        "pct": -14.79
+      },
+      {
+        "id": "amz_lap_b09jvv47bx",
+        "name": "Apple 2021 MacBook Pro (16.2-inch, M1 Pro chip with 10\u2011core CPU and 16\u2011core GPU, 16GB RAM, 512GB SSD) - Space Gray",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 160190.0,
+        "new_price": 143390.0,
+        "diff": -16800.0,
+        "pct": -10.49
+      },
+      {
+        "id": "laptop_apple_macbook_pro_14_m3_pro",
+        "name": "Apple MacBook Pro 14 (M3 Pro, 18GB/512GB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 133390.0,
+        "new_price": 118190.0,
+        "diff": -15200.0,
+        "pct": -11.4
+      },
+      {
+        "id": "lap_apple_macbook_air_15_m3",
+        "name": "Apple MacBook Air 15 M3",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 99490.0,
+        "new_price": 84890.0,
+        "diff": -14600.0,
+        "pct": -14.67
+      }
+    ],
+    "top_increases": [
+      {
+        "id": "amz_lap_b00kqgf88c",
+        "name": "X-mini Kai X1 Waterproof Speaker Rechargeable Bluetooth Compatible with iOS/Android/Smartphone/Tablet/Laptop/Smartwatch/Suitable for Beach Poolside Adventure - Blue",
+        "brand": "X-mini",
+        "category": "laptop",
+        "old_price": 209.0,
+        "new_price": 179.0,
+        "diff": -30.0,
+        "pct": -14.35
+      },
+      {
+        "id": "amz_aud_b07fptvzhg",
+        "name": "Acuvar Wired Ear Bud Headphones with Passive Noise Cancelling, in-line Microphone and Play/Pause Button (Silver)",
+        "brand": "Acuvar",
+        "category": "audio",
+        "old_price": 339.0,
+        "new_price": 299.0,
+        "diff": -40.0,
+        "pct": -11.8
+      },
+      {
+        "id": "amz_lap_b09s5k8nf5",
+        "name": "Bluetooth Mouse for iPad MacBook Air Pro Mini Mac iPhone Tablet Cell Phone, Computer Wireless Mouse for Laptop PC Desktop, Dual Mode (Bluetooth + 2.4G), Portable Optical Cordless M",
+        "brand": "Acolarid",
+        "category": "laptop",
+        "old_price": 449.0,
+        "new_price": 409.0,
+        "diff": -40.0,
+        "pct": -8.91
+      },
+      {
+        "id": "amz_aud_b08lv5xqtl",
+        "name": "ALXCD Ear Adapter Eartips Replacement for Galaxy Buds Live Headphones, S/L 4 Pairs Silicone Ear Adapter Tips, Fit for Galaxy Buds Live SM-R180 Headphones[Black/SL]",
+        "brand": "ALXCD",
+        "category": "audio",
+        "old_price": 359.0,
+        "new_price": 319.0,
+        "diff": -40.0,
+        "pct": -11.14
+      },
+      {
+        "id": "amz_tab_b01g7gj2r2",
+        "name": "Golf Gadgets\u00ae | Tablet Holder Add-On - Video Recording & Device Mount for Phone & Tablets. Screw on to Other Mounts to Capture Footage on The Course or Range. (Tablet Clamp Add-On)",
+        "brand": "Golf Gadgets",
+        "category": "tablet",
+        "old_price": 519.0,
+        "new_price": 479.0,
+        "diff": -40.0,
+        "pct": -7.71
+      },
+      {
+        "id": "amz_aud_b09qq8flcj",
+        "name": "airpod Cleaner kit,Airpods Cleaning Kit 4 in 1 Multi-Function Cleaning Pen Set Tool Soft Brush for Airpods Pro 1 2 Wireless Earphones, Airpods Cleaning Tools for Bluetooth Earphone",
+        "brand": "WANTHER",
+        "category": "audio",
+        "old_price": 489.0,
+        "new_price": 449.0,
+        "diff": -40.0,
+        "pct": -8.18
+      },
+      {
+        "id": "amz_aud_b07xht7gm4",
+        "name": "BLLQ Ear Hooks Compatible with Air Pods [Anti-Drop][Comfortable] [Fit] [Durable], Compatible with AirPod1 & 2 Earbud Ear Hook \uff0cWhite",
+        "brand": "BLLQ",
+        "category": "audio",
+        "old_price": 339.0,
+        "new_price": 289.0,
+        "diff": -50.0,
+        "pct": -14.75
+      },
+      {
+        "id": "amz_aud_b09h41cdm8",
+        "name": "LORELEI L-01 On-Ear Kids Headphones with Microphone, Lightweight Folding Stereo Bass Headphones with 1.5M No-Tangle Cord, Portable Wired Headphones for School/Trip/Plane (Blue-Gree",
+        "brand": "LORELEI",
+        "category": "audio",
+        "old_price": 579.0,
+        "new_price": 529.0,
+        "diff": -50.0,
+        "pct": -8.64
+      },
+      {
+        "id": "amz_lap_b092tpjg7s",
+        "name": "KIHENG USB C to Ethernet Adapter, RJ45 to USB C Thunderbolt 3/Type-C Gigabit Ethernet LAN Network Adapter Compatible for Windows, MacBook, macOS, Mac Pro Mini, Laptop, PC and More",
+        "brand": "KIHENG",
+        "category": "laptop",
+        "old_price": 629.0,
+        "new_price": 579.0,
+        "diff": -50.0,
+        "pct": -7.95
+      },
+      {
+        "id": "amz_aud_b07wj1fsl1",
+        "name": "OneCut 5 Pairs Silicone Ear Tips Compatible for AirPods 1&2,Silicone Soft Anti-Slip Sport Earbud Tips, Anti-Drop Ear Hook Gel Headphones Earphones Protective Accessories Tips (Pink",
+        "brand": "OneCut",
+        "category": "audio",
+        "old_price": 549.0,
+        "new_price": 499.0,
+        "diff": -50.0,
+        "pct": -9.11
+      }
+    ]
+  },
+  "daily_baseline_metrics_vs_pre_sync": {
+    "avg_pct_change": -23.15,
+    "category_summary": {
+      "laptop": {
+        "count": 569,
+        "increases": 0,
+        "drops": 569,
+        "unchanged": 0,
+        "avg_pct": -23.04,
+        "avg_diff": -4202.54
+      },
+      "smartphone": {
+        "count": 126,
+        "increases": 0,
+        "drops": 126,
+        "unchanged": 0,
+        "avg_pct": -23.0,
+        "avg_diff": -4028.3
+      },
+      "tablet": {
+        "count": 101,
+        "increases": 0,
+        "drops": 101,
+        "unchanged": 0,
+        "avg_pct": -23.42,
+        "avg_diff": -2619.16
+      },
+      "audio": {
+        "count": 260,
+        "increases": 0,
+        "drops": 260,
+        "unchanged": 0,
+        "avg_pct": -23.34,
+        "avg_diff": -1222.78
+      },
+      "smartwatch": {
+        "count": 51,
+        "increases": 0,
+        "drops": 51,
+        "unchanged": 0,
+        "avg_pct": -23.34,
+        "avg_diff": -3084.33
+      },
+      "monitor": {
+        "count": 22,
+        "increases": 0,
+        "drops": 22,
+        "unchanged": 0,
+        "avg_pct": -23.57,
+        "avg_diff": -7030.55
+      },
+      "gaming": {
+        "count": 11,
+        "increases": 0,
+        "drops": 11,
+        "unchanged": 0,
+        "avg_pct": -22.23,
+        "avg_diff": -11543.82
+      },
+      "accessory": {
+        "count": 36,
+        "increases": 0,
+        "drops": 36,
+        "unchanged": 0,
+        "avg_pct": -22.98,
+        "avg_diff": -1386.39
+      }
+    },
+    "brand_summary": {
+      "Apple": {
+        "count": 38,
+        "avg_pct": -23.55,
+        "avg_diff": -16706.61
+      },
+      "Dell": {
+        "count": 30,
+        "avg_pct": -23.87,
+        "avg_diff": -9451.1
+      },
+      "HP": {
+        "count": 38,
+        "avg_pct": -23.3,
+        "avg_diff": -7600.26
+      },
+      "Lenovo": {
+        "count": 37,
+        "avg_pct": -22.15,
+        "avg_diff": -10748.14
+      },
+      "ASUS": {
+        "count": 38,
+        "avg_pct": -23.51,
+        "avg_diff": -11092.89
+      },
+      "Acer": {
+        "count": 18,
+        "avg_pct": -22.69,
+        "avg_diff": -9093.94
+      },
+      "Samsung": {
+        "count": 24,
+        "avg_pct": -23.58,
+        "avg_diff": -12499.25
+      },
+      "MSI": {
+        "count": 6,
+        "avg_pct": -21.9,
+        "avg_diff": -6183.33
+      },
+      "Xiaomi": {
+        "count": 6,
+        "avg_pct": -23.15,
+        "avg_diff": -9238.67
+      }
+    },
+    "top_drops": [
+      {
+        "id": "laptop_apple_macbook_pro_16_m3_max",
+        "name": "Apple MacBook Pro 16 (M3 Max, 36GB/1TB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 283190.0,
+        "new_price": 210190.0,
+        "diff": -73000.0,
+        "pct": -25.78
+      },
+      {
+        "id": "amz_lap_b09nn6sgv5",
+        "name": "Dell 2022 Vostro 14 5000 5410 Business Laptop 11th Gen Intel Core i7-11390H 4-Core, 32G RAM 1TG SSD 14 FHD Screen, Intel Iris Xe Graphics, Backlit KB, FP Reader, Win10 PRO",
+        "brand": "Dell",
+        "category": "laptop",
+        "old_price": 198090.0,
+        "new_price": 149890.0,
+        "diff": -48200.0,
+        "pct": -24.33
+      },
+      {
+        "id": "amz_lap_b09h5z36s1",
+        "name": "Microsoft Surface Laptop Studio - 14.4\" Touchscreen - Intel\u00ae Core\u2122 i7 - 32GB Memory - 2TB SSD - Platinum",
+        "brand": "Microsoft",
+        "category": "laptop",
+        "old_price": 178490.0,
+        "new_price": 130490.0,
+        "diff": -48000.0,
+        "pct": -26.89
+      },
+      {
+        "id": "laptop_asus_rog_zephyrus_g16_2024",
+        "name": "ASUS ROG Zephyrus G16 (2024) OLED",
+        "brand": "ASUS",
+        "category": "laptop",
+        "old_price": 168690.0,
+        "new_price": 125790.0,
+        "diff": -42900.0,
+        "pct": -25.43
+      },
+      {
+        "id": "amz_lap_b09jvv47bx",
+        "name": "Apple 2021 MacBook Pro (16.2-inch, M1 Pro chip with 10\u2011core CPU and 16\u2011core GPU, 16GB RAM, 512GB SSD) - Space Gray",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 185390.0,
+        "new_price": 143390.0,
+        "diff": -42000.0,
+        "pct": -22.65
+      },
+      {
+        "id": "laptop_dell_xps_14_9440",
+        "name": "Dell XPS 14 (9440) Intel Ultra 7",
+        "brand": "Dell",
+        "category": "laptop",
+        "old_price": 157090.0,
+        "new_price": 116690.0,
+        "diff": -40400.0,
+        "pct": -25.72
+      },
+      {
+        "id": "lap_lenovo_legion_pro_5i_4070",
+        "name": "Lenovo Legion Pro 5i 16",
+        "brand": "Lenovo",
+        "category": "laptop",
+        "old_price": 176090.0,
+        "new_price": 137390.0,
+        "diff": -38700.0,
+        "pct": -21.98
+      },
+      {
+        "id": "lap_apple_macbook_pro_14_m3pro",
+        "name": "Apple MacBook Pro 14 M3 Pro",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 159190.0,
+        "new_price": 120790.0,
+        "diff": -38400.0,
+        "pct": -24.12
+      },
+      {
+        "id": "laptop_apple_macbook_air_15_m3",
+        "name": "Apple MacBook Air 15 (M3, 16GB/512GB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 131590.0,
+        "new_price": 96790.0,
+        "diff": -34800.0,
+        "pct": -26.45
+      },
+      {
+        "id": "laptop_apple_macbook_pro_14_m3_pro",
+        "name": "Apple MacBook Pro 14 (M3 Pro, 18GB/512GB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 150590.0,
+        "new_price": 118190.0,
+        "diff": -32400.0,
+        "pct": -21.52
+      }
+    ],
+    "top_increases": [
+      {
+        "id": "amz_lap_b00kqgf88c",
+        "name": "X-mini Kai X1 Waterproof Speaker Rechargeable Bluetooth Compatible with iOS/Android/Smartphone/Tablet/Laptop/Smartwatch/Suitable for Beach Poolside Adventure - Blue",
+        "brand": "X-mini",
+        "category": "laptop",
+        "old_price": 239.0,
+        "new_price": 179.0,
+        "diff": -60.0,
+        "pct": -25.1
+      },
+      {
+        "id": "amz_aud_b07xht7gm4",
+        "name": "BLLQ Ear Hooks Compatible with Air Pods [Anti-Drop][Comfortable] [Fit] [Durable], Compatible with AirPod1 & 2 Earbud Ear Hook \uff0cWhite",
+        "brand": "BLLQ",
+        "category": "audio",
+        "old_price": 379.0,
+        "new_price": 289.0,
+        "diff": -90.0,
+        "pct": -23.75
+      },
+      {
+        "id": "amz_aud_b07fptvzhg",
+        "name": "Acuvar Wired Ear Bud Headphones with Passive Noise Cancelling, in-line Microphone and Play/Pause Button (Silver)",
+        "brand": "Acuvar",
+        "category": "audio",
+        "old_price": 389.0,
+        "new_price": 299.0,
+        "diff": -90.0,
+        "pct": -23.14
+      },
+      {
+        "id": "amz_lap_b0c2vjtsdg",
+        "name": "COCNI Slim Silent Wireless Mouse, Portable 2.4GHz Wireless Computer Mouse with 3 Adjustable DPI and USB Receiver, Optical Office Wireless Mouse for Laptop, Desktop, MacBook, Chrome",
+        "brand": "COCNI",
+        "category": "laptop",
+        "old_price": 379.0,
+        "new_price": 289.0,
+        "diff": -90.0,
+        "pct": -23.75
+      },
+      {
+        "id": "amz_aud_b06xgdbzfr",
+        "name": "EBOOT Replacement Earbuds Silicone Eartips Earpads Compatibe with Skullcandy Earphones, Black and Clear, 8 Pairs",
+        "brand": "EBOOT",
+        "category": "audio",
+        "old_price": 419.0,
+        "new_price": 309.0,
+        "diff": -110.0,
+        "pct": -26.25
+      },
+      {
+        "id": "amz_lap_b094h75rb1",
+        "name": "NANGOALA HDMI to VGA Adapter Converter (Female to Male), Audio Output Computer Set-top Box Connector Dongle for Computer, Desktop, Laptop, PC, Monitor, Projector, HDTV, Chromebook ",
+        "brand": "NANGOALA",
+        "category": "laptop",
+        "old_price": 429.0,
+        "new_price": 319.0,
+        "diff": -110.0,
+        "pct": -25.64
+      },
+      {
+        "id": "amz_lap_b09s5k8nf5",
+        "name": "Bluetooth Mouse for iPad MacBook Air Pro Mini Mac iPhone Tablet Cell Phone, Computer Wireless Mouse for Laptop PC Desktop, Dual Mode (Bluetooth + 2.4G), Portable Optical Cordless M",
+        "brand": "Acolarid",
+        "category": "laptop",
+        "old_price": 519.0,
+        "new_price": 409.0,
+        "diff": -110.0,
+        "pct": -21.19
+      },
+      {
+        "id": "amz_acc_b09h64wymw",
+        "name": "Mirai Past Cat Keycap Esc keycaps DIY Personality Custom Cartoon Anime Keycap Replacement Bottom Backlit Keycaps Gift for Mechanical Keyboard KeyCap OEM R4 Height (Transparent) (Ye",
+        "brand": "Mirai Past",
+        "category": "accessory",
+        "old_price": 629.0,
+        "new_price": 519.0,
+        "diff": -110.0,
+        "pct": -17.49
+      },
+      {
+        "id": "amz_aud_b08lv5xqtl",
+        "name": "ALXCD Ear Adapter Eartips Replacement for Galaxy Buds Live Headphones, S/L 4 Pairs Silicone Ear Adapter Tips, Fit for Galaxy Buds Live SM-R180 Headphones[Black/SL]",
+        "brand": "ALXCD",
+        "category": "audio",
+        "old_price": 429.0,
+        "new_price": 319.0,
+        "diff": -110.0,
+        "pct": -25.64
+      },
+      {
+        "id": "amz_lap_b094qw333v",
+        "name": "Q12 LED Wireless Computer Mouse, 2.4G Slim Rechargeable Wireless Mouse with USB Receiver and Type C Adapter, Silent Optical LED Wireless Mice for Laptop, PC, Desktop (Black)",
+        "brand": "Uciefy",
+        "category": "laptop",
+        "old_price": 619.0,
+        "new_price": 509.0,
+        "diff": -110.0,
+        "pct": -17.77
+      }
+    ]
+  }
+}

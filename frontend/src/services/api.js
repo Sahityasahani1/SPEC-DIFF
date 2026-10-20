@@ -155,3 +155,71 @@ export async function trackOutboundClick(payload) {
   }
 }
 
+
+
+// Price Drop Alerts & Watchlist Services
+export async function createPriceAlert(payload) {
+  const res = await fetch(`${API_BASE}/alerts`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed to create price alert' }));
+    throw new Error(err.detail || 'Failed to create price alert');
+  }
+  return res.json();
+}
+
+export async function getPriceAlerts(email = '') {
+  const url = email ? `${API_BASE}/alerts?email=${encodeURIComponent(email)}` : `${API_BASE}/alerts`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to fetch price alerts');
+  return res.json();
+}
+
+export async function deletePriceAlert(alertId) {
+  const res = await fetch(`${API_BASE}/alerts/${alertId}`, {
+    method: 'DELETE'
+  });
+  if (!res.ok) throw new Error('Failed to delete price alert');
+  return res.json();
+}
+
+export async function getTriggeredAlerts(limit = 10) {
+  const res = await fetch(`${API_BASE}/alerts/notifications?limit=${limit}`);
+  if (!res.ok) throw new Error('Failed to fetch price drop notifications');
+  return res.json();
+}
+
+export async function simulateAlertTrigger(alertId) {
+  const res = await fetch(`${API_BASE}/alerts/simulate-trigger/${alertId}`, {
+    method: 'POST'
+  });
+  if (!res.ok) throw new Error('Failed to simulate price drop');
+  return res.json();
+}
+
+export async function addToWatchlist(payload) {
+  const res = await fetch(`${API_BASE}/watchlist`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Failed to add to watchlist');
+  return res.json();
+}
+
+export async function getWatchlist(userIdentifier = 'default_user') {
+  const res = await fetch(`${API_BASE}/watchlist?user_identifier=${encodeURIComponent(userIdentifier)}`);
+  if (!res.ok) throw new Error('Failed to fetch watchlist');
+  return res.json();
+}
+
+export async function removeFromWatchlist(identifier, userIdentifier = 'default_user') {
+  const res = await fetch(`${API_BASE}/watchlist/${identifier}?user_identifier=${encodeURIComponent(userIdentifier)}`, {
+    method: 'DELETE'
+  });
+  if (!res.ok) throw new Error('Failed to remove from watchlist');
+  return res.json();
+}

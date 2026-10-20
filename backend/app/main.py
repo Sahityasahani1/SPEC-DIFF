@@ -34,6 +34,7 @@ from app.routers.admin import router as admin_router
 from app.routers.feedback import router as feedback_router
 from app.routers.copilot import router as copilot_router
 from app.routers.track import router as track_router
+from app.routers.alerts import router as alerts_router
 
 def _run_market_sync_task():
     try:
@@ -92,9 +93,16 @@ async def lifespan(app: FastAPI):
         db.close()
     
     # Launch daily automated market price synchronizer in background
-    sync_task = asyncio.create_task(daily_price_sync_worker())
+    sync_task = None
+    if os.environ.get("ENABLE_IN_APP_SCHEDULER", "false").lower() == "true":
+        sync_task = asyncio.create_task(daily_price_sync_worker())
     yield
-    sync_task.cancel()
+    if sync_task:
+        sync_task.cancel()
+        try:
+            await sync_task
+        except asyncio.CancelledError:
+            pass
     print("[INFO] Shutting down SmartPick Backend.")
 
 app = FastAPI(
@@ -177,6 +185,7 @@ app.include_router(admin_router)
 app.include_router(feedback_router)
 app.include_router(copilot_router)
 app.include_router(track_router)
+app.include_router(alerts_router)
 
 @app.get("/")
 def root():

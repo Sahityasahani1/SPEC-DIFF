@@ -212,3 +212,39 @@ class CatalogJobStatus(BaseModel):
     created_at: str
     completed_at: Optional[str] = None
 
+
+
+class PriceAlertCreate(BaseModel):
+    product_id: str = Field(..., min_length=1, max_length=100)
+    user_email: str = Field(..., min_length=3, max_length=255)
+    target_price: float = Field(..., gt=0, le=10000000)
+
+class PriceAlertResponse(BaseModel):
+    id: str
+    product_id: str
+    product_name: str
+    product_brand: str
+    product_category: str
+    product_image: str
+    current_price: float
+    user_email: str
+    target_price: float
+    initial_price: float
+    is_triggered: bool
+    triggered_at: Optional[str] = None
+    triggered_price: Optional[float] = None
+    created_at: Optional[str] = None
+    potential_savings: float = 0.0
+
+class WatchlistAddRequest(BaseModel):
+    product_id: str = Field(..., min_length=1, max_length=100)
+    user_identifier: str = Field("default_user", min_length=1, max_length=255)
+    notes: Optional[str] = Field(None, max_length=500)
+
+class WatchlistItemResponse(BaseModel):
+    id: str
+    user_identifier: str
+    product_id: str
+    product: Optional[Dict[str, Any]] = None
+    notes: Optional[str] = None
+    created_at: Optional[str] = None

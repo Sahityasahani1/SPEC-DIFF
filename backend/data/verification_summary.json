@@ -1,0 +1,5576 @@
+{
+  "total_products": 1176,
+  "updated_at_dist": {
+    "2026-10-18": 1176
+  },
+  "pre_history_count": 65856,
+  "total_history": 67032,
+  "new_history_count": 1176,
+  "today_history_count": 1176,
+  "today_distinct_products": 1176,
+  "products_missing_history": 0,
+  "changed_count": 1176,
+  "avg_old": 14581.826530612245,
+  "avg_new": 12792.760204081633,
+  "avg_pct": -12.350207236298601,
+  "top_drops_abs": [
+    {
+      "id": "laptop_apple_macbook_pro_16_m3_max",
+      "name": "Apple MacBook Pro 16 (M3 Max, 36GB/1TB)",
+      "brand": "Apple",
+      "category": "laptop",
+      "old_price": 283190.0,
+      "new_price": 248990.0,
+      "diff": -34200.0,
+      "pct": -12.076697623503655,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b09nn6sgv5",
+      "name": "Dell 2022 Vostro 14 5000 5410 Business Laptop 11th Gen Intel Core i7-11390H 4-Core, 32G RAM 1TG SSD 14 FHD Screen, Intel Iris Xe Graphics, Backlit KB, FP Reader, Win10 PRO",
+      "brand": "Dell",
+      "category": "laptop",
+      "old_price": 198090.0,
+      "new_price": 174190.0,
+      "diff": -23900.0,
+      "pct": -12.065222878489577,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b09jvv47bx",
+      "name": "Apple 2021 MacBook Pro (16.2-inch, M1 Pro chip with 10\u2011core CPU and 16\u2011core GPU, 16GB RAM, 512GB SSD) - Space Gray",
+      "brand": "Apple",
+      "category": "laptop",
+      "old_price": 185390.0,
+      "new_price": 164890.0,
+      "diff": -20500.0,
+      "pct": -11.057770106262474,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "lap_asus_rog_strix_g16_4070",
+      "name": "ASUS ROG Strix G16 G614JIR",
+      "brand": "ASUS",
+      "category": "laptop",
+      "old_price": 146590.0,
+      "new_price": 126490.0,
+      "diff": -20100.0,
+      "pct": -13.711712940855447,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "laptop_asus_rog_zephyrus_g16_2024",
+      "name": "ASUS ROG Zephyrus G16 (2024) OLED",
+      "brand": "ASUS",
+      "category": "laptop",
+      "old_price": 168690.0,
+      "new_price": 148690.0,
+      "diff": -20000.0,
+      "pct": -11.856067342462504,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "laptop_apple_macbook_pro_14_m3_pro",
+      "name": "Apple MacBook Pro 14 (M3 Pro, 18GB/512GB)",
+      "brand": "Apple",
+      "category": "laptop",
+      "old_price": 150590.0,
+      "new_price": 131890.0,
+      "diff": -18700.0,
+      "pct": -12.41782322863404,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "lap_hp_omen_16_4070",
+      "name": "HP Omen 16-wf1026TX",
+      "brand": "HP",
+      "category": "laptop",
+      "old_price": 143990.0,
+      "new_price": 125690.0,
+      "diff": -18300.0,
+      "pct": -12.709215917772068,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "laptop_apple_macbook_air_15_m3",
+      "name": "Apple MacBook Air 15 (M3, 16GB/512GB)",
+      "brand": "Apple",
+      "category": "laptop",
+      "old_price": 131590.0,
+      "new_price": 113690.0,
+      "diff": -17900.0,
+      "pct": -13.602857359981762,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "lap_apple_macbook_pro_14_m3pro",
+      "name": "Apple MacBook Pro 14 M3 Pro",
+      "brand": "Apple",
+      "category": "laptop",
+      "old_price": 159190.0,
+      "new_price": 141390.0,
+      "diff": -17800.0,
+      "pct": -11.181606884854576,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "lap_lenovo_yoga_slim7x_copilot",
+      "name": "Lenovo Yoga Slim 7x Copilot+",
+      "brand": "Lenovo",
+      "category": "laptop",
+      "old_price": 107990.0,
+      "new_price": 90690.0,
+      "diff": -17300.0,
+      "pct": -16.020001852023334,
+      "updated_at": "2026-10-18"
+    }
+  ],
+  "top_drops_pct": [
+    {
+      "id": "amz_lap_b0b6wn5klv",
+      "name": "Dell Newest Inspiron 15 3511 Laptop, 15.6\" FHD Touchscreen, Intel Core i7-1165G7 Processor, 64GB RAM, 2TB SSD, Webcam, HDMI, Bluetooth, Wi-Fi, Windows 11 Home, Black",
+      "brand": "Dell",
+      "category": "laptop",
+      "old_price": 78190.0,
+      "new_price": 64490.0,
+      "diff": -13700.0,
+      "pct": -17.521422176748942,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b09ztc6lgp",
+      "name": "KLO Bluetooth Mouse for MacBook/MacBook air/Pro/iPad, Wireless Mouse for Laptop/Notebook/pc/iPad/Chromebook (BT/A deep Pink-Black)",
+      "brand": "KLO",
+      "category": "laptop",
+      "old_price": 979.0,
+      "new_price": 809.0,
+      "diff": -170.0,
+      "pct": -17.364657814096017,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_acc_b076hmrn8b",
+      "name": "QDAOT Customized R4 Keycaps Replacement-Triple Anodized Aluminum Alternative Keycaps for Cherry MX Switches Mechanical Keyboards (Punisher)",
+      "brand": "QDAOT",
+      "category": "accessory",
+      "old_price": 4009.0,
+      "new_price": 3319.0,
+      "diff": -690.0,
+      "pct": -17.211274632077824,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b0079qm6cs",
+      "name": "STM Scout 2 Medium Laptop Shoulder Bag , Olive (dp-1803-01)",
+      "brand": "STM",
+      "category": "laptop",
+      "old_price": 4309.0,
+      "new_price": 3569.0,
+      "diff": -740.0,
+      "pct": -17.17335808772337,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_sma_b006p1yn7y",
+      "name": "THE JOY FACTORY HUU104 eGlove for Smartphones and Tablets - Large/XL - 1 Pack - Retail Packaging - Gray",
+      "brand": "The Joy Factory",
+      "category": "smartphone",
+      "old_price": 4339.0,
+      "new_price": 3599.0,
+      "diff": -740.0,
+      "pct": -17.054620880387187,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b0bcnsfj5x",
+      "name": "Lenovo Legion 5 Gaming Laptop, 15.6\" FHD 120Hz IPS Display, AMD Ryzen 5 4600H (Beat i7-10750H), GeForce GTX 1650 Ti, 16GB RAM, 512GB SSD, USB-C, HDMI, RJ45, WiFi 6, Backlit, Webcam",
+      "brand": "Lenovo",
+      "category": "laptop",
+      "old_price": 4059.0,
+      "new_price": 3369.0,
+      "diff": -690.0,
+      "pct": -16.999260901699927,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_aud_b09414pj6q",
+      "name": "Bluetooth Headphones, PowerLocus Bluetooth Headphones Over-Ear, Passive Noise Cancelling Headphone with Microphone, 70Hrs Playtime, Foldable Wireless Headphones,Hi-Fi Deep Bass for",
+      "brand": "PowerLocus",
+      "category": "audio",
+      "old_price": 1949.0,
+      "new_price": 1619.0,
+      "diff": -330.0,
+      "pct": -16.93175987685993,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b08dl8gtdp",
+      "name": "GEARONIC 21L Vintage Canvas Backpack Leather Rucksack Knapsack 15inch Laptop Tote Satchel College Shoulder Hiking Bag",
+      "brand": "GEARONIC",
+      "category": "laptop",
+      "old_price": 2659.0,
+      "new_price": 2209.0,
+      "diff": -450.0,
+      "pct": -16.92365550959007,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b003ld4t0k",
+      "name": "Pwr Charger Power Adapter for Asus VivoBook Laptop - X550L X550LA X555L F555L X551M X551MA X540S Q504U Zenbook Flip UX310 UX330 UX360 UX410 UL Listed Extra Long Cord AD883J20 EXA07",
+      "brand": "PWR+",
+      "category": "laptop",
+      "old_price": 1549.0,
+      "new_price": 1289.0,
+      "diff": -260.0,
+      "pct": -16.785022595222724,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_aud_b00wudjxcg",
+      "name": "JVC HAFX32D Marshmallow Earbuds, Orange",
+      "brand": "JVC",
+      "category": "audio",
+      "old_price": 4359.0,
+      "new_price": 3629.0,
+      "diff": -730.0,
+      "pct": -16.746960311998166,
+      "updated_at": "2026-10-18"
+    }
+  ],
+  "least_drops_pct": [
+    {
+      "id": "phone_nothing_phone_2a_plus",
+      "name": "Nothing Phone (2a) Plus (12GB/256GB)",
+      "brand": "Nothing",
+      "category": "smartphone",
+      "old_price": 20049.0,
+      "new_price": 18449.0,
+      "diff": -1600.0,
+      "pct": -7.980447902638535,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b08vhzlxs1",
+      "name": "UnionSine 2TB Ultra Slim Portable External Hard Drive USB3.0 HDD Storage Compatible for PC, Desktop, Laptop, Xbox One, Xbox one, PS4(Black)",
+      "brand": "UnionSine",
+      "category": "laptop",
+      "old_price": 4039.0,
+      "new_price": 3719.0,
+      "diff": -320.0,
+      "pct": -7.922753156721961,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b09zv82zy4",
+      "name": "Rapoo N1600 3-Button Quiet Wired Mouse, 1000DPI Optical Mouse, Quiet Button, Ergonomic Shape, for Desktop Computers Laptops, Matte White",
+      "brand": "Rapoo",
+      "category": "laptop",
+      "old_price": 759.0,
+      "new_price": 699.0,
+      "diff": -60.0,
+      "pct": -7.905138339920949,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_aud_b098tvm598",
+      "name": "Altec Lansing HydraMotion Wireless Bluetooth Speaker with 360 Degree Sound, Portable IP67 Waterproof for Outdoors, Shockproof, Snowproof, Everything Proof, 12 Hour Playtime (Mint G",
+      "brand": "Altec Lansing",
+      "category": "audio",
+      "old_price": 2429.0,
+      "new_price": 2239.0,
+      "diff": -190.0,
+      "pct": -7.822149032523671,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b08n43bynq",
+      "name": "KAUKKO Lightweight Outdoor Backpack, Travel Casual Rucksack Laptop Daypack for 15\"\uff086-10-black\uff09",
+      "brand": "KAUKKO",
+      "category": "laptop",
+      "old_price": 2309.0,
+      "new_price": 2129.0,
+      "diff": -180.0,
+      "pct": -7.795582503248159,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b081cc65zs",
+      "name": "rickyh style School Backpack Travel Bag for Men & Women Lightweight College Back Pack with Laptop Compartmen",
+      "brand": "rickyh",
+      "category": "laptop",
+      "old_price": 2839.0,
+      "new_price": 2619.0,
+      "diff": -220.0,
+      "pct": -7.749207467418105,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b08prtz6wh",
+      "name": "Double Sided Adhesive Thermal Pad 100 x 100 x 0.5mm,6W/m.k Thermal Conductivity,High Performance Thermal Conductive Silicone Pads for Laptop Heatsink SSD CPU GPU LED IC Chipset Coo",
+      "brand": "AIYUNNI",
+      "category": "laptop",
+      "old_price": 4259.0,
+      "new_price": 3929.0,
+      "diff": -330.0,
+      "pct": -7.748297722470062,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "amz_lap_b0056p8rgs",
+      "name": "Nike Air Jordan 15\" Laptop Black Backpack",
+      "brand": "Nike",
+      "category": "laptop",
+      "old_price": 4299.0,
+      "new_price": 3969.0,
+      "diff": -330.0,
+      "pct": -7.6762037683182145,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "gaming_asus_rog_ally_x",
+      "name": "ASUS ROG Ally X (24GB RAM / 1TB SSD Handheld)",
+      "brand": "ASUS",
+      "category": "gaming",
+      "old_price": 78790.0,
+      "new_price": 72990.0,
+      "diff": -5800.0,
+      "pct": -7.361340271608071,
+      "updated_at": "2026-10-18"
+    },
+    {
+      "id": "lap_acer_swift_go_14_oled",
+      "name": "Acer Swift Go 14 OLED",
+      "brand": "Acer",
+      "category": "laptop",
+      "old_price": 50190.0,
+      "new_price": 46590.0,
+      "diff": -3600.0,
+      "pct": -7.172743574417215,
+      "updated_at": "2026-10-18"
+    }
+  ],
+  "brand_summary": [
+    {
+      "brand": "HP",
+      "count": 38,
+      "avg_old": 33107.05263157895,
+      "avg_new": 29082.842105263157,
+      "avg_pct": -12.574874870499162
+    },
+    {
+      "brand": "ASUS",
+      "count": 38,
+      "avg_old": 47084.52631578947,
+      "avg_new": 41493.21052631579,
+      "avg_pct": -12.197631537731896
+    },
+    {
+      "brand": "Apple",
+      "count": 38,
+      "avg_old": 70143.15789473684,
+      "avg_new": 61574.18421052631,
+      "avg_pct": -12.246444581940597
+    },
+    {
+      "brand": "Lenovo",
+      "count": 37,
+      "avg_old": 48906.91891891892,
+      "avg_new": 42903.37837837838,
+      "avg_pct": -12.223917208118745
+    },
+    {
+      "brand": "Dell",
+      "count": 30,
+      "avg_old": 39188.86666666667,
+      "avg_new": 34323.46666666667,
+      "avg_pct": -12.699523360565907
+    },
+    {
+      "brand": "Samsung",
+      "count": 24,
+      "avg_old": 53242.625,
+      "avg_new": 46387.125,
+      "avg_pct": -12.87959889176721
+    },
+    {
+      "brand": "Acer",
+      "count": 18,
+      "avg_old": 40545.11111111111,
+      "avg_new": 35421.72222222222,
+      "avg_pct": -12.922951620312976
+    },
+    {
+      "brand": "SAMSUNG",
+      "count": 17,
+      "avg_old": 8242.588235294117,
+      "avg_new": 7308.470588235294,
+      "avg_pct": -12.369461450858136
+    },
+    {
+      "brand": "Sony",
+      "count": 12,
+      "avg_old": 20396.833333333332,
+      "avg_new": 18046.0,
+      "avg_pct": -11.470733464530197
+    },
+    {
+      "brand": "OnePlus",
+      "count": 9,
+      "avg_old": 32433.0,
+      "avg_new": 28701.88888888889,
+      "avg_pct": -11.712228601314097
+    },
+    {
+      "brand": "JBL",
+      "count": 7,
+      "avg_old": 4687.571428571428,
+      "avg_new": 4167.571428571428,
+      "avg_pct": -11.225897737902866
+    },
+    {
+      "brand": "LOVEVOOK",
+      "count": 7,
+      "avg_old": 3204.714285714286,
+      "avg_new": 2800.4285714285716,
+      "avg_pct": -12.471688610072343
+    },
+    {
+      "brand": "Generic",
+      "count": 7,
+      "avg_old": 3763.285714285714,
+      "avg_new": 3303.285714285714,
+      "avg_pct": -12.456033176450251
+    },
+    {
+      "brand": "PHILIPS",
+      "count": 7,
+      "avg_old": 3763.285714285714,
+      "avg_new": 3350.4285714285716,
+      "avg_pct": -10.931689853831497
+    },
+    {
+      "brand": "MSI",
+      "count": 6,
+      "avg_old": 29626.166666666668,
+      "avg_new": 25967.833333333332,
+      "avg_pct": -13.019452887494877
+    },
+    {
+      "brand": "Xiaomi",
+      "count": 6,
+      "avg_old": 39576.333333333336,
+      "avg_new": 34679.333333333336,
+      "avg_pct": -11.835268859411817
+    },
+    {
+      "brand": "Bose",
+      "count": 6,
+      "avg_old": 21537.666666666668,
+      "avg_new": 19087.666666666668,
+      "avg_pct": -11.535961754309517
+    },
+    {
+      "brand": "Microsoft",
+      "count": 6,
+      "avg_old": 62014.833333333336,
+      "avg_new": 55703.166666666664,
+      "avg_pct": -10.769257162775816
+    },
+    {
+      "brand": "Logitech",
+      "count": 6,
+      "avg_old": 4297.333333333333,
+      "avg_new": 3742.3333333333335,
+      "avg_pct": -12.972574922304132
+    },
+    {
+      "brand": "Nothing",
+      "count": 5,
+      "avg_old": 13199.0,
+      "avg_new": 11811.0,
+      "avg_pct": -11.79196719929241
+    },
+    {
+      "brand": "Superer",
+      "count": 5,
+      "avg_old": 3225.0,
+      "avg_new": 2853.0,
+      "avg_pct": -12.111224431246022
+    },
+    {
+      "brand": "Google",
+      "count": 4,
+      "avg_old": 59765.0,
+      "avg_new": 52090.0,
+      "avg_pct": -12.480001024938996
+    },
+    {
+      "brand": "Motorola",
+      "count": 4,
+      "avg_old": 27944.75,
+      "avg_new": 24807.25,
+      "avg_pct": -11.102352270249842
+    },
+    {
+      "brand": "LG",
+      "count": 4,
+      "avg_old": 54692.25,
+      "avg_new": 47454.75,
+      "avg_pct": -12.65658734660626
+    },
+    {
+      "brand": "Toshiba",
+      "count": 4,
+      "avg_old": 4101.5,
+      "avg_new": 3591.5,
+      "avg_pct": -12.425538174357477
+    },
+    {
+      "brand": "PWR+",
+      "count": 4,
+      "avg_old": 1959.0,
+      "avg_new": 1686.5,
+      "avg_pct": -13.161055030974552
+    },
+    {
+      "brand": "Nicpower",
+      "count": 4,
+      "avg_old": 1911.5,
+      "avg_new": 1659.0,
+      "avg_pct": -13.55309813063746
+    },
+    {
+      "brand": "CWK\u00ae",
+      "count": 4,
+      "avg_old": 4221.5,
+      "avg_new": 3694.0,
+      "avg_pct": -12.494231111812564
+    },
+    {
+      "brand": "Skullcandy",
+      "count": 4,
+      "avg_old": 3229.0,
+      "avg_new": 2814.0,
+      "avg_pct": -13.276494193817905
+    },
+    {
+      "brand": "A-Tech",
+      "count": 4,
+      "avg_old": 2924.0,
+      "avg_new": 2594.0,
+      "avg_pct": -11.437718397416244
+    },
+    {
+      "brand": "Altec Lansing",
+      "count": 4,
+      "avg_old": 5109.0,
+      "avg_new": 4499.0,
+      "avg_pct": -11.883748619335442
+    },
+    {
+      "brand": "Travel",
+      "count": 4,
+      "avg_old": 3514.0,
+      "avg_new": 3111.5,
+      "avg_pct": -11.321265572580037
+    },
+    {
+      "brand": "Sennheiser",
+      "count": 3,
+      "avg_old": 16379.0,
+      "avg_new": 14252.333333333334,
+      "avg_pct": -13.43160659988636
+    },
+    {
+      "brand": "Marshall",
+      "count": 3,
+      "avg_old": 7722.333333333333,
+      "avg_new": 6812.333333333333,
+      "avg_pct": -12.125555464305206
+    },
+    {
+      "brand": "Keychron",
+      "count": 3,
+      "avg_old": 11382.333333333334,
+      "avg_new": 9832.333333333334,
+      "avg_pct": -13.623444111555651
+    },
+    {
+      "brand": "Dexpt",
+      "count": 3,
+      "avg_old": 3219.0,
+      "avg_new": 2842.3333333333335,
+      "avg_pct": -11.426357812611606
+    },
+    {
+      "brand": "STM",
+      "count": 3,
+      "avg_old": 4419.0,
+      "avg_new": 3799.0,
+      "avg_pct": -14.073805927446367
+    },
+    {
+      "brand": "JVC",
+      "count": 3,
+      "avg_old": 6402.333333333333,
+      "avg_new": 5515.666666666667,
+      "avg_pct": -14.204871525806695
+    },
+    {
+      "brand": "GEEKRIA",
+      "count": 3,
+      "avg_old": 1162.3333333333333,
+      "avg_new": 1025.6666666666667,
+      "avg_pct": -12.228419745385688
+    },
+    {
+      "brand": "OWC",
+      "count": 3,
+      "avg_old": 8869.0,
+      "avg_new": 7909.0,
+      "avg_pct": -12.289044052583113
+    },
+    {
+      "brand": "Plantronics",
+      "count": 3,
+      "avg_old": 5065.666666666667,
+      "avg_new": 4442.333333333333,
+      "avg_pct": -12.273980053259242
+    },
+    {
+      "brand": "Western Digital",
+      "count": 3,
+      "avg_old": 6042.333333333333,
+      "avg_new": 5315.666666666667,
+      "avg_pct": -11.924579717817574
+    },
+    {
+      "brand": "COCOCKA",
+      "count": 3,
+      "avg_old": 3315.6666666666665,
+      "avg_new": 2922.3333333333335,
+      "avg_pct": -12.25026819154418
+    },
+    {
+      "brand": "Urbanears",
+      "count": 3,
+      "avg_old": 4432.333333333333,
+      "avg_new": 3852.3333333333335,
+      "avg_pct": -12.875665966310413
+    },
+    {
+      "brand": "Panasonic",
+      "count": 3,
+      "avg_old": 3909.0,
+      "avg_new": 3352.3333333333335,
+      "avg_pct": -14.212665401420951
+    },
+    {
+      "brand": "StarTech",
+      "count": 3,
+      "avg_old": 14965.666666666666,
+      "avg_new": 13015.666666666666,
+      "avg_pct": -12.97402091896921
+    },
+    {
+      "brand": "iQOO",
+      "count": 2,
+      "avg_old": 37640.0,
+      "avg_new": 33090.0,
+      "avg_pct": -12.300632212880025
+    },
+    {
+      "brand": "Vivo",
+      "count": 2,
+      "avg_old": 69990.0,
+      "avg_new": 60040.0,
+      "avg_pct": -14.308842761227691
+    },
+    {
+      "brand": "BenQ",
+      "count": 2,
+      "avg_old": 19669.5,
+      "avg_new": 17164.5,
+      "avg_pct": -12.760378347367325
+    },
+    {
+      "brand": "Amazfit",
+      "count": 2,
+      "avg_old": 11824.0,
+      "avg_new": 10249.0,
+      "avg_pct": -14.142393544657143
+    },
+    {
+      "brand": "Nintendo",
+      "count": 2,
+      "avg_old": 29190.0,
+      "avg_new": 24994.5,
+      "avg_pct": -14.38772635869205
+    },
+    {
+      "brand": "Anker",
+      "count": 2,
+      "avg_old": 7574.0,
+      "avg_new": 6619.0,
+      "avg_pct": -13.39657533320089
+    },
+    {
+      "brand": "BIPRA",
+      "count": 2,
+      "avg_old": 4574.0,
+      "avg_new": 4039.0,
+      "avg_pct": -13.659196706721904
+    },
+    {
+      "brand": "LENTION",
+      "count": 2,
+      "avg_old": 3994.0,
+      "avg_new": 3474.0,
+      "avg_pct": -11.33673436809043
+    },
+    {
+      "brand": "Pyle",
+      "count": 2,
+      "avg_old": 2904.0,
+      "avg_new": 2549.0,
+      "avg_pct": -11.343516392320776
+    },
+    {
+      "brand": "Macally",
+      "count": 2,
+      "avg_old": 2959.0,
+      "avg_new": 2624.0,
+      "avg_pct": -12.348228376067944
+    },
+    {
+      "brand": "BLLQ",
+      "count": 2,
+      "avg_old": 484.0,
+      "avg_new": 424.0,
+      "avg_pct": -12.068216331961063
+    },
+    {
+      "brand": "WisFox",
+      "count": 2,
+      "avg_old": 1184.0,
+      "avg_new": 1054.0,
+      "avg_pct": -11.061015516900195
+    },
+    {
+      "brand": "Leather",
+      "count": 2,
+      "avg_old": 1664.0,
+      "avg_new": 1419.0,
+      "avg_pct": -13.762595780162828
+    },
+    {
+      "brand": "JanSport",
+      "count": 2,
+      "avg_old": 4249.0,
+      "avg_new": 3724.0,
+      "avg_pct": -12.4032458775239
+    },
+    {
+      "brand": "School",
+      "count": 2,
+      "avg_old": 4009.0,
+      "avg_new": 3534.0,
+      "avg_pct": -11.846204706424501
+    },
+    {
+      "brand": "Ultimate Ears",
+      "count": 2,
+      "avg_old": 10319.0,
+      "avg_new": 8984.0,
+      "avg_pct": -11.777401021929837
+    },
+    {
+      "brand": "Sqrmekoko",
+      "count": 2,
+      "avg_old": 529.0,
+      "avg_new": 459.0,
+      "avg_pct": -13.272991803132182
+    },
+    {
+      "brand": "RAOYI",
+      "count": 2,
+      "avg_old": 949.0,
+      "avg_new": 854.0,
+      "avg_pct": -10.042604990870359
+    },
+    {
+      "brand": "HardDriveGeeks",
+      "count": 2,
+      "avg_old": 3989.0,
+      "avg_new": 3549.0,
+      "avg_pct": -10.894565490538692
+    },
+    {
+      "brand": "Ostrich",
+      "count": 2,
+      "avg_old": 1344.0,
+      "avg_new": 1169.0,
+      "avg_pct": -13.022397582697552
+    },
+    {
+      "brand": "King EBOYEE",
+      "count": 2,
+      "avg_old": 1954.0,
+      "avg_new": 1689.0,
+      "avg_pct": -13.564687938969445
+    },
+    {
+      "brand": "REYTRIC",
+      "count": 2,
+      "avg_old": 1639.0,
+      "avg_new": 1434.0,
+      "avg_pct": -12.626642576181522
+    },
+    {
+      "brand": "Boyuteceer",
+      "count": 2,
+      "avg_old": 4384.0,
+      "avg_new": 3799.0,
+      "avg_pct": -13.218318820346756
+    },
+    {
+      "brand": "HyperX",
+      "count": 2,
+      "avg_old": 26169.5,
+      "avg_new": 22519.5,
+      "avg_pct": -14.0308271516099
+    },
+    {
+      "brand": "IHip",
+      "count": 2,
+      "avg_old": 4459.0,
+      "avg_new": 3934.0,
+      "avg_pct": -11.777581669897113
+    },
+    {
+      "brand": "Wansenda",
+      "count": 2,
+      "avg_old": 2134.0,
+      "avg_new": 1909.0,
+      "avg_pct": -11.263286580354642
+    },
+    {
+      "brand": "VUOHOEG",
+      "count": 2,
+      "avg_old": 824.0,
+      "avg_new": 734.0,
+      "avg_pct": -11.05257629621082
+    },
+    {
+      "brand": "Jabra",
+      "count": 2,
+      "avg_old": 7374.0,
+      "avg_new": 6459.0,
+      "avg_pct": -11.702348835578096
+    },
+    {
+      "brand": "Verbatim",
+      "count": 2,
+      "avg_old": 2679.0,
+      "avg_new": 2344.0,
+      "avg_pct": -12.642551627525448
+    },
+    {
+      "brand": "WirelessFinest",
+      "count": 2,
+      "avg_old": 1149.0,
+      "avg_new": 1019.0,
+      "avg_pct": -11.28730770775291
+    },
+    {
+      "brand": "Bovekeey",
+      "count": 2,
+      "avg_old": 2389.0,
+      "avg_new": 2044.0,
+      "avg_pct": -14.450384420341905
+    },
+    {
+      "brand": "HAYLOU",
+      "count": 2,
+      "avg_old": 4099.0,
+      "avg_new": 3629.0,
+      "avg_pct": -11.447083423292433
+    },
+    {
+      "brand": "Billboard",
+      "count": 2,
+      "avg_old": 1424.0,
+      "avg_new": 1274.0,
+      "avg_pct": -10.671447242964703
+    },
+    {
+      "brand": "UnionSine",
+      "count": 2,
+      "avg_old": 2804.0,
+      "avg_new": 2549.0,
+      "avg_pct": -10.01618856051522
+    },
+    {
+      "brand": "SUNNEAR",
+      "count": 2,
+      "avg_old": 3539.0,
+      "avg_new": 3099.0,
+      "avg_pct": -12.417015813557438
+    },
+    {
+      "brand": "Wepro",
+      "count": 2,
+      "avg_old": 4034.0,
+      "avg_new": 3464.0,
+      "avg_pct": -14.06544004850925
+    },
+    {
+      "brand": "COMPLY",
+      "count": 2,
+      "avg_old": 4154.0,
+      "avg_new": 3579.0,
+      "avg_pct": -13.86619278298902
+    },
+    {
+      "brand": "Computer Memory Solutions",
+      "count": 2,
+      "avg_old": 1404.0,
+      "avg_new": 1204.0,
+      "avg_pct": -14.492441047853461
+    },
+    {
+      "brand": "LCDOLED",
+      "count": 2,
+      "avg_old": 5944.0,
+      "avg_new": 5249.0,
+      "avg_pct": -12.033539645606687
+    },
+    {
+      "brand": "Sennheiser Consumer Audio",
+      "count": 2,
+      "avg_old": 4249.0,
+      "avg_new": 3724.0,
+      "avg_pct": -12.355633528001643
+    },
+    {
+      "brand": "SANOXY",
+      "count": 2,
+      "avg_old": 774.0,
+      "avg_new": 689.0,
+      "avg_pct": -10.981473944436907
+    },
+    {
+      "brand": "Comiso",
+      "count": 2,
+      "avg_old": 1879.0,
+      "avg_new": 1669.0,
+      "avg_pct": -11.152065586275675
+    },
+    {
+      "brand": "Califone",
+      "count": 2,
+      "avg_old": 3039.0,
+      "avg_new": 2674.0,
+      "avg_pct": -11.674585624690113
+    },
+    {
+      "brand": "Fenrici",
+      "count": 2,
+      "avg_old": 2259.0,
+      "avg_new": 1984.0,
+      "avg_pct": -12.050711014206435
+    },
+    {
+      "brand": "tomtoc",
+      "count": 2,
+      "avg_old": 3649.0,
+      "avg_new": 3174.0,
+      "avg_pct": -13.226923722248848
+    },
+    {
+      "brand": "HUO JI",
+      "count": 2,
+      "avg_old": 3139.0,
+      "avg_new": 2669.0,
+      "avg_pct": -13.786636990797902
+    },
+    {
+      "brand": "Klipsch",
+      "count": 2,
+      "avg_old": 6124.0,
+      "avg_new": 5274.0,
+      "avg_pct": -13.684985871639409
+    },
+    {
+      "brand": "Aftershokz",
+      "count": 2,
+      "avg_old": 4079.0,
+      "avg_new": 3569.0,
+      "avg_pct": -12.517103912948652
+    },
+    {
+      "brand": "Seagate",
+      "count": 2,
+      "avg_old": 10649.0,
+      "avg_new": 9574.0,
+      "avg_pct": -10.061158591342945
+    },
+    {
+      "brand": "UPBRIGHT",
+      "count": 2,
+      "avg_old": 844.0,
+      "avg_new": 744.0,
+      "avg_pct": -12.123905878004022
+    },
+    {
+      "brand": "TEAMGROUP",
+      "count": 2,
+      "avg_old": 8424.0,
+      "avg_new": 7399.0,
+      "avg_pct": -13.19060136598102
+    },
+    {
+      "brand": "Astell&Kern",
+      "count": 2,
+      "avg_old": 4199.0,
+      "avg_new": 3739.0,
+      "avg_pct": -10.93469731714585
+    },
+    {
+      "brand": "Cubilux",
+      "count": 2,
+      "avg_old": 1159.0,
+      "avg_new": 1004.0,
+      "avg_pct": -13.018845607612786
+    },
+    {
+      "brand": "AN\u00b7GWEL",
+      "count": 2,
+      "avg_old": 1814.0,
+      "avg_new": 1584.0,
+      "avg_pct": -12.737085600864116
+    },
+    {
+      "brand": "SUHSAI",
+      "count": 2,
+      "avg_old": 919.0,
+      "avg_new": 819.0,
+      "avg_pct": -11.214692089847631
+    },
+    {
+      "brand": "Belker",
+      "count": 2,
+      "avg_old": 1439.0,
+      "avg_new": 1224.0,
+      "avg_pct": -14.467703986751658
+    },
+    {
+      "brand": "Bay Valley Parts",
+      "count": 2,
+      "avg_old": 4109.0,
+      "avg_new": 3679.0,
+      "avg_pct": -10.643101166100895
+    },
+    {
+      "brand": "Lenovo USA",
+      "count": 2,
+      "avg_old": 3544.0,
+      "avg_new": 3049.0,
+      "avg_pct": -13.90362728337575
+    },
+    {
+      "brand": "GIGABYTE",
+      "count": 2,
+      "avg_old": 4394.0,
+      "avg_new": 3854.0,
+      "avg_pct": -12.304724201518724
+    },
+    {
+      "brand": "G.K",
+      "count": 2,
+      "avg_old": 3649.0,
+      "avg_new": 3254.0,
+      "avg_pct": -10.825557346558089
+    },
+    {
+      "brand": "Granvela",
+      "count": 2,
+      "avg_old": 2839.0,
+      "avg_new": 2524.0,
+      "avg_pct": -11.672194640767959
+    },
+    {
+      "brand": "Honor",
+      "count": 1,
+      "avg_old": 43290.0,
+      "avg_new": 38090.0,
+      "avg_pct": -12.012012012012011
+    },
+    {
+      "brand": "Realme",
+      "count": 1,
+      "avg_old": 37990.0,
+      "avg_new": 33590.0,
+      "avg_pct": -11.581995261911029
+    },
+    {
+      "brand": "POCO",
+      "count": 1,
+      "avg_old": 24849.0,
+      "avg_new": 21549.0,
+      "avg_pct": -13.280212483399733
+    },
+    {
+      "brand": "Garmin",
+      "count": 1,
+      "avg_old": 14299.0,
+      "avg_new": 11999.0,
+      "avg_pct": -16.085040911951882
+    },
+    {
+      "brand": "boAt",
+      "count": 1,
+      "avg_old": 1419.0,
+      "avg_new": 1219.0,
+      "avg_pct": -14.094432699083862
+    },
+    {
+      "brand": "Valve",
+      "count": 1,
+      "avg_old": 49990.0,
+      "avg_new": 44390.0,
+      "avg_pct": -11.202240448089618
+    },
+    {
+      "brand": "Razer",
+      "count": 1,
+      "avg_old": 11899.0,
+      "avg_new": 10349.0,
+      "avg_pct": -13.02630473149004
+    },
+    {
+      "brand": "Poco",
+      "count": 1,
+      "avg_old": 25790.0,
+      "avg_new": 22099.0,
+      "avg_pct": -14.311748739821637
+    },
+    {
+      "brand": "Asus",
+      "count": 1,
+      "avg_old": 45990.0,
+      "avg_new": 41690.0,
+      "avg_pct": -9.349858664927158
+    },
+    {
+      "brand": "ProTech",
+      "count": 1,
+      "avg_old": 4979.0,
+      "avg_new": 4339.0,
+      "avg_pct": -12.853986744326171
+    },
+    {
+      "brand": "KEiiD",
+      "count": 1,
+      "avg_old": 5199.0,
+      "avg_new": 4629.0,
+      "avg_pct": -10.963646855164455
+    },
+    {
+      "brand": "Gateway",
+      "count": 1,
+      "avg_old": 14249.0,
+      "avg_new": 11949.0,
+      "avg_pct": -16.141483612885114
+    },
+    {
+      "brand": "Plugable",
+      "count": 1,
+      "avg_old": 1459.0,
+      "avg_new": 1269.0,
+      "avg_pct": -13.022618231665525
+    },
+    {
+      "brand": "FLAGPOWER",
+      "count": 1,
+      "avg_old": 3939.0,
+      "avg_new": 3419.0,
+      "avg_pct": -13.2013201320132
+    },
+    {
+      "brand": "KKstorm",
+      "count": 1,
+      "avg_old": 1239.0,
+      "avg_new": 1049.0,
+      "avg_pct": -15.334947538337367
+    },
+    {
+      "brand": "AIUNIT",
+      "count": 1,
+      "avg_old": 649.0,
+      "avg_new": 559.0,
+      "avg_pct": -13.86748844375963
+    },
+    {
+      "brand": "OCEBEEC",
+      "count": 1,
+      "avg_old": 4579.0,
+      "avg_new": 3919.0,
+      "avg_pct": -14.413627429569775
+    },
+    {
+      "brand": "Vbestlife",
+      "count": 1,
+      "avg_old": 659.0,
+      "avg_new": 569.0,
+      "avg_pct": -13.657056145675265
+    },
+    {
+      "brand": "Lcd4laptop",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3769.0,
+      "avg_pct": -11.91867258705305
+    },
+    {
+      "brand": "erjigo",
+      "count": 1,
+      "avg_old": 1669.0,
+      "avg_new": 1489.0,
+      "avg_pct": -10.784901138406232
+    },
+    {
+      "brand": "Arrontop",
+      "count": 1,
+      "avg_old": 4029.0,
+      "avg_new": 3579.0,
+      "avg_pct": -11.169024571854058
+    },
+    {
+      "brand": "YUNLOVXEE",
+      "count": 1,
+      "avg_old": 629.0,
+      "avg_new": 569.0,
+      "avg_pct": -9.538950715421304
+    },
+    {
+      "brand": "APBFH",
+      "count": 1,
+      "avg_old": 879.0,
+      "avg_new": 749.0,
+      "avg_pct": -14.789533560864617
+    },
+    {
+      "brand": "Cunliwaa",
+      "count": 1,
+      "avg_old": 4699.0,
+      "avg_new": 3949.0,
+      "avg_pct": -15.960842732496275
+    },
+    {
+      "brand": "ESGAMING",
+      "count": 1,
+      "avg_old": 4209.0,
+      "avg_new": 3659.0,
+      "avg_pct": -13.067236873366594
+    },
+    {
+      "brand": "Mobile",
+      "count": 1,
+      "avg_old": 4089.0,
+      "avg_new": 3659.0,
+      "avg_pct": -10.516018586451455
+    },
+    {
+      "brand": "AFU",
+      "count": 1,
+      "avg_old": 4039.0,
+      "avg_new": 3619.0,
+      "avg_pct": -10.398613518197573
+    },
+    {
+      "brand": "Lencca",
+      "count": 1,
+      "avg_old": 4579.0,
+      "avg_new": 4009.0,
+      "avg_pct": -12.448132780082988
+    },
+    {
+      "brand": "SIMOLIO",
+      "count": 1,
+      "avg_old": 5149.0,
+      "avg_new": 4509.0,
+      "avg_pct": -12.429597980190328
+    },
+    {
+      "brand": "DHK",
+      "count": 1,
+      "avg_old": 5599.0,
+      "avg_new": 4929.0,
+      "avg_pct": -11.966422575459903
+    },
+    {
+      "brand": "Soundfreaq",
+      "count": 1,
+      "avg_old": 4519.0,
+      "avg_new": 3889.0,
+      "avg_pct": -13.941137419783137
+    },
+    {
+      "brand": "Desview",
+      "count": 1,
+      "avg_old": 8949.0,
+      "avg_new": 7849.0,
+      "avg_pct": -12.291876187283496
+    },
+    {
+      "brand": "ACAGET",
+      "count": 1,
+      "avg_old": 1109.0,
+      "avg_new": 969.0,
+      "avg_pct": -12.623985572587918
+    },
+    {
+      "brand": "Berchirly",
+      "count": 1,
+      "avg_old": 3509.0,
+      "avg_new": 3089.0,
+      "avg_pct": -11.969222000569962
+    },
+    {
+      "brand": "Sanus",
+      "count": 1,
+      "avg_old": 3139.0,
+      "avg_new": 2719.0,
+      "avg_pct": -13.3800573431029
+    },
+    {
+      "brand": "ASIILOVI",
+      "count": 1,
+      "avg_old": 1319.0,
+      "avg_new": 1099.0,
+      "avg_pct": -16.67930250189538
+    },
+    {
+      "brand": "Mafiti",
+      "count": 1,
+      "avg_old": 1459.0,
+      "avg_new": 1239.0,
+      "avg_pct": -15.078821110349555
+    },
+    {
+      "brand": "JLab",
+      "count": 1,
+      "avg_old": 1549.0,
+      "avg_new": 1319.0,
+      "avg_pct": -14.848289218850871
+    },
+    {
+      "brand": "KS K-STORM",
+      "count": 1,
+      "avg_old": 599.0,
+      "avg_new": 529.0,
+      "avg_pct": -11.686143572621036
+    },
+    {
+      "brand": "Esky",
+      "count": 1,
+      "avg_old": 4449.0,
+      "avg_new": 3829.0,
+      "avg_pct": -13.935715891211508
+    },
+    {
+      "brand": "RedSkyPower",
+      "count": 1,
+      "avg_old": 969.0,
+      "avg_new": 829.0,
+      "avg_pct": -14.447884416924664
+    },
+    {
+      "brand": "Coloud",
+      "count": 1,
+      "avg_old": 4739.0,
+      "avg_new": 4139.0,
+      "avg_pct": -12.660898923823591
+    },
+    {
+      "brand": "Kingstar",
+      "count": 1,
+      "avg_old": 4719.0,
+      "avg_new": 4149.0,
+      "avg_pct": -12.078830260648441
+    },
+    {
+      "brand": "SIMPLEFIX",
+      "count": 1,
+      "avg_old": 1909.0,
+      "avg_new": 1629.0,
+      "avg_pct": -14.667365112624411
+    },
+    {
+      "brand": "AHK",
+      "count": 1,
+      "avg_old": 2179.0,
+      "avg_new": 1879.0,
+      "avg_pct": -13.767783386874713
+    },
+    {
+      "brand": "EDJO",
+      "count": 1,
+      "avg_old": 2569.0,
+      "avg_new": 2239.0,
+      "avg_pct": -12.845465161541455
+    },
+    {
+      "brand": "Fujimoto Dengyo",
+      "count": 1,
+      "avg_old": 649.0,
+      "avg_new": 569.0,
+      "avg_pct": -12.326656394453005
+    },
+    {
+      "brand": "UNAWUDOH",
+      "count": 1,
+      "avg_old": 759.0,
+      "avg_new": 669.0,
+      "avg_pct": -11.857707509881422
+    },
+    {
+      "brand": "Certified",
+      "count": 1,
+      "avg_old": 4249.0,
+      "avg_new": 3589.0,
+      "avg_pct": -15.5330666039068
+    },
+    {
+      "brand": "Braveman",
+      "count": 1,
+      "avg_old": 3879.0,
+      "avg_new": 3319.0,
+      "avg_pct": -14.436710492394948
+    },
+    {
+      "brand": "Sherpani",
+      "count": 1,
+      "avg_old": 3579.0,
+      "avg_new": 2989.0,
+      "avg_pct": -16.485051690416316
+    },
+    {
+      "brand": "SoundPEATS",
+      "count": 1,
+      "avg_old": 3709.0,
+      "avg_new": 3229.0,
+      "avg_pct": -12.941493664060394
+    },
+    {
+      "brand": "Targus",
+      "count": 1,
+      "avg_old": 4079.0,
+      "avg_new": 3619.0,
+      "avg_pct": -11.27727384162785
+    },
+    {
+      "brand": "Waterproof",
+      "count": 1,
+      "avg_old": 4229.0,
+      "avg_new": 3629.0,
+      "avg_pct": -14.187751241428234
+    },
+    {
+      "brand": "GrandPad",
+      "count": 1,
+      "avg_old": 28890.0,
+      "avg_new": 24699.0,
+      "avg_pct": -14.5067497403946
+    },
+    {
+      "brand": "Liwarace",
+      "count": 1,
+      "avg_old": 4379.0,
+      "avg_new": 3929.0,
+      "avg_pct": -10.276318794245261
+    },
+    {
+      "brand": "DUCKY PRODUCTS",
+      "count": 1,
+      "avg_old": 3759.0,
+      "avg_new": 3459.0,
+      "avg_pct": -7.980845969672785
+    },
+    {
+      "brand": "RunElves",
+      "count": 1,
+      "avg_old": 2689.0,
+      "avg_new": 2339.0,
+      "avg_pct": -13.015991074748978
+    },
+    {
+      "brand": "Inateck",
+      "count": 1,
+      "avg_old": 3589.0,
+      "avg_new": 3169.0,
+      "avg_pct": -11.702424073558095
+    },
+    {
+      "brand": "Womleys",
+      "count": 1,
+      "avg_old": 4539.0,
+      "avg_new": 3889.0,
+      "avg_pct": -14.320334875523244
+    },
+    {
+      "brand": "Life-Tech",
+      "count": 1,
+      "avg_old": 4509.0,
+      "avg_new": 4099.0,
+      "avg_pct": -9.092925260589931
+    },
+    {
+      "brand": "YouthCamp",
+      "count": 1,
+      "avg_old": 3999.0,
+      "avg_new": 3649.0,
+      "avg_pct": -8.752188047011753
+    },
+    {
+      "brand": "YUSONIC",
+      "count": 1,
+      "avg_old": 1689.0,
+      "avg_new": 1479.0,
+      "avg_pct": -12.433392539964476
+    },
+    {
+      "brand": "Moon2020",
+      "count": 1,
+      "avg_old": 4079.0,
+      "avg_new": 3729.0,
+      "avg_pct": -8.580534444716841
+    },
+    {
+      "brand": "BAGEIRA",
+      "count": 1,
+      "avg_old": 2289.0,
+      "avg_new": 1999.0,
+      "avg_pct": -12.669287898645699
+    },
+    {
+      "brand": "KALANDO",
+      "count": 1,
+      "avg_old": 2779.0,
+      "avg_new": 2419.0,
+      "avg_pct": -12.954300107952502
+    },
+    {
+      "brand": "Tzowla",
+      "count": 1,
+      "avg_old": 1769.0,
+      "avg_new": 1559.0,
+      "avg_pct": -11.871113623516111
+    },
+    {
+      "brand": "Hermitshell",
+      "count": 1,
+      "avg_old": 3449.0,
+      "avg_new": 2939.0,
+      "avg_pct": -14.786894752102059
+    },
+    {
+      "brand": "WINONLY",
+      "count": 1,
+      "avg_old": 1029.0,
+      "avg_new": 879.0,
+      "avg_pct": -14.577259475218659
+    },
+    {
+      "brand": "Blue Tees Golf",
+      "count": 1,
+      "avg_old": 9849.0,
+      "avg_new": 8799.0,
+      "avg_pct": -10.660980810234541
+    },
+    {
+      "brand": "AIYUNNI",
+      "count": 1,
+      "avg_old": 4259.0,
+      "avg_new": 3929.0,
+      "avg_pct": -7.748297722470062
+    },
+    {
+      "brand": "Dakine",
+      "count": 1,
+      "avg_old": 3859.0,
+      "avg_new": 3369.0,
+      "avg_pct": -12.697590049235552
+    },
+    {
+      "brand": "Zunate",
+      "count": 1,
+      "avg_old": 1249.0,
+      "avg_new": 1109.0,
+      "avg_pct": -11.20896717373899
+    },
+    {
+      "brand": "Delippo",
+      "count": 1,
+      "avg_old": 2949.0,
+      "avg_new": 2589.0,
+      "avg_pct": -12.207527975584945
+    },
+    {
+      "brand": "LIUHE",
+      "count": 1,
+      "avg_old": 1029.0,
+      "avg_new": 919.0,
+      "avg_pct": -10.689990281827017
+    },
+    {
+      "brand": "Defean",
+      "count": 1,
+      "avg_old": 2459.0,
+      "avg_new": 2179.0,
+      "avg_pct": -11.386742578283854
+    },
+    {
+      "brand": "Charm & Magic",
+      "count": 1,
+      "avg_old": 4089.0,
+      "avg_new": 3589.0,
+      "avg_pct": -12.227928588897042
+    },
+    {
+      "brand": "SUPERNIGHT",
+      "count": 1,
+      "avg_old": 3799.0,
+      "avg_new": 3329.0,
+      "avg_pct": -12.371676757041326
+    },
+    {
+      "brand": "MageGee",
+      "count": 1,
+      "avg_old": 1539.0,
+      "avg_new": 1369.0,
+      "avg_pct": -11.046133853151396
+    },
+    {
+      "brand": "dockteck",
+      "count": 1,
+      "avg_old": 2489.0,
+      "avg_new": 2199.0,
+      "avg_pct": -11.651265568501406
+    },
+    {
+      "brand": "KLO",
+      "count": 1,
+      "avg_old": 979.0,
+      "avg_new": 809.0,
+      "avg_pct": -17.364657814096017
+    },
+    {
+      "brand": "Fire",
+      "count": 1,
+      "avg_old": 4429.0,
+      "avg_new": 3929.0,
+      "avg_pct": -11.289230074508918
+    },
+    {
+      "brand": "Blawhi",
+      "count": 1,
+      "avg_old": 4529.0,
+      "avg_new": 3889.0,
+      "avg_pct": -14.131154780304703
+    },
+    {
+      "brand": "FXWONTY",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3859.0,
+      "avg_pct": -9.604122745373624
+    },
+    {
+      "brand": "IEFUU",
+      "count": 1,
+      "avg_old": 779.0,
+      "avg_new": 689.0,
+      "avg_pct": -11.553273427471117
+    },
+    {
+      "brand": "Audio",
+      "count": 1,
+      "avg_old": 989.0,
+      "avg_new": 869.0,
+      "avg_pct": -12.133468149646106
+    },
+    {
+      "brand": "SZHTFX",
+      "count": 1,
+      "avg_old": 2169.0,
+      "avg_new": 1909.0,
+      "avg_pct": -11.9870908252651
+    },
+    {
+      "brand": "Nuiflash",
+      "count": 1,
+      "avg_old": 4779.0,
+      "avg_new": 4289.0,
+      "avg_pct": -10.253191044151496
+    },
+    {
+      "brand": "AMAFACE",
+      "count": 1,
+      "avg_old": 3049.0,
+      "avg_new": 2699.0,
+      "avg_pct": -11.479173499508036
+    },
+    {
+      "brand": "LB1 High Performance",
+      "count": 1,
+      "avg_old": 4589.0,
+      "avg_new": 4109.0,
+      "avg_pct": -10.459795162344736
+    },
+    {
+      "brand": "YOYOSHome",
+      "count": 1,
+      "avg_old": 3889.0,
+      "avg_new": 3389.0,
+      "avg_pct": -12.85677552069941
+    },
+    {
+      "brand": "Adp",
+      "count": 1,
+      "avg_old": 3819.0,
+      "avg_new": 3319.0,
+      "avg_pct": -13.092432573972243
+    },
+    {
+      "brand": "AVIMABASICS",
+      "count": 1,
+      "avg_old": 719.0,
+      "avg_new": 609.0,
+      "avg_pct": -15.299026425591098
+    },
+    {
+      "brand": "Sakar",
+      "count": 1,
+      "avg_old": 4489.0,
+      "avg_new": 4009.0,
+      "avg_pct": -10.692804633548675
+    },
+    {
+      "brand": "Delta",
+      "count": 1,
+      "avg_old": 4289.0,
+      "avg_new": 3639.0,
+      "avg_pct": -15.155047796689205
+    },
+    {
+      "brand": "Soutege",
+      "count": 1,
+      "avg_old": 4489.0,
+      "avg_new": 3919.0,
+      "avg_pct": -12.697705502339051
+    },
+    {
+      "brand": "Fhong",
+      "count": 1,
+      "avg_old": 1059.0,
+      "avg_new": 949.0,
+      "avg_pct": -10.387157695939566
+    },
+    {
+      "brand": "NEW POW",
+      "count": 1,
+      "avg_old": 4379.0,
+      "avg_new": 3809.0,
+      "avg_pct": -13.016670472710665
+    },
+    {
+      "brand": "Dekoni Audio",
+      "count": 1,
+      "avg_old": 649.0,
+      "avg_new": 559.0,
+      "avg_pct": -13.86748844375963
+    },
+    {
+      "brand": "LEOLIO",
+      "count": 1,
+      "avg_old": 4019.0,
+      "avg_new": 3579.0,
+      "avg_pct": -10.947997014182633
+    },
+    {
+      "brand": "seenda",
+      "count": 1,
+      "avg_old": 2979.0,
+      "avg_new": 2639.0,
+      "avg_pct": -11.413225914736488
+    },
+    {
+      "brand": "BRAINWAVZ",
+      "count": 1,
+      "avg_old": 4329.0,
+      "avg_new": 3669.0,
+      "avg_pct": -15.246015246015245
+    },
+    {
+      "brand": "OUWEE",
+      "count": 1,
+      "avg_old": 3629.0,
+      "avg_new": 3259.0,
+      "avg_pct": -10.195646183521632
+    },
+    {
+      "brand": "GOLF",
+      "count": 1,
+      "avg_old": 2619.0,
+      "avg_new": 2349.0,
+      "avg_pct": -10.309278350515463
+    },
+    {
+      "brand": "Wacom",
+      "count": 1,
+      "avg_old": 4359.0,
+      "avg_new": 3709.0,
+      "avg_pct": -14.911676990135353
+    },
+    {
+      "brand": "Kbinter",
+      "count": 1,
+      "avg_old": 939.0,
+      "avg_new": 809.0,
+      "avg_pct": -13.844515441959532
+    },
+    {
+      "brand": "Laidoudou",
+      "count": 1,
+      "avg_old": 9199.0,
+      "avg_new": 7949.0,
+      "avg_pct": -13.588433525383195
+    },
+    {
+      "brand": "Repair",
+      "count": 1,
+      "avg_old": 4449.0,
+      "avg_new": 3859.0,
+      "avg_pct": -13.261407057765789
+    },
+    {
+      "brand": "Unipows",
+      "count": 1,
+      "avg_old": 4659.0,
+      "avg_new": 3959.0,
+      "avg_pct": -15.024683408456752
+    },
+    {
+      "brand": "IMangoo",
+      "count": 1,
+      "avg_old": 859.0,
+      "avg_new": 739.0,
+      "avg_pct": -13.969732246798602
+    },
+    {
+      "brand": "MEGUO",
+      "count": 1,
+      "avg_old": 3939.0,
+      "avg_new": 3309.0,
+      "avg_pct": -15.993907083015992
+    },
+    {
+      "brand": "Jolook",
+      "count": 1,
+      "avg_old": 779.0,
+      "avg_new": 699.0,
+      "avg_pct": -10.269576379974326
+    },
+    {
+      "brand": "G4Free",
+      "count": 1,
+      "avg_old": 2569.0,
+      "avg_new": 2279.0,
+      "avg_pct": -11.288439081354612
+    },
+    {
+      "brand": "Bihai",
+      "count": 1,
+      "avg_old": 4359.0,
+      "avg_new": 3749.0,
+      "avg_pct": -13.994035329203946
+    },
+    {
+      "brand": "OUTADOnamicit",
+      "count": 1,
+      "avg_old": 3929.0,
+      "avg_new": 3439.0,
+      "avg_pct": -12.471366759989818
+    },
+    {
+      "brand": "Screen",
+      "count": 1,
+      "avg_old": 9099.0,
+      "avg_new": 7949.0,
+      "avg_pct": -12.638751511155071
+    },
+    {
+      "brand": "Kipling",
+      "count": 1,
+      "avg_old": 10199.0,
+      "avg_new": 8699.0,
+      "avg_pct": -14.707324247475242
+    },
+    {
+      "brand": "Scosche",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3779.0,
+      "avg_pct": -11.684973124561813
+    },
+    {
+      "brand": "Lion",
+      "count": 1,
+      "avg_old": 1759.0,
+      "avg_new": 1559.0,
+      "avg_pct": -11.370096645821489
+    },
+    {
+      "brand": "Jam",
+      "count": 1,
+      "avg_old": 4539.0,
+      "avg_new": 3999.0,
+      "avg_pct": -11.896893588896233
+    },
+    {
+      "brand": "Allocacoc",
+      "count": 1,
+      "avg_old": 4489.0,
+      "avg_new": 3859.0,
+      "avg_pct": -14.034306081532636
+    },
+    {
+      "brand": "iTouch",
+      "count": 1,
+      "avg_old": 4999.0,
+      "avg_new": 4379.0,
+      "avg_pct": -12.402480496099221
+    },
+    {
+      "brand": "Gorsun",
+      "count": 1,
+      "avg_old": 1179.0,
+      "avg_new": 1019.0,
+      "avg_pct": -13.570822731128073
+    },
+    {
+      "brand": "ROCK&ROWN",
+      "count": 1,
+      "avg_old": 2009.0,
+      "avg_new": 1779.0,
+      "avg_pct": -11.448481831757093
+    },
+    {
+      "brand": "Withings",
+      "count": 1,
+      "avg_old": 20549.0,
+      "avg_new": 18249.0,
+      "avg_pct": -11.192758771716385
+    },
+    {
+      "brand": "Aidata",
+      "count": 1,
+      "avg_old": 4029.0,
+      "avg_new": 3579.0,
+      "avg_pct": -11.169024571854058
+    },
+    {
+      "brand": "Cooler Master",
+      "count": 1,
+      "avg_old": 4259.0,
+      "avg_new": 3759.0,
+      "avg_pct": -11.739845034045551
+    },
+    {
+      "brand": "YCGSHOP",
+      "count": 1,
+      "avg_old": 4209.0,
+      "avg_new": 3559.0,
+      "avg_pct": -15.443098123069612
+    },
+    {
+      "brand": "Sosoon",
+      "count": 1,
+      "avg_old": 4819.0,
+      "avg_new": 4199.0,
+      "avg_pct": -12.865739780037352
+    },
+    {
+      "brand": "FEELNEVER",
+      "count": 1,
+      "avg_old": 3869.0,
+      "avg_new": 3349.0,
+      "avg_pct": -13.440165417420522
+    },
+    {
+      "brand": "FeiYen",
+      "count": 1,
+      "avg_old": 4519.0,
+      "avg_new": 3979.0,
+      "avg_pct": -11.949546359814118
+    },
+    {
+      "brand": "Upstart Battery",
+      "count": 1,
+      "avg_old": 4119.0,
+      "avg_new": 3469.0,
+      "avg_pct": -15.780529254673464
+    },
+    {
+      "brand": "Merkury Innovations",
+      "count": 1,
+      "avg_old": 4189.0,
+      "avg_new": 3699.0,
+      "avg_pct": -11.69730245882072
+    },
+    {
+      "brand": "Fixcracked",
+      "count": 1,
+      "avg_old": 1269.0,
+      "avg_new": 1089.0,
+      "avg_pct": -14.184397163120568
+    },
+    {
+      "brand": "COLSUR",
+      "count": 1,
+      "avg_old": 3589.0,
+      "avg_new": 3209.0,
+      "avg_pct": -10.58790749512399
+    },
+    {
+      "brand": "SharpPort",
+      "count": 1,
+      "avg_old": 3879.0,
+      "avg_new": 3439.0,
+      "avg_pct": -11.34312967259603
+    },
+    {
+      "brand": "Favoby",
+      "count": 1,
+      "avg_old": 4939.0,
+      "avg_new": 4389.0,
+      "avg_pct": -11.1358574610245
+    },
+    {
+      "brand": "Premium",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3749.0,
+      "avg_pct": -12.180838603888498
+    },
+    {
+      "brand": "LaCie",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3609.0,
+      "avg_pct": -15.65786398691283
+    },
+    {
+      "brand": "DOSS",
+      "count": 1,
+      "avg_old": 6149.0,
+      "avg_new": 5599.0,
+      "avg_pct": -8.94454382826476
+    },
+    {
+      "brand": "PERLESMITH",
+      "count": 1,
+      "avg_old": 3809.0,
+      "avg_new": 3389.0,
+      "avg_pct": -11.02651614597007
+    },
+    {
+      "brand": "EXCaliberPC",
+      "count": 1,
+      "avg_old": 4149.0,
+      "avg_new": 3499.0,
+      "avg_pct": -15.66642564473367
+    },
+    {
+      "brand": "LORELEI",
+      "count": 1,
+      "avg_old": 649.0,
+      "avg_new": 559.0,
+      "avg_pct": -13.86748844375963
+    },
+    {
+      "brand": "Transcend",
+      "count": 1,
+      "avg_old": 4029.0,
+      "avg_new": 3579.0,
+      "avg_pct": -11.169024571854058
+    },
+    {
+      "brand": "FD",
+      "count": 1,
+      "avg_old": 4429.0,
+      "avg_new": 3919.0,
+      "avg_pct": -11.515014675999097
+    },
+    {
+      "brand": "DJW",
+      "count": 1,
+      "avg_old": 4359.0,
+      "avg_new": 3919.0,
+      "avg_pct": -10.094058270245469
+    },
+    {
+      "brand": "Shure",
+      "count": 1,
+      "avg_old": 3819.0,
+      "avg_new": 3469.0,
+      "avg_pct": -9.164702801780571
+    },
+    {
+      "brand": "ZOVITS",
+      "count": 1,
+      "avg_old": 1599.0,
+      "avg_new": 1419.0,
+      "avg_pct": -11.25703564727955
+    },
+    {
+      "brand": "ChineOn",
+      "count": 1,
+      "avg_old": 4109.0,
+      "avg_new": 3559.0,
+      "avg_pct": -13.385251886103674
+    },
+    {
+      "brand": "LETTON",
+      "count": 1,
+      "avg_old": 1149.0,
+      "avg_new": 1039.0,
+      "avg_pct": -9.573542210617928
+    },
+    {
+      "brand": "EURANS",
+      "count": 1,
+      "avg_old": 3129.0,
+      "avg_new": 2759.0,
+      "avg_pct": -11.824864173857462
+    },
+    {
+      "brand": "TGF",
+      "count": 1,
+      "avg_old": 5049.0,
+      "avg_new": 4409.0,
+      "avg_pct": -12.675777381659733
+    },
+    {
+      "brand": "EYIW",
+      "count": 1,
+      "avg_old": 1549.0,
+      "avg_new": 1329.0,
+      "avg_pct": -14.202711426726921
+    },
+    {
+      "brand": "YAHE",
+      "count": 1,
+      "avg_old": 4779.0,
+      "avg_new": 4269.0,
+      "avg_pct": -10.671688637790332
+    },
+    {
+      "brand": "L.F.",
+      "count": 1,
+      "avg_old": 4339.0,
+      "avg_new": 3889.0,
+      "avg_pct": -10.371053238073289
+    },
+    {
+      "brand": "ORICO",
+      "count": 1,
+      "avg_old": 1109.0,
+      "avg_new": 999.0,
+      "avg_pct": -9.918845807033364
+    },
+    {
+      "brand": "PRUNUS",
+      "count": 1,
+      "avg_old": 4429.0,
+      "avg_new": 3909.0,
+      "avg_pct": -11.740799277489275
+    },
+    {
+      "brand": "Assistrust",
+      "count": 1,
+      "avg_old": 5349.0,
+      "avg_new": 4709.0,
+      "avg_pct": -11.964853243596934
+    },
+    {
+      "brand": "T POWER",
+      "count": 1,
+      "avg_old": 789.0,
+      "avg_new": 699.0,
+      "avg_pct": -11.406844106463879
+    },
+    {
+      "brand": "Fasnd",
+      "count": 1,
+      "avg_old": 919.0,
+      "avg_new": 769.0,
+      "avg_pct": -16.32208922742111
+    },
+    {
+      "brand": "HOYOKI",
+      "count": 1,
+      "avg_old": 4069.0,
+      "avg_new": 3549.0,
+      "avg_pct": -12.779552715654951
+    },
+    {
+      "brand": "Doukible",
+      "count": 1,
+      "avg_old": 729.0,
+      "avg_new": 639.0,
+      "avg_pct": -12.345679012345679
+    },
+    {
+      "brand": "Q&F Tech",
+      "count": 1,
+      "avg_old": 2119.0,
+      "avg_new": 1819.0,
+      "avg_pct": -14.15762151958471
+    },
+    {
+      "brand": "KEEPRO",
+      "count": 1,
+      "avg_old": 1619.0,
+      "avg_new": 1439.0,
+      "avg_pct": -11.11797405806053
+    },
+    {
+      "brand": "HONGO",
+      "count": 1,
+      "avg_old": 4039.0,
+      "avg_new": 3489.0,
+      "avg_pct": -13.617231988115872
+    },
+    {
+      "brand": "Kolaura",
+      "count": 1,
+      "avg_old": 4219.0,
+      "avg_new": 3629.0,
+      "avg_pct": -13.98435648257881
+    },
+    {
+      "brand": "YITIANTULONG",
+      "count": 1,
+      "avg_old": 1409.0,
+      "avg_new": 1239.0,
+      "avg_pct": -12.065294535131299
+    },
+    {
+      "brand": "4AllMemory",
+      "count": 1,
+      "avg_old": 4069.0,
+      "avg_new": 3549.0,
+      "avg_pct": -12.779552715654951
+    },
+    {
+      "brand": "iSound",
+      "count": 1,
+      "avg_old": 3819.0,
+      "avg_new": 3389.0,
+      "avg_pct": -11.25949201361613
+    },
+    {
+      "brand": "LifeProof",
+      "count": 1,
+      "avg_old": 4289.0,
+      "avg_new": 3859.0,
+      "avg_pct": -10.025647003963629
+    },
+    {
+      "brand": "Loluka",
+      "count": 1,
+      "avg_old": 2579.0,
+      "avg_new": 2189.0,
+      "avg_pct": -15.122140364482359
+    },
+    {
+      "brand": "Monolith",
+      "count": 1,
+      "avg_old": 21399.0,
+      "avg_new": 17999.0,
+      "avg_pct": -15.888592924903033
+    },
+    {
+      "brand": "Super Power Supply",
+      "count": 1,
+      "avg_old": 1139.0,
+      "avg_new": 1009.0,
+      "avg_pct": -11.41352063213345
+    },
+    {
+      "brand": "GPD",
+      "count": 1,
+      "avg_old": 109690.0,
+      "avg_new": 92890.0,
+      "avg_pct": -15.315890236119975
+    },
+    {
+      "brand": "JOVERS",
+      "count": 1,
+      "avg_old": 4629.0,
+      "avg_new": 4059.0,
+      "avg_pct": -12.313674659753726
+    },
+    {
+      "brand": "PGYTECH",
+      "count": 1,
+      "avg_old": 3879.0,
+      "avg_new": 3379.0,
+      "avg_pct": -12.889920082495488
+    },
+    {
+      "brand": "Tevelmick",
+      "count": 1,
+      "avg_old": 1199.0,
+      "avg_new": 1069.0,
+      "avg_pct": -10.842368640533778
+    },
+    {
+      "brand": "Patriot Memory",
+      "count": 1,
+      "avg_old": 1369.0,
+      "avg_new": 1219.0,
+      "avg_pct": -10.95690284879474
+    },
+    {
+      "brand": "Herschel",
+      "count": 1,
+      "avg_old": 8149.0,
+      "avg_new": 7099.0,
+      "avg_pct": -12.885016566449872
+    },
+    {
+      "brand": "TheCoolCube",
+      "count": 1,
+      "avg_old": 3859.0,
+      "avg_new": 3429.0,
+      "avg_pct": -11.142783104431201
+    },
+    {
+      "brand": "KIHENG",
+      "count": 1,
+      "avg_old": 699.0,
+      "avg_new": 609.0,
+      "avg_pct": -12.875536480686694
+    },
+    {
+      "brand": "Feastind",
+      "count": 1,
+      "avg_old": 2519.0,
+      "avg_new": 2119.0,
+      "avg_pct": -15.879317189360858
+    },
+    {
+      "brand": "Rockland",
+      "count": 1,
+      "avg_old": 3129.0,
+      "avg_new": 2849.0,
+      "avg_pct": -8.94854586129754
+    },
+    {
+      "brand": "MBVBN",
+      "count": 1,
+      "avg_old": 1629.0,
+      "avg_new": 1439.0,
+      "avg_pct": -11.663597298956415
+    },
+    {
+      "brand": "Pawsky",
+      "count": 1,
+      "avg_old": 1489.0,
+      "avg_new": 1299.0,
+      "avg_pct": -12.760241773002015
+    },
+    {
+      "brand": "EDYELL",
+      "count": 1,
+      "avg_old": 2729.0,
+      "avg_new": 2369.0,
+      "avg_pct": -13.191645291315501
+    },
+    {
+      "brand": "AirFIT",
+      "count": 1,
+      "avg_old": 579.0,
+      "avg_new": 499.0,
+      "avg_pct": -13.81692573402418
+    },
+    {
+      "brand": "Insten",
+      "count": 1,
+      "avg_old": 4109.0,
+      "avg_new": 3569.0,
+      "avg_pct": -13.1418836699927
+    },
+    {
+      "brand": "SMS Audio",
+      "count": 1,
+      "avg_old": 4299.0,
+      "avg_new": 3879.0,
+      "avg_pct": -9.769713886950454
+    },
+    {
+      "brand": "Abilly",
+      "count": 1,
+      "avg_old": 789.0,
+      "avg_new": 669.0,
+      "avg_pct": -15.209125475285171
+    },
+    {
+      "brand": "SNSYIY",
+      "count": 1,
+      "avg_old": 4039.0,
+      "avg_new": 3389.0,
+      "avg_pct": -16.093092349591483
+    },
+    {
+      "brand": "Onadrive",
+      "count": 1,
+      "avg_old": 1029.0,
+      "avg_new": 889.0,
+      "avg_pct": -13.60544217687075
+    },
+    {
+      "brand": "VEENAX",
+      "count": 1,
+      "avg_old": 3839.0,
+      "avg_new": 3259.0,
+      "avg_pct": -15.108101067986453
+    },
+    {
+      "brand": "Srica",
+      "count": 1,
+      "avg_old": 3879.0,
+      "avg_new": 3359.0,
+      "avg_pct": -13.405516885795308
+    },
+    {
+      "brand": "Topsung",
+      "count": 1,
+      "avg_old": 2089.0,
+      "avg_new": 1839.0,
+      "avg_pct": -11.96744853997128
+    },
+    {
+      "brand": "Eastpole",
+      "count": 1,
+      "avg_old": 3659.0,
+      "avg_new": 3259.0,
+      "avg_pct": -10.931948619841487
+    },
+    {
+      "brand": "Konnek Stein",
+      "count": 1,
+      "avg_old": 719.0,
+      "avg_new": 619.0,
+      "avg_pct": -13.908205841446453
+    },
+    {
+      "brand": "Meffort",
+      "count": 1,
+      "avg_old": 4379.0,
+      "avg_new": 3989.0,
+      "avg_pct": -8.906142955012559
+    },
+    {
+      "brand": "BRIGHTFOCAL",
+      "count": 1,
+      "avg_old": 4019.0,
+      "avg_new": 3469.0,
+      "avg_pct": -13.684996267728291
+    },
+    {
+      "brand": "Fashion",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3649.0,
+      "avg_pct": -14.723066136947885
+    },
+    {
+      "brand": "A4Accessories",
+      "count": 1,
+      "avg_old": 4339.0,
+      "avg_new": 3809.0,
+      "avg_pct": -12.214796035952984
+    },
+    {
+      "brand": "NPKC",
+      "count": 1,
+      "avg_old": 1779.0,
+      "avg_new": 1579.0,
+      "avg_pct": -11.242270938729623
+    },
+    {
+      "brand": "OneCut",
+      "count": 1,
+      "avg_old": 639.0,
+      "avg_new": 549.0,
+      "avg_pct": -14.084507042253522
+    },
+    {
+      "brand": "Jackky",
+      "count": 1,
+      "avg_old": 4039.0,
+      "avg_new": 3659.0,
+      "avg_pct": -9.408269373607329
+    },
+    {
+      "brand": "Edifier",
+      "count": 1,
+      "avg_old": 4339.0,
+      "avg_new": 3929.0,
+      "avg_pct": -9.449181839133441
+    },
+    {
+      "brand": "Colcutee",
+      "count": 1,
+      "avg_old": 1589.0,
+      "avg_new": 1329.0,
+      "avg_pct": -16.362492133417245
+    },
+    {
+      "brand": "AIHOOR",
+      "count": 1,
+      "avg_old": 1489.0,
+      "avg_new": 1369.0,
+      "avg_pct": -8.059100067159166
+    },
+    {
+      "brand": "Skyvast",
+      "count": 1,
+      "avg_old": 4349.0,
+      "avg_new": 3709.0,
+      "avg_pct": -14.716026672798343
+    },
+    {
+      "brand": "HIQUE",
+      "count": 1,
+      "avg_old": 909.0,
+      "avg_new": 809.0,
+      "avg_pct": -11.001100110011002
+    },
+    {
+      "brand": "GIEC",
+      "count": 1,
+      "avg_old": 1969.0,
+      "avg_new": 1719.0,
+      "avg_pct": -12.696800406297612
+    },
+    {
+      "brand": "Juckbo",
+      "count": 1,
+      "avg_old": 4259.0,
+      "avg_new": 3679.0,
+      "avg_pct": -13.618220239492839
+    },
+    {
+      "brand": "SOUL by Ludacris",
+      "count": 1,
+      "avg_old": 3919.0,
+      "avg_new": 3519.0,
+      "avg_pct": -10.206685378923193
+    },
+    {
+      "brand": "iLuv",
+      "count": 1,
+      "avg_old": 4399.0,
+      "avg_new": 3919.0,
+      "avg_pct": -10.91157081154808
+    },
+    {
+      "brand": "Speck",
+      "count": 1,
+      "avg_old": 4339.0,
+      "avg_new": 3699.0,
+      "avg_pct": -14.749942383037567
+    },
+    {
+      "brand": "Aeac",
+      "count": 1,
+      "avg_old": 4579.0,
+      "avg_new": 4089.0,
+      "avg_pct": -10.701026424983622
+    },
+    {
+      "brand": "EMAIKER",
+      "count": 1,
+      "avg_old": 2169.0,
+      "avg_new": 1899.0,
+      "avg_pct": -12.448132780082988
+    },
+    {
+      "brand": "MUMAIS",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3889.0,
+      "avg_pct": -9.747041076815966
+    },
+    {
+      "brand": "Rayker",
+      "count": 1,
+      "avg_old": 609.0,
+      "avg_new": 539.0,
+      "avg_pct": -11.494252873563218
+    },
+    {
+      "brand": "KUBOM",
+      "count": 1,
+      "avg_old": 4229.0,
+      "avg_new": 3859.0,
+      "avg_pct": -8.749113265547411
+    },
+    {
+      "brand": "Maxell",
+      "count": 1,
+      "avg_old": 1969.0,
+      "avg_new": 1729.0,
+      "avg_pct": -12.188928390045708
+    },
+    {
+      "brand": "Kumi",
+      "count": 1,
+      "avg_old": 1249.0,
+      "avg_new": 1069.0,
+      "avg_pct": -14.411529223378702
+    },
+    {
+      "brand": "MONICONA",
+      "count": 1,
+      "avg_old": 1819.0,
+      "avg_new": 1569.0,
+      "avg_pct": -13.743815283122595
+    },
+    {
+      "brand": "ILOKEY",
+      "count": 1,
+      "avg_old": 4769.0,
+      "avg_new": 4209.0,
+      "avg_pct": -11.742503669532397
+    },
+    {
+      "brand": "TPLTECH",
+      "count": 1,
+      "avg_old": 3749.0,
+      "avg_new": 3169.0,
+      "avg_pct": -15.470792211256335
+    },
+    {
+      "brand": "GTIOT",
+      "count": 1,
+      "avg_old": 4059.0,
+      "avg_new": 3659.0,
+      "avg_pct": -9.854644000985465
+    },
+    {
+      "brand": "Gimibox",
+      "count": 1,
+      "avg_old": 2069.0,
+      "avg_new": 1759.0,
+      "avg_pct": -14.98308361527308
+    },
+    {
+      "brand": "DELL",
+      "count": 1,
+      "avg_old": 4249.0,
+      "avg_new": 3719.0,
+      "avg_pct": -12.473523181925158
+    },
+    {
+      "brand": "Kick",
+      "count": 1,
+      "avg_old": 3799.0,
+      "avg_new": 3309.0,
+      "avg_pct": -12.898131087128192
+    },
+    {
+      "brand": "High",
+      "count": 1,
+      "avg_old": 3909.0,
+      "avg_new": 3429.0,
+      "avg_pct": -12.279355333844972
+    },
+    {
+      "brand": "Memorex",
+      "count": 1,
+      "avg_old": 4629.0,
+      "avg_new": 4089.0,
+      "avg_pct": -11.665586519766688
+    },
+    {
+      "brand": "Back Bay Audio",
+      "count": 1,
+      "avg_old": 3639.0,
+      "avg_new": 3139.0,
+      "avg_pct": -13.740038472107722
+    },
+    {
+      "brand": "Nike",
+      "count": 1,
+      "avg_old": 4299.0,
+      "avg_new": 3969.0,
+      "avg_pct": -7.6762037683182145
+    },
+    {
+      "brand": "RCA",
+      "count": 1,
+      "avg_old": 4619.0,
+      "avg_new": 4129.0,
+      "avg_pct": -10.608356787183373
+    },
+    {
+      "brand": "qunyiCO",
+      "count": 1,
+      "avg_old": 4719.0,
+      "avg_new": 4169.0,
+      "avg_pct": -11.655011655011654
+    },
+    {
+      "brand": "Cobra",
+      "count": 1,
+      "avg_old": 4549.0,
+      "avg_new": 3969.0,
+      "avg_pct": -12.750054957133436
+    },
+    {
+      "brand": "V-MODA",
+      "count": 1,
+      "avg_old": 4529.0,
+      "avg_new": 3969.0,
+      "avg_pct": -12.364760432766616
+    },
+    {
+      "brand": "ANTOBLE",
+      "count": 1,
+      "avg_old": 4119.0,
+      "avg_new": 3599.0,
+      "avg_pct": -12.62442340373877
+    },
+    {
+      "brand": "Sunnylife",
+      "count": 1,
+      "avg_old": 3739.0,
+      "avg_new": 3159.0,
+      "avg_pct": -15.51216902915218
+    },
+    {
+      "brand": "Dynybot",
+      "count": 1,
+      "avg_old": 15399.0,
+      "avg_new": 12999.0,
+      "avg_pct": -15.585427625170464
+    },
+    {
+      "brand": "Arteck",
+      "count": 1,
+      "avg_old": 4429.0,
+      "avg_new": 3789.0,
+      "avg_pct": -14.450214495371416
+    },
+    {
+      "brand": "Beats",
+      "count": 1,
+      "avg_old": 17449.0,
+      "avg_new": 15149.0,
+      "avg_pct": -13.181271133016217
+    },
+    {
+      "brand": "QGOO",
+      "count": 1,
+      "avg_old": 4419.0,
+      "avg_new": 3869.0,
+      "avg_pct": -12.446254808780267
+    },
+    {
+      "brand": "Hp",
+      "count": 1,
+      "avg_old": 3169.0,
+      "avg_new": 2869.0,
+      "avg_pct": -9.466708740927738
+    },
+    {
+      "brand": "GIGXON",
+      "count": 1,
+      "avg_old": 4579.0,
+      "avg_new": 3909.0,
+      "avg_pct": -14.632015723957196
+    },
+    {
+      "brand": "ABLEGRID",
+      "count": 1,
+      "avg_old": 3889.0,
+      "avg_new": 3289.0,
+      "avg_pct": -15.428130624839289
+    },
+    {
+      "brand": "kuayang",
+      "count": 1,
+      "avg_old": 2489.0,
+      "avg_new": 2259.0,
+      "avg_pct": -9.240658899156287
+    },
+    {
+      "brand": "AooDen",
+      "count": 1,
+      "avg_old": 1879.0,
+      "avg_new": 1649.0,
+      "avg_pct": -12.240553485896752
+    },
+    {
+      "brand": "Besser Products",
+      "count": 1,
+      "avg_old": 3969.0,
+      "avg_new": 3529.0,
+      "avg_pct": -11.08591584782061
+    },
+    {
+      "brand": "USonline911",
+      "count": 1,
+      "avg_old": 4469.0,
+      "avg_new": 3849.0,
+      "avg_pct": -13.87334974267174
+    },
+    {
+      "brand": "PowerLocus",
+      "count": 1,
+      "avg_old": 1949.0,
+      "avg_new": 1619.0,
+      "avg_pct": -16.93175987685993
+    },
+    {
+      "brand": "SADES",
+      "count": 1,
+      "avg_old": 2169.0,
+      "avg_new": 1889.0,
+      "avg_pct": -12.909174734900878
+    },
+    {
+      "brand": "P Prosonic",
+      "count": 1,
+      "avg_old": 1299.0,
+      "avg_new": 1119.0,
+      "avg_pct": -13.856812933025402
+    },
+    {
+      "brand": "Keluowan",
+      "count": 1,
+      "avg_old": 1209.0,
+      "avg_new": 1029.0,
+      "avg_pct": -14.888337468982629
+    },
+    {
+      "brand": "MRCOOL",
+      "count": 1,
+      "avg_old": 2039.0,
+      "avg_new": 1769.0,
+      "avg_pct": -13.241785188818048
+    },
+    {
+      "brand": "ASODI",
+      "count": 1,
+      "avg_old": 2839.0,
+      "avg_new": 2559.0,
+      "avg_pct": -9.86262768580486
+    },
+    {
+      "brand": "Tesurty",
+      "count": 1,
+      "avg_old": 1349.0,
+      "avg_new": 1229.0,
+      "avg_pct": -8.895478131949593
+    },
+    {
+      "brand": "Ytonet",
+      "count": 1,
+      "avg_old": 4429.0,
+      "avg_new": 3759.0,
+      "avg_pct": -15.12756829984195
+    },
+    {
+      "brand": "WolfLawS",
+      "count": 1,
+      "avg_old": 689.0,
+      "avg_new": 609.0,
+      "avg_pct": -11.611030478955007
+    },
+    {
+      "brand": "Powerost",
+      "count": 1,
+      "avg_old": 2659.0,
+      "avg_new": 2319.0,
+      "avg_pct": -12.786761940579163
+    },
+    {
+      "brand": "iTEKIRO",
+      "count": 1,
+      "avg_old": 1409.0,
+      "avg_new": 1239.0,
+      "avg_pct": -12.065294535131299
+    },
+    {
+      "brand": "ZUNKOM",
+      "count": 1,
+      "avg_old": 3929.0,
+      "avg_new": 3439.0,
+      "avg_pct": -12.471366759989818
+    },
+    {
+      "brand": "CLUCI",
+      "count": 1,
+      "avg_old": 11699.0,
+      "avg_new": 10099.0,
+      "avg_pct": -13.676382596803146
+    },
+    {
+      "brand": "5",
+      "count": 1,
+      "avg_old": 4539.0,
+      "avg_new": 3939.0,
+      "avg_pct": -13.218770654329148
+    },
+    {
+      "brand": "Be.ez",
+      "count": 1,
+      "avg_old": 4219.0,
+      "avg_new": 3709.0,
+      "avg_pct": -12.088172552737616
+    },
+    {
+      "brand": "EWETON",
+      "count": 1,
+      "avg_old": 3899.0,
+      "avg_new": 3399.0,
+      "avg_pct": -12.823800974608874
+    },
+    {
+      "brand": "URGE Basics",
+      "count": 1,
+      "avg_old": 3839.0,
+      "avg_new": 3449.0,
+      "avg_pct": -10.15889554571503
+    },
+    {
+      "brand": "SmithOutlet",
+      "count": 1,
+      "avg_old": 3699.0,
+      "avg_new": 3229.0,
+      "avg_pct": -12.706136793728035
+    },
+    {
+      "brand": "PYDDIN",
+      "count": 1,
+      "avg_old": 669.0,
+      "avg_new": 609.0,
+      "avg_pct": -8.968609865470851
+    },
+    {
+      "brand": "Joby",
+      "count": 1,
+      "avg_old": 1829.0,
+      "avg_new": 1649.0,
+      "avg_pct": -9.841443411700384
+    },
+    {
+      "brand": "Earphones,",
+      "count": 1,
+      "avg_old": 4169.0,
+      "avg_new": 3639.0,
+      "avg_pct": -12.712880786759415
+    },
+    {
+      "brand": "MCM",
+      "count": 1,
+      "avg_old": 3969.0,
+      "avg_new": 3639.0,
+      "avg_pct": -8.314436885865458
+    },
+    {
+      "brand": "EDUP",
+      "count": 1,
+      "avg_old": 1159.0,
+      "avg_new": 999.0,
+      "avg_pct": -13.805004314063849
+    },
+    {
+      "brand": "Laptopygp",
+      "count": 1,
+      "avg_old": 4289.0,
+      "avg_new": 3849.0,
+      "avg_pct": -10.258801585451154
+    },
+    {
+      "brand": "Addlink",
+      "count": 1,
+      "avg_old": 1239.0,
+      "avg_new": 1059.0,
+      "avg_pct": -14.527845036319611
+    },
+    {
+      "brand": "CareUAll",
+      "count": 1,
+      "avg_old": 3929.0,
+      "avg_new": 3499.0,
+      "avg_pct": -10.944260626113515
+    },
+    {
+      "brand": "iPad",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3729.0,
+      "avg_pct": -12.649332396345747
+    },
+    {
+      "brand": "Evoo",
+      "count": 1,
+      "avg_old": 4059.0,
+      "avg_new": 3669.0,
+      "avg_pct": -9.608277900960829
+    },
+    {
+      "brand": "V-MOTA",
+      "count": 1,
+      "avg_old": 4099.0,
+      "avg_new": 3569.0,
+      "avg_pct": -12.929982922664065
+    },
+    {
+      "brand": "ALLCAMP",
+      "count": 1,
+      "avg_old": 4799.0,
+      "avg_new": 4309.0,
+      "avg_pct": -10.210460512606794
+    },
+    {
+      "brand": "HOPVISION",
+      "count": 1,
+      "avg_old": 13049.0,
+      "avg_new": 11999.0,
+      "avg_pct": -8.046593608705647
+    },
+    {
+      "brand": "JustJamz",
+      "count": 1,
+      "avg_old": 3939.0,
+      "avg_new": 3429.0,
+      "avg_pct": -12.947448591012947
+    },
+    {
+      "brand": "[Apple",
+      "count": 1,
+      "avg_old": 929.0,
+      "avg_new": 829.0,
+      "avg_pct": -10.76426264800861
+    },
+    {
+      "brand": "Compaq",
+      "count": 1,
+      "avg_old": 4999.0,
+      "avg_new": 4389.0,
+      "avg_pct": -12.20244048809762
+    },
+    {
+      "brand": "Banne",
+      "count": 1,
+      "avg_old": 689.0,
+      "avg_new": 619.0,
+      "avg_pct": -10.159651669085632
+    },
+    {
+      "brand": "EBOOT",
+      "count": 1,
+      "avg_old": 419.0,
+      "avg_new": 369.0,
+      "avg_pct": -11.933174224343675
+    },
+    {
+      "brand": "Electromott",
+      "count": 1,
+      "avg_old": 4499.0,
+      "avg_new": 3859.0,
+      "avg_pct": -14.22538341853745
+    },
+    {
+      "brand": "Rioddas",
+      "count": 1,
+      "avg_old": 3929.0,
+      "avg_new": 3469.0,
+      "avg_pct": -11.707813693051667
+    },
+    {
+      "brand": "Phiaton",
+      "count": 1,
+      "avg_old": 4349.0,
+      "avg_new": 3879.0,
+      "avg_pct": -10.807082087836283
+    },
+    {
+      "brand": "Puredick",
+      "count": 1,
+      "avg_old": 2499.0,
+      "avg_new": 2169.0,
+      "avg_pct": -13.205282112845138
+    },
+    {
+      "brand": "KUSDET",
+      "count": 1,
+      "avg_old": 3779.0,
+      "avg_new": 3289.0,
+      "avg_pct": -12.96639322572109
+    },
+    {
+      "brand": "POYATU",
+      "count": 1,
+      "avg_old": 4109.0,
+      "avg_new": 3649.0,
+      "avg_pct": -11.194937941104891
+    },
+    {
+      "brand": "Gilroy",
+      "count": 1,
+      "avg_old": 4099.0,
+      "avg_new": 3769.0,
+      "avg_pct": -8.050744083922908
+    },
+    {
+      "brand": "HUIANBPO",
+      "count": 1,
+      "avg_old": 2029.0,
+      "avg_new": 1709.0,
+      "avg_pct": -15.771315919172006
+    },
+    {
+      "brand": "Dainty",
+      "count": 1,
+      "avg_old": 4709.0,
+      "avg_new": 4179.0,
+      "avg_pct": -11.25504353365895
+    },
+    {
+      "brand": "MyVolts",
+      "count": 1,
+      "avg_old": 1379.0,
+      "avg_new": 1199.0,
+      "avg_pct": -13.05293691080493
+    },
+    {
+      "brand": "Maeline",
+      "count": 1,
+      "avg_old": 1449.0,
+      "avg_new": 1309.0,
+      "avg_pct": -9.66183574879227
+    },
+    {
+      "brand": "WOOZIK",
+      "count": 1,
+      "avg_old": 1519.0,
+      "avg_new": 1359.0,
+      "avg_pct": -10.533245556287032
+    },
+    {
+      "brand": "Baseus",
+      "count": 1,
+      "avg_old": 1479.0,
+      "avg_new": 1259.0,
+      "avg_pct": -14.874915483434753
+    },
+    {
+      "brand": "Incipio",
+      "count": 1,
+      "avg_old": 4239.0,
+      "avg_new": 3709.0,
+      "avg_pct": -12.502948808681294
+    },
+    {
+      "brand": "UNIOJO",
+      "count": 1,
+      "avg_old": 5549.0,
+      "avg_new": 4979.0,
+      "avg_pct": -10.272121102901425
+    },
+    {
+      "brand": "EEW",
+      "count": 1,
+      "avg_old": 6149.0,
+      "avg_new": 5349.0,
+      "avg_pct": -13.010245568385104
+    },
+    {
+      "brand": "DBCParts",
+      "count": 1,
+      "avg_old": 1229.0,
+      "avg_new": 1099.0,
+      "avg_pct": -10.577705451586656
+    },
+    {
+      "brand": "GRV",
+      "count": 1,
+      "avg_old": 2089.0,
+      "avg_new": 1809.0,
+      "avg_pct": -13.403542364767832
+    },
+    {
+      "brand": "Dentsing",
+      "count": 1,
+      "avg_old": 2939.0,
+      "avg_new": 2629.0,
+      "avg_pct": -10.547805375978223
+    },
+    {
+      "brand": "AGVEE",
+      "count": 1,
+      "avg_old": 1839.0,
+      "avg_new": 1609.0,
+      "avg_pct": -12.506797172376292
+    },
+    {
+      "brand": "MacParts",
+      "count": 1,
+      "avg_old": 4579.0,
+      "avg_new": 3999.0,
+      "avg_pct": -12.666521074470408
+    },
+    {
+      "brand": "KAUKKO",
+      "count": 1,
+      "avg_old": 2309.0,
+      "avg_new": 2129.0,
+      "avg_pct": -7.795582503248159
+    },
+    {
+      "brand": "Acuvar",
+      "count": 1,
+      "avg_old": 389.0,
+      "avg_new": 349.0,
+      "avg_pct": -10.282776349614396
+    },
+    {
+      "brand": "XHDATA",
+      "count": 1,
+      "avg_old": 4999.0,
+      "avg_new": 4419.0,
+      "avg_pct": -11.60232046409282
+    },
+    {
+      "brand": "MKJ",
+      "count": 1,
+      "avg_old": 2259.0,
+      "avg_new": 1989.0,
+      "avg_pct": -11.952191235059761
+    },
+    {
+      "brand": "Avantree",
+      "count": 1,
+      "avg_old": 9249.0,
+      "avg_new": 8199.0,
+      "avg_pct": -11.352578657152126
+    },
+    {
+      "brand": "Amberqin",
+      "count": 1,
+      "avg_old": 4259.0,
+      "avg_new": 3649.0,
+      "avg_pct": -14.32261094153557
+    },
+    {
+      "brand": "FeiyuTech",
+      "count": 1,
+      "avg_old": 19549.0,
+      "avg_new": 16749.0,
+      "avg_pct": -14.322983272801679
+    },
+    {
+      "brand": "NANGOALA",
+      "count": 1,
+      "avg_old": 429.0,
+      "avg_new": 379.0,
+      "avg_pct": -11.655011655011654
+    },
+    {
+      "brand": "MICA MICA PRODUCED",
+      "count": 1,
+      "avg_old": 3479.0,
+      "avg_new": 3139.0,
+      "avg_pct": -9.772923253808566
+    },
+    {
+      "brand": "Aitour Ever",
+      "count": 1,
+      "avg_old": 4439.0,
+      "avg_new": 3869.0,
+      "avg_pct": -12.840729894120297
+    },
+    {
+      "brand": "VELOCIFIRE",
+      "count": 1,
+      "avg_old": 4629.0,
+      "avg_new": 3999.0,
+      "avg_pct": -13.609850939727803
+    },
+    {
+      "brand": "OMOTON",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3699.0,
+      "avg_pct": -14.156416802042237
+    },
+    {
+      "brand": "UMIDIGI",
+      "count": 1,
+      "avg_old": 2599.0,
+      "avg_new": 2309.0,
+      "avg_pct": -11.158137745286648
+    },
+    {
+      "brand": "WAY",
+      "count": 1,
+      "avg_old": 13199.0,
+      "avg_new": 11749.0,
+      "avg_pct": -10.985680733388893
+    },
+    {
+      "brand": "Myosotis510",
+      "count": 1,
+      "avg_old": 4559.0,
+      "avg_new": 4089.0,
+      "avg_pct": -10.309278350515463
+    },
+    {
+      "brand": "I-Kool",
+      "count": 1,
+      "avg_old": 689.0,
+      "avg_new": 609.0,
+      "avg_pct": -11.611030478955007
+    },
+    {
+      "brand": "HyperGear",
+      "count": 1,
+      "avg_old": 4329.0,
+      "avg_new": 3889.0,
+      "avg_pct": -10.164010164010163
+    },
+    {
+      "brand": "Business",
+      "count": 1,
+      "avg_old": 4489.0,
+      "avg_new": 3999.0,
+      "avg_pct": -10.915571396747605
+    },
+    {
+      "brand": "LIZRROT",
+      "count": 1,
+      "avg_old": 4389.0,
+      "avg_new": 3739.0,
+      "avg_pct": -14.809751651856914
+    },
+    {
+      "brand": "GMKtec",
+      "count": 1,
+      "avg_old": 28190.0,
+      "avg_new": 25590.0,
+      "avg_pct": -9.223128769067044
+    },
+    {
+      "brand": "Belkin",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3879.0,
+      "avg_pct": -9.979113483406824
+    },
+    {
+      "brand": "Indmird",
+      "count": 1,
+      "avg_old": 4219.0,
+      "avg_new": 3699.0,
+      "avg_pct": -12.325195543967766
+    },
+    {
+      "brand": "1MORE",
+      "count": 1,
+      "avg_old": 6899.0,
+      "avg_new": 6299.0,
+      "avg_pct": -8.69691259602841
+    },
+    {
+      "brand": "SLE-TECH",
+      "count": 1,
+      "avg_old": 1409.0,
+      "avg_new": 1249.0,
+      "avg_pct": -11.355571327182398
+    },
+    {
+      "brand": "CYD",
+      "count": 1,
+      "avg_old": 1509.0,
+      "avg_new": 1299.0,
+      "avg_pct": -13.916500994035786
+    },
+    {
+      "brand": "JITOPKEY",
+      "count": 1,
+      "avg_old": 879.0,
+      "avg_new": 779.0,
+      "avg_pct": -11.376564277588168
+    },
+    {
+      "brand": "Canon",
+      "count": 1,
+      "avg_old": 4409.0,
+      "avg_new": 3879.0,
+      "avg_pct": -12.020866409616692
+    },
+    {
+      "brand": "IFory",
+      "count": 1,
+      "avg_old": 2139.0,
+      "avg_new": 1929.0,
+      "avg_pct": -9.817671809256662
+    },
+    {
+      "brand": "GAOMON",
+      "count": 1,
+      "avg_old": 1949.0,
+      "avg_new": 1639.0,
+      "avg_pct": -15.90559261159569
+    },
+    {
+      "brand": "HuaChen",
+      "count": 1,
+      "avg_old": 2869.0,
+      "avg_new": 2549.0,
+      "avg_pct": -11.153712094806552
+    },
+    {
+      "brand": "GinTai",
+      "count": 1,
+      "avg_old": 949.0,
+      "avg_new": 859.0,
+      "avg_pct": -9.483667017913593
+    },
+    {
+      "brand": "TAOPON",
+      "count": 1,
+      "avg_old": 1379.0,
+      "avg_new": 1209.0,
+      "avg_pct": -12.327773749093545
+    },
+    {
+      "brand": "Tivax",
+      "count": 1,
+      "avg_old": 4709.0,
+      "avg_new": 4199.0,
+      "avg_pct": -10.830324909747292
+    },
+    {
+      "brand": "Wantek",
+      "count": 1,
+      "avg_old": 3769.0,
+      "avg_new": 3269.0,
+      "avg_pct": -13.266118333775538
+    },
+    {
+      "brand": "SYNCO",
+      "count": 1,
+      "avg_old": 12499.0,
+      "avg_new": 10849.0,
+      "avg_pct": -13.201056084486758
+    },
+    {
+      "brand": "rickyh",
+      "count": 1,
+      "avg_old": 2839.0,
+      "avg_new": 2619.0,
+      "avg_pct": -7.749207467418105
+    },
+    {
+      "brand": "LACATTURA",
+      "count": 1,
+      "avg_old": 1869.0,
+      "avg_new": 1659.0,
+      "avg_pct": -11.235955056179774
+    },
+    {
+      "brand": "CALIDAKA",
+      "count": 1,
+      "avg_old": 939.0,
+      "avg_new": 809.0,
+      "avg_pct": -13.844515441959532
+    },
+    {
+      "brand": "defean",
+      "count": 1,
+      "avg_old": 999.0,
+      "avg_new": 909.0,
+      "avg_pct": -9.00900900900901
+    },
+    {
+      "brand": "HIGH QUALITY FUTUREBATT FUTUREBATT",
+      "count": 1,
+      "avg_old": 4299.0,
+      "avg_new": 3749.0,
+      "avg_pct": -12.79367294719702
+    },
+    {
+      "brand": "ZUMIT",
+      "count": 1,
+      "avg_old": 4649.0,
+      "avg_new": 4239.0,
+      "avg_pct": -8.819100881910089
+    },
+    {
+      "brand": "HUI KE YUAN",
+      "count": 1,
+      "avg_old": 1399.0,
+      "avg_new": 1199.0,
+      "avg_pct": -14.295925661186562
+    },
+    {
+      "brand": "COCNI",
+      "count": 1,
+      "avg_old": 379.0,
+      "avg_new": 329.0,
+      "avg_pct": -13.192612137203167
+    },
+    {
+      "brand": "LEOPHILE",
+      "count": 1,
+      "avg_old": 4009.0,
+      "avg_new": 3539.0,
+      "avg_pct": -11.72362185083562
+    },
+    {
+      "brand": "CENMING",
+      "count": 1,
+      "avg_old": 4999.0,
+      "avg_new": 4399.0,
+      "avg_pct": -12.00240048009602
+    },
+    {
+      "brand": "SanDisk",
+      "count": 1,
+      "avg_old": 3459.0,
+      "avg_new": 3119.0,
+      "avg_pct": -9.829430471234462
+    },
+    {
+      "brand": "Vassink",
+      "count": 1,
+      "avg_old": 1359.0,
+      "avg_new": 1189.0,
+      "avg_pct": -12.509197939661515
+    },
+    {
+      "brand": "USX MOUNT",
+      "count": 1,
+      "avg_old": 1129.0,
+      "avg_new": 999.0,
+      "avg_pct": -11.514614703277235
+    },
+    {
+      "brand": "Genericer",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3709.0,
+      "avg_pct": -13.117826188802997
+    },
+    {
+      "brand": "PALOVUE",
+      "count": 1,
+      "avg_old": 949.0,
+      "avg_new": 819.0,
+      "avg_pct": -13.698630136986301
+    },
+    {
+      "brand": "Snug",
+      "count": 1,
+      "avg_old": 3969.0,
+      "avg_new": 3319.0,
+      "avg_pct": -16.3769211388259
+    },
+    {
+      "brand": "winees",
+      "count": 1,
+      "avg_old": 2089.0,
+      "avg_new": 1819.0,
+      "avg_pct": -12.92484442316898
+    },
+    {
+      "brand": "Fitlink",
+      "count": 1,
+      "avg_old": 699.0,
+      "avg_new": 629.0,
+      "avg_pct": -10.014306151645208
+    },
+    {
+      "brand": "Apricorn",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3719.0,
+      "avg_pct": -12.883579292574373
+    },
+    {
+      "brand": "DAIXI",
+      "count": 1,
+      "avg_old": 4569.0,
+      "avg_new": 3899.0,
+      "avg_pct": -14.664040271394176
+    },
+    {
+      "brand": "USA",
+      "count": 1,
+      "avg_old": 2639.0,
+      "avg_new": 2299.0,
+      "avg_pct": -12.883668056081849
+    },
+    {
+      "brand": "GYMROAD",
+      "count": 1,
+      "avg_old": 2549.0,
+      "avg_new": 2249.0,
+      "avg_pct": -11.769321302471559
+    },
+    {
+      "brand": "Sundix",
+      "count": 1,
+      "avg_old": 4499.0,
+      "avg_new": 3769.0,
+      "avg_pct": -16.225827961769284
+    },
+    {
+      "brand": "KNOMO",
+      "count": 1,
+      "avg_old": 6399.0,
+      "avg_new": 5699.0,
+      "avg_pct": -10.939209251445538
+    },
+    {
+      "brand": "Earond",
+      "count": 1,
+      "avg_old": 2619.0,
+      "avg_new": 2189.0,
+      "avg_pct": -16.41848033600611
+    },
+    {
+      "brand": "UURig",
+      "count": 1,
+      "avg_old": 4019.0,
+      "avg_new": 3629.0,
+      "avg_pct": -9.703906444389151
+    },
+    {
+      "brand": "Griffin Technology",
+      "count": 1,
+      "avg_old": 3789.0,
+      "avg_new": 3289.0,
+      "avg_pct": -13.196093956188967
+    },
+    {
+      "brand": "IWALK",
+      "count": 1,
+      "avg_old": 2469.0,
+      "avg_new": 2119.0,
+      "avg_pct": -14.175779667881732
+    },
+    {
+      "brand": "Geeclo",
+      "count": 1,
+      "avg_old": 2369.0,
+      "avg_new": 1999.0,
+      "avg_pct": -15.618404390037991
+    },
+    {
+      "brand": "Adhiper",
+      "count": 1,
+      "avg_old": 3939.0,
+      "avg_new": 3549.0,
+      "avg_pct": -9.900990099009901
+    },
+    {
+      "brand": "Fila",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3749.0,
+      "avg_pct": -12.996054769087955
+    },
+    {
+      "brand": "Cartoon",
+      "count": 1,
+      "avg_old": 4289.0,
+      "avg_new": 3629.0,
+      "avg_pct": -15.388202378176732
+    },
+    {
+      "brand": "LFS",
+      "count": 1,
+      "avg_old": 4249.0,
+      "avg_new": 3709.0,
+      "avg_pct": -12.708872675923747
+    },
+    {
+      "brand": "Auorange",
+      "count": 1,
+      "avg_old": 569.0,
+      "avg_new": 489.0,
+      "avg_pct": -14.059753954305801
+    },
+    {
+      "brand": "Acoustic Audio by Goldwood",
+      "count": 1,
+      "avg_old": 4199.0,
+      "avg_new": 3759.0,
+      "avg_pct": -10.478685401286022
+    },
+    {
+      "brand": "WOWBOX",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3669.0,
+      "avg_pct": -14.054813773717498
+    },
+    {
+      "brand": "Kirababy",
+      "count": 1,
+      "avg_old": 3969.0,
+      "avg_new": 3409.0,
+      "avg_pct": -14.109347442680775
+    },
+    {
+      "brand": "AC Doctor INC",
+      "count": 1,
+      "avg_old": 4649.0,
+      "avg_new": 3889.0,
+      "avg_pct": -16.347601634760164
+    },
+    {
+      "brand": "Corsair",
+      "count": 1,
+      "avg_old": 5999.0,
+      "avg_new": 5149.0,
+      "avg_pct": -14.169028171361894
+    },
+    {
+      "brand": "For",
+      "count": 1,
+      "avg_old": 4689.0,
+      "avg_new": 4259.0,
+      "avg_pct": -9.170398805715504
+    },
+    {
+      "brand": "Chrome",
+      "count": 1,
+      "avg_old": 10449.0,
+      "avg_new": 9249.0,
+      "avg_pct": -11.484352569623887
+    },
+    {
+      "brand": "Vinpie",
+      "count": 1,
+      "avg_old": 4319.0,
+      "avg_new": 3799.0,
+      "avg_pct": -12.039824033341052
+    },
+    {
+      "brand": "Kensington",
+      "count": 1,
+      "avg_old": 5199.0,
+      "avg_new": 4569.0,
+      "avg_pct": -12.117714945181765
+    },
+    {
+      "brand": "Acolarid",
+      "count": 1,
+      "avg_old": 519.0,
+      "avg_new": 459.0,
+      "avg_pct": -11.560693641618498
+    },
+    {
+      "brand": "TECURS",
+      "count": 1,
+      "avg_old": 1749.0,
+      "avg_new": 1559.0,
+      "avg_pct": -10.863350485991996
+    },
+    {
+      "brand": "TECLAST",
+      "count": 1,
+      "avg_old": 9599.0,
+      "avg_new": 8549.0,
+      "avg_pct": -10.938639441608501
+    },
+    {
+      "brand": "PhotoFast",
+      "count": 1,
+      "avg_old": 7799.0,
+      "avg_new": 6799.0,
+      "avg_pct": -12.822156686754713
+    },
+    {
+      "brand": "CellularFactory",
+      "count": 1,
+      "avg_old": 4189.0,
+      "avg_new": 3689.0,
+      "avg_pct": -11.936022917164001
+    },
+    {
+      "brand": "Rulefiss",
+      "count": 1,
+      "avg_old": 4609.0,
+      "avg_new": 4019.0,
+      "avg_pct": -12.80104144065958
+    },
+    {
+      "brand": "AGooDo",
+      "count": 1,
+      "avg_old": 839.0,
+      "avg_new": 749.0,
+      "avg_pct": -10.727056019070321
+    },
+    {
+      "brand": "Azddur",
+      "count": 1,
+      "avg_old": 829.0,
+      "avg_new": 719.0,
+      "avg_pct": -13.268998793727382
+    },
+    {
+      "brand": "Bluu",
+      "count": 1,
+      "avg_old": 4519.0,
+      "avg_new": 4019.0,
+      "avg_pct": -11.064394777605665
+    },
+    {
+      "brand": "Qainerly",
+      "count": 1,
+      "avg_old": 5149.0,
+      "avg_new": 4349.0,
+      "avg_pct": -15.536997475237909
+    },
+    {
+      "brand": "iKross",
+      "count": 1,
+      "avg_old": 4399.0,
+      "avg_new": 3819.0,
+      "avg_pct": -13.184814730620595
+    },
+    {
+      "brand": "Hnoxlehnb",
+      "count": 1,
+      "avg_old": 3889.0,
+      "avg_new": 3419.0,
+      "avg_pct": -12.085368989457445
+    },
+    {
+      "brand": "Zerone",
+      "count": 1,
+      "avg_old": 4089.0,
+      "avg_new": 3559.0,
+      "avg_pct": -12.961604304230864
+    },
+    {
+      "brand": "BUILT",
+      "count": 1,
+      "avg_old": 4099.0,
+      "avg_new": 3539.0,
+      "avg_pct": -13.661868748475236
+    },
+    {
+      "brand": "AOYODKG",
+      "count": 1,
+      "avg_old": 4609.0,
+      "avg_new": 4089.0,
+      "avg_pct": -11.282273812106748
+    },
+    {
+      "brand": "TSA Universal",
+      "count": 1,
+      "avg_old": 1049.0,
+      "avg_new": 879.0,
+      "avg_pct": -16.205910390848427
+    },
+    {
+      "brand": "CHUWI",
+      "count": 1,
+      "avg_old": 4019.0,
+      "avg_new": 3619.0,
+      "avg_pct": -9.952724558347848
+    },
+    {
+      "brand": "NavePoint",
+      "count": 1,
+      "avg_old": 4069.0,
+      "avg_new": 3719.0,
+      "avg_pct": -8.601622020152371
+    },
+    {
+      "brand": "Verizon",
+      "count": 1,
+      "avg_old": 3419.0,
+      "avg_new": 2969.0,
+      "avg_pct": -13.161743199766013
+    },
+    {
+      "brand": "Averatec",
+      "count": 1,
+      "avg_old": 4009.0,
+      "avg_new": 3419.0,
+      "avg_pct": -14.716887004240458
+    },
+    {
+      "brand": "The Joy Factory",
+      "count": 1,
+      "avg_old": 4339.0,
+      "avg_new": 3599.0,
+      "avg_pct": -17.054620880387187
+    },
+    {
+      "brand": "Men",
+      "count": 1,
+      "avg_old": 4149.0,
+      "avg_new": 3479.0,
+      "avg_pct": -16.148469510725477
+    },
+    {
+      "brand": "Mirai Past",
+      "count": 1,
+      "avg_old": 629.0,
+      "avg_new": 549.0,
+      "avg_pct": -12.71860095389507
+    },
+    {
+      "brand": "UMUTOO",
+      "count": 1,
+      "avg_old": 4469.0,
+      "avg_new": 3799.0,
+      "avg_pct": -14.992168270306555
+    },
+    {
+      "brand": "KEYSTONE",
+      "count": 1,
+      "avg_old": 3529.0,
+      "avg_new": 3019.0,
+      "avg_pct": -14.451686030036836
+    },
+    {
+      "brand": "NICGID",
+      "count": 1,
+      "avg_old": 1379.0,
+      "avg_new": 1219.0,
+      "avg_pct": -11.602610587382161
+    },
+    {
+      "brand": "AU Optronics",
+      "count": 1,
+      "avg_old": 21749.0,
+      "avg_new": 19499.0,
+      "avg_pct": -10.34530323233252
+    },
+    {
+      "brand": "Fossil",
+      "count": 1,
+      "avg_old": 3779.0,
+      "avg_new": 3319.0,
+      "avg_pct": -12.172532415983065
+    },
+    {
+      "brand": "SP Silicon Power",
+      "count": 1,
+      "avg_old": 4759.0,
+      "avg_new": 4159.0,
+      "avg_pct": -12.607690691321707
+    },
+    {
+      "brand": "ATEBOUNER",
+      "count": 1,
+      "avg_old": 4099.0,
+      "avg_new": 3519.0,
+      "avg_pct": -14.149792632349353
+    },
+    {
+      "brand": "Vera Bradley",
+      "count": 1,
+      "avg_old": 4439.0,
+      "avg_new": 3949.0,
+      "avg_pct": -11.03852218968236
+    },
+    {
+      "brand": "Hcsunfly",
+      "count": 1,
+      "avg_old": 1649.0,
+      "avg_new": 1469.0,
+      "avg_pct": -10.91570648878108
+    },
+    {
+      "brand": "KALIDI",
+      "count": 1,
+      "avg_old": 2609.0,
+      "avg_new": 2349.0,
+      "avg_pct": -9.965504024530473
+    },
+    {
+      "brand": "dotn",
+      "count": 1,
+      "avg_old": 4009.0,
+      "avg_new": 3559.0,
+      "avg_pct": -11.224744325268146
+    },
+    {
+      "brand": "PROSTAR",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3889.0,
+      "avg_pct": -9.747041076815966
+    },
+    {
+      "brand": "PROROK",
+      "count": 1,
+      "avg_old": 1759.0,
+      "avg_new": 1479.0,
+      "avg_pct": -15.918135304150086
+    },
+    {
+      "brand": "ZAYAUPVL",
+      "count": 1,
+      "avg_old": 2089.0,
+      "avg_new": 1829.0,
+      "avg_pct": -12.446146481570128
+    },
+    {
+      "brand": "beyerdynamic",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3699.0,
+      "avg_pct": -14.156416802042237
+    },
+    {
+      "brand": "ION",
+      "count": 1,
+      "avg_old": 4049.0,
+      "avg_new": 3399.0,
+      "avg_pct": -16.053346505309953
+    },
+    {
+      "brand": "Pacsafe",
+      "count": 1,
+      "avg_old": 4289.0,
+      "avg_new": 3769.0,
+      "avg_pct": -12.124038237351364
+    },
+    {
+      "brand": "QDAOT",
+      "count": 1,
+      "avg_old": 4009.0,
+      "avg_new": 3319.0,
+      "avg_pct": -17.211274632077824
+    },
+    {
+      "brand": "Olympus",
+      "count": 1,
+      "avg_old": 3909.0,
+      "avg_new": 3509.0,
+      "avg_pct": -10.232796111537477
+    },
+    {
+      "brand": "AOLWEEC",
+      "count": 1,
+      "avg_old": 1419.0,
+      "avg_new": 1209.0,
+      "avg_pct": -14.799154334038056
+    },
+    {
+      "brand": "BASN",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3739.0,
+      "avg_pct": -12.415085500117124
+    },
+    {
+      "brand": "ARyee",
+      "count": 1,
+      "avg_old": 4629.0,
+      "avg_new": 4169.0,
+      "avg_pct": -9.937351479801253
+    },
+    {
+      "brand": "Green Board",
+      "count": 1,
+      "avg_old": 4619.0,
+      "avg_new": 3949.0,
+      "avg_pct": -14.50530417839359
+    },
+    {
+      "brand": "AHG Accessory House Global",
+      "count": 1,
+      "avg_old": 1339.0,
+      "avg_new": 1139.0,
+      "avg_pct": -14.936519790888722
+    },
+    {
+      "brand": "BC BRUNO CAVALLI",
+      "count": 1,
+      "avg_old": 4589.0,
+      "avg_new": 4069.0,
+      "avg_pct": -11.3314447592068
+    },
+    {
+      "brand": "CaseBuy",
+      "count": 1,
+      "avg_old": 939.0,
+      "avg_new": 819.0,
+      "avg_pct": -12.779552715654951
+    },
+    {
+      "brand": "KOOTION",
+      "count": 1,
+      "avg_old": 1279.0,
+      "avg_new": 1149.0,
+      "avg_pct": -10.16419077404222
+    },
+    {
+      "brand": "Elevenses",
+      "count": 1,
+      "avg_old": 4189.0,
+      "avg_new": 3589.0,
+      "avg_pct": -14.323227500596802
+    },
+    {
+      "brand": "KAPON",
+      "count": 1,
+      "avg_old": 1829.0,
+      "avg_new": 1579.0,
+      "avg_pct": -13.66867140513942
+    },
+    {
+      "brand": "SIB",
+      "count": 1,
+      "avg_old": 4269.0,
+      "avg_new": 3749.0,
+      "avg_pct": -12.180838603888498
+    },
+    {
+      "brand": "IBosi Cheng",
+      "count": 1,
+      "avg_old": 4199.0,
+      "avg_new": 3549.0,
+      "avg_pct": -15.479876160990713
+    },
+    {
+      "brand": "Kenwood",
+      "count": 1,
+      "avg_old": 9599.0,
+      "avg_new": 8399.0,
+      "avg_pct": -12.501302218981145
+    },
+    {
+      "brand": "Roffatide",
+      "count": 1,
+      "avg_old": 2989.0,
+      "avg_new": 2649.0,
+      "avg_pct": -11.375041820006691
+    },
+    {
+      "brand": "SoundSOUL",
+      "count": 1,
+      "avg_old": 4049.0,
+      "avg_new": 3529.0,
+      "avg_pct": -12.842677204247963
+    },
+    {
+      "brand": "Miniseas",
+      "count": 1,
+      "avg_old": 4049.0,
+      "avg_new": 3519.0,
+      "avg_pct": -13.089651765868116
+    },
+    {
+      "brand": "RICILAR",
+      "count": 1,
+      "avg_old": 4549.0,
+      "avg_new": 3909.0,
+      "avg_pct": -14.069026159595516
+    },
+    {
+      "brand": "MoonshineStillPro",
+      "count": 1,
+      "avg_old": 3939.0,
+      "avg_new": 3449.0,
+      "avg_pct": -12.43970550901244
+    },
+    {
+      "brand": "Crucial",
+      "count": 1,
+      "avg_old": 4439.0,
+      "avg_new": 3979.0,
+      "avg_pct": -10.362694300518134
+    },
+    {
+      "brand": "Bazooka",
+      "count": 1,
+      "avg_old": 2849.0,
+      "avg_new": 2519.0,
+      "avg_pct": -11.583011583011583
+    },
+    {
+      "brand": "VANCLE",
+      "count": 1,
+      "avg_old": 3859.0,
+      "avg_new": 3319.0,
+      "avg_pct": -13.993262503239182
+    },
+    {
+      "brand": "IClever",
+      "count": 1,
+      "avg_old": 1279.0,
+      "avg_new": 1089.0,
+      "avg_pct": -14.855355746677091
+    },
+    {
+      "brand": "Wenger",
+      "count": 1,
+      "avg_old": 3679.0,
+      "avg_new": 3099.0,
+      "avg_pct": -15.765153574340854
+    },
+    {
+      "brand": "WAVLINK",
+      "count": 1,
+      "avg_old": 6199.0,
+      "avg_new": 5349.0,
+      "avg_pct": -13.711889014357153
+    },
+    {
+      "brand": "Vera",
+      "count": 1,
+      "avg_old": 4259.0,
+      "avg_new": 3619.0,
+      "avg_pct": -15.027001643578306
+    },
+    {
+      "brand": "RIZR",
+      "count": 1,
+      "avg_old": 4739.0,
+      "avg_new": 4119.0,
+      "avg_pct": -13.082928887951045
+    },
+    {
+      "brand": "XP-PEN",
+      "count": 1,
+      "avg_old": 4059.0,
+      "avg_new": 3469.0,
+      "avg_pct": -14.53559990145356
+    },
+    {
+      "brand": "Alitutumao",
+      "count": 1,
+      "avg_old": 779.0,
+      "avg_new": 699.0,
+      "avg_pct": -10.269576379974326
+    },
+    {
+      "brand": "Topsharp",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3789.0,
+      "avg_pct": -11.451273662070577
+    },
+    {
+      "brand": "Soundstream",
+      "count": 1,
+      "avg_old": 4199.0,
+      "avg_new": 3569.0,
+      "avg_pct": -15.003572279114074
+    },
+    {
+      "brand": "Quad Lock",
+      "count": 1,
+      "avg_old": 4349.0,
+      "avg_new": 3879.0,
+      "avg_pct": -10.807082087836283
+    },
+    {
+      "brand": "GEARONIC",
+      "count": 1,
+      "avg_old": 2659.0,
+      "avg_new": 2209.0,
+      "avg_pct": -16.92365550959007
+    },
+    {
+      "brand": "Mason West",
+      "count": 1,
+      "avg_old": 5749.0,
+      "avg_new": 5249.0,
+      "avg_pct": -8.69716472429988
+    },
+    {
+      "brand": "5-Star",
+      "count": 1,
+      "avg_old": 4519.0,
+      "avg_new": 4069.0,
+      "avg_pct": -9.957955299845098
+    },
+    {
+      "brand": "Odyson",
+      "count": 1,
+      "avg_old": 1089.0,
+      "avg_new": 939.0,
+      "avg_pct": -13.774104683195592
+    },
+    {
+      "brand": "4AllDeals",
+      "count": 1,
+      "avg_old": 3969.0,
+      "avg_new": 3399.0,
+      "avg_pct": -14.36130007558579
+    },
+    {
+      "brand": "Computer Upgrade King",
+      "count": 1,
+      "avg_old": 4479.0,
+      "avg_new": 3979.0,
+      "avg_pct": -11.163206072784105
+    },
+    {
+      "brand": "Eleskylaptop",
+      "count": 1,
+      "avg_old": 4089.0,
+      "avg_new": 3479.0,
+      "avg_pct": -14.918072878454389
+    },
+    {
+      "brand": "Ultimate",
+      "count": 1,
+      "avg_old": 3879.0,
+      "avg_new": 3299.0,
+      "avg_pct": -14.952307295694766
+    },
+    {
+      "brand": "Vidpro",
+      "count": 1,
+      "avg_old": 4039.0,
+      "avg_new": 3619.0,
+      "avg_pct": -10.398613518197573
+    },
+    {
+      "brand": "ALXCD",
+      "count": 1,
+      "avg_old": 429.0,
+      "avg_new": 379.0,
+      "avg_pct": -11.655011655011654
+    },
+    {
+      "brand": "GRAPHICS & MORE",
+      "count": 1,
+      "avg_old": 659.0,
+      "avg_new": 599.0,
+      "avg_pct": -9.104704097116842
+    },
+    {
+      "brand": "Sanjyut",
+      "count": 1,
+      "avg_old": 1069.0,
+      "avg_new": 899.0,
+      "avg_pct": -15.902712815715622
+    },
+    {
+      "brand": "Valley Enterprises",
+      "count": 1,
+      "avg_old": 619.0,
+      "avg_new": 539.0,
+      "avg_pct": -12.924071082390952
+    },
+    {
+      "brand": "NuForce",
+      "count": 1,
+      "avg_old": 3829.0,
+      "avg_new": 3489.0,
+      "avg_pct": -8.879603029511623
+    },
+    {
+      "brand": "Uber",
+      "count": 1,
+      "avg_old": 3929.0,
+      "avg_new": 3519.0,
+      "avg_pct": -10.435225248154746
+    },
+    {
+      "brand": "Timbuk2",
+      "count": 1,
+      "avg_old": 4759.0,
+      "avg_new": 4099.0,
+      "avg_pct": -13.868459760453877
+    },
+    {
+      "brand": "Kingston FURY",
+      "count": 1,
+      "avg_old": 4989.0,
+      "avg_new": 4269.0,
+      "avg_pct": -14.431749849669274
+    },
+    {
+      "brand": "WITZMAN",
+      "count": 1,
+      "avg_old": 3829.0,
+      "avg_new": 3309.0,
+      "avg_pct": -13.580569339253067
+    },
+    {
+      "brand": "Uioulanam",
+      "count": 1,
+      "avg_old": 4469.0,
+      "avg_new": 3819.0,
+      "avg_pct": -14.544640859252631
+    },
+    {
+      "brand": "Ctronics",
+      "count": 1,
+      "avg_old": 4209.0,
+      "avg_new": 3719.0,
+      "avg_pct": -11.641720123544786
+    },
+    {
+      "brand": "Vintage",
+      "count": 1,
+      "avg_old": 4529.0,
+      "avg_new": 3979.0,
+      "avg_pct": -12.143961139324354
+    },
+    {
+      "brand": "AimCare",
+      "count": 1,
+      "avg_old": 8399.0,
+      "avg_new": 7499.0,
+      "avg_pct": -10.715561376354328
+    },
+    {
+      "brand": "Perytong",
+      "count": 1,
+      "avg_old": 1339.0,
+      "avg_new": 1209.0,
+      "avg_pct": -9.70873786407767
+    },
+    {
+      "brand": "WHSHSUV",
+      "count": 1,
+      "avg_old": 3919.0,
+      "avg_new": 3269.0,
+      "avg_pct": -16.58586374075019
+    },
+    {
+      "brand": "PureGear",
+      "count": 1,
+      "avg_old": 599.0,
+      "avg_new": 529.0,
+      "avg_pct": -11.686143572621036
+    },
+    {
+      "brand": "YMDK",
+      "count": 1,
+      "avg_old": 1739.0,
+      "avg_new": 1569.0,
+      "avg_pct": -9.7757331799885
+    },
+    {
+      "brand": "AMZSA",
+      "count": 1,
+      "avg_old": 1899.0,
+      "avg_new": 1649.0,
+      "avg_pct": -13.164823591363875
+    },
+    {
+      "brand": "Optix 55",
+      "count": 1,
+      "avg_old": 4289.0,
+      "avg_new": 3839.0,
+      "avg_pct": -10.49195616693868
+    },
+    {
+      "brand": "Errum",
+      "count": 1,
+      "avg_old": 4229.0,
+      "avg_new": 3719.0,
+      "avg_pct": -12.059588555213999
+    },
+    {
+      "brand": "Sunnyholiday",
+      "count": 1,
+      "avg_old": 4649.0,
+      "avg_new": 4019.0,
+      "avg_pct": -13.551301355130136
+    },
+    {
+      "brand": "Uciefy",
+      "count": 1,
+      "avg_old": 619.0,
+      "avg_new": 529.0,
+      "avg_pct": -14.539579967689823
+    },
+    {
+      "brand": "Elago",
+      "count": 1,
+      "avg_old": 4379.0,
+      "avg_new": 3979.0,
+      "avg_pct": -9.134505594884677
+    },
+    {
+      "brand": "MP",
+      "count": 1,
+      "avg_old": 21999.0,
+      "avg_new": 19799.0,
+      "avg_pct": -10.000454566116641
+    },
+    {
+      "brand": "Baggallini",
+      "count": 1,
+      "avg_old": 4119.0,
+      "avg_new": 3539.0,
+      "avg_pct": -14.081087642631706
+    },
+    {
+      "brand": "Sumdex",
+      "count": 1,
+      "avg_old": 4959.0,
+      "avg_new": 4479.0,
+      "avg_pct": -9.679370840895341
+    },
+    {
+      "brand": "Electronic",
+      "count": 1,
+      "avg_old": 1159.0,
+      "avg_new": 1039.0,
+      "avg_pct": -10.353753235547886
+    },
+    {
+      "brand": "T",
+      "count": 1,
+      "avg_old": 4569.0,
+      "avg_new": 4129.0,
+      "avg_pct": -9.630115999124534
+    },
+    {
+      "brand": "SHOXLAB",
+      "count": 1,
+      "avg_old": 95390.0,
+      "avg_new": 80790.0,
+      "avg_pct": -15.305587587797461
+    },
+    {
+      "brand": "Sheivulo",
+      "count": 1,
+      "avg_old": 1049.0,
+      "avg_new": 919.0,
+      "avg_pct": -12.392755004766444
+    },
+    {
+      "brand": "VIVIBRIGHT",
+      "count": 1,
+      "avg_old": 4149.0,
+      "avg_new": 3629.0,
+      "avg_pct": -12.533140515786936
+    },
+    {
+      "brand": "Fonus",
+      "count": 1,
+      "avg_old": 2059.0,
+      "avg_new": 1789.0,
+      "avg_pct": -13.113161728994656
+    },
+    {
+      "brand": "ZWYING",
+      "count": 1,
+      "avg_old": 30990.0,
+      "avg_new": 28090.0,
+      "avg_pct": -9.357857373346242
+    },
+    {
+      "brand": "SRJTEK",
+      "count": 1,
+      "avg_old": 1039.0,
+      "avg_new": 909.0,
+      "avg_pct": -12.512030798845045
+    },
+    {
+      "brand": "DolTech",
+      "count": 1,
+      "avg_old": 3929.0,
+      "avg_new": 3399.0,
+      "avg_pct": -13.489437515907355
+    },
+    {
+      "brand": "SUPNIU",
+      "count": 1,
+      "avg_old": 2989.0,
+      "avg_new": 2589.0,
+      "avg_pct": -13.382402141184343
+    },
+    {
+      "brand": "havit",
+      "count": 1,
+      "avg_old": 4319.0,
+      "avg_new": 3869.0,
+      "avg_pct": -10.419078490391295
+    },
+    {
+      "brand": "HOK",
+      "count": 1,
+      "avg_old": 3119.0,
+      "avg_new": 2789.0,
+      "avg_pct": -10.580314203270278
+    },
+    {
+      "brand": "TOTU",
+      "count": 1,
+      "avg_old": 4249.0,
+      "avg_new": 3719.0,
+      "avg_pct": -12.473523181925158
+    },
+    {
+      "brand": "Golf Gadgets",
+      "count": 1,
+      "avg_old": 609.0,
+      "avg_new": 509.0,
+      "avg_pct": -16.420361247947454
+    },
+    {
+      "brand": "Amcrest",
+      "count": 1,
+      "avg_old": 2079.0,
+      "avg_new": 1829.0,
+      "avg_pct": -12.025012025012025
+    },
+    {
+      "brand": "adidas",
+      "count": 1,
+      "avg_old": 4379.0,
+      "avg_new": 3779.0,
+      "avg_pct": -13.701758392327015
+    },
+    {
+      "brand": "ZOSI",
+      "count": 1,
+      "avg_old": 4139.0,
+      "avg_new": 3649.0,
+      "avg_pct": -11.838608359507127
+    },
+    {
+      "brand": "PIXEL",
+      "count": 1,
+      "avg_old": 3079.0,
+      "avg_new": 2769.0,
+      "avg_pct": -10.06820396232543
+    },
+    {
+      "brand": "AMAZTIM",
+      "count": 1,
+      "avg_old": 7249.0,
+      "avg_new": 6249.0,
+      "avg_pct": -13.795006207752794
+    },
+    {
+      "brand": "EPOMAKER",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3849.0,
+      "avg_pct": -10.675330703179393
+    },
+    {
+      "brand": "Philco",
+      "count": 1,
+      "avg_old": 6399.0,
+      "avg_new": 5799.0,
+      "avg_pct": -9.376465072667605
+    },
+    {
+      "brand": "Twelve South",
+      "count": 1,
+      "avg_old": 3949.0,
+      "avg_new": 3539.0,
+      "avg_pct": -10.382375284882249
+    },
+    {
+      "brand": "Earphones Plus",
+      "count": 1,
+      "avg_old": 469.0,
+      "avg_new": 399.0,
+      "avg_pct": -14.925373134328357
+    },
+    {
+      "brand": "Oppetec",
+      "count": 1,
+      "avg_old": 4099.0,
+      "avg_new": 3629.0,
+      "avg_pct": -11.466211271041718
+    },
+    {
+      "brand": "THE",
+      "count": 1,
+      "avg_old": 6699.0,
+      "avg_new": 5799.0,
+      "avg_pct": -13.434841021047916
+    },
+    {
+      "brand": "Rikki",
+      "count": 1,
+      "avg_old": 3989.0,
+      "avg_new": 3459.0,
+      "avg_pct": -13.28653797944347
+    },
+    {
+      "brand": "7\"",
+      "count": 1,
+      "avg_old": 4599.0,
+      "avg_new": 3869.0,
+      "avg_pct": -15.873015873015872
+    },
+    {
+      "brand": "HQRP",
+      "count": 1,
+      "avg_old": 569.0,
+      "avg_new": 519.0,
+      "avg_pct": -8.787346221441124
+    },
+    {
+      "brand": "HCMOBI",
+      "count": 1,
+      "avg_old": 5749.0,
+      "avg_new": 5049.0,
+      "avg_pct": -12.17603061401983
+    },
+    {
+      "brand": "Tuwejia",
+      "count": 1,
+      "avg_old": 4369.0,
+      "avg_new": 3789.0,
+      "avg_pct": -13.275349050125888
+    },
+    {
+      "brand": "Pro Trucker",
+      "count": 1,
+      "avg_old": 9949.0,
+      "avg_new": 8749.0,
+      "avg_pct": -12.061513719971856
+    },
+    {
+      "brand": "Everything But Stromboli",
+      "count": 1,
+      "avg_old": 1249.0,
+      "avg_new": 1089.0,
+      "avg_pct": -12.810248198558845
+    },
+    {
+      "brand": "CCA",
+      "count": 1,
+      "avg_old": 5849.0,
+      "avg_new": 5249.0,
+      "avg_pct": -10.258163788681825
+    },
+    {
+      "brand": "Gamerking",
+      "count": 1,
+      "avg_old": 2299.0,
+      "avg_new": 2069.0,
+      "avg_pct": -10.004349717268378
+    },
+    {
+      "brand": "PLUSPOE",
+      "count": 1,
+      "avg_old": 4289.0,
+      "avg_new": 3739.0,
+      "avg_pct": -12.823501981813942
+    },
+    {
+      "brand": "MOOKA",
+      "count": 1,
+      "avg_old": 3289.0,
+      "avg_new": 2849.0,
+      "avg_pct": -13.377926421404682
+    },
+    {
+      "brand": "Uxcell",
+      "count": 1,
+      "avg_old": 809.0,
+      "avg_new": 729.0,
+      "avg_pct": -9.88875154511743
+    },
+    {
+      "brand": "Clark",
+      "count": 1,
+      "avg_old": 4709.0,
+      "avg_new": 4189.0,
+      "avg_pct": -11.042684221703123
+    },
+    {
+      "brand": "ZOZO",
+      "count": 1,
+      "avg_old": 1289.0,
+      "avg_new": 1159.0,
+      "avg_pct": -10.08533747090768
+    },
+    {
+      "brand": "MHA",
+      "count": 1,
+      "avg_old": 1629.0,
+      "avg_new": 1479.0,
+      "avg_pct": -9.208103130755065
+    },
+    {
+      "brand": "FELICON",
+      "count": 1,
+      "avg_old": 2069.0,
+      "avg_new": 1759.0,
+      "avg_pct": -14.98308361527308
+    },
+    {
+      "brand": "Bluboon",
+      "count": 1,
+      "avg_old": 1819.0,
+      "avg_new": 1619.0,
+      "avg_pct": -10.995052226498075
+    },
+    {
+      "brand": "E EGOWAY",
+      "count": 1,
+      "avg_old": 3299.0,
+      "avg_new": 2839.0,
+      "avg_pct": -13.943619278569264
+    },
+    {
+      "brand": "HOTWEEMS",
+      "count": 1,
+      "avg_old": 799.0,
+      "avg_new": 699.0,
+      "avg_pct": -12.51564455569462
+    },
+    {
+      "brand": "AOC",
+      "count": 1,
+      "avg_old": 4709.0,
+      "avg_new": 4109.0,
+      "avg_pct": -12.741558717349754
+    },
+    {
+      "brand": "PEIBO",
+      "count": 1,
+      "avg_old": 1219.0,
+      "avg_new": 1099.0,
+      "avg_pct": -9.844134536505331
+    },
+    {
+      "brand": "Black Shark",
+      "count": 1,
+      "avg_old": 1959.0,
+      "avg_new": 1779.0,
+      "avg_pct": -9.188361408882082
+    },
+    {
+      "brand": "SOAR",
+      "count": 1,
+      "avg_old": 2619.0,
+      "avg_new": 2369.0,
+      "avg_pct": -9.545628102329133
+    },
+    {
+      "brand": "X-mini",
+      "count": 1,
+      "avg_old": 239.0,
+      "avg_new": 209.0,
+      "avg_pct": -12.552301255230125
+    },
+    {
+      "brand": "Swimbuds",
+      "count": 1,
+      "avg_old": 4459.0,
+      "avg_new": 3979.0,
+      "avg_pct": -10.76474545862301
+    },
+    {
+      "brand": "Duliing",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3879.0,
+      "avg_pct": -9.979113483406824
+    },
+    {
+      "brand": "Movo",
+      "count": 1,
+      "avg_old": 4549.0,
+      "avg_new": 4049.0,
+      "avg_pct": -10.991426687183996
+    },
+    {
+      "brand": "YooZoo",
+      "count": 1,
+      "avg_old": 4209.0,
+      "avg_new": 3639.0,
+      "avg_pct": -13.542409123307198
+    },
+    {
+      "brand": "Attoe",
+      "count": 1,
+      "avg_old": 4559.0,
+      "avg_new": 3969.0,
+      "avg_pct": -12.941434525115156
+    },
+    {
+      "brand": "cloudtale",
+      "count": 1,
+      "avg_old": 4499.0,
+      "avg_new": 3869.0,
+      "avg_pct": -14.003111802622806
+    },
+    {
+      "brand": "SZBPHS",
+      "count": 1,
+      "avg_old": 2599.0,
+      "avg_new": 2329.0,
+      "avg_pct": -10.388611004232397
+    },
+    {
+      "brand": "NP99sp",
+      "count": 1,
+      "avg_old": 2239.0,
+      "avg_new": 2019.0,
+      "avg_pct": -9.825815096025012
+    },
+    {
+      "brand": "ADATA",
+      "count": 1,
+      "avg_old": 4309.0,
+      "avg_new": 3919.0,
+      "avg_pct": -9.050823857043397
+    },
+    {
+      "brand": "ROLLS",
+      "count": 1,
+      "avg_old": 9649.0,
+      "avg_new": 8599.0,
+      "avg_pct": -10.881956679448647
+    },
+    {
+      "brand": "NEBONS",
+      "count": 1,
+      "avg_old": 3859.0,
+      "avg_new": 3249.0,
+      "avg_pct": -15.80720393884426
+    },
+    {
+      "brand": "LIGE",
+      "count": 1,
+      "avg_old": 4669.0,
+      "avg_new": 4139.0,
+      "avg_pct": -11.351467123581067
+    },
+    {
+      "brand": "tisino",
+      "count": 1,
+      "avg_old": 4369.0,
+      "avg_new": 3829.0,
+      "avg_pct": -12.359807736324102
+    },
+    {
+      "brand": "GMJYC",
+      "count": 1,
+      "avg_old": 4239.0,
+      "avg_new": 3759.0,
+      "avg_pct": -11.323425336164188
+    },
+    {
+      "brand": "NOVOJOY",
+      "count": 1,
+      "avg_old": 3439.0,
+      "avg_new": 3099.0,
+      "avg_pct": -9.886594940389648
+    },
+    {
+      "brand": "MiracoRun",
+      "count": 1,
+      "avg_old": 4639.0,
+      "avg_new": 4239.0,
+      "avg_pct": -8.622547962923043
+    },
+    {
+      "brand": "Audio Pro",
+      "count": 1,
+      "avg_old": 19199.0,
+      "avg_new": 16899.0,
+      "avg_pct": -11.979790614094483
+    },
+    {
+      "brand": "Rapoo",
+      "count": 1,
+      "avg_old": 759.0,
+      "avg_new": 699.0,
+      "avg_pct": -7.905138339920949
+    },
+    {
+      "brand": "Mediasonic",
+      "count": 1,
+      "avg_old": 4029.0,
+      "avg_new": 3449.0,
+      "avg_pct": -14.395631670389674
+    },
+    {
+      "brand": "FINsix",
+      "count": 1,
+      "avg_old": 4209.0,
+      "avg_new": 3689.0,
+      "avg_pct": -12.35447849845569
+    },
+    {
+      "brand": "Tronsmart",
+      "count": 1,
+      "avg_old": 4519.0,
+      "avg_new": 3909.0,
+      "avg_pct": -13.498561628678912
+    },
+    {
+      "brand": "OGIO",
+      "count": 1,
+      "avg_old": 10749.0,
+      "avg_new": 9699.0,
+      "avg_pct": -9.768350544236673
+    },
+    {
+      "brand": "INPHIC",
+      "count": 1,
+      "avg_old": 4869.0,
+      "avg_new": 4379.0,
+      "avg_pct": -10.063668104333539
+    },
+    {
+      "brand": "Nov8tech",
+      "count": 1,
+      "avg_old": 4299.0,
+      "avg_new": 3679.0,
+      "avg_pct": -14.421958595022097
+    },
+    {
+      "brand": "MgaoLo",
+      "count": 1,
+      "avg_old": 2509.0,
+      "avg_new": 2099.0,
+      "avg_pct": -16.34117178158629
+    },
+    {
+      "brand": "DTDR",
+      "count": 1,
+      "avg_old": 2919.0,
+      "avg_new": 2519.0,
+      "avg_pct": -13.703323055841041
+    },
+    {
+      "brand": "Opis Technology",
+      "count": 1,
+      "avg_old": 3759.0,
+      "avg_new": 3309.0,
+      "avg_pct": -11.971268954509178
+    },
+    {
+      "brand": "VCOM",
+      "count": 1,
+      "avg_old": 3999.0,
+      "avg_new": 3369.0,
+      "avg_pct": -15.753938484621155
+    },
+    {
+      "brand": "Yohuton",
+      "count": 1,
+      "avg_old": 1949.0,
+      "avg_new": 1729.0,
+      "avg_pct": -11.287839917906618
+    },
+    {
+      "brand": "FPV",
+      "count": 1,
+      "avg_old": 1089.0,
+      "avg_new": 949.0,
+      "avg_pct": -12.85583103764922
+    },
+    {
+      "brand": "KingDian",
+      "count": 1,
+      "avg_old": 3899.0,
+      "avg_new": 3569.0,
+      "avg_pct": -8.463708643241857
+    },
+    {
+      "brand": "Picun",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3679.0,
+      "avg_pct": -14.021967749474177
+    },
+    {
+      "brand": "TREE.NB",
+      "count": 1,
+      "avg_old": 4429.0,
+      "avg_new": 3939.0,
+      "avg_pct": -11.06344547301874
+    },
+    {
+      "brand": "TSZPY",
+      "count": 1,
+      "avg_old": 1089.0,
+      "avg_new": 929.0,
+      "avg_pct": -14.692378328741965
+    },
+    {
+      "brand": "Maerd",
+      "count": 1,
+      "avg_old": 4869.0,
+      "avg_new": 4179.0,
+      "avg_pct": -14.171287738755392
+    },
+    {
+      "brand": "Minisopuru",
+      "count": 1,
+      "avg_old": 4549.0,
+      "avg_new": 3919.0,
+      "avg_pct": -13.849197625851836
+    },
+    {
+      "brand": "Jiunai",
+      "count": 1,
+      "avg_old": 1159.0,
+      "avg_new": 1039.0,
+      "avg_pct": -10.353753235547886
+    },
+    {
+      "brand": "Little Lucky",
+      "count": 1,
+      "avg_old": 929.0,
+      "avg_new": 819.0,
+      "avg_pct": -11.840688912809473
+    },
+    {
+      "brand": "Trueque",
+      "count": 1,
+      "avg_old": 2789.0,
+      "avg_new": 2389.0,
+      "avg_pct": -14.342058085335246
+    },
+    {
+      "brand": "Yogyro",
+      "count": 1,
+      "avg_old": 5249.0,
+      "avg_new": 4729.0,
+      "avg_pct": -9.906648885502001
+    },
+    {
+      "brand": "Celestron",
+      "count": 1,
+      "avg_old": 7949.0,
+      "avg_new": 7099.0,
+      "avg_pct": -10.693168952069442
+    },
+    {
+      "brand": "SOAIY",
+      "count": 1,
+      "avg_old": 4729.0,
+      "avg_new": 4309.0,
+      "avg_pct": -8.88137026855572
+    },
+    {
+      "brand": "MusicFirstHQ",
+      "count": 1,
+      "avg_old": 2319.0,
+      "avg_new": 2019.0,
+      "avg_pct": -12.936610608020699
+    },
+    {
+      "brand": "Digi-Chip",
+      "count": 1,
+      "avg_old": 579.0,
+      "avg_new": 509.0,
+      "avg_pct": -12.089810017271157
+    },
+    {
+      "brand": "1080P",
+      "count": 1,
+      "avg_old": 4379.0,
+      "avg_new": 3969.0,
+      "avg_pct": -9.362868234756794
+    },
+    {
+      "brand": "JENYNG",
+      "count": 1,
+      "avg_old": 4389.0,
+      "avg_new": 3919.0,
+      "avg_pct": -10.708589655958077
+    },
+    {
+      "brand": "Fellowes",
+      "count": 1,
+      "avg_old": 3909.0,
+      "avg_new": 3419.0,
+      "avg_pct": -12.53517523663341
+    },
+    {
+      "brand": "MONODEAL",
+      "count": 1,
+      "avg_old": 5599.0,
+      "avg_new": 5049.0,
+      "avg_pct": -9.823182711198427
+    },
+    {
+      "brand": "Deorna",
+      "count": 1,
+      "avg_old": 639.0,
+      "avg_new": 539.0,
+      "avg_pct": -15.64945226917058
+    },
+    {
+      "brand": "Artone",
+      "count": 1,
+      "avg_old": 4409.0,
+      "avg_new": 3719.0,
+      "avg_pct": -15.649807212519844
+    },
+    {
+      "brand": "Logetich",
+      "count": 1,
+      "avg_old": 6299.0,
+      "avg_new": 5499.0,
+      "avg_pct": -12.700428639466582
+    },
+    {
+      "brand": "SZBXD",
+      "count": 1,
+      "avg_old": 2489.0,
+      "avg_new": 2169.0,
+      "avg_pct": -12.856568903173965
+    },
+    {
+      "brand": "Monster",
+      "count": 1,
+      "avg_old": 4129.0,
+      "avg_new": 3469.0,
+      "avg_pct": -15.984499878905304
+    },
+    {
+      "brand": "Samsung Electronics",
+      "count": 1,
+      "avg_old": 36890.0,
+      "avg_new": 32690.0,
+      "avg_pct": -11.385199240986717
+    },
+    {
+      "brand": "Doingbag",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3679.0,
+      "avg_pct": -14.021967749474177
+    },
+    {
+      "brand": "LENRUE",
+      "count": 1,
+      "avg_old": 1429.0,
+      "avg_new": 1209.0,
+      "avg_pct": -15.395381385584326
+    },
+    {
+      "brand": "Tania",
+      "count": 1,
+      "avg_old": 4279.0,
+      "avg_new": 3789.0,
+      "avg_pct": -11.451273662070577
+    },
+    {
+      "brand": "Bestisan",
+      "count": 1,
+      "avg_old": 6349.0,
+      "avg_new": 5549.0,
+      "avg_pct": -12.600409513309183
+    },
+    {
+      "brand": "XT-XINTE",
+      "count": 1,
+      "avg_old": 4249.0,
+      "avg_new": 3619.0,
+      "avg_pct": -14.827018121911037
+    },
+    {
+      "brand": "Wireless",
+      "count": 1,
+      "avg_old": 859.0,
+      "avg_new": 769.0,
+      "avg_pct": -10.477299185098952
+    },
+    {
+      "brand": "MPF Products",
+      "count": 1,
+      "avg_old": 1239.0,
+      "avg_new": 1079.0,
+      "avg_pct": -12.913640032284098
+    },
+    {
+      "brand": "WapoRich",
+      "count": 1,
+      "avg_old": 1309.0,
+      "avg_new": 1149.0,
+      "avg_pct": -12.22307104660046
+    },
+    {
+      "brand": "Spead-Vmall",
+      "count": 1,
+      "avg_old": 3689.0,
+      "avg_new": 3299.0,
+      "avg_pct": -10.57197072377338
+    },
+    {
+      "brand": "J",
+      "count": 1,
+      "avg_old": 4329.0,
+      "avg_new": 3809.0,
+      "avg_pct": -12.012012012012011
+    },
+    {
+      "brand": "Craig",
+      "count": 1,
+      "avg_old": 4449.0,
+      "avg_new": 3809.0,
+      "avg_pct": -14.385255113508656
+    },
+    {
+      "brand": "VASOUN",
+      "count": 1,
+      "avg_old": 10799.0,
+      "avg_new": 9549.0,
+      "avg_pct": -11.57514584683767
+    },
+    {
+      "brand": "Samsonite",
+      "count": 1,
+      "avg_old": 7149.0,
+      "avg_new": 6249.0,
+      "avg_pct": -12.589173310952582
+    },
+    {
+      "brand": "KZ",
+      "count": 1,
+      "avg_old": 3949.0,
+      "avg_new": 3529.0,
+      "avg_pct": -10.635603950367182
+    },
+    {
+      "brand": "UNIWALK",
+      "count": 1,
+      "avg_old": 2349.0,
+      "avg_new": 2079.0,
+      "avg_pct": -11.494252873563218
+    },
+    {
+      "brand": "Wiwibous",
+      "count": 1,
+      "avg_old": 4429.0,
+      "avg_new": 3919.0,
+      "avg_pct": -11.515014675999097
+    },
+    {
+      "brand": "KROSER",
+      "count": 1,
+      "avg_old": 2229.0,
+      "avg_new": 1929.0,
+      "avg_pct": -13.458950201884253
+    },
+    {
+      "brand": "ZAGG",
+      "count": 1,
+      "avg_old": 4499.0,
+      "avg_new": 4019.0,
+      "avg_pct": -10.66903756390309
+    },
+    {
+      "brand": "Angwel",
+      "count": 1,
+      "avg_old": 2729.0,
+      "avg_new": 2479.0,
+      "avg_pct": -9.160864785635765
+    },
+    {
+      "brand": "GTHome",
+      "count": 1,
+      "avg_old": 4449.0,
+      "avg_new": 3849.0,
+      "avg_pct": -13.486176668914363
+    },
+    {
+      "brand": "Ankmax",
+      "count": 1,
+      "avg_old": 2629.0,
+      "avg_new": 2379.0,
+      "avg_pct": -9.509319132750095
+    },
+    {
+      "brand": "HiFiGo",
+      "count": 1,
+      "avg_old": 5299.0,
+      "avg_new": 4439.0,
+      "avg_pct": -16.22947725986035
+    },
+    {
+      "brand": "Domallk",
+      "count": 1,
+      "avg_old": 1369.0,
+      "avg_new": 1189.0,
+      "avg_pct": -13.148283418553689
+    },
+    {
+      "brand": "lychee",
+      "count": 1,
+      "avg_old": 1319.0,
+      "avg_new": 1169.0,
+      "avg_pct": -11.372251705837757
+    },
+    {
+      "brand": "Arsandyn",
+      "count": 1,
+      "avg_old": 1939.0,
+      "avg_new": 1769.0,
+      "avg_pct": -8.767405879319238
+    },
+    {
+      "brand": "SmallRig",
+      "count": 1,
+      "avg_old": 3859.0,
+      "avg_new": 3349.0,
+      "avg_pct": -13.215859030837004
+    },
+    {
+      "brand": "Domie",
+      "count": 1,
+      "avg_old": 4409.0,
+      "avg_new": 3939.0,
+      "avg_pct": -10.660013608528011
+    },
+    {
+      "brand": "Mobotron",
+      "count": 1,
+      "avg_old": 4579.0,
+      "avg_new": 4049.0,
+      "avg_pct": -11.574579602533303
+    },
+    {
+      "brand": "Kingston Technology",
+      "count": 1,
+      "avg_old": 1429.0,
+      "avg_new": 1299.0,
+      "avg_pct": -9.097270818754374
+    },
+    {
+      "brand": "LaView",
+      "count": 1,
+      "avg_old": 5549.0,
+      "avg_new": 5049.0,
+      "avg_pct": -9.010632546404757
+    },
+    {
+      "brand": "HURKEYE",
+      "count": 1,
+      "avg_old": 4669.0,
+      "avg_new": 4239.0,
+      "avg_pct": -9.20968087384879
+    },
+    {
+      "brand": "BYEASY",
+      "count": 1,
+      "avg_old": 959.0,
+      "avg_new": 809.0,
+      "avg_pct": -15.641293013555787
+    },
+    {
+      "brand": "Wordjusword",
+      "count": 1,
+      "avg_old": 4509.0,
+      "avg_new": 3849.0,
+      "avg_pct": -14.637391882900866
+    },
+    {
+      "brand": "SKYMOVE",
+      "count": 1,
+      "avg_old": 4099.0,
+      "avg_new": 3619.0,
+      "avg_pct": -11.710173212978775
+    },
+    {
+      "brand": "Lamicall",
+      "count": 1,
+      "avg_old": 1869.0,
+      "avg_new": 1669.0,
+      "avg_pct": -10.700909577314071
+    },
+    {
+      "brand": "HeiL",
+      "count": 1,
+      "avg_old": 10699.0,
+      "avg_new": 9699.0,
+      "avg_pct": -9.346667912889055
+    },
+    {
+      "brand": "WANTHER",
+      "count": 1,
+      "avg_old": 569.0,
+      "avg_new": 519.0,
+      "avg_pct": -8.787346221441124
+    },
+    {
+      "brand": "RDSJK",
+      "count": 1,
+      "avg_old": 4869.0,
+      "avg_new": 4179.0,
+      "avg_pct": -14.171287738755392
+    },
+    {
+      "brand": "44",
+      "count": 1,
+      "avg_old": 4129.0,
+      "avg_new": 3699.0,
+      "avg_pct": -10.41414386049891
+    },
+    {
+      "brand": "Aboom",
+      "count": 1,
+      "avg_old": 3829.0,
+      "avg_new": 3469.0,
+      "avg_pct": -9.401932619482894
+    },
+    {
+      "brand": "Bmax",
+      "count": 1,
+      "avg_old": 4879.0,
+      "avg_new": 4199.0,
+      "avg_pct": -13.937282229965156
+    },
+    {
+      "brand": "icepc",
+      "count": 1,
+      "avg_old": 869.0,
+      "avg_new": 749.0,
+      "avg_pct": -13.808975834292289
+    },
+    {
+      "brand": "Luckvan",
+      "count": 1,
+      "avg_old": 689.0,
+      "avg_new": 599.0,
+      "avg_pct": -13.062409288824384
+    },
+    {
+      "brand": "VANPIR",
+      "count": 1,
+      "avg_old": 3759.0,
+      "avg_new": 3219.0,
+      "avg_pct": -14.365522745411013
+    }
+  ]
+}
