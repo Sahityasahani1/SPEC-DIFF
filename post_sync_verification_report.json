@@ -1,120 +1,221 @@
 {
-  "sync_date": "2026-10-20",
+  "sync_date": "2026-11-01",
   "total_products": 1176,
   "catalog_updated_today_count": 1176,
   "all_catalog_updated": true,
-  "prev_history_count": 84672,
-  "current_history_count": 85848,
+  "prev_history_count": 135240,
+  "current_history_count": 136416,
   "history_delta": 1176,
   "prods_with_history_today": 1176,
   "all_products_have_new_history": true,
   "price_summary": {
-    "increases_count": 0,
-    "drops_count": 1120,
-    "unchanged_count": 56,
-    "avg_pct_change": -10.44,
-    "avg_diff_inr": -222.41,
-    "top_increases": [],
-    "top_drops": [
+    "increases_count": 31,
+    "drops_count": 245,
+    "unchanged_count": 900,
+    "avg_pct_change": 13.69,
+    "avg_diff_inr": 47.79,
+    "top_increases": [
       {
-        "id": "amz_lap_b09nn6sgv5",
-        "name": "Dell 2022 Vostro 14 5000 5410 Business Laptop 11th Gen Intel Core i7-11390H 4-Core, 32G RAM 1TG SSD 14 FHD Screen, Intel Iris Xe Graphics, Backlit KB, FP Reader, Win10 PRO",
-        "brand": "Dell",
+        "id": "amz_lap_b092cpqv95",
+        "name": "HOPVISION Native 1080P Projector Full HD, 15000Lux Movie Projector with 150000 Hours LED Lamp Life, Support 4K 350\" Home Outdoor Projector for Smartphone/PC/Laptop/ PS4/ TV Stick/E",
+        "brand": "HOPVISION",
         "category": "laptop",
-        "old_price": 31190.0,
-        "new_price": 27390.0,
-        "diff": -3800.0,
-        "pct_change": -12.18
+        "old_price": 269.0,
+        "new_price": 37157.0,
+        "diff": 36888.0,
+        "pct_change": 13713.01
       },
       {
-        "id": "laptop_apple_macbook_pro_16_m3_max",
-        "name": "Apple MacBook Pro 16 (M3 Max, 36GB/1TB)",
-        "brand": "Apple",
+        "id": "lap_honor_magicbook_x16",
+        "name": "Honor MagicBook X16",
+        "brand": "Honor",
         "category": "laptop",
-        "old_price": 47790.0,
-        "new_price": 44190.0,
-        "diff": -3600.0,
-        "pct_change": -7.53
+        "old_price": 1119.0,
+        "new_price": 37990.0,
+        "diff": 36871.0,
+        "pct_change": 3295.0
       },
       {
-        "id": "amz_lap_b09h5z36s1",
-        "name": "Microsoft Surface Laptop Studio - 14.4\" Touchscreen - Intel\u00ae Core\u2122 i7 - 32GB Memory - 2TB SSD - Platinum",
-        "brand": "Microsoft",
-        "category": "laptop",
-        "old_price": 21499.0,
-        "new_price": 18299.0,
-        "diff": -3200.0,
-        "pct_change": -14.88
-      },
-      {
-        "id": "lap_asus_rog_strix_g16_4070",
-        "name": "ASUS ROG Strix G16 G614JIR",
+        "id": "mon_asus_rog_swift_pg27aqdm",
+        "name": "ASUS ROG Swift OLED PG27AQDM (27-inch 240Hz 0.03ms)",
         "brand": "ASUS",
-        "category": "laptop",
-        "old_price": 22299.0,
-        "new_price": 19249.0,
-        "diff": -3050.0,
-        "pct_change": -13.68
-      },
-      {
-        "id": "laptop_apple_macbook_pro_14_m3_pro",
-        "name": "Apple MacBook Pro 14 (M3 Pro, 18GB/512GB)",
-        "brand": "Apple",
-        "category": "laptop",
-        "old_price": 21349.0,
-        "new_price": 18949.0,
-        "diff": -2400.0,
-        "pct_change": -11.24
-      },
-      {
-        "id": "lap_apple_macbook_pro_14_m3pro",
-        "name": "Apple MacBook Pro 14 M3 Pro",
-        "brand": "Apple",
-        "category": "laptop",
-        "old_price": 22049.0,
-        "new_price": 19749.0,
-        "diff": -2300.0,
-        "pct_change": -10.43
-      },
-      {
-        "id": "laptop_dell_xps_14_9440",
-        "name": "Dell XPS 14 (9440) Intel Ultra 7",
-        "brand": "Dell",
-        "category": "laptop",
-        "old_price": 21599.0,
-        "new_price": 19399.0,
-        "diff": -2200.0,
-        "pct_change": -10.19
-      },
-      {
-        "id": "monitor_samsung_odyssey_oled_g9_49",
-        "name": "Samsung Odyssey OLED G9 (49-inch 240Hz 32:9 Curved DQHD)",
-        "brand": "Samsung",
         "category": "monitor",
-        "old_price": 15099.0,
-        "new_price": 12899.0,
-        "diff": -2200.0,
-        "pct_change": -14.57
+        "old_price": 123590.0,
+        "new_price": 125490.0,
+        "diff": 1900.0,
+        "pct_change": 1.54
+      },
+      {
+        "id": "lap_lenovo_legion_pro_5i_4070",
+        "name": "Lenovo Legion Pro 5i 16",
+        "brand": "Lenovo",
+        "category": "laptop",
+        "old_price": 82690.0,
+        "new_price": 83590.0,
+        "diff": 900.0,
+        "pct_change": 1.09
+      },
+      {
+        "id": "laptop_hp_pavilion_plus_14_oled",
+        "name": "HP Pavilion Plus 14 OLED (Ryzen 7 7840U)",
+        "brand": "HP",
+        "category": "laptop",
+        "old_price": 51590.0,
+        "new_price": 52190.0,
+        "diff": 600.0,
+        "pct_change": 1.16
+      },
+      {
+        "id": "laptop_acer_predator_helios_neo_16",
+        "name": "Acer Predator Helios Neo 16 (14th Gen i7 / RTX 4060)",
+        "brand": "Acer",
+        "category": "laptop",
+        "old_price": 139690.0,
+        "new_price": 140090.0,
+        "diff": 400.0,
+        "pct_change": 0.29
       },
       {
         "id": "laptop_apple_macbook_air_15_m3",
         "name": "Apple MacBook Air 15 (M3, 16GB/512GB)",
         "brand": "Apple",
         "category": "laptop",
-        "old_price": 24799.0,
-        "new_price": 22649.0,
-        "diff": -2150.0,
-        "pct_change": -8.67
+        "old_price": 161990.0,
+        "new_price": 162290.0,
+        "diff": 300.0,
+        "pct_change": 0.19
       },
       {
-        "id": "amz_lap_b09jvv47bx",
-        "name": "Apple 2021 MacBook Pro (16.2-inch, M1 Pro chip with 10\u2011core CPU and 16\u2011core GPU, 16GB RAM, 512GB SSD) - Space Gray",
+        "id": "laptop_lenovo_yoga_slim_7x_copilot",
+        "name": "Lenovo Yoga Slim 7x Copilot+ (Snapdragon X Elite)",
+        "brand": "Lenovo",
+        "category": "laptop",
+        "old_price": 86690.0,
+        "new_price": 86890.0,
+        "diff": 200.0,
+        "pct_change": 0.23
+      },
+      {
+        "id": "lap_apple_macbook_pro_14_m3pro",
+        "name": "Apple MacBook Pro 14 M3 Pro",
         "brand": "Apple",
         "category": "laptop",
-        "old_price": 29090.0,
-        "new_price": 26990.0,
+        "old_price": 5249.0,
+        "new_price": 5299.0,
+        "diff": 50.0,
+        "pct_change": 0.95
+      },
+      {
+        "id": "tablet_xiaomi_pad_6_256gb",
+        "name": "Xiaomi Pad 6 (8GB/256GB Wi-Fi)",
+        "brand": "Xiaomi",
+        "category": "tablet",
+        "old_price": 14399.0,
+        "new_price": 14449.0,
+        "diff": 50.0,
+        "pct_change": 0.35
+      }
+    ],
+    "top_drops": [
+      {
+        "id": "lap_hp_15s_i5",
+        "name": "HP 15s-fr5011TU",
+        "brand": "HP",
+        "category": "laptop",
+        "old_price": 67290.0,
+        "new_price": 64390.0,
+        "diff": -2900.0,
+        "pct_change": -4.31
+      },
+      {
+        "id": "phone_iqoo_12",
+        "name": "iQOO 12 5G (512GB)",
+        "brand": "iQOO",
+        "category": "smartphone",
+        "old_price": 80290.0,
+        "new_price": 77590.0,
+        "diff": -2700.0,
+        "pct_change": -3.36
+      },
+      {
+        "id": "phone_samsung_zflip6",
+        "name": "Samsung Galaxy Z Flip 6 (256GB)",
+        "brand": "Samsung",
+        "category": "smartphone",
+        "old_price": 84290.0,
+        "new_price": 82090.0,
+        "diff": -2200.0,
+        "pct_change": -2.61
+      },
+      {
+        "id": "lap_asus_rog_zephyrus_g14_oled",
+        "name": "ASUS ROG Zephyrus G14 OLED (2024)",
+        "brand": "ASUS",
+        "category": "laptop",
+        "old_price": 147390.0,
+        "new_price": 145290.0,
         "diff": -2100.0,
-        "pct_change": -7.22
+        "pct_change": -1.42
+      },
+      {
+        "id": "lap_lenovo_ideapad_pro_5_u7",
+        "name": "Lenovo IdeaPad Pro 5 14",
+        "brand": "Lenovo",
+        "category": "laptop",
+        "old_price": 96890.0,
+        "new_price": 95090.0,
+        "diff": -1800.0,
+        "pct_change": -1.86
+      },
+      {
+        "id": "lap_apple_macbook_air_m2_16gb",
+        "name": "Apple MacBook Air 13.6 M2 (16GB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 145290.0,
+        "new_price": 144590.0,
+        "diff": -700.0,
+        "pct_change": -0.48
+      },
+      {
+        "id": "tab_samsung_galaxy_tab_s9_ultra",
+        "name": "Samsung Galaxy Tab S9 Ultra (14.6-inch AMOLED 512GB)",
+        "brand": "Samsung",
+        "category": "tablet",
+        "old_price": 15349.0,
+        "new_price": 14699.0,
+        "diff": -650.0,
+        "pct_change": -4.23
+      },
+      {
+        "id": "audio_sennheiser_momentum4",
+        "name": "Sennheiser Momentum 4 Wireless",
+        "brand": "Sennheiser",
+        "category": "audio",
+        "old_price": 15849.0,
+        "new_price": 15199.0,
+        "diff": -650.0,
+        "pct_change": -4.1
+      },
+      {
+        "id": "amz_lap_b004ma3fn8",
+        "name": "AU OPTRONICS B173RW01 V.3 with a BOTTOM LEFT CONNECTOR  for LAPTOPs, LCD SCREEN is 17.3\" WXGA++ LED backlight (or compatible model)",
+        "brand": "AU Optronics",
+        "category": "laptop",
+        "old_price": 17899.0,
+        "new_price": 17449.0,
+        "diff": -450.0,
+        "pct_change": -2.51
+      },
+      {
+        "id": "lap_async_01",
+        "name": "Async Test Notebook",
+        "brand": "Asus",
+        "category": "laptop",
+        "old_price": 49590.0,
+        "new_price": 49190.0,
+        "diff": -400.0,
+        "pct_change": -0.81
       }
     ]
   },
@@ -122,90 +223,90 @@
     "accessory": {
       "total": 36,
       "increases": 0,
-      "drops": 35,
-      "unchanged": 1,
-      "avg_pct_change": -10.46,
-      "avg_diff_inr": -89.72,
+      "drops": 4,
+      "unchanged": 32,
+      "avg_pct_change": -0.54,
+      "avg_diff_inr": -7.78,
       "min_price": 99.0,
-      "max_price": 2249.0,
-      "avg_price": 769.28
+      "max_price": 8349.0,
+      "avg_price": 387.89
     },
     "audio": {
       "total": 260,
-      "increases": 0,
-      "drops": 236,
-      "unchanged": 24,
-      "avg_pct_change": -10.02,
-      "avg_diff_inr": -81.38,
+      "increases": 3,
+      "drops": 38,
+      "unchanged": 219,
+      "avg_pct_change": -0.78,
+      "avg_diff_inr": -5.42,
       "min_price": 99.0,
-      "max_price": 10299.0,
-      "avg_price": 683.15
+      "max_price": 15599.0,
+      "avg_price": 275.69
     },
     "gaming": {
       "total": 11,
-      "increases": 0,
-      "drops": 11,
-      "unchanged": 0,
-      "avg_pct_change": -10.45,
-      "avg_diff_inr": -776.36,
-      "min_price": 3919.0,
-      "max_price": 11849.0,
-      "avg_price": 6673.55
+      "increases": 1,
+      "drops": 8,
+      "unchanged": 2,
+      "avg_pct_change": -0.78,
+      "avg_diff_inr": -10.0,
+      "min_price": 869.0,
+      "max_price": 2999.0,
+      "avg_price": 1486.27
     },
     "laptop": {
       "total": 569,
-      "increases": 0,
-      "drops": 550,
-      "unchanged": 19,
-      "avg_pct_change": -10.59,
-      "avg_diff_inr": -276.87,
+      "increases": 22,
+      "drops": 118,
+      "unchanged": 429,
+      "avg_pct_change": 29.16,
+      "avg_diff_inr": 112.49,
       "min_price": 99.0,
-      "max_price": 44190.0,
-      "avg_price": 2329.29
+      "max_price": 162290.0,
+      "avg_price": 2437.96
     },
     "monitor": {
       "total": 22,
-      "increases": 0,
-      "drops": 22,
-      "unchanged": 0,
-      "avg_pct_change": -10.7,
-      "avg_diff_inr": -450.0,
-      "min_price": 489.0,
-      "max_price": 12899.0,
-      "avg_price": 3568.09
+      "increases": 1,
+      "drops": 12,
+      "unchanged": 9,
+      "avg_pct_change": -1.51,
+      "avg_diff_inr": 75.45,
+      "min_price": 99.0,
+      "max_price": 125490.0,
+      "avg_price": 6336.77
     },
     "smartphone": {
       "total": 126,
-      "increases": 0,
-      "drops": 120,
-      "unchanged": 6,
-      "avg_pct_change": -10.83,
-      "avg_diff_inr": -276.27,
+      "increases": 1,
+      "drops": 38,
+      "unchanged": 87,
+      "avg_pct_change": -0.99,
+      "avg_diff_inr": -49.44,
       "min_price": 99.0,
-      "max_price": 12699.0,
-      "avg_price": 2166.3
+      "max_price": 82090.0,
+      "avg_price": 2020.93
     },
     "smartwatch": {
       "total": 51,
-      "increases": 0,
-      "drops": 48,
-      "unchanged": 3,
-      "avg_pct_change": -10.23,
-      "avg_diff_inr": -201.76,
+      "increases": 1,
+      "drops": 7,
+      "unchanged": 43,
+      "avg_pct_change": -0.46,
+      "avg_diff_inr": -4.9,
       "min_price": 99.0,
-      "max_price": 11499.0,
-      "avg_price": 1697.63
+      "max_price": 2049.0,
+      "avg_price": 347.04
     },
     "tablet": {
       "total": 101,
-      "increases": 0,
-      "drops": 98,
-      "unchanged": 3,
-      "avg_pct_change": -10.16,
-      "avg_diff_inr": -159.21,
+      "increases": 2,
+      "drops": 20,
+      "unchanged": 79,
+      "avg_pct_change": -0.75,
+      "avg_diff_inr": -11.78,
       "min_price": 99.0,
-      "max_price": 12499.0,
-      "avg_price": 1407.61
+      "max_price": 77190.0,
+      "avg_price": 1352.48
     }
   }
 }
