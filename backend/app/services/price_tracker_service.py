@@ -1,5 +1,8 @@
 import random
 import datetime
+import hashlib
+from typing import Optional, List, Dict, Any
+from sqlalchemy.orm import Session
 
 FESTIVAL_CALENDAR = [
     (1, 26, 26, "Republic Day", 0.10),
@@ -11,8 +14,14 @@ FESTIVAL_CALENDAR = [
     (12, 25, 26, "Christmas", 0.10)
 ]
 
-def get_price_signal(product):
-    random.seed(hash(str(product.id)))
+def get_price_signal(
+    product,
+    preloaded_history: Optional[List[Dict[str, Any]]] = None,
+    db: Optional[Session] = None
+):
+    pid = getattr(product, "id", "")
+    seed = int(hashlib.md5(str(pid).encode("utf-8")).hexdigest()[:8], 16)
+    rng = random.Random(seed)
     current_price = getattr(product, "price", 0)
     
     if current_price == 0:
@@ -28,49 +37,59 @@ def get_price_signal(product):
             "estimated_savings": 0
         }
 
-    msrp = current_price * random.uniform(1.08, 1.20)
+    msrp = current_price * rng.uniform(1.08, 1.20)
     msrp = round(msrp / 99) * 99
 
-    today = datetime.date(2026, 9, 20)
+    today = datetime.date.today()
     price_history = []
     
-    # Check if real recorded price history exists in database
-    try:
-        from app.database import SessionLocal
-        from app.models import PriceHistory
-        db = SessionLocal()
-        records = db.query(PriceHistory).filter(
-            PriceHistory.product_id == getattr(product, "id", "")
-        ).order_by(PriceHistory.recorded_at.asc()).all()
-        if records and len(records) >= 3:
-            price_history = [
-                {"date": r.recorded_at.strftime("%Y-%m-%d"), "price": round(r.price)}
-                for r in records[-30:]
-            ]
-        db.close()
-    except Exception:
-        pass
+    # 1. Use preloaded history if provided (O(1) in-memory lookup)
+    if preloaded_history is not None:
+        price_history = preloaded_history
+    else:
+        # Check if real recorded price history exists in database
+        try:
+            should_close = False
+            session = db
+            if session is None:
+                from app.database import SessionLocal
+                session = SessionLocal()
+                should_close = True
+            
+            from app.models import PriceHistory
+            records = session.query(PriceHistory).filter(
+                PriceHistory.product_id == pid
+            ).order_by(PriceHistory.recorded_at.asc()).all()
+            if records and len(records) >= 3:
+                price_history = [
+                    {"date": r.recorded_at.strftime("%Y-%m-%d"), "price": round(r.price)}
+                    for r in records[-30:]
+                ]
+            if should_close:
+                session.close()
+        except Exception:
+            pass
 
+    # 2. Resilient synthetic 30-day history generation if empty
     if not price_history:
         for i in range(29, -1, -1):
             d = today - datetime.timedelta(days=i)
-        
-        base = current_price * random.uniform(0.97, 1.03)
-        
-        # Check festival
-        discount = 0
-        for m, ds, de, name, pct in FESTIVAL_CALENDAR:
-            # check if d is within +/- 3 days of the festival range
-            fest_start = datetime.date(d.year, m, ds) - datetime.timedelta(days=3)
-            fest_end = datetime.date(d.year, m, de) + datetime.timedelta(days=3)
-            if fest_start <= d <= fest_end:
-                discount = max(discount, pct)
-                
-        price = base * (1 - discount)
-        price_history.append({
-            "date": d.strftime("%Y-%m-%d"),
-            "price": round(price)
-        })
+            base = current_price * rng.uniform(0.97, 1.03)
+            
+            # Check festival
+            discount = 0
+            for m, ds, de, name, pct in FESTIVAL_CALENDAR:
+                # check if d is within +/- 3 days of the festival range
+                fest_start = datetime.date(d.year, m, ds) - datetime.timedelta(days=3)
+                fest_end = datetime.date(d.year, m, de) + datetime.timedelta(days=3)
+                if fest_start <= d <= fest_end:
+                    discount = max(discount, pct)
+                    
+            price = base * (1 - discount)
+            price_history.append({
+                "date": d.strftime("%Y-%m-%d"),
+                "price": round(price)
+            })
 
     all_time_low_entry = min(price_history, key=lambda x: x["price"])
     all_time_low = all_time_low_entry["price"]

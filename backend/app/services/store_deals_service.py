@@ -108,23 +108,25 @@ def get_store_deals(product) -> Dict[str, Any]:
             "stores": []
         }
 
-    # Deterministic seed per product ID
-    random.seed(hash(f"{pid}_store_deals_2026_seed"))
+    # Deterministic seed per product ID using isolated Random instance
+    import zlib
+    seed_val = zlib.crc32(f"{pid}_store_deals_2026_seed".encode("utf-8"))
+    rng = random.Random(seed_val)
 
     # Generate multipliers for 5 stores
     # Amazon and Flipkart are competitive and close to base_price
     # Croma & Reliance Digital have retail store markups
     # Official Store has MSRP pricing
     multipliers = {
-        "flipkart": random.uniform(0.97, 1.03),
-        "amazon": random.uniform(0.975, 1.035),
-        "croma": random.uniform(1.02, 1.08),
-        "reliance": random.uniform(1.01, 1.07),
-        "official": random.uniform(1.06, 1.15)
+        "flipkart": rng.uniform(0.97, 1.03),
+        "amazon": rng.uniform(0.975, 1.035),
+        "croma": rng.uniform(1.02, 1.08),
+        "reliance": rng.uniform(1.01, 1.07),
+        "official": rng.uniform(1.06, 1.15)
     }
 
     # Force at least one store to equal or slightly undercut the base_price
-    min_store = random.choice(["flipkart", "amazon"])
+    min_store = rng.choice(["flipkart", "amazon"])
     multipliers[min_store] = 0.985 if base_price > 10000 else 0.99
 
     stores_list = []
@@ -157,7 +159,7 @@ def get_store_deals(product) -> Dict[str, Any]:
         is_best = (store_id == best_store_id)
         
         # In stock status: mostly true, occasionally limited stock
-        stock_rand = random.random()
+        stock_rand = rng.random()
         stock_status = "In Stock" if stock_rand > 0.15 else "Limited Stock (Only 2 left)"
 
         # Effective price after bank offer

@@ -1,3 +1,4 @@
+import asyncio
 """Recommendation Router (POST /api/recommend)."""
 import time
 import uuid
@@ -48,17 +49,17 @@ async def get_recommendations(
     req_id = f"rec_{uuid.uuid4().hex[:10]}"
     catalog_date = datetime.date.today().isoformat()
 
-    # 1. Deterministic Hard Filtering
-    eligible_products = filter_products(db, rec_request)
+    # 1. Deterministic Hard Filtering (executed via threadpool to prevent event loop stalls)
+    eligible_products = await asyncio.to_thread(filter_products, db, rec_request)
 
     # Ensure semantic engine is fitted
     if not semantic_engine.is_fitted:
-        all_prods = db.query(Product).all()
-        semantic_engine.index_products(all_prods)
+        all_prods = await asyncio.to_thread(lambda: db.query(Product).all())
+        await asyncio.to_thread(semantic_engine.index_products, all_prods)
 
     # 2. Handle Zero-Match Boundary with Diagnostic Recovery
     if not eligible_products:
-        unmet_filters, adjustments = diagnose_no_match(db, rec_request)
+        unmet_filters, adjustments = await asyncio.to_thread(diagnose_no_match, db, rec_request)
         elapsed_ms = (time.time() - start_time) * 1000.0
 
         # Log query
@@ -86,11 +87,11 @@ async def get_recommendations(
         response.headers["X-Cache"] = "MISS"
         return no_match_response
 
-    # 3. Dense Semantic Vector Retrieval
-    semantic_scores = semantic_engine.compute_similarity(rec_request.use_case, eligible_products)
+    # 3. Dense Semantic Vector Retrieval (async threadpool execution)
+    semantic_scores = await asyncio.to_thread(semantic_engine.compute_similarity, rec_request.use_case, eligible_products)
 
     # 4. Multi-Factor 5-Factor Ranking
-    ranked_tuples = rank_candidates(eligible_products, semantic_scores, rec_request, limit=5)
+    ranked_tuples = await asyncio.to_thread(rank_candidates, eligible_products, semantic_scores, rec_request, 5)
 
     # 5. Grounded Explanation Generation
     recommendations = []
@@ -98,7 +99,7 @@ async def get_recommendations(
         reasons, limitations, evidence = generate_explanation(product, rec_request, final_score)
         
         benchmarks_data = get_benchmarks(product)
-        price_data = get_price_signal(product)
+        price_data = get_price_signal(product, db=db)
         deal_data = get_store_deals(product)
 
         specs_dict = {

@@ -8,7 +8,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
   const PROMPTS = [
     {
       emoji: '📱',
-      title: 'Flagship Camera Phone',
+      title: 'Camera Phone',
       data: {
         category: 'smartphone',
         budget: 80000,
@@ -20,7 +20,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
     },
     {
       emoji: '🎧',
-      title: 'Audiophile ANC Travel',
+      title: 'Audiophile',
       data: {
         category: 'audio',
         budget: 35000,
@@ -32,19 +32,19 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
     },
     {
       emoji: '💻',
-      title: 'CS Student / Docker',
+      title: 'Student',
       data: {
         category: 'laptop',
         budget: 65000,
         ram: 16,
         ssd: 512,
         priority: 'value',
-        use_case: 'B.Tech CS student coding in Python, VS Code, and Docker. Needs upgradable RAM, good cooling, and comfortable keyboard.'
+        use_case: 'Student laptop for coursework, coding, multitasking, and reliable all-day battery life.'
       }
     },
     {
       emoji: '⌚',
-      title: 'GPS Running Smartwatch',
+      title: 'Smartwatch',
       data: {
         category: 'smartwatch',
         budget: 45000,
@@ -56,7 +56,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
     },
     {
       emoji: '🖥️',
-      title: '4K Creator Monitor',
+      title: '4K Monitor',
       data: {
         category: 'monitor',
         budget: 45000,
@@ -68,7 +68,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
     },
     {
       emoji: '📟',
-      title: 'iPad / Digital Art',
+      title: 'Digital Art',
       data: {
         category: 'tablet',
         budget: 60000,
@@ -227,7 +227,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
             onClick={() => onSelectQuickPrompt(p.data)}
-            className="text-xs px-4 py-2 rounded-full bg-white text-forest-900 hover:bg-forest-900 hover:text-white border border-forest-900/15 shadow-sm transition-all flex items-center gap-2 cursor-pointer font-medium"
+            className="text-xs px-4 py-2 rounded-full bg-white text-forest-900 hover:bg-forest-900 hover:text-white border border-forest-900/15 shadow-sm transition-all flex items-center gap-2 cursor-pointer font-medium whitespace-nowrap"
           >
             <span>{p.emoji}</span>
             <span>{p.title}</span>

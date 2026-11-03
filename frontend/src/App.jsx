@@ -231,7 +231,7 @@ export default function App() {
       max_budget: params.get('budget') ? Number(params.get('budget')) : 84999,
       min_ram_gb: params.get('ram') !== null ? Number(params.get('ram')) : 16,
       min_storage_gb: params.get('storage') !== null ? Number(params.get('storage')) : 512,
-      use_case: params.get('q') || params.get('use_case') || 'B.Tech CS student coding in Python, running Docker containers, and casual gaming with good battery life.',
+      use_case: params.get('q') || params.get('use_case') || 'Student laptop for coding, coursework, multitasking, and casual gaming with good battery life.',
       brand: params.get('brand') && params.get('brand') !== 'Any' ? params.get('brand') : null,
       priority: params.get('priority') || 'value',
     };
@@ -272,7 +272,7 @@ export default function App() {
       max_budget: 84999,
       min_ram_gb: 16,
       min_storage_gb: 512,
-      use_case: 'B.Tech CS student coding in Python, running Docker containers, and casual gaming with good battery life.',
+      use_case: 'Student laptop for coding, coursework, multitasking, and casual gaming with good battery life.',
       brand: null,
       priority: 'value'
     };

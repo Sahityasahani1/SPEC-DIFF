@@ -69,9 +69,30 @@ def list_products(
 
     products = query.offset(offset).limit(limit).all()
 
-    from collections import Counter
-    all_categories = db.query(Product.category).filter(Product.in_stock == True).all()
-    category_counts = dict(Counter([c[0] for c in all_categories]))
+    from sqlalchemy import func
+    category_counts = dict(
+        db.query(Product.category, func.count(Product.id))
+        .filter(Product.in_stock == True)
+        .group_by(Product.category)
+        .all()
+    )
+
+    # Batch pre-fetch PriceHistory for products on the page (eliminates N+1 query storm)
+    product_ids = [p.id for p in products]
+    from app.models import PriceHistory
+    from collections import defaultdict
+    history_records = (
+        db.query(PriceHistory)
+        .filter(PriceHistory.product_id.in_(product_ids))
+        .order_by(PriceHistory.recorded_at.asc())
+        .all()
+    )
+    history_by_product = defaultdict(list)
+    for hr in history_records:
+        history_by_product[hr.product_id].append({
+            "date": hr.recorded_at.strftime("%Y-%m-%d"),
+            "price": round(hr.price)
+        })
 
     items = []
     for p in products:
@@ -79,7 +100,8 @@ def list_products(
         b = get_benchmarks(p)
         if b.get("geekbench_single"):
             d["benchmarks"] = b
-        d["price_signal"] = get_price_signal(p)
+        p_hist = history_by_product.get(p.id)
+        d["price_signal"] = get_price_signal(p, preloaded_history=p_hist[-30:] if p_hist else None, db=db)
         d["deal_comparison"] = get_store_deals(p)
         items.append(d)
 

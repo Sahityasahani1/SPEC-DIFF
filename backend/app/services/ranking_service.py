@@ -81,6 +81,58 @@ def compute_priority_score(product: Product, priority: str, max_budget: float) -
         spec_pts = (product.ram_gb / 16.0) * 30.0 + (product.storage_gb / 512.0) * 30.0 + (product.battery_hours / 10.0) * 20.0
         return min(100.0, spec_pts * 0.6 + (product.rating / 5.0) * 40.0)
 
+def compute_cross_attribute_boost(product: Product, use_case: str) -> float:
+    """
+    Late-Stage Cross-Attribute Reranker:
+    Evaluates fine-grained cross-token interactions between qualitative user workflow intents
+    and verified quantitative product specifications.
+    Returns boost score in range [-3.0, +6.0].
+    """
+    if not use_case:
+        return 0.0
+
+    q = use_case.lower()
+    boost = 0.0
+
+    # 1. Dev / Software Engineering / Docker / Compilation
+    if any(k in q for k in ["code", "coding", "developer", "docker", "python", "linux", "programming", "compile"]):
+        if product.ram_gb >= 16:
+            boost += 2.5
+        if "Upgradable" in product.ram_expandability or "Slot Free" in product.ram_expandability:
+            boost += 1.5
+        if any(chip in product.processor.lower() for chip in ["ryzen 7", "ryzen 5", "i7", "i5", "m1", "m2", "m3"]):
+            boost += 1.0
+
+    # 2. Gaming / High Refresh Rate / Dedicated GPU
+    if any(k in q for k in ["game", "gaming", "fps", "valorant", "cs2", "gta", "cyberpunk", "gpu", "graphics"]):
+        if any(g in product.gpu.lower() for g in ["rtx", "gtx", "radeon rx"]):
+            boost += 3.0
+        if any(hz in product.display_tech.lower() for hz in ["120hz", "144hz", "165hz", "240hz"]):
+            boost += 1.5
+
+    # 3. Mobile / Battery / College Travel / Quiet Library
+    if any(k in q for k in ["battery", "travel", "flight", "lightweight", "portable", "library", "silent"]):
+        if product.battery_hours >= 10.0:
+            boost += 2.5
+        elif product.battery_hours >= 8.0:
+            boost += 1.5
+        if product.weight_kg <= 1.4:
+            boost += 2.0
+
+    # 4. Content Creation / Video Editing / Color Accuracy
+    if any(k in q for k in ["video", "editing", "photoshop", "premiere", "creator", "davinci", "color"]):
+        if "oled" in product.display_tech.lower() or "100% srgb" in product.display_tech.lower() or "retina" in product.display_tech.lower():
+            boost += 2.5
+        if product.ram_gb >= 16:
+            boost += 1.5
+
+    # 5. Office Productivity / Student Bundles
+    if any(k in q for k in ["office", "excel", "word", "upsc", "ca", "student", "study"]):
+        if "ms office" in product.bundled_software.lower():
+            boost += 2.0
+
+    return min(6.0, max(-3.0, boost))
+
 def rank_candidates(
     candidates: List[Product],
     semantic_scores: Dict[str, float],

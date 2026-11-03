@@ -44,7 +44,7 @@ def compare_products(db: Session, product_ids: List[str], priority: str = "value
     else:  # value
         def val_score(p: Product):
             spec_pts = (p.ram_gb / 16.0) + (p.storage_gb / 512.0) + (p.battery_hours / 8.0)
-            return spec_pts / (p.price / 50000.0)
+            return spec_pts / (max(1.0, p.price) / 50000.0)
         winner = max(ordered_products, key=val_score)
         winner_id = winner.id
         winner_reason = f"{winner.name} offers the highest specification-to-price value in the Indian market."
@@ -60,7 +60,7 @@ def compare_products(db: Session, product_ids: List[str], priority: str = "value
         cons_list = [c.strip() for c in p.cons.split(";") if c.strip()]
         
         b_data = get_benchmarks(p)
-        ps_data = get_price_signal(p)
+        ps_data = get_price_signal(p, db=db)
         deal_data = get_store_deals(p)
         
         comp_products.append(

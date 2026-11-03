@@ -39,6 +39,17 @@ FESTIVAL_SALES = [
     (12, 20, 27, "Year-End Christmas Carnival", 0.08)
 ]
 
+CATEGORY_MIN_PRICES = {
+    "laptop": 19990.0,
+    "smartphone": 5990.0,
+    "tablet": 7990.0,
+    "monitor": 4990.0,
+    "gaming": 14990.0,
+    "smartwatch": 1490.0,
+    "audio": 499.0,
+    "accessory": 199.0
+}
+
 def get_active_festival_discount(date_obj: datetime.date) -> float:
     """Check if date falls within a major retail sale window."""
     m, d = date_obj.month, date_obj.day
@@ -107,16 +118,22 @@ def fetch_live_web_price(product_url: str) -> Optional[float]:
 
     return None
 
-def calculate_market_daily_price(current_base_price: float, product_id: str, date_obj: datetime.date) -> float:
+def calculate_market_daily_price(
+    current_base_price: float,
+    product_id: str,
+    date_obj: datetime.date,
+    category: str = "laptop"
+) -> float:
     """
     Deterministic real-market price valuation engine:
-    Simulates dynamic algorithmic pricing used by Amazon/Flipkart algorithms.
+    Simulates dynamic algorithmic pricing bounded by authentic Indian retail limits.
     """
     if current_base_price <= 0:
         return current_base_price
 
     # Daily seed based on product ID and date string for consistent daily evaluation
-    day_seed = hash(f"{product_id}_{date_obj.isoformat()}")
+    import zlib
+    day_seed = zlib.crc32(f"{product_id}_{date_obj.isoformat()}".encode("utf-8"))
     rng = random.Random(day_seed)
 
     # 1. Base market drift: normal daily fluctuations (+/- 2.5%)
@@ -132,21 +149,27 @@ def calculate_market_daily_price(current_base_price: float, product_id: str, dat
     if festival_discount > 0:
         drift_pct -= rng.uniform(festival_discount * 0.7, festival_discount * 1.1)
 
-    # Calculate raw new price
-    new_price = current_base_price * (1.0 + drift_pct)
+    # Calculate raw new price bounded by +/- 8% of current price per single sync
+    raw_drift = max(-0.08, min(0.08, drift_pct))
+    raw_price = current_base_price * (1.0 + raw_drift)
+
+    # Apply category minimum floor to prevent runaway decay
+    cat_clean = (category or "accessory").lower().strip()
+    floor = CATEGORY_MIN_PRICES.get(cat_clean, 199.0)
+    final_price = max(floor, raw_price)
 
     # Realistic retail price rounding
-    if new_price > 25000:
+    if final_price > 25000:
         # High value electronics: round to nearest 90 or 990
-        rounded = round(new_price / 100) * 100 - 10
-    elif new_price > 5000:
+        rounded = round(final_price / 100) * 100 - 10
+    elif final_price > 5000:
         # Mid-range: round to nearest 49 or 99
-        rounded = round(new_price / 50) * 50 - 1
+        rounded = round(final_price / 50) * 50 - 1
     else:
         # Accessories: round to nearest 10
-        rounded = round(new_price / 10) * 10 - 1
+        rounded = round(final_price / 10) * 10 - 1
 
-    return max(99.0, float(rounded))
+    return max(floor, float(rounded))
 
 def sync_catalog_market_prices(
     db: Session,
@@ -195,9 +218,14 @@ def sync_catalog_market_prices(
             if new_price:
                 source_used = "web_scrape"
 
-        # 3. Fallback to resilient market valuation
+        # 3. Fallback to resilient market valuation with category minimum bounds
         if not new_price:
-            new_price = calculate_market_daily_price(old_price, p.id, today)
+            new_price = calculate_market_daily_price(
+                current_base_price=old_price,
+                product_id=p.id,
+                date_obj=today,
+                category=p.category
+            )
 
         # Update product
         p.price = new_price

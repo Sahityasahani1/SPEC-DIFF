@@ -138,7 +138,15 @@ class RecommendationCacheService:
         return count
 
     def clear(self):
-        """Synchronously clears local in-memory cache."""
+        """Synchronously clears local in-memory cache and attempts Redis invalidation."""
         self._in_memory_cache.clear()
+        try:
+            import redis
+            sync_client = redis.from_url(self.redis_url, socket_timeout=0.5)
+            keys = sync_client.keys("specdiff:rec:*")
+            if keys:
+                sync_client.delete(*keys)
+        except Exception:
+            pass
 
 cache_service = RecommendationCacheService()

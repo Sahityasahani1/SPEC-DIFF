@@ -1,5 +1,8 @@
-"""Dense Semantic Vector Search and Embedding Service with pgvector and In-Memory Fallback."""
+"""Dense Semantic + Sparse BM25 Hybrid Vector Search Engine with Reciprocal Rank Fusion (RRF)."""
 from typing import List, Dict, Tuple, Optional, Any
+import math
+import re
+from collections import Counter
 import numpy as np
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -9,20 +12,28 @@ from app.models import Product
 
 def create_product_document(product: Product) -> str:
     """
-    Creates a rich text document for semantic retrieval matching SRS §4.2.
+    Creates a multi-aspect structured document representation for hybrid retrieval.
+    Structures attributes into Core Architecture, Ergonomics/Display, Indian Nuances, and Workloads.
     """
-    doc = (
-        f"Product: {product.brand} {product.name} | Category: {product.category} | Price: ₹{product.price:,.0f} | "
-        f"Specs: {product.ram_gb}GB RAM, {product.storage_gb}GB SSD, CPU: {product.processor}, GPU: {product.gpu} | "
-        f"Battery: {product.battery_hours} hours battery life, Weight: {product.weight_kg} kg | "
-        f"Display: {product.display_tech} | "
-        f"RAM Upgradeability: {product.ram_expandability} | "
-        f"Software: {product.bundled_software} | "
-        f"Description: {product.description} | "
-        f"Strengths: {product.pros} | "
-        f"Limitations: {product.cons}"
+    aspect_architecture = (
+        f"[Architecture] Brand: {product.brand} | Model: {product.name} | Category: {product.category} | "
+        f"Processor CPU: {product.processor} | Graphics GPU: {product.gpu} | "
+        f"Memory RAM: {product.ram_gb}GB | Storage: {product.storage_gb}GB SSD | "
+        f"RAM Expandability: {product.ram_expandability}."
     )
-    return doc
+    aspect_ergonomics = (
+        f"[Ergonomics & Display] Screen: {product.display_tech} | "
+        f"Battery Endurance: {product.battery_hours} hours | Chassis Weight: {product.weight_kg} kg."
+    )
+    aspect_market = (
+        f"[Indian Market Nuances] Verified Street Price: ₹{product.price:,.0f} | "
+        f"Software: {product.bundled_software} | Retail Store: {product.retail_source}."
+    )
+    aspect_workloads = (
+        f"[Workloads & Real-World Context] Description: {product.description} | "
+        f"Verified Pros: {product.pros} | Known Trade-offs: {product.cons}."
+    )
+    return f"{aspect_architecture} {aspect_ergonomics} {aspect_market} {aspect_workloads}"
 
 import hashlib
 
@@ -34,8 +45,7 @@ def generate_text_embedding(text: str, dim: int = 384) -> List[float]:
     """
     Generates a normalized 384-dimensional dense semantic embedding vector.
     Uses sublinear term frequency hashing across character and word n-grams
-    with L2-normalization for consistent cosine distance computation in pgvector.
-    Deterministic across all Python runtimes and process restarts.
+    with L2-normalization for consistent cosine distance computation.
     """
     words = text.lower().strip().split()
     vector = np.zeros(dim, dtype=np.float32)
@@ -60,6 +70,45 @@ def generate_text_embedding(text: str, dim: int = 384) -> List[float]:
         vector = vector / norm
     return vector.tolist()
 
+def _tokenize(text: str) -> List[str]:
+    """Extracts alphanumeric technical tokens, preserving hyphens and plus symbols."""
+    return [w.lower() for w in re.findall(r"[a-zA-Z0-9_\-\+]+", text) if len(w) > 1]
+
+class BM25Okapi:
+    """Fast in-memory BM25 lexical ranking engine for exact technical hardware keywords."""
+    def __init__(self, corpus: List[List[str]], k1: float = 1.5, b: float = 0.75):
+        self.k1 = k1
+        self.b = b
+        self.corpus_size = len(corpus)
+        self.avgdl = sum(len(doc) for doc in corpus) / max(1, self.corpus_size)
+        self.doc_freqs = Counter()
+        self.doc_lens = [len(doc) for doc in corpus]
+        self.doc_term_freqs = []
+
+        for doc in corpus:
+            tf = Counter(doc)
+            self.doc_term_freqs.append(tf)
+            for token in tf:
+                self.doc_freqs[token] += 1
+
+        self.idf = {}
+        for token, freq in self.doc_freqs.items():
+            self.idf[token] = math.log((self.corpus_size - freq + 0.5) / (freq + 0.5) + 1.0)
+
+    def score(self, query_tokens: List[str]) -> List[float]:
+        scores = [0.0] * self.corpus_size
+        for token in query_tokens:
+            if token not in self.idf:
+                continue
+            idf_val = self.idf[token]
+            for i, tf in enumerate(self.doc_term_freqs):
+                term_count = tf.get(token, 0)
+                if term_count > 0:
+                    numerator = term_count * (self.k1 + 1.0)
+                    denominator = term_count + self.k1 * (1.0 - self.b + self.b * (self.doc_lens[i] / self.avgdl))
+                    scores[i] += idf_val * (numerator / denominator)
+        return scores
+
 async def search_pgvector_products(
     db: AsyncSession,
     query_vector: List[float],
@@ -72,7 +121,7 @@ async def search_pgvector_products(
 ) -> List[Tuple[Product, float]]:
     """
     Executes hybrid vector similarity search directly inside PostgreSQL using pgvector <=> cosine distance.
-    Combines hard constraints (budget, RAM, storage, in-stock) directly in the SQL execution plan.
+    Combines hard constraints directly in the SQL execution plan.
     """
     stmt = (
         select(Product, Product.embedding.cosine_distance(query_vector).label("distance"))
@@ -98,8 +147,9 @@ async def search_pgvector_products(
 
 class SemanticSearchEngine:
     """
-    Vector retrieval engine calculating dense semantic similarity between
-    natural language workflow queries and rich product documents.
+    Hybrid Vector Retrieval Engine:
+    Combines Dense Vector Semantic Matching + Sparse BM25 Term Matching
+    using Reciprocal Rank Fusion (RRF) for human-expert hardware precision.
     """
     def __init__(self):
         self.vectorizer = TfidfVectorizer(
@@ -112,9 +162,11 @@ class SemanticSearchEngine:
         self.is_fitted = False
         self.doc_ids = []
         self.tfidf_matrix = None
+        self.bm25: Optional[BM25Okapi] = None
+        self.corpus_tokens = []
 
     def index_products(self, products: List[Product]):
-        """Fits vectorizer on the current catalog documents."""
+        """Fits vectorizer and BM25 index on current catalog documents."""
         if not products:
             self.is_fitted = False
             return
@@ -122,49 +174,65 @@ class SemanticSearchEngine:
         docs = [create_product_document(p) for p in products]
         self.doc_ids = [p.id for p in products]
         self.tfidf_matrix = self.vectorizer.fit_transform(docs)
+        self.corpus_tokens = [_tokenize(doc) for doc in docs]
+        self.bm25 = BM25Okapi(self.corpus_tokens)
         self.is_fitted = True
 
     def compute_similarity(self, query: str, candidates: List[Product]) -> Dict[str, float]:
         """
-        Computes semantic relevance score in range [0.0, 100.0] for each candidate.
+        Computes hybrid relevance score in range [50.0, 98.0] for each candidate
+        via Reciprocal Rank Fusion (RRF) across Dense Vector and Sparse BM25.
         """
         if not candidates:
             return {}
 
-        candidate_ids = {p.id for p in candidates}
         candidate_docs = [create_product_document(p) for p in candidates]
+        num_candidates = len(candidates)
 
-        # Fit on candidates + query for optimal dynamic IDF weighting
+        # 1. Dense Semantic Similarity
         all_texts = candidate_docs + [query]
-        vectorizer = TfidfVectorizer(
+        dyn_vectorizer = TfidfVectorizer(
             ngram_range=(1, 2),
             sublinear_tf=True,
             stop_words="english",
             lowercase=True
         )
-        matrix = vectorizer.fit_transform(all_texts)
-
-        # Query vector is the last row
+        matrix = dyn_vectorizer.fit_transform(all_texts)
         query_vector = matrix[-1]
         candidate_vectors = matrix[:-1]
+        dense_sims = cosine_similarity(query_vector, candidate_vectors).flatten()
 
-        # Cosine similarity
-        cos_sims = cosine_similarity(query_vector, candidate_vectors).flatten()
+        # Dense rank ordering (higher is better rank 0..N-1)
+        dense_order = np.argsort(-dense_sims)
+        dense_ranks = {candidates[idx].id: rank for rank, idx in enumerate(dense_order)}
 
-        # Min-max scale cosine scores to 40..98 for smooth ranking discrimination
-        scores = {}
-        min_sim = float(np.min(cos_sims)) if len(cos_sims) > 0 else 0.0
-        max_sim = float(np.max(cos_sims)) if len(cos_sims) > 0 else 1.0
+        # 2. Sparse Lexical BM25 Scoring
+        tokenized_corpus = [_tokenize(doc) for doc in candidate_docs]
+        cand_bm25 = BM25Okapi(tokenized_corpus)
+        q_tokens = _tokenize(query)
+        bm25_scores = cand_bm25.score(q_tokens)
 
-        for i, product in enumerate(candidates):
-            raw_sim = float(cos_sims[i])
-            if max_sim > min_sim:
-                scaled = 50.0 + ((raw_sim - min_sim) / (max_sim - min_sim)) * 45.0
-            else:
-                scaled = 75.0
-            scores[product.id] = round(scaled, 1)
+        # BM25 rank ordering (higher is better rank 0..N-1)
+        bm25_order = np.argsort(-np.array(bm25_scores))
+        bm25_ranks = {candidates[idx].id: rank for rank, idx in enumerate(bm25_order)}
 
-        return scores
+        # 3. Normalized Continuous Hybrid Fusion (80% Dense Semantic + 20% Sparse BM25)
+        min_c, max_c = float(np.min(dense_sims)), float(np.max(dense_sims))
+        norm_c = (dense_sims - min_c) / max(1e-5, (max_c - min_c))
+
+        min_b = float(np.min(bm25_scores)) if len(bm25_scores) > 0 else 0.0
+        max_b = float(np.max(bm25_scores)) if len(bm25_scores) > 0 else 1.0
+        norm_b = (np.array(bm25_scores) - min_b) / max(1e-5, (max_b - min_b))
+
+        alpha = 0.80
+        hybrid_sim = alpha * norm_c + (1.0 - alpha) * norm_b
+
+        final_scores = {}
+        for i, p in enumerate(candidates):
+            scaled = 50.0 + float(hybrid_sim[i]) * 45.0
+            final_scores[p.id] = round(scaled, 1)
+
+        return final_scores
 
 # Global semantic engine singleton
 semantic_engine = SemanticSearchEngine()

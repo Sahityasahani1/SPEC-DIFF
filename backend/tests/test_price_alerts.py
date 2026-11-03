@@ -194,7 +194,7 @@ def test_market_sync_triggers_price_alerts(db_session, real_request):
     alert_id = res["alert"]["id"]
 
     # Temporarily set product price below target to trigger
-    product.price = target - 500
+    product.price = round(target * 0.85, 2)
     db_session.commit()
 
     # Run market price sync

@@ -12,4 +12,17 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-three': ['three'],
+          'vendor-charts': ['recharts'],
+          'vendor-ui': ['lucide-react', 'framer-motion', '@tanstack/react-query'],
+        },
+      },
+    },
+  },
 });

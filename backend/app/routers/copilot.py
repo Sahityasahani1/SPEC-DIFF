@@ -371,14 +371,32 @@ def _generate_specplug_standalone_advice(query: str, products: List[Product], in
 @limiter.limit(RATE_LIMIT_COPILOT)
 def copilot_chat(request: Request, payload: CopilotRequest, db: Session = Depends(get_db)):
     """Handles conversational hardware queries with grounded telemetry and Gen-Z expertise."""
-    all_prods = db.query(Product).all()
-    if not semantic_engine.is_fitted and all_prods:
-        semantic_engine.index_products(all_prods)
-
     intent = _parse_query_intent(payload.query)
+
+    # Pre-filter candidates at SQL layer to avoid massive in-memory dumps
+    q_filter = db.query(Product).filter(Product.in_stock == True)
+    if intent.get("category"):
+        q_filter = q_filter.filter(Product.category == intent["category"])
+    if intent.get("brand"):
+        q_filter = q_filter.filter(Product.brand.ilike(f"%{intent['brand']}%"))
+    if intent.get("max_budget"):
+        q_filter = q_filter.filter(Product.price <= intent["max_budget"] * 1.20)
+
+    candidate_prods = q_filter.limit(100).all()
+    if not candidate_prods:
+        candidate_prods = db.query(Product).filter(Product.in_stock == True).limit(100).all()
+
+    # Ensure active products are included in candidate list
+    if payload.active_product_ids:
+        active_objs = db.query(Product).filter(Product.id.in_(payload.active_product_ids)).all()
+        candidate_prods = list({p.id: p for p in (active_objs + candidate_prods)}.values())
+
+    if not semantic_engine.is_fitted and candidate_prods:
+        semantic_engine.index_products(candidate_prods)
+
     top_products = _select_relevant_products(
         query=payload.query,
-        all_prods=all_prods,
+        all_prods=candidate_prods,
         active_ids=payload.active_product_ids or [],
         intent=intent
     )
