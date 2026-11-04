@@ -55,7 +55,8 @@ USER appuser
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PORT=10000
+    PORT=10000 \
+    PYTHONPATH="/app:/app/backend"
 
 EXPOSE 10000
 
@@ -63,4 +64,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD curl -f http://localhost:${PORT:-10000}/api/health || exit 1
 
 # Production server: single-worker Uvicorn (90MB footprint, no pre-fork threading deadlock, instant boot)
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-10000}"]
+CMD ["sh", "-c", "python -m uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-10000}"]

@@ -193,9 +193,15 @@ async def security_and_tracing_middleware(request: Request, call_next):
     return response
 
 # Enable CORS with explicit allowed origins, methods, and headers for defense-in-depth
+cors_origins = list(set(ALLOWED_ORIGINS + [
+    "https://spec-diff-gamma.vercel.app",
+    "https://spec-diff.vercel.app"
+]))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
+    allow_origins=cors_origins,
+    allow_origin_regex=r"^https://.*\.vercel\.app$",
     allow_credentials=True,
     allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["Content-Type", "X-Admin-Key", "Authorization", "X-Request-ID"],

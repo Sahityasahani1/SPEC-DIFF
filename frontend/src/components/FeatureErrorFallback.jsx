@@ -133,7 +133,7 @@ export default function FeatureErrorFallback({
                 <>
                   <XCircle className="w-4 h-4 text-amber-600 shrink-0" />
                   <span>
-                    Backend Unreachable &bull; Ensure FastAPI is running on http://127.0.0.1:8000
+                    Backend Connecting / Idle &bull; Cloud service may be waking up (typically takes 30-50s on free tiers)
                   </span>
                 </>
               )}
@@ -145,7 +145,8 @@ export default function FeatureErrorFallback({
             <div className="mt-3 p-3.5 rounded-xl bg-white/90 border border-rose-200 text-xs text-rose-900/80 space-y-1.5">
               <p className="font-bold text-rose-950">Recommended troubleshooting steps:</p>
               <ul className="list-disc list-inside space-y-1 pl-1">
-                <li>Verify your network connection or local FastAPI server (<code className="bg-rose-100 px-1 py-0.5 rounded">http://127.0.0.1:8000</code>).</li>
+                <li>If deployed to cloud, free instances spin down on inactivity; wait ~30 seconds for the backend container to wake up.</li>
+                <li>Verify your network connection or API service status (<code className="bg-rose-100 px-1 py-0.5 rounded">/api/health</code>).</li>
                 <li>Check if query filters (budget, RAM) are too restrictive; try loosening constraints.</li>
                 <li>Check browser developer console (F12) for network status codes or CORS issues.</li>
               </ul>
