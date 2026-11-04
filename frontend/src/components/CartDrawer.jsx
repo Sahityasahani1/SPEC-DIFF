@@ -71,7 +71,7 @@ export default function CartDrawer({
         className="absolute inset-0 bg-forest-950/70 backdrop-blur-sm transition-opacity"
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
         <motion.div
           initial={{ x: '100%' }}
           animate={{ x: 0 }}

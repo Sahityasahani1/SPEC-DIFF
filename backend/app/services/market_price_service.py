@@ -11,6 +11,7 @@ import re
 import random
 import datetime
 import logging
+from urllib.parse import urlparse
 from typing import Dict, Any, List, Optional
 import requests
 from sqlalchemy.orm import Session
@@ -92,9 +93,33 @@ def fetch_live_api_price(asin: str) -> Optional[float]:
 
     return None
 
+STRICT_ALLOWED_HOSTS = {
+    "amazon.in",
+    "www.amazon.in",
+    "m.media-amazon.com"
+}
+
 def fetch_live_web_price(product_url: str) -> Optional[float]:
-    """Scrape buy-box price from Amazon India public page with bot mitigation."""
-    if not product_url or "amazon.in" not in product_url:
+    """Scrape buy-box price with strict SSRF defenses and host validation."""
+    if not product_url:
+        return None
+
+    try:
+        parsed = urlparse(product_url)
+        # 1. Enforce HTTPS only (prevents plaintext credential interception)
+        if parsed.scheme != "https":
+            return None
+
+        # 2. Strict Hostname Matching against allowed retailer domains
+        hostname = (parsed.hostname or "").lower()
+        if hostname not in STRICT_ALLOWED_HOSTS:
+            logger.warning(f"[SSRF_DEFENSE] Blocked unauthorized outbound host: {hostname}")
+            return None
+
+        # 3. Disallow Embedded Credentials (http://user:pass@host)
+        if parsed.username or parsed.password:
+            return None
+    except Exception:
         return None
 
     headers = {
@@ -104,17 +129,17 @@ def fetch_live_web_price(product_url: str) -> Optional[float]:
     }
 
     try:
-        res = requests.get(product_url, headers=headers, timeout=1.5)
+        # Enforce short timeout and disable redirects to prevent SSRF pivot
+        res = requests.get(product_url, headers=headers, timeout=2.0, allow_redirects=False)
         if res.status_code == 200:
-            # Match Amazon price formats like ₹39,990 or 39,990.00
             price_match = re.search(r'<span class="a-price-whole">([0-9,]+)<', res.text)
             if price_match:
                 cleaned = price_match.group(1).replace(",", "").strip()
                 val = float(cleaned)
                 if val > 100:
                     return val
-    except Exception:
-        pass
+    except Exception as e:
+        logger.debug(f"Web scraper request failed safely: {e}")
 
     return None
 

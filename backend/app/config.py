@@ -99,6 +99,10 @@ class AppEnvironmentSettings(BaseModel):
         default="",
         description="Rainforest E-Commerce Live Pricing API Key"
     )
+    sentry_dsn: str = Field(
+        default="",
+        description="Optional Sentry DSN for production error monitoring"
+    )
 
     @field_validator("admin_api_key")
     @classmethod
@@ -134,7 +138,8 @@ _raw_settings = {
     "gemini_api_key": os.getenv("GEMINI_API_KEY", "").strip(),
     "openai_api_key": os.getenv("OPENAI_API_KEY", "").strip(),
     "keepa_api_key": os.getenv("KEEPA_API_KEY", "").strip(),
-    "rainforest_api_key": os.getenv("RAINFOREST_API_KEY", "").strip()
+    "rainforest_api_key": os.getenv("RAINFOREST_API_KEY", "").strip(),
+    "sentry_dsn": os.getenv("SENTRY_DSN", "").strip()
 }
 
 try:
@@ -156,3 +161,4 @@ RATE_LIMIT_RECOMMEND = settings.rate_limit_recommend
 RATE_LIMIT_COPILOT = settings.rate_limit_copilot
 GEMINI_API_KEY = settings.gemini_api_key
 OPENAI_API_KEY = settings.openai_api_key
+SENTRY_DSN = settings.sentry_dsn

@@ -84,7 +84,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
     <div className="w-full pb-10">
       
       {/* Massive Forest Green Hero Container matching Reference Image 2 */}
-      <div className="bg-forest-900 text-white rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 md:p-16 relative overflow-hidden shadow-2xl border border-forest-800">
+      <div className="bg-forest-900 text-white rounded-[28px] sm:rounded-[48px] p-5 sm:p-12 md:p-16 relative overflow-hidden shadow-2xl border border-forest-800">
         
         {/* 3D Ambient WebGL Particle Constellation */}
         <ParticleConstellation3D />
@@ -124,13 +124,13 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
 
             {/* Giant Signature Typography: Heavy Sans + Sage Script */}
             <div className="space-y-1">
-              <h1 className="font-spartan font-black text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.95] uppercase">
+              <h1 className="font-spartan font-black text-3xl xs:text-4xl sm:text-7xl md:text-8xl tracking-tight leading-[0.95] uppercase">
                 YOUR
               </h1>
-              <div className="font-script text-sage-400 text-6xl sm:text-8xl md:text-9xl font-normal leading-none -my-2 sm:-my-4 select-none tracking-wide">
+              <div className="font-script text-sage-400 text-4xl xs:text-5xl sm:text-8xl md:text-9xl font-normal leading-none -my-1 sm:-my-4 select-none tracking-wide">
                 Performance
               </div>
-              <h1 className="font-spartan font-black text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[0.95] uppercase text-white">
+              <h1 className="font-spartan font-black text-3xl xs:text-4xl sm:text-7xl md:text-8xl tracking-tight leading-[0.95] uppercase text-white">
                 REDEFINED
               </h1>
             </div>
@@ -173,7 +173,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
                 </div>
 
                 {/* Interactive 3D WebGL Laptop Canvas */}
-                <div className="py-2 flex justify-center items-center">
+                <div className="py-2 flex justify-center items-center touch-pan-y">
                   <Laptop3DCanvas />
                 </div>
 
@@ -201,7 +201,7 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
         <div className="mt-12 pt-6 border-t border-white/10 flex items-center justify-between text-xs">
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-full bg-sage-500/20 text-sage-300 border border-sage-500/30 text-[10px] font-bold uppercase tracking-widest">
-              COLLECTION
+              LAYER 01: INTENT &amp; PERSONAS
             </span>
             <span className="text-white/60 font-mono hidden sm:inline">
               Filtered for Indian Engineering, Creators & Business
@@ -215,24 +215,26 @@ export default function HeroBanner({ onSelectQuickPrompt, onScrollToConfig }) {
 
       </div>
 
-      {/* Quick Launch Scenario Pills in Scandinavian Editorial Style */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-2 px-4">
-        <span className="text-xs font-mono uppercase text-forest-900/60 font-bold mr-2">
-          Curated Personas:
-        </span>
-        {PROMPTS.map((p, i) => (
-          <motion.button
-            key={i}
-            whileHover={{ y: -2, scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-            onClick={() => onSelectQuickPrompt(p.data)}
-            className="text-xs px-4 py-2 rounded-full bg-white text-forest-900 hover:bg-forest-900 hover:text-white border border-forest-900/15 shadow-sm transition-all flex items-center gap-2 cursor-pointer font-medium whitespace-nowrap"
-          >
-            <span>{p.emoji}</span>
-            <span>{p.title}</span>
-          </motion.button>
-        ))}
+      {/* Quick Launch Scenario Pills with smooth horizontal swipe on mobile */}
+      <div className="mt-6 sm:mt-8 px-2 sm:px-4">
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 sm:flex-wrap sm:justify-center">
+          <span className="text-xs font-mono uppercase text-forest-900/60 font-bold mr-1 shrink-0">
+            Curated:
+          </span>
+          {PROMPTS.map((p, i) => (
+            <motion.button
+              key={i}
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              onClick={() => onSelectQuickPrompt(p.data)}
+              className="text-xs px-3.5 sm:px-4 py-2 min-h-[40px] rounded-full bg-white text-forest-900 hover:bg-forest-900 hover:text-white border border-forest-900/15 shadow-sm transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer font-medium whitespace-nowrap shrink-0 sm:shrink"
+            >
+              <span>{p.emoji}</span>
+              <span>{p.title}</span>
+            </motion.button>
+          ))}
+        </div>
       </div>
 
     </div>

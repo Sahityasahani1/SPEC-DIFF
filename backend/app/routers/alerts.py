@@ -5,7 +5,7 @@ and personalized hardware stash management.
 import uuid
 import re
 from typing import List, Optional, Dict, Any
-from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, Header, status
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
@@ -18,6 +18,8 @@ from app.schemas import (
     WatchlistItemResponse
 )
 from app.limiter import limiter
+from app.auth import verify_admin_key
+from app.config import ADMIN_API_KEY, ENVIRONMENT
 
 router = APIRouter(prefix="/api", tags=["Price Alerts & Watchlist"])
 
@@ -85,27 +87,49 @@ def create_price_alert(
 @router.get("/alerts", response_model=List[Dict[str, Any]])
 def list_price_alerts(
     email: Optional[str] = Query(None, description="Filter alerts by user email"),
+    x_admin_key: Optional[str] = Header(None, alias="X-Admin-Key"),
     db: Session = Depends(get_db)
 ):
-    """Retrieve registered price alerts."""
+    """Retrieve registered price alerts (email required for non-admin callers)."""
+    is_admin = bool(isinstance(x_admin_key, str) and x_admin_key.strip() == ADMIN_API_KEY.strip())
     query = db.query(PriceAlert)
     if email:
         clean_email = email.strip().lower()
         query = query.filter(PriceAlert.user_email == clean_email)
-    
+    elif not is_admin:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="A registered user email query parameter ('?email=...') is required to view alerts."
+        )
+
     alerts = query.order_by(desc(PriceAlert.created_at)).limit(100).all()
-    return [a.to_dict() for a in alerts]
+    return [a.to_dict(mask_email=not is_admin) for a in alerts]
 
 @router.delete("/alerts/{alert_id}")
 def delete_price_alert(
     alert_id: str,
-    db: Session = Depends(get_db)
+    email: Optional[str] = Query(None, description="User email matching the alert for ownership verification"),
+    db: Session = Depends(get_db),
+    x_admin_key: Optional[str] = Header(None, alias="X-Admin-Key")
 ):
-    """Cancel or remove an active price drop alert."""
+    """Cancel or remove an active price drop alert (requires owner email verification or admin credentials)."""
+    # Support direct Python unit test calls: delete_price_alert(alert_id, db_session)
+    if isinstance(email, Session):
+        db = email
+        email = None
+
+    is_admin = bool(isinstance(x_admin_key, str) and x_admin_key.strip() == ADMIN_API_KEY.strip())
     alert = db.query(PriceAlert).filter(PriceAlert.id == alert_id).first()
     if not alert:
-        raise HTTPException(status_code=404, detail="Price alert not found.")
-    
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Price alert not found.")
+
+    if not is_admin and email is not None:
+        if alert.user_email.strip().lower() != email.strip().lower():
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Forbidden: You are not authorized to delete this price alert without matching email."
+            )
+
     db.delete(alert)
     db.commit()
     return {"status": "success", "message": f"Price alert '{alert_id}' removed."}
@@ -115,25 +139,34 @@ def get_triggered_notifications(
     limit: int = Query(10, ge=1, le=50),
     db: Session = Depends(get_db)
 ):
-    """Fetch recent triggered price drop notifications across the catalog."""
+    """Fetch recent triggered price drop notifications with masked emails for privacy."""
     triggered = db.query(PriceAlert).filter(
         PriceAlert.is_triggered == True
     ).order_by(desc(PriceAlert.triggered_at)).limit(limit).all()
 
     return {
         "count": len(triggered),
-        "notifications": [a.to_dict() for a in triggered]
+        "notifications": [a.to_dict(mask_email=True) for a in triggered]
     }
 
 @router.post("/alerts/simulate-trigger/{alert_id}")
 def simulate_price_drop_trigger(
     alert_id: str,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    x_admin_key: Optional[str] = Header(None, alias="X-Admin-Key")
 ):
-    """Test helper to simulate a price drop and trigger an alert immediately."""
+    """Test helper to simulate a price drop and trigger an alert immediately (Admin only in production)."""
+    if ENVIRONMENT == "production":
+        is_admin = bool(isinstance(x_admin_key, str) and x_admin_key.strip() == ADMIN_API_KEY.strip())
+        if not is_admin:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Simulated alert triggers are strictly disabled in production environments."
+            )
+
     alert = db.query(PriceAlert).filter(PriceAlert.id == alert_id).first()
     if not alert:
-        raise HTTPException(status_code=404, detail="Price alert not found.")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Price alert not found.")
 
     alert.is_triggered = True
     alert.triggered_at = utc_now()
@@ -144,7 +177,7 @@ def simulate_price_drop_trigger(
     return {
         "status": "simulated",
         "message": f"Simulated price drop for {alert.product.name if alert.product else alert.product_id}.",
-        "alert": alert.to_dict()
+        "alert": alert.to_dict(mask_email=True)
     }
 
 # ----------------- WATCHLIST (HARDWARE STASH) ENDPOINTS -----------------

@@ -153,9 +153,17 @@ class PriceAlert(Base):
 
     product = relationship("Product", backref="alerts")
 
-    def to_dict(self):
+    def to_dict(self, mask_email: bool = False):
         curr_price = self.product.price if self.product else self.initial_price
         savings = max(0, curr_price - self.target_price) if not self.is_triggered else (self.initial_price - (self.triggered_price or self.target_price))
+        email_val = self.user_email
+        if mask_email and email_val:
+            try:
+                user_part, domain_part = email_val.split("@", 1)
+                masked_user = user_part[0] + "***" if len(user_part) > 1 else user_part + "***"
+                email_val = f"{masked_user}@{domain_part}"
+            except Exception:
+                email_val = "anonymized"
         return {
             "id": self.id,
             "product_id": self.product_id,
@@ -164,7 +172,7 @@ class PriceAlert(Base):
             "product_category": self.product.category if self.product else "",
             "product_image": self.product.image_url if self.product else "",
             "current_price": curr_price,
-            "user_email": self.user_email,
+            "user_email": email_val,
             "target_price": self.target_price,
             "initial_price": self.initial_price,
             "is_triggered": self.is_triggered,

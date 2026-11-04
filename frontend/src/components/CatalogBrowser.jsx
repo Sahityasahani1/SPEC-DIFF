@@ -8,6 +8,7 @@ import { getProducts } from '../services/api';
 import { formatINR } from '../utils/formatters';
 import { getOutboundDealUrl, openDealUrl } from '../utils/dealUrl';
 import { getProductImage, handleProductImageError } from '../utils/productImages';
+import FeatureErrorFallback from './FeatureErrorFallback';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Items ⚡' },
@@ -39,6 +40,7 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
   const [sortBy, setSortBy] = useState('relevance');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'table'
   const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState(null);
 
   const catalogTopRef = useRef(null);
 
@@ -53,6 +55,7 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
 
   const loadProducts = async () => {
     setLoading(true);
+    setError(null);
     try {
       const params = { limit: 250, in_stock_only: inStockOnly };
       if (selectedBrand !== 'All Brands') {
@@ -65,6 +68,7 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
       setProducts(data.products || []);
     } catch (err) {
       console.error('Failed to load catalog products:', err);
+      setError(err.message || 'Failed to connect to catalog database');
     } finally {
       setLoading(false);
     }
@@ -193,14 +197,14 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
           )}
         </div>
 
-        {/* Filter Controls: Brand, In-Stock, Sort, and View Mode */}
-        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full lg:w-auto justify-start lg:justify-end">
+        {/* Filter Controls: 2x2 Grid on Mobile, Flex on Desktop */}
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 sm:gap-3 w-full lg:w-auto">
           
           {/* Brand Filter */}
           <select
             value={selectedBrand}
             onChange={(e) => setSelectedBrand(e.target.value)}
-            className="text-xs sm:text-sm px-3 py-2.5 rounded-2xl border border-[#e2dfd5] bg-white text-forest-950 focus:border-sage-500 outline-none cursor-pointer font-medium"
+            className="w-full sm:w-auto text-xs sm:text-sm px-3 py-2.5 min-h-[42px] rounded-2xl border border-[#e2dfd5] bg-white text-forest-950 focus:border-sage-500 outline-none cursor-pointer font-medium"
           >
             {availableBrands.map((b) => (
               <option key={b} value={b}>{b}</option>
@@ -211,7 +215,7 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="text-xs sm:text-sm px-3 py-2.5 rounded-2xl border border-[#e2dfd5] bg-white text-forest-950 focus:border-sage-500 outline-none cursor-pointer font-medium"
+            className="w-full sm:w-auto text-xs sm:text-sm px-3 py-2.5 min-h-[42px] rounded-2xl border border-[#e2dfd5] bg-white text-forest-950 focus:border-sage-500 outline-none cursor-pointer font-medium"
           >
             {SORT_OPTIONS.map((opt) => (
               <option key={opt.id} value={opt.id}>{opt.label}</option>
@@ -219,7 +223,7 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
           </select>
 
           {/* In Stock Only Checkbox */}
-          <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-forest-900/80 bg-[#fbfbf9] px-3.5 py-2.5 rounded-2xl border border-[#e2dfd5] hover:border-forest-900/30 transition-colors select-none">
+          <label className="flex items-center justify-center gap-2 cursor-pointer text-xs font-semibold text-forest-900/80 bg-[#fbfbf9] px-3.5 py-2.5 min-h-[42px] rounded-2xl border border-[#e2dfd5] hover:border-forest-900/30 transition-colors select-none">
             <input
               type="checkbox"
               checked={inStockOnly}
@@ -230,11 +234,11 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
           </label>
 
           {/* View Mode Toggle: Grid vs Table */}
-          <div className="flex items-center bg-[#f2efe6] p-1 rounded-2xl border border-[#e2dfd5]">
+          <div className="flex items-center justify-center bg-[#f2efe6] p-1 rounded-2xl border border-[#e2dfd5] min-h-[42px]">
             <button
               type="button"
               onClick={() => setViewMode('grid')}
-              className={`p-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial p-2 rounded-xl transition-all cursor-pointer flex items-center justify-center ${
                 viewMode === 'grid'
                   ? 'bg-forest-900 text-white shadow-xs'
                   : 'text-forest-900/60 hover:text-forest-900'
@@ -246,7 +250,7 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
             <button
               type="button"
               onClick={() => setViewMode('table')}
-              className={`p-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-initial p-2 rounded-xl transition-all cursor-pointer flex items-center justify-center ${
                 viewMode === 'table'
                   ? 'bg-forest-900 text-white shadow-xs'
                   : 'text-forest-900/60 hover:text-forest-900'
@@ -279,8 +283,30 @@ export default function CatalogBrowser({ onSelectForCompare, selectedCompareIds 
         </div>
       </div>
 
+      {/* Layer Metadata Indicator */}
+      <div className="flex items-center justify-between pb-1 border-b border-forest-900/10 text-xs font-mono">
+        <div className="flex items-center gap-2">
+          <span className="px-2.5 py-0.5 rounded-full bg-forest-900 text-white text-[10px] font-bold tracking-widest uppercase">
+            LAYER: CATALOG BROWSER
+          </span>
+          <span className="text-forest-900/60 hidden md:inline">
+            Exhaustive Multi-Retailer Electronics Catalog &amp; Street Prices
+          </span>
+        </div>
+        <span className="text-forest-900/40 text-[11px]">
+          1,170+ Indian Hardware SKUs
+        </span>
+      </div>
+
       {/* Main Content Area */}
-      {loading ? (
+      {error ? (
+        <FeatureErrorFallback
+          featureName="Catalog Hardware Explorer"
+          layerName="Catalog Database & Stock Inventory"
+          errorMessage={error}
+          onRetry={loadProducts}
+        />
+      ) : loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
             <div key={n} className="bg-white p-5 rounded-3xl border border-[#e8e5dc] animate-pulse space-y-3">

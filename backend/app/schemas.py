@@ -81,13 +81,25 @@ class DealComparison(BaseModel):
     stores: List[StoreDeal] = []
 
 class CopilotMessage(BaseModel):
-    role: str
-    content: str
+    role: str = Field(..., pattern=r"^(user|model|assistant)$", description="Speaker role")
+    content: str = Field(..., max_length=2000, description="Message content")
 
 class CopilotRequest(BaseModel):
-    query: str = Field(..., min_length=2, max_length=2000)
-    active_product_ids: Optional[List[str]] = None
-    history: List[CopilotMessage] = []
+    query: str = Field(..., min_length=2, max_length=1000, description="User question or query")
+    active_product_ids: Optional[List[str]] = Field(None, max_length=5, description="Pinned product IDs")
+    history: List[CopilotMessage] = Field(default=[], max_length=10, description="Recent conversation turns")
+
+    @field_validator("query")
+    @classmethod
+    def sanitize_query(cls, v: str) -> str:
+        if not v:
+            raise ValueError("Query cannot be empty")
+        clean = re.sub(r"<[^>]+>", "", v)
+        clean = "".join(ch for ch in clean if ch.isprintable() or ch in "\n\r\t")
+        clean = " ".join(clean.strip().split())
+        if len(clean) < 2:
+            raise ValueError("Query too short after sanitization")
+        return clean[:1000]
 
 class CopilotResponse(BaseModel):
     reply: str

@@ -20,7 +20,22 @@ logger = logging.getLogger("specdiff.api")
 
 from app.database import init_db, SessionLocal
 from app.models import Product
-from app.config import PROJECT_NAME, DEFAULT_CSV_PATH, ALLOWED_ORIGINS, ENVIRONMENT
+from app.config import PROJECT_NAME, DEFAULT_CSV_PATH, ALLOWED_ORIGINS, ENVIRONMENT, SENTRY_DSN
+
+if SENTRY_DSN:
+    try:
+        import sentry_sdk
+        sentry_sdk.init(
+            dsn=SENTRY_DSN,
+            traces_sample_rate=0.2,
+            environment=ENVIRONMENT,
+            send_default_pii=False
+        )
+        logger.info(f"[MONITORING] Sentry APM error tracking active for {ENVIRONMENT}")
+    except ImportError:
+        logger.info("[MONITORING] SENTRY_DSN configured; install sentry-sdk to enable external APM tracking")
+    except Exception as e:
+        logger.warning(f"[MONITORING] Sentry initialization skipped: {e}")
 from app.services.catalog_service import import_csv_catalog
 from app.services.vector_service import semantic_engine
 from app.limiter import limiter
@@ -162,19 +177,28 @@ async def security_and_tracing_middleware(request: Request, call_next):
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Permissions-Policy"] = "geolocation=(), camera=(), microphone=()"
     response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data: https:; "
+        "font-src 'self' data: https:; "
+        "connect-src 'self' http: https: ws: wss:; "
+        "frame-ancestors 'none';"
+    )
 
     if ENVIRONMENT == "production":
         response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
 
     return response
 
-# Enable CORS with explicit allowed origins for production defense
+# Enable CORS with explicit allowed origins, methods, and headers for defense-in-depth
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "X-Admin-Key", "Authorization", "X-Request-ID"],
 )
 
 # Register routers
@@ -206,7 +230,15 @@ def health_check():
             "status": "healthy",
             "database": "connected",
             "products_count": prod_count,
-            "semantic_engine_ready": semantic_engine.is_fitted
+            "semantic_engine_ready": semantic_engine.is_fitted,
+            "layers": {
+                "presentation": "React 18 + Tailwind + 3D WebGL (Vercel Ready)",
+                "api": "FastAPI ASGI + SlowAPI Limiter",
+                "retrieval": "Hybrid Dense 384-d Cosine + BM25 Okapi Fusion (alpha=0.80)",
+                "scoring": "Geekbench/Cinebench Utility & Value Scoring Metric",
+                "pricing": "Deterministic Street Pricing with Category MSRP Floors",
+                "storage": "SQLAlchemy ORM + SQLite/PostgreSQL + Redis L1/L2 Cache"
+            }
         }
     finally:
         db.close()

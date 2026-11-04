@@ -1,0 +1,312 @@
+{
+  "sync_date": "2026-11-04",
+  "total_products": 1176,
+  "catalog_updated_today_count": 1176,
+  "all_catalog_updated": true,
+  "prev_history_count": 169344,
+  "current_history_count": 170520,
+  "history_delta": 1176,
+  "prods_with_history_today": 1176,
+  "all_products_have_new_history": true,
+  "price_summary": {
+    "increases_count": 520,
+    "drops_count": 419,
+    "unchanged_count": 237,
+    "avg_pct_change": 0.15,
+    "avg_diff_inr": 67.14,
+    "top_increases": [
+      {
+        "id": "laptop_asus_tuf_gaming_a15_rtx4060",
+        "name": "ASUS TUF Gaming A15 (Ryzen 7 7735HS / RTX 4060)",
+        "brand": "ASUS",
+        "category": "laptop",
+        "old_price": 97690.0,
+        "new_price": 124990.0,
+        "diff": 27300.0,
+        "pct_change": 27.95
+      },
+      {
+        "id": "amz_lap_b09nn6sgv5",
+        "name": "Dell 2022 Vostro 14 5000 5410 Business Laptop 11th Gen Intel Core i7-11390H 4-Core, 32G RAM 1TG SSD 14 FHD Screen, Intel Iris Xe Graphics, Backlit KB, FP Reader, Win10 PRO",
+        "brand": "Dell",
+        "category": "laptop",
+        "old_price": 360190.0,
+        "new_price": 368790.0,
+        "diff": 8600.0,
+        "pct_change": 2.39
+      },
+      {
+        "id": "laptop_apple_macbook_pro_14_m3_pro",
+        "name": "Apple MacBook Pro 14 (M3 Pro, 18GB/512GB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 195390.0,
+        "new_price": 199790.0,
+        "diff": 4400.0,
+        "pct_change": 2.25
+      },
+      {
+        "id": "lap_asus_rog_zephyrus_g14_oled",
+        "name": "ASUS ROG Zephyrus G14 OLED (2024)",
+        "brand": "ASUS",
+        "category": "laptop",
+        "old_price": 156190.0,
+        "new_price": 159690.0,
+        "diff": 3500.0,
+        "pct_change": 2.24
+      },
+      {
+        "id": "amz_lap_b09h5z36s1",
+        "name": "Microsoft Surface Laptop Studio - 14.4\" Touchscreen - Intel\u00ae Core\u2122 i7 - 32GB Memory - 2TB SSD - Platinum",
+        "brand": "Microsoft",
+        "category": "laptop",
+        "old_price": 187990.0,
+        "new_price": 191190.0,
+        "diff": 3200.0,
+        "pct_change": 1.7
+      },
+      {
+        "id": "phone_apple_iphone16_promax",
+        "name": "Apple iPhone 16 Pro Max (256GB)",
+        "brand": "Apple",
+        "category": "smartphone",
+        "old_price": 165290.0,
+        "new_price": 167890.0,
+        "diff": 2600.0,
+        "pct_change": 1.57
+      },
+      {
+        "id": "phone_samsung_galaxy_z_flip6",
+        "name": "Samsung Galaxy Z Flip6 (12GB/256GB)",
+        "brand": "Samsung",
+        "category": "smartphone",
+        "old_price": 120290.0,
+        "new_price": 122890.0,
+        "diff": 2600.0,
+        "pct_change": 2.16
+      },
+      {
+        "id": "monitor_samsung_odyssey_oled_g9_49",
+        "name": "Samsung Odyssey OLED G9 (49-inch 240Hz 32:9 Curved DQHD)",
+        "brand": "Samsung",
+        "category": "monitor",
+        "old_price": 104790.0,
+        "new_price": 107290.0,
+        "diff": 2500.0,
+        "pct_change": 2.39
+      },
+      {
+        "id": "amz_lap_b079j395dc",
+        "name": "Lenovo 20KH002RUS ThinkPad X1 Carbon Laptop, 14\"",
+        "brand": "Lenovo",
+        "category": "laptop",
+        "old_price": 111690.0,
+        "new_price": 113990.0,
+        "diff": 2300.0,
+        "pct_change": 2.06
+      },
+      {
+        "id": "lap_lenovo_yoga_slim7x_copilot",
+        "name": "Lenovo Yoga Slim 7x Copilot+",
+        "brand": "Lenovo",
+        "category": "laptop",
+        "old_price": 109490.0,
+        "new_price": 111690.0,
+        "diff": 2200.0,
+        "pct_change": 2.01
+      }
+    ],
+    "top_drops": [
+      {
+        "id": "lap_lenovo_legion_pro_5i_4070",
+        "name": "Lenovo Legion Pro 5i 16",
+        "brand": "Lenovo",
+        "category": "laptop",
+        "old_price": 134190.0,
+        "new_price": 131090.0,
+        "diff": -3100.0,
+        "pct_change": -2.31
+      },
+      {
+        "id": "laptop_apple_macbook_air_15_m3",
+        "name": "Apple MacBook Air 15 (M3, 16GB/512GB)",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 142790.0,
+        "new_price": 140090.0,
+        "diff": -2700.0,
+        "pct_change": -1.89
+      },
+      {
+        "id": "tab_apple_ipad_10th_gen",
+        "name": "Apple iPad 10.9-inch (10th Gen, 64GB)",
+        "brand": "Apple",
+        "category": "tablet",
+        "old_price": 103390.0,
+        "new_price": 100890.0,
+        "diff": -2500.0,
+        "pct_change": -2.42
+      },
+      {
+        "id": "amz_lap_b09sz7bmsx",
+        "name": "[Windows 11 Pro] HP Envy x360 15 2-in-1 Business Laptop, 15.6\" FHD Touchscreen, Octa-Core AMD Ryzen 7 5700U (Beat i7-1165G7), 64GB DDR4 RAM, 2TB PCIe SSD, WiFi 6, Fingerprint Reade",
+        "brand": "HP",
+        "category": "laptop",
+        "old_price": 128790.0,
+        "new_price": 126290.0,
+        "diff": -2500.0,
+        "pct_change": -1.94
+      },
+      {
+        "id": "lap_dell_inspiron_14_plus",
+        "name": "Dell Inspiron 14 Plus 7440",
+        "brand": "Dell",
+        "category": "laptop",
+        "old_price": 116790.0,
+        "new_price": 114490.0,
+        "diff": -2300.0,
+        "pct_change": -1.97
+      },
+      {
+        "id": "tablet_samsung_galaxy_tab_s9_ultra",
+        "name": "Samsung Galaxy Tab S9 Ultra (12GB/256GB Wi-Fi)",
+        "brand": "Samsung",
+        "category": "tablet",
+        "old_price": 104390.0,
+        "new_price": 102090.0,
+        "diff": -2300.0,
+        "pct_change": -2.2
+      },
+      {
+        "id": "amz_lap_b081fy9hrr",
+        "name": "Apple 2019 MacBook Pro (16-inch, 16GB RAM, 512GB Storage, 2.6GHz Intel Core i7) - Space Gray",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 129590.0,
+        "new_price": 127490.0,
+        "diff": -2100.0,
+        "pct_change": -1.62
+      },
+      {
+        "id": "amz_lap_b09jvv47bx",
+        "name": "Apple 2021 MacBook Pro (16.2-inch, M1 Pro chip with 10\u2011core CPU and 16\u2011core GPU, 16GB RAM, 512GB SSD) - Space Gray",
+        "brand": "Apple",
+        "category": "laptop",
+        "old_price": 116690.0,
+        "new_price": 114690.0,
+        "diff": -2000.0,
+        "pct_change": -1.71
+      },
+      {
+        "id": "lap_asus_zenbook_14_oled_u7",
+        "name": "ASUS Zenbook 14 OLED UX3405MA",
+        "brand": "ASUS",
+        "category": "laptop",
+        "old_price": 109690.0,
+        "new_price": 107790.0,
+        "diff": -1900.0,
+        "pct_change": -1.73
+      },
+      {
+        "id": "phone_motorola_edge50_ultra",
+        "name": "Motorola Edge 50 Ultra (512GB Real Wood)",
+        "brand": "Motorola",
+        "category": "smartphone",
+        "old_price": 71790.0,
+        "new_price": 69990.0,
+        "diff": -1800.0,
+        "pct_change": -2.51
+      }
+    ]
+  },
+  "category_summary": {
+    "accessory": {
+      "total": 170,
+      "increases": 80,
+      "drops": 76,
+      "unchanged": 14,
+      "avg_pct_change": 0.08,
+      "avg_diff_inr": 7.88,
+      "min_price": 479.0,
+      "max_price": 144590.0,
+      "avg_price": 5808.42
+    },
+    "audio": {
+      "total": 260,
+      "increases": 104,
+      "drops": 118,
+      "unchanged": 38,
+      "avg_pct_change": -0.06,
+      "avg_diff_inr": 1.19,
+      "min_price": 499.0,
+      "max_price": 92390.0,
+      "avg_price": 5902.65
+    },
+    "gaming": {
+      "total": 11,
+      "increases": 5,
+      "drops": 4,
+      "unchanged": 2,
+      "avg_pct_change": 0.45,
+      "avg_diff_inr": 336.36,
+      "min_price": 26990.0,
+      "max_price": 92090.0,
+      "avg_price": 56135.45
+    },
+    "laptop": {
+      "total": 451,
+      "increases": 201,
+      "drops": 124,
+      "unchanged": 126,
+      "avg_pct_change": 0.29,
+      "avg_diff_inr": 150.18,
+      "min_price": 19999.0,
+      "max_price": 368790.0,
+      "avg_price": 38078.6
+    },
+    "monitor": {
+      "total": 22,
+      "increases": 9,
+      "drops": 9,
+      "unchanged": 4,
+      "avg_pct_change": 0.06,
+      "avg_diff_inr": 110.95,
+      "min_price": 4990.0,
+      "max_price": 107290.0,
+      "avg_price": 32126.95
+    },
+    "smartphone": {
+      "total": 116,
+      "increases": 52,
+      "drops": 32,
+      "unchanged": 32,
+      "avg_pct_change": 0.22,
+      "avg_diff_inr": 52.59,
+      "min_price": 5999.0,
+      "max_price": 167890.0,
+      "avg_price": 23343.93
+    },
+    "smartwatch": {
+      "total": 47,
+      "increases": 23,
+      "drops": 23,
+      "unchanged": 1,
+      "avg_pct_change": 0.01,
+      "avg_diff_inr": -19.57,
+      "min_price": 1490.0,
+      "max_price": 72690.0,
+      "avg_price": 14063.49
+    },
+    "tablet": {
+      "total": 99,
+      "increases": 46,
+      "drops": 33,
+      "unchanged": 20,
+      "avg_pct_change": 0.19,
+      "avg_diff_inr": -17.68,
+      "min_price": 7999.0,
+      "max_price": 110090.0,
+      "avg_price": 17041.07
+    }
+  }
+}

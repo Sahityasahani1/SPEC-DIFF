@@ -8,7 +8,7 @@
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL%203D-black.svg?logo=three.js&logoColor=white)](https://threejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF.svg?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Tests](https://img.shields.io/badge/pytest-51%2F51%20Passed%20(0%20warnings)-brightgreen.svg?logo=pytest&logoColor=white)](backend/tests/)
+[![Tests](https://img.shields.io/badge/pytest-65%2F65%20Passed%20(0%20warnings)-brightgreen.svg?logo=pytest&logoColor=white)](backend/tests/)
 [![Market](https://img.shields.io/badge/Market-India%20%F0%9F%87%AE%F0%9F%87%B3%20(INR%20%E2%82%B9)-orange.svg)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
@@ -236,11 +236,13 @@ RAG Project/
 │   ├── vite.config.js                # Vite build configuration & API proxy
 │   └── tailwind.config.js            # Scandinavian LOFY theme colors & typography
 │
-├── PRD.md                            # Product Requirements Document
-├── SRS.md                            # Software Requirements Specification
-├── API.md                            # Complete REST API Reference Documentation
-├── ARCHITECTURE.md                   # Technical Architecture & Pipeline Deep Dive
-├── DEPLOYMENT.md                     # Production DevOps, Docker & Nginx Deployment Guide
+├── docs/                             # Comprehensive Architecture & Engineering Docs
+│   ├── API.md                        # Complete REST API Reference Documentation
+│   ├── ARCHITECTURE.md               # Technical Architecture & Pipeline Deep Dive
+│   ├── DEPLOYMENT.md                 # Production DevOps, Docker & Nginx Deployment Guide
+│   ├── DEPLOYMENT_VERCEL.md          # Vercel Edge + Cloud Container Deployment Guide
+│   ├── PRD.md                        # Product Requirements Document
+│   └── SRS.md                        # Software Requirements Specification
 ├── CONTRIBUTING.md                   # Development, Coding Standards & PR Guidelines
 ├── CHANGELOG.md                      # Release History & Version Changelog
 ├── LICENSE.md                        # MIT License
@@ -353,13 +355,13 @@ tests/test_security_audit.py (10 Security Headers, Auth, Injection Tests) PASSED
 
 To explore in-depth architectural and operational guides, consult the companion documents:
 
-- **[`API.md`](API.md)**: Full REST API specification with JSON request/response schemas, query parameters, and error codes.
-- **[`ARCHITECTURE.md`](ARCHITECTURE.md)**: Deep technical architecture covering the RAG retrieval pipeline, vector cosine mathematics, and WebGL rendering engine.
-- **[`DEPLOYMENT.md`](DEPLOYMENT.md)**: Production DevOps guide with Docker Compose, Nginx reverse proxy configuration, and SSL hardening.
+- **[`API.md`](docs/API.md)**: Full REST API specification with JSON request/response schemas, query parameters, and error codes.
+- **[`ARCHITECTURE.md`](docs/ARCHITECTURE.md)**: Deep technical architecture covering the RAG retrieval pipeline, vector cosine mathematics, and WebGL rendering engine.
+- **[`DEPLOYMENT.md`](docs/DEPLOYMENT.md)**: Production DevOps guide with Docker Compose, Nginx reverse proxy configuration, and SSL hardening.
 - **[`CONTRIBUTING.md`](CONTRIBUTING.md)**: Guidelines for code contributions, local development setup, and Git workflow.
 - **[`CHANGELOG.md`](CHANGELOG.md)**: Comprehensive chronological release history across all versions.
-- **[`PRD.md`](PRD.md)**: Original Product Requirements Document with persona specifications.
-- **[`SRS.md`](SRS.md)**: Software Requirements Specification with IEEE standard formatting.
+- **[`PRD.md`](docs/PRD.md)**: Original Product Requirements Document with persona specifications.
+- **[`SRS.md`](docs/SRS.md)**: Software Requirements Specification with IEEE standard formatting.
 - **[`LICENSE.md`](LICENSE.md)**: Open-source MIT License terms.
 
 ---

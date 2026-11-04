@@ -14,6 +14,7 @@ import CommandPalette from './components/CommandPalette';
 import DecisionDossierModal from './components/DecisionDossierModal';
 import CompareDock from './components/CompareDock';
 import ToastNotification from './components/ToastNotification';
+import FeatureErrorFallback from './components/FeatureErrorFallback';
 import CartDrawer from './components/CartDrawer';
 import SearchEngineModal from './components/SearchEngineModal';
 import PriceAlertModal from './components/PriceAlertModal';
@@ -189,7 +190,8 @@ export default function App() {
 
   const handleDeleteAlert = async (alertId) => {
     try {
-      await deletePriceAlert(alertId);
+      const targetAlert = alerts.find(a => a.id === alertId);
+      await deletePriceAlert(alertId, targetAlert?.user_email || '');
       setAlerts(prev => prev.filter(a => a.id !== alertId));
       showToast('Price alert removed.', 'info');
     } catch (e) {
@@ -262,6 +264,25 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  // Dynamic Document Title and Layer Meta Description Update
+  useEffect(() => {
+    const titles = {
+      recommend: 'SpecDiff — Precision RAG AI Hardware Matchmaking',
+      catalog: 'SpecDiff — Hardware Catalog & Indian Street Prices',
+      admin: 'SpecDiff — System Telemetry & Catalog Operations'
+    };
+    const descriptions = {
+      recommend: 'Layer: Hybrid RAG AI Hardware Matchmaking. Combines 384-d dense embeddings, Okapi BM25 keyword matching, and benchmark utility scoring.',
+      catalog: 'Layer: Multi-Retailer Catalog Explorer. Search 1,170+ verified Indian electronics SKUs with live Amazon, Flipkart, Croma, and Reliance prices.',
+      admin: 'Layer: Infrastructure Telemetry. Real-time Redis cache observability, catalog re-indexing status, and market synchronization health.'
+    };
+    document.title = titles[activeTab] || 'SpecDiff — Machines for Every Kind of Workflow';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', descriptions[activeTab] || descriptions.recommend);
+    }
+  }, [activeTab]);
 
   useEffect(() => {
     fetchHealth();
@@ -438,7 +459,7 @@ export default function App() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="px-3 py-1 rounded-full bg-sage-500/15 text-forest-800 text-[10px] font-mono font-bold tracking-widest uppercase">
-                      COLLECTION
+                      LAYER 02: HARDWARE CONSTRAINTS &amp; UTILITY
                     </span>
                     <span className="text-[11px] font-mono text-forest-900/40">
                       / 02
@@ -522,12 +543,23 @@ export default function App() {
                 {/* Right: Results Showcase */}
                 <div className="lg:col-span-7 space-y-6">
                   
-                  {/* Error Message */}
+                  {/* Error Management & Fallback */}
                   {error && (
-                    <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex items-center gap-3 text-rose-900 text-sm">
-                      <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
-                      <span>{error}</span>
-                    </div>
+                    <FeatureErrorFallback
+                      featureName="Recommendation Engine"
+                      layerName="Hybrid Dense + BM25 RAG Retrieval"
+                      errorMessage={error}
+                      onRetry={() => {
+                        handleGetRecommendations(formInitialValues || {
+                          category: 'laptop',
+                          max_budget: 84999,
+                          min_ram_gb: 16,
+                          min_storage_gb: 512,
+                          use_case: 'Student laptop for coding, coursework, multitasking, and casual gaming with good battery life.',
+                          priority: 'value'
+                        });
+                      }}
+                    />
                   )}
 
                   {/* No Match Diagnostic */}
@@ -539,10 +571,18 @@ export default function App() {
                   {results && results.recommendations && results.recommendations.length > 0 && (
                     <div className="space-y-6">
                       
-                      {/* Top Bar with Carousel Buttons matching Reference Image 1 */}
-                      <div className="flex items-center justify-between pb-2">
-                        <div>
-                          <p className="text-xs font-mono text-forest-900/60">
+                      {/* Top Bar with Layer 03 Metadata & Carousel Controls */}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-forest-900/10">
+                        <div className="space-y-0.5">
+                          <div className="flex items-center gap-2">
+                            <span className="px-2 py-0.5 rounded-full bg-forest-900 text-white text-[9px] font-mono font-bold tracking-widest uppercase">
+                              LAYER 03: HYBRID RAG SCORING
+                            </span>
+                            <span className="text-[10px] font-mono text-forest-900/50">
+                              384-d Cosine + BM25 (&alpha;=0.80)
+                            </span>
+                          </div>
+                          <p className="text-xs font-mono text-forest-900/70">
                             {results.recommendations.length} curated picks &bull; {results.total_eligible_count} verified Indian SKUs passed hard filters
                           </p>
                         </div>

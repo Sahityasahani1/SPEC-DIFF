@@ -102,6 +102,21 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8 max-w-5xl mx-auto animate-fadeIn">
       
+      {/* Layer Metadata Indicator */}
+      <div className="flex items-center justify-between pb-1 border-b border-forest-900/10 text-xs font-mono">
+        <div className="flex items-center gap-2">
+          <span className="px-2.5 py-0.5 rounded-full bg-forest-900 text-white text-[10px] font-bold tracking-widest uppercase">
+            LAYER: ADMIN &amp; TELEMETRY
+          </span>
+          <span className="text-forest-900/60 hidden md:inline">
+            Catalog Re-indexing, CSV Pipeline, Ingestion Audit &amp; Cache Control
+          </span>
+        </div>
+        <span className="text-forest-900/40 text-[11px]">
+          Enterprise Control Plane
+        </span>
+      </div>
+
       {/* 0. Admin Authentication & Session Security */}
       <div className="bg-white p-6 sm:p-7 rounded-3xl border border-[#e8e5dc] shadow-sm font-jakarta">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

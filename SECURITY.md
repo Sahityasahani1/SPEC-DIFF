@@ -45,7 +45,11 @@ If you discover a security vulnerability or weakness within SpecDiff:
    - Accepts either `X-Admin-Key: <key>` or `Authorization: Bearer <key>`.
    - Compares candidate keys against `ADMIN_API_KEY` using `hmac.compare_digest` to prevent side-channel timing attacks.
    - Logs every successful and failed authorization attempt with client IP, timestamp, and target endpoint (`[AUTH_SUCCESS]`, `[AUTH_FAILURE]`).
-2. **Least Privilege**:
+2. **Price Alert Ownership & IDOR Defense (`/api/alerts/*`)**:
+   - Deletion (`DELETE /api/alerts/{id}`) requires verified ownership (`?email=...`) matching the registered user email, or valid administrative credentials.
+   - Alert simulation (`POST /api/alerts/simulate-trigger/{id}`) is permanently disabled in `production` and requires administrative authentication.
+   - Public notification feeds (`GET /api/alerts/notifications`) mask all user emails (`s***@domain.com`) to prevent PII harvesting.
+3. **Least Privilege**:
    - Public read operations (`GET /api/products`, `POST /api/recommend`, `POST /api/compare`) require no administrative credentials.
    - Any state-altering mutation (CSV ingestion, stock modification, vector re-indexing) requires verified administrative credentials.
 
@@ -57,11 +61,18 @@ If you discover a security vulnerability or weakness within SpecDiff:
 2. **Formula Injection (CWE-1236) Defense**:
    - CSV catalog uploads are sanitized using `sanitize_cell`.
    - Cells beginning with formula triggers (`=`, `+`, `-`, `@`, `\t`, `\r`) are automatically escaped with a leading single quote (`'`), preventing remote code execution when opened in Excel or Google Sheets.
-3. **Open Redirect Defense**:
-   - Outbound click tracker (`POST /api/track/click`) validates URL format and allows only `http` and `https` schemes with valid network locations, rejecting `javascript:`, `data:`, or relative file exploits.
-4. **XSS & Content Sanitization**:
-   - User feedback comments are stripped of HTML tags (`<script>`, `<iframe>`, etc.) using regex and whitespace normalization.
-5. **Security Headers**:
+3. **Server-Side Request Forgery (SSRF) Defense**:
+   - Dynamic web scrapers (`market_price_service.py`) enforce HTTPS and validate exact hostnames against a strict retail allowlist (`amazon.in`, `www.amazon.in`, `m.media-amazon.com`).
+   - Disallows embedded user credentials, disables redirects (`allow_redirects=False`), and isolates outbound requests with strict timeouts.
+4. **Open Redirect & Phishing Defense**:
+   - Outbound click tracker (`POST /api/track/click`) enforces hostname verification against certified retail partner domains (`amazon.in`, `flipkart.com`, `croma.com`, `reliancedigital.in`, `apple.com`, `vijaysales.com`, `tatacliq.com`), rejecting arbitrary external destinations with HTTP 400.
+5. **AI Copilot Prompt Injection & Boundary Defense**:
+   - Clamps conversation turns to at most 6 history items and validates strict role values (`user` / `model`).
+   - Grounded catalog context is encapsulated inside unambiguous data boundary markers (`[VERIFIED PRODUCT DATA]...[/VERIFIED PRODUCT DATA]`) with strict instructions not to execute embedded user overrides.
+6. **XSS & Content Sanitization**:
+   - User feedback comments and copilot queries are stripped of HTML tags (`<script>`, `<iframe>`, etc.) using regex and whitespace normalization.
+7. **Security Defense Headers**:
+   - `Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' http: https: ws: wss:; frame-ancestors 'none';`
    - `X-Content-Type-Options: nosniff`
    - `X-Frame-Options: DENY`
    - `Referrer-Policy: strict-origin-when-cross-origin`

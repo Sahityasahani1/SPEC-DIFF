@@ -134,7 +134,7 @@ export default function ProductCard({
           rotateY,
           transformStyle: 'preserve-3d',
         }}
-        className="relative bg-white rounded-[32px] p-6 sm:p-7 border border-[#e8e5dc] shadow-lofy-card hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between group will-change-transform h-full"
+        className="relative bg-white rounded-[26px] sm:rounded-[32px] p-4 sm:p-7 border border-[#e8e5dc] shadow-lofy-card hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between group will-change-transform h-full touch-pan-y"
       >
         {/* Dynamic Holographic Specular Glare Sheen Overlay */}
         <div 
@@ -343,82 +343,152 @@ export default function ProductCard({
 
       </div>
 
-      {/* Action Footer matching Reference ("Add to Cart" Pill Button style) */}
+      {/* Action Footer: Mobile 2-Row Thumb Grid / Desktop Single Flex Row */}
       <div 
         style={{ transform: 'translateZ(18px)' }}
-        className="mt-6 pt-4 border-t border-[#f0ede6] flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5"
+        className="mt-6 pt-4 border-t border-[#f0ede6]"
       >
-        <div className="flex items-center gap-2 w-full sm:w-auto">
-          {/* Add to Cart Pill Button */}
-          {onAddToCart && (
-            <button
-              type="button"
-              onClick={() => onAddToCart(product)}
-              className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-sage-500 hover:bg-sage-600 text-forest-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
-              title="Add to Shopping Cart"
-            >
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span>+ Cart</span>
-            </button>
-          )}
+        {/* Mobile Layout (< sm): 2 Clean Rows */}
+        <div className="flex flex-col gap-2 sm:hidden w-full">
+          {/* Row 1: Primary Actions (Cart + View Deal) */}
+          <div className="flex items-center gap-2 w-full">
+            {onAddToCart && (
+              <button
+                type="button"
+                onClick={() => onAddToCart(product)}
+                className="flex-1 py-2.5 min-h-[44px] rounded-full bg-sage-500 hover:bg-sage-600 text-forest-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                title="Add to Shopping Cart"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" />
+                <span>+ Cart</span>
+              </button>
+            )}
 
-          {/* Alert Bell Button */}
-          {onOpenPriceAlert && (
-            <button
-              type="button"
-              onClick={() => onOpenPriceAlert(product)}
-              className="p-2 sm:p-2.5 rounded-full bg-porcelain-100 hover:bg-emerald-50 text-forest-900 hover:text-emerald-700 transition-all border border-[#e0ddd4] shadow-xs cursor-pointer"
-              title="Set Price Drop Alert"
+            <motion.a
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              href={dealUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => openDealUrl(product, e)}
+              className="flex-1 py-2.5 min-h-[44px] rounded-full bg-forest-900 hover:bg-forest-850 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
             >
-              <Bell className="w-3.5 h-3.5" />
-            </button>
-          )}
+              <span>View Deal</span>
+              <ExternalLink className="w-3.5 h-3.5 text-sage-400" />
+            </motion.a>
+          </div>
 
-          {/* Stash / Wishlist Button */}
-          {onToggleWatchlist && (
+          {/* Row 2: Secondary Utilities (Compare, Alert, Stash) */}
+          <div className="flex items-center gap-2 w-full">
             <button
               type="button"
-              onClick={() => onToggleWatchlist(product)}
-              className={`p-2 sm:p-2.5 rounded-full transition-all border shadow-xs cursor-pointer ${
-                isBookmarked
-                  ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                  : 'bg-porcelain-100 hover:bg-stone-200 text-forest-900 border-[#e0ddd4]'
+              onClick={() => onToggleCompare(product)}
+              className={`flex-1 py-2.5 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                isSelectedForCompare
+                  ? 'bg-forest-900 text-white'
+                  : 'bg-porcelain-100 text-forest-900 hover:bg-porcelain-200 border border-[#e0ddd4]'
               }`}
-              title={isBookmarked ? 'In Hardware Stash' : 'Add to Stash'}
             >
-              <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current' : ''}`} />
+              {isSelectedForCompare ? <Check className="w-3.5 h-3.5 text-sage-400" /> : <Layers className="w-3.5 h-3.5" />}
+              <span>{isSelectedForCompare ? 'Selected' : 'Compare'}</span>
             </button>
-          )}
 
-          {/* Compare Pill Button */}
-          <button
-            type="button"
-            onClick={() => onToggleCompare(product)}
-            className={`flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-              isSelectedForCompare
-                ? 'bg-forest-900 text-white'
-                : 'bg-porcelain-100 text-forest-900 hover:bg-porcelain-200 border border-[#e0ddd4]'
-            }`}
-          >
-            {isSelectedForCompare ? <Check className="w-3.5 h-3.5 text-sage-400" /> : <Layers className="w-3.5 h-3.5" />}
-            <span>{isSelectedForCompare ? 'Selected' : 'Compare'}</span>
-          </button>
+            {onOpenPriceAlert && (
+              <button
+                type="button"
+                onClick={() => onOpenPriceAlert(product)}
+                className="p-2.5 min-h-[44px] min-w-[44px] rounded-full bg-porcelain-100 hover:bg-emerald-50 text-forest-900 hover:text-emerald-700 transition-all border border-[#e0ddd4] shadow-xs cursor-pointer flex items-center justify-center"
+                title="Set Price Drop Alert"
+              >
+                <Bell className="w-4 h-4" />
+              </button>
+            )}
+
+            {onToggleWatchlist && (
+              <button
+                type="button"
+                onClick={() => onToggleWatchlist(product)}
+                className={`p-2.5 min-h-[44px] min-w-[44px] rounded-full transition-all border shadow-xs cursor-pointer flex items-center justify-center ${
+                  isBookmarked
+                    ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                    : 'bg-porcelain-100 hover:bg-stone-200 text-forest-900 border-[#e0ddd4]'
+                }`}
+                title={isBookmarked ? 'In Hardware Stash' : 'Add to Stash'}
+              >
+                <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* View Deal Outbound Button */}
-        <motion.a
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          href={dealUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => openDealUrl(product, e)}
-          className="w-full sm:w-auto px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-forest-900 hover:bg-forest-850 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
-        >
-          <span>View Deal</span>
-          <ExternalLink className="w-3.5 h-3.5 text-sage-400" />
-        </motion.a>
+        {/* Desktop / Tablet Layout (sm+): Elegant Single Inline Row */}
+        <div className="hidden sm:flex items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2">
+            {onAddToCart && (
+              <button
+                type="button"
+                onClick={() => onAddToCart(product)}
+                className="px-4 py-2.5 rounded-full bg-sage-500 hover:bg-sage-600 text-forest-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                title="Add to Shopping Cart"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" />
+                <span>+ Cart</span>
+              </button>
+            )}
 
+            {onOpenPriceAlert && (
+              <button
+                type="button"
+                onClick={() => onOpenPriceAlert(product)}
+                className="p-2.5 rounded-full bg-porcelain-100 hover:bg-emerald-50 text-forest-900 hover:text-emerald-700 transition-all border border-[#e0ddd4] shadow-xs cursor-pointer"
+                title="Set Price Drop Alert"
+              >
+                <Bell className="w-3.5 h-3.5" />
+              </button>
+            )}
+
+            {onToggleWatchlist && (
+              <button
+                type="button"
+                onClick={() => onToggleWatchlist(product)}
+                className={`p-2.5 rounded-full transition-all border shadow-xs cursor-pointer ${
+                  isBookmarked
+                    ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                    : 'bg-porcelain-100 hover:bg-stone-200 text-forest-900 border-[#e0ddd4]'
+                }`}
+                title={isBookmarked ? 'In Hardware Stash' : 'Add to Stash'}
+              >
+                <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? 'fill-current' : ''}`} />
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={() => onToggleCompare(product)}
+              className={`px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                isSelectedForCompare
+                  ? 'bg-forest-900 text-white'
+                  : 'bg-porcelain-100 text-forest-900 hover:bg-porcelain-200 border border-[#e0ddd4]'
+              }`}
+            >
+              {isSelectedForCompare ? <Check className="w-3.5 h-3.5 text-sage-400" /> : <Layers className="w-3.5 h-3.5" />}
+              <span>{isSelectedForCompare ? 'Selected' : 'Compare'}</span>
+            </button>
+          </div>
+
+          <motion.a
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            href={dealUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => openDealUrl(product, e)}
+            className="px-5 py-2.5 rounded-full bg-forest-900 hover:bg-forest-850 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm cursor-pointer whitespace-nowrap"
+          >
+            <span>View Deal</span>
+            <ExternalLink className="w-3.5 h-3.5 text-sage-400" />
+          </motion.a>
+        </div>
       </div>
 
       <div 

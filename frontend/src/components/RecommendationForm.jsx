@@ -78,7 +78,7 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
   };
 
   return (
-    <div className="bg-white rounded-[32px] p-7 sm:p-8 border border-[#e8e5dc] shadow-lofy-card relative">
+    <div className="bg-white rounded-2xl sm:rounded-[32px] p-4 sm:p-7 md:p-8 border border-[#e8e5dc] shadow-lofy-card relative">
       
       {/* Header matching LOFY Reference */}
       <div className="pb-5 border-b border-[#f0ede6] mb-6">
@@ -106,13 +106,13 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
           <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-forest-900/70 mb-2">
             ELECTRONICS CATEGORY
           </label>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 sm:flex-wrap">
             {CATEGORY_OPTIONS.map((cat) => (
               <button
                 type="button"
                 key={cat.id}
                 onClick={() => setCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                className={`px-3 py-2 min-h-[38px] rounded-full text-xs font-mono font-semibold transition-all flex items-center gap-1.5 cursor-pointer shrink-0 sm:shrink ${
                   category === cat.id
                     ? 'bg-forest-900 text-sage-300 font-bold shadow-xs'
                     : 'bg-porcelain-100 text-forest-900/70 hover:bg-porcelain-200'
@@ -132,7 +132,7 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
               TARGET BUDGET
             </label>
             <div className="text-right">
-              <span className="text-3xl font-black font-mono text-forest-950 tracking-tight">
+              <span className="text-2xl sm:text-3xl font-black font-mono text-forest-950 tracking-tight">
                 {formatINR(maxBudget)}
               </span>
             </div>
@@ -150,13 +150,13 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
           />
 
           {/* Quick Price Tiers as refined pill buttons */}
-          <div className="flex flex-wrap gap-1.5 mt-2">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 mt-1 sm:flex-wrap">
             {PRICE_CHIPS.map((chip, idx) => (
               <button
                 type="button"
                 key={idx}
                 onClick={() => applyChip(chip)}
-                className={`text-xs px-3 py-1.5 rounded-full font-mono transition-all cursor-pointer ${
+                className={`text-xs px-3 py-2 min-h-[38px] rounded-full font-mono transition-all cursor-pointer shrink-0 sm:shrink ${
                   maxBudget === chip.budget
                     ? 'bg-forest-900 text-white font-bold shadow-xs'
                     : 'bg-porcelain-100 text-forest-900/70 border border-transparent hover:border-forest-900/20'
@@ -189,7 +189,7 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
                       type="button"
                       key={gb}
                       onClick={() => setMinRam(gb)}
-                      className={`py-2 text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
+                      className={`py-2.5 min-h-[44px] text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
                         minRam === gb
                           ? 'bg-forest-900 text-white shadow-xs'
                           : 'bg-porcelain-100 text-forest-900/60 hover:bg-porcelain-200'
@@ -211,7 +211,7 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
                       type="button"
                       key={gb}
                       onClick={() => setMinStorage(gb)}
-                      className={`py-2 text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
+                      className={`py-2.5 min-h-[44px] text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
                         minStorage === gb
                           ? 'bg-forest-900 text-white shadow-xs'
                           : 'bg-porcelain-100 text-forest-900/60 hover:bg-porcelain-200'
@@ -235,7 +235,7 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
                       type="button"
                       key={gb}
                       onClick={() => setMinRam(gb)}
-                      className={`py-2 text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
+                      className={`py-2.5 min-h-[44px] text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
                         minRam === gb
                           ? 'bg-forest-900 text-white shadow-xs'
                           : 'bg-porcelain-100 text-forest-900/60 hover:bg-porcelain-200'
@@ -257,7 +257,7 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
                       type="button"
                       key={gb}
                       onClick={() => setMinStorage(gb)}
-                      className={`py-2 text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
+                      className={`py-2.5 min-h-[44px] text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${
                         minStorage === gb
                           ? 'bg-forest-900 text-white shadow-xs'
                           : 'bg-porcelain-100 text-forest-900/60 hover:bg-porcelain-200'
@@ -308,7 +308,7 @@ export default function RecommendationForm({ onSubmit, loading, initialValues })
                   type="button"
                   key={p.id}
                   onClick={() => setPriority(p.id)}
-                  className={`p-2.5 rounded-xl text-left transition-all cursor-pointer ${
+                  className={`p-2.5 min-h-[52px] rounded-xl text-left transition-all cursor-pointer ${
                     isActive
                       ? 'bg-forest-900 text-white shadow-sm'
                       : 'bg-porcelain-100 text-forest-900/70 hover:bg-porcelain-200'

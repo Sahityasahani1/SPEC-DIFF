@@ -29,8 +29,8 @@ export default function StoreDealsComparison({ dealComparison, productName }) {
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-mono text-[10px] uppercase font-bold text-forest-900/60 tracking-wider">
-                Lowest Street Price
+              <span className="px-2 py-0.5 rounded-full bg-forest-900/10 text-forest-900 font-mono text-[9px] font-bold uppercase tracking-wider">
+                LAYER 04: STORE DEALS
               </span>
               <span className="bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2 py-0.5 rounded-full border border-emerald-300">
                 {best_deal_store}

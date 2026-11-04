@@ -168,3 +168,112 @@ def test_stable_hashing_consistency():
     h2 = _stable_hash("Lenovo LOQ 15 Gaming Laptop")
     assert h1 == h2
     assert isinstance(h1, int)
+
+
+def test_csp_header_present():
+    """Verify Content-Security-Policy (CSP) header is returned in HTTP responses."""
+    res = client.get("/api/health")
+    assert res.status_code == 200
+    csp = res.headers.get("Content-Security-Policy", "")
+    assert "default-src 'self'" in csp
+    assert "frame-ancestors 'none'" in csp
+
+
+def test_ssrf_protection_in_scraper():
+    """Verify fetch_live_web_price blocks non-whitelisted domains, IP addresses, and invalid schemes."""
+    from app.services.market_price_service import fetch_live_web_price
+
+    # Subdomain spoofing attempt
+    assert fetch_live_web_price("https://amazon.in.attacker.com/dp/B001") is None
+    # Cloud metadata SSRF attempt
+    assert fetch_live_web_price("http://169.254.169.254/latest/meta-data/?fake=amazon.in") is None
+    # Arbitrary host
+    assert fetch_live_web_price("https://malicious.org/amazon.in") is None
+    # Plain HTTP scheme (non-HTTPS)
+    assert fetch_live_web_price("http://amazon.in/dp/B001") is None
+    # Embedded credentials
+    assert fetch_live_web_price("https://user:pass@amazon.in/dp/B001") is None
+
+
+def test_track_click_untrusted_domain_blocked():
+    """Verify POST /api/track/click rejects untrusted or phishing retail domains with HTTP 400."""
+    payload = {
+        "product_id": "test_prod_1",
+        "retail_source": "FakeRetailer",
+        "target_url": "https://phishing-site.com/steal-creds"
+    }
+    res = client.post("/api/track/click", json=payload)
+    assert res.status_code == 400
+    assert "Untrusted retail domain" in res.json().get("detail", "")
+
+    # Subdomain spoofing
+    payload["target_url"] = "https://amazon.in.attacker.com/deal"
+    res2 = client.post("/api/track/click", json=payload)
+    assert res2.status_code == 400
+
+
+def test_track_click_trusted_domain_accepted():
+    """Verify POST /api/track/click accepts verified partner domains."""
+    payload = {
+        "product_id": "lap_macbook_air_m3",
+        "retail_source": "Amazon India",
+        "target_url": "https://www.amazon.in/dp/B0CX2144?tag=specdiff-21"
+    }
+    res = client.post("/api/track/click", json=payload)
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "recorded"
+    assert "amazon.in" in data["redirect_url"]
+
+
+def test_price_alert_email_masking():
+    """Verify PriceAlert.to_dict(mask_email=True) masks email to prevent PII harvesting."""
+    from app.models import PriceAlert
+    alert = PriceAlert(
+        id="alt_test_mask",
+        product_id="prod_1",
+        user_email="confidential.buyer@example.com",
+        target_price=50000.0,
+        initial_price=60000.0,
+        is_triggered=True
+    )
+    unmasked = alert.to_dict(mask_email=False)
+    assert unmasked["user_email"] == "confidential.buyer@example.com"
+
+    masked = alert.to_dict(mask_email=True)
+    assert masked["user_email"] == "c***@example.com"
+    assert "confidential.buyer" not in masked["user_email"]
+
+
+def test_copilot_query_html_sanitization():
+    """Verify CopilotRequest strips HTML tags and control characters from query input."""
+    from app.schemas import CopilotRequest
+    req = CopilotRequest(query="<script>alert('xss')</script>Best laptop for coding under 70k")
+    assert "<script>" not in req.query
+    assert "</script>" not in req.query
+    assert "Best laptop for coding under 70k" in req.query
+
+
+def test_price_alert_idor_protection():
+    """Verify deleting a price alert without matching email or admin key is rejected with 403 Forbidden."""
+    prod_res = client.get("/api/products?limit=1")
+    assert prod_res.status_code == 200
+    prod = prod_res.json()["products"][0]
+
+    payload = {
+        "product_id": prod["id"],
+        "user_email": "victim@specdiff.local",
+        "target_price": round(prod["price"] * 0.90, 2)
+    }
+    create_res = client.post("/api/alerts", json=payload)
+    assert create_res.status_code == 200
+    alert_id = create_res.json()["alert"]["id"]
+
+    # 1. Attempt delete with wrong email -> HTTP 403
+    del_res_attacker = client.delete(f"/api/alerts/{alert_id}?email=attacker@malicious.org")
+    assert del_res_attacker.status_code == 403
+    assert "Forbidden" in del_res_attacker.json().get("detail", "")
+
+    # 2. Legitimate owner delete with matching email -> HTTP 200
+    del_res_owner = client.delete(f"/api/alerts/{alert_id}?email=victim@specdiff.local")
+    assert del_res_owner.status_code == 200

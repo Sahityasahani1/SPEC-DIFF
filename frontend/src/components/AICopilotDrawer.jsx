@@ -186,11 +186,18 @@ export default function AICopilotDrawer({
         setSuggestedPrompts(response.suggested_prompts);
       }
     } catch (error) {
+      const errorMsg = error.message || 'Unable to connect to Copilot service';
       setMessages(prev => [
         ...prev, 
         { 
           role: 'assistant', 
-          content: "Plug hit a snag. The local hardware database is active—try asking about laptops, phones, gaming rigs, or store deals!",
+          is_error: true,
+          failed_query: query,
+          content: `⚠️ **Copilot Interrupted** (Layer: RAG Copilot)
+
+${errorMsg}
+
+*Check that the SpecDiff backend is active and try again.*`,
           relevant_products: []
         }
       ]);
@@ -219,8 +226,8 @@ export default function AICopilotDrawer({
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
         className={`fixed ${
-          hasBottomDock ? 'bottom-24 sm:bottom-28 lg:bottom-6' : 'bottom-6'
-        } right-4 sm:right-6 z-40 bg-forest-900 text-white rounded-full px-4 py-3 sm:py-3.5 shadow-2xl flex items-center gap-2 border border-sage-500/30 hover:border-sage-400 transition-all ${
+          hasBottomDock ? 'bottom-36 md:bottom-24 lg:bottom-6' : 'bottom-20 md:bottom-6'
+        } right-3 sm:right-6 z-40 bg-forest-900 text-white rounded-full px-3.5 sm:px-4 py-2.5 sm:py-3.5 shadow-2xl flex items-center gap-2 border border-sage-500/30 hover:border-sage-400 transition-all ${
           isOpen ? 'hidden' : 'flex'
         }`}
         title="Open SpecPlug AI Hardware Advisor"
@@ -238,7 +245,7 @@ export default function AICopilotDrawer({
             animate={{ x: 0 }}
             exit={{ x: 440 }}
             transition={{ type: 'spring', damping: 26, stiffness: 220 }}
-            className="fixed top-16 right-0 bottom-0 w-full max-w-[430px] bg-white border-l border-[#e8e5dc] shadow-2xl z-50 flex flex-col font-jakarta"
+            className="fixed top-0 sm:top-16 right-0 bottom-0 w-full max-w-[430px] bg-white border-l border-[#e8e5dc] shadow-2xl z-50 flex flex-col font-jakarta"
           >
             {/* Header with SpecPlug Persona Branding */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-[#e8e5dc] bg-[#f7f5ef]">
@@ -253,9 +260,14 @@ export default function AICopilotDrawer({
                       LIVE
                     </span>
                   </div>
-                  <p className="text-[10px] font-mono text-forest-900/60 tracking-tight">
-                    Your Hardware Plug • No Cap, Only Specs
-                  </p>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="text-[9px] font-mono bg-forest-900/10 text-forest-900 font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">
+                      LAYER: RAG COPILOT
+                    </span>
+                    <span className="text-[10px] font-mono text-forest-900/60 tracking-tight">
+                      Retrieval-Augmented Hardware AI
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -321,12 +333,26 @@ export default function AICopilotDrawer({
                       <div className={`max-w-[92%] ${
                         msg.role === 'user' 
                           ? 'bg-forest-900 text-white rounded-2xl rounded-tr-xs px-4 py-3 shadow-sm' 
-                          : 'bg-white text-forest-900 rounded-2xl rounded-tl-xs px-4 py-3.5 border border-[#e5e1d6] shadow-xs'
+                          : msg.is_error
+                            ? 'bg-rose-50 text-rose-950 rounded-2xl rounded-tl-xs px-4 py-3.5 border border-rose-200 shadow-xs'
+                            : 'bg-white text-forest-900 rounded-2xl rounded-tl-xs px-4 py-3.5 border border-[#e5e1d6] shadow-xs'
                       }`}>
                         {msg.role === 'user' ? (
                           <p className="text-xs leading-relaxed font-medium">{msg.content}</p>
                         ) : (
                           <FormattedMessage text={msg.content} />
+                        )}
+                        {msg.is_error && msg.failed_query && (
+                          <div className="mt-2.5 pt-2 border-t border-rose-200 flex items-center justify-between">
+                            <button
+                              type="button"
+                              onClick={() => handleSend(msg.failed_query)}
+                              className="px-2.5 py-1 rounded-full bg-rose-900 text-white text-[10px] font-mono font-bold uppercase tracking-wider hover:bg-rose-800 transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+                            >
+                              <span>↻ Retry Query</span>
+                            </button>
+                            <span className="text-[10px] text-rose-800/70 font-mono">Layer: RAG Copilot</span>
+                          </div>
                         )}
                       </div>
 

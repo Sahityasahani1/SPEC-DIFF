@@ -37,13 +37,27 @@ def track_outbound_click(request: Request, payload: ClickTrackRequest):
     Logs affiliate click telemetry before user redirects to e-commerce retailer.
     Validates URL safety, prevents open redirects, and anonymizes client IP.
     """
-    # 1. URL Scheme & Open Redirect Defense
+    # 1. URL Scheme & Open Redirect Defense with Domain Whitelist
     try:
         parsed = urlparse(payload.target_url)
         if parsed.scheme not in ("http", "https"):
             raise ValueError("Only http and https destination URLs are allowed.")
-        if not parsed.netloc:
+        hostname = (parsed.hostname or "").lower()
+        if not hostname:
             raise ValueError("Invalid target URL host.")
+
+        is_trusted = any(
+            hostname == domain or hostname.endswith("." + domain)
+            for domain in TRUSTED_RETAIL_DOMAINS
+        )
+        if not is_trusted:
+            logger.warning(f"[UNTRUSTED_CLICK_REDIRECT] Blocked unverified domain: {hostname}")
+            raise HTTPException(
+                status_code=400,
+                detail=f"Untrusted retail domain '{hostname}'. Redirection permitted only to certified retailers."
+            )
+    except HTTPException:
+        raise
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid destination URL format.")
 

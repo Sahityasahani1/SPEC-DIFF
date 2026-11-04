@@ -32,7 +32,7 @@ export default function CompareDock({
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 80, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-        className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 max-w-3xl w-[96%] sm:w-auto pointer-events-auto"
+        className="fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-40 max-w-3xl w-[95%] sm:w-auto pointer-events-auto"
       >
         <div className="bg-forest-950/95 backdrop-blur-xl border border-forest-800 text-white rounded-[24px] sm:rounded-[26px] p-2.5 sm:px-4 sm:py-3 shadow-2xl flex flex-col sm:flex-row items-center gap-2 sm:gap-4 max-h-[85vh] overflow-y-auto sm:overflow-visible">
           
