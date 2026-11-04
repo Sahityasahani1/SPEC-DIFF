@@ -123,10 +123,17 @@ class AppEnvironmentSettings(BaseModel):
         return [o.strip() for o in self.allowed_origins_raw.split(",") if o.strip()]
 
 # Load and validate settings from OS environment
+_env_str = os.getenv("ENVIRONMENT", "development").lower()
+_default_admin_key = (
+    f"specdiff_prod_secure_fallback_{os.urandom(12).hex()}"
+    if _env_str == "production"
+    else INSECURE_DEFAULT_KEY
+)
+
 _raw_settings = {
-    "environment": os.getenv("ENVIRONMENT", "development").lower(),
+    "environment": _env_str,
     "database_url": os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR}/smartpick.db"),
-    "admin_api_key": os.getenv("ADMIN_API_KEY", INSECURE_DEFAULT_KEY),
+    "admin_api_key": os.getenv("ADMIN_API_KEY") or _default_admin_key,
     "allowed_origins_raw": os.getenv(
         "ALLOWED_ORIGINS",
         "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,http://localhost"

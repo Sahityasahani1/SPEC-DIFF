@@ -62,5 +62,5 @@ EXPOSE 10000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD curl -f http://localhost:${PORT:-10000}/api/health || exit 1
 
-# Production server: dynamic PORT binding and WEB_CONCURRENCY support for Render/Railway/Docker
-CMD ["sh", "-c", "gunicorn -k uvicorn.workers.UvicornWorker -w ${WEB_CONCURRENCY:-2} -b 0.0.0.0:${PORT:-10000} --timeout 120 --access-logfile - --error-logfile - app.main:app"]
+# Production server: single-worker Uvicorn (90MB footprint, no pre-fork threading deadlock, instant boot)
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-10000}"]
